@@ -135,16 +135,19 @@ Plug 'tmhedberg/SimpylFold'
 call plug#end()
 
 " NERDTree
+" show hidden files
+let NERDTreeShowHidden=1
+
 " Key Commands
 map <C-\> :NERDTreeToggle<CR>
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
-" NERDTree config
 " open NERDTree on directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 " close vim when only NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
