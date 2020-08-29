@@ -166,9 +166,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " abbrevation
 iabbrev @@ sebastianus.kurniawan@gmail.com
 
-" youcompleteme
-" let g:ycm_autoclose_preview_window_after_completion=1
-" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" setup open files using cmd t
+nnoremap <silent> <expr> <C-T> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 
 " CoC
 " use <Tab> and <S-Tab> to navigate, use enter to select
@@ -182,4 +181,3 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 let python_highlight_all=1
 let g:syntastic_python_checkers = ['flake8']
 
-nnoremap <C-T> :Files<CR>
