@@ -57,7 +57,14 @@ alias pf-vpn="sudo openvpn ~/Documents/vpn/payfazz-prod.ovpn"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-export FZF_DEFAULT_OPTS='--height=70% --preview="cat {}" --preview-window=right:60%:wrap'
+export FZF_DEFAULT_OPTS="
+    --layout=reverse
+    --info=inline
+    --height=70% 
+    --preview-window=:hidden
+    --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+    --preview-window=right:60%:wrap
+    --bind '?:toggle-preview'
+"
 export FZF_DEFAULT_COMMAND="rg --files"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
