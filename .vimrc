@@ -107,7 +107,6 @@ Plug 'dart-lang/dart-vim-plugin'
 
 " Python
 Plug 'nvie/vim-flake8'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " Javascript
