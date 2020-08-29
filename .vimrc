@@ -182,4 +182,4 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 let python_highlight_all=1
 let g:syntastic_python_checkers = ['flake8']
 
-nnoremap <C-P> :Files<CR>
+nnoremap <C-T> :Files<CR>
