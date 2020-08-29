@@ -15,3 +15,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/Library/Android/sdk/build-tools/29.0.2:$PATH"
 export PATH="$HOME/cashier:$PATH"
 
+export GOPATH=$CODE/go
+
+export ANDROID_HOME=/Users/sebastianuskh/Library/Android/sdk
