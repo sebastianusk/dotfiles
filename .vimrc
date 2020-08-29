@@ -94,9 +94,6 @@ Plug 'scrooloose/nerdtree'
 " NERD Commenter
 Plug 'scrooloose/nerdcommenter'
 
-" vim-ripgrep
-Plug 'jremmen/vim-ripgrep'
-
 " Surround
 Plug 'tpope/vim-surround'
 
@@ -115,9 +112,6 @@ Plug 'nvie/vim-flake8'
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'moll/vim-node'
-
-" Autocomplete, follow: https://github.com/ycm-core/YouCompleteMe#macos
-" Plug 'Valloric/YouCompleteMe'
 
 " coc.nvim - completer and language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
