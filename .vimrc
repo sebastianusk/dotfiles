@@ -97,8 +97,8 @@ Plug 'scrooloose/nerdcommenter'
 " Surround
 Plug 'tpope/vim-surround'
 
-" Syntastic
-Plug 'vim-syntastic/syntastic'
+" ale for lint
+Plug 'dense-analysis/ale'
 
 " Language
 Plug 'leafgarland/typescript-vim'
@@ -106,8 +106,9 @@ Plug 'udalov/kotlin-vim'
 Plug 'dart-lang/dart-vim-plugin'
 
 " Python
-Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
@@ -147,14 +148,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " sytastic
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%{FugitiveStatusline()}
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " make it easier to make it easier to edit vim rc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -176,5 +171,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 
 " Python
 let python_highlight_all=1
-let g:syntastic_python_checkers = ['flake8']
+
+" Ale
+let g:ale_fix_on_save = 1
 
