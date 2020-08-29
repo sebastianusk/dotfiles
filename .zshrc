@@ -1,6 +1,5 @@
-zmodload zsh/zprof
 export ZSH=$HOME/.oh-my-zsh
-zprof
+
 ZSH_THEME="agnoster"
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -59,6 +58,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export FZF_DEFAULT_OPTS='--height=70% --preview="cat {}" --preview-window=right:60%:wrap'
-export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
+export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
