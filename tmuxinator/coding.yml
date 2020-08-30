@@ -1,11 +1,9 @@
 # /Users/sebastianuskh/.config/tmuxinator/coding.yml
 
 name: coding
-root: .
-
 windows:
   - editor:
-      layout: main-horizontal
+      layout: main-vertical
       panes:
         - vim
-        - #empty
+        - tmux rename-session `basename "$PWD"`
