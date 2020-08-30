@@ -21,6 +21,8 @@ set mouse=a " Enable mouse for scrolling and resizing.
 set title " Set the window’s title, reflecting the file currently being edited.
 set cursorline
 set background=dark " set the color scheme
+let g:solarized_diffmode="high"
+colorscheme solarized
 
 filetype plugin indent on
 set lazyredraw
@@ -145,7 +147,20 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " close vim when only NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" sytastic
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+    return l:counts.total == 0 ? 'OK' : printf(
+        \   '%d⨉ %d⚠ ',
+        \   all_non_errors,
+        \   all_errors
+        \)
+endfunction
+
+" status line
+set statusline+=%=
+set statusline+=\ %{LinterStatus()}
 set statusline+=%#warningmsg#
 set statusline+=%*
 set statusline+=%{FugitiveStatusline()}
@@ -171,9 +186,15 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " use enter when no selected to complete
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" Python
-let python_highlight_all=1
-
 " Ale
 let g:ale_fix_on_save = 1
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
+
+" Git
+nmap <leader>gs :G<CR>
+nmap <leader>gd :Gdiffsplit<CR>
+nmap <leader>gc :Git commit<CR>
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gl :diffget //2<CR>
 
