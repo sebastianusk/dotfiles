@@ -48,3 +48,5 @@ export LANG=en_US.UTF-8
 if type nvim > /dev/null 2>&1; then
     alias vim='nvim'
 fi
+
+

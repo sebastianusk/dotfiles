@@ -41,6 +41,7 @@ brew "pgcli"
 brew "ncdu"
 brew "ctop"
 brew "lazydocker"
+brew "tmuxinator"
 
 cask "alfred"
 cask "anydesk"

@@ -1,0 +1,8 @@
+# /Users/sebastianuskh/.config/tmuxinator/main.yml
+
+name: main
+root: ~/
+windows:
+  - editor:
+      panes:
+        - #empty

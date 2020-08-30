@@ -179,6 +179,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " use enter when no selected to complete
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+
 " Ale
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '●'

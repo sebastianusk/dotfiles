@@ -3,3 +3,9 @@ alias random="date |md5 "
 alias pf-vpn="sudo openvpn ~/Documents/vpn/payfazz-prod.ovpn"
 
 alias docker-cleanup="docker ps --filter "status=exited" | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm"
+
+alias tx=tmuxinator
+alias main="tx start main"
+alias dotfiles="tx start dotfiles"
+alias monitor="tx start monitor"
+alias coding="tx start coding -n `basename \"$PWD\"`"

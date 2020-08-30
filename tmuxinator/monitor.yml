@@ -1,0 +1,12 @@
+# /Users/sebastianuskh/.config/tmuxinator/monitor.yml
+
+name: monitor
+root: ~/
+
+windows:
+  - main:
+      panes:
+        - glances
+  - docker:
+      panes:
+        - lazydocker
