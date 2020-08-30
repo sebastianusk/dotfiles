@@ -1,7 +1,6 @@
 " set clipboard enabled
 set clipboard=unnamed
 
-
 " add spaces in TABS
 set tabstop=2
 set softtabstop=2
@@ -20,9 +19,7 @@ set visualbell " Flash the screen instead of beeping on errors.
 set mouse=a " Enable mouse for scrolling and resizing.
 set title " Set the window’s title, reflecting the file currently being edited.
 set cursorline
-set background=dark " set the color scheme
-let g:solarized_diffmode="high"
-colorscheme solarized
+colors zenburn
 
 filetype plugin indent on
 set lazyredraw
@@ -61,8 +58,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-
-
 " map esc key
 imap jk <Esc>
 
@@ -86,8 +81,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Color Schemes
-Plug 'flazz/vim-colorschemes'
-Plug 'altercation/vim-colors-solarized'
 Plug 'jnurmine/zenburn'
 
 " NERDTree
@@ -160,8 +153,8 @@ endfunction
 
 " status line
 set statusline+=%=
-set statusline+=\ %{LinterStatus()}
 set statusline+=%#warningmsg#
+set statusline+=\ %{LinterStatus()}
 set statusline+=%*
 set statusline+=%{FugitiveStatusline()}
 
