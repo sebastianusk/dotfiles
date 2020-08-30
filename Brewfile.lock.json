@@ -2,16 +2,16 @@
   "entries": {
     "tap": {
       "datawire/blackbird": {
-        "revision": "6f3f88cb4f635fe79d4ca690a4b63a758661d6a6"
+        "revision": "999a55bb8712a7a1b85cc69ebe9a3b95a81cf71c"
       },
       "homebrew/bundle": {
         "revision": "d1fe8a76750e7df23373720f5ea212afcad847bd"
       },
       "homebrew/cask": {
-        "revision": "18d32e7f2912fa915fdb5e106cfc151c421abc37"
+        "revision": "d8dc39bb6339e48a86922d54c97af473769d0afb"
       },
       "homebrew/core": {
-        "revision": "45f5a40023acc188ff2b79d277163993b934c7fb"
+        "revision": "923457d5c49fdbc97d5d07fe8c36d67a3edae58b"
       }
     },
     "cask": {
@@ -852,6 +852,27 @@
             }
           }
         }
+      },
+      "neovim": {
+        "version": "0.4.4",
+        "bottle": {
+          "cellar": "/usr/local/Cellar",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/neovim-0.4.4.catalina.bottle.tar.gz",
+              "sha256": "ade03fcf189ccd82e8b4627499113aed67a753b0e3ffa9662c15d7037f6ed617"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/neovim-0.4.4.mojave.bottle.tar.gz",
+              "sha256": "e68135735b24df7e1318bb71c4fef6461884b2c7a166d756b4a21bd787a329a2"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/neovim-0.4.4.high_sierra.bottle.tar.gz",
+              "sha256": "77773fc6e8ad7fd726e881850712f3995feef94548bfd6081599c5b682eb4411"
+            }
+          }
+        }
       }
     }
   },
@@ -860,7 +881,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.4.14",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "45f5a40023acc188ff2b79d277163993b934c7fb",
+        "Homebrew/homebrew-core": "923457d5c49fdbc97d5d07fe8c36d67a3edae58b",
         "CLT": "1103.0.32.62",
         "Xcode": "11.5",
         "macOS": "10.15.5"
