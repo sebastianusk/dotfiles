@@ -157,8 +157,11 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " abbrevation
 iabbrev @@ sebastianus.kurniawan@gmail.com
 
-" setup open files using cmd t
-nnoremap <silent> <expr> <C-T> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+" setup open files using ctrl p
+nnoremap <silent> <expr> <C-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+
+" setup search string using ctrl F
+nnoremap <silent> <expr> <C-F> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Rg\<cr>"
 
 " CoC
 " use <Tab> and <S-Tab> to navigate, use enter to select
