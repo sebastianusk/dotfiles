@@ -331,6 +331,6 @@ bind-key -T copy-mode-vi 'C-\' select-pane -l
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
 
-bind x kill-session
+bind q kill-session
 
 set-option -g detach-on-destroy off

@@ -157,7 +157,12 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 iabbrev @@ sebastianus.kurniawan@gmail.com
 
 " setup open files using ctrl p
-nnoremap <silent> <expr> <C-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+nnoremap <silent> <expr> <C-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":ProjectFiles\<cr>"
 
 " setup search string using ctrl F
 nnoremap <silent> <expr> <C-F> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Rg\<cr>"
