@@ -1,1 +1,6 @@
 export DOCKER_ID_USER="sebastianuskh"
+
+function pf () {
+    open -a "Google Chrome" https://secure.payfazz.com/vpn
+    sudo openvpn ~/Documents/vpn/payfazz-prod.ovpn
+}
