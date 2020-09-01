@@ -116,6 +116,12 @@
         "options": {
           "full_name": "vnc-viewer"
         }
+      },
+      "lens": {
+        "version": "3.5.3",
+        "options": {
+          "full_name": "lens"
+        }
       }
     },
     "brew": {
