@@ -90,6 +90,7 @@ Plug 'dense-analysis/ale'
 Plug 'leafgarland/typescript-vim'
 Plug 'udalov/kotlin-vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'fatih/vim-go'
 
 " Python
 Plug 'nvie/vim-flake8'
@@ -304,4 +305,7 @@ nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gc :Git commit<CR>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gl :diffget //2<CR>
+
+" go
+let g:go_def_mapping_enabled = 0
 
