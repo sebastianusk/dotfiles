@@ -59,9 +59,8 @@ imap jk <Esc>
 let mapleader = ","
 
 " enable folding
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
-let g:SimpylFold_docstring_preview=1
 
 " Vim Plug
 call plug#begin('~/.vim/plugged')
@@ -315,6 +314,15 @@ let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
+let g:ale_fixers = {
+\    '*': ['remove_trailing_lines', 'trim_whitespace'],
+\    'javascript': ['eslint'],
+\    'typescript': ['prettier'],
+\    'vue': ['eslint'],
+\    'scss': ['prettier'],
+\    'html': ['prettier']
+\}
+let g:ale_fix_on_save = 1
 
 " Git
 nmap <leader>gs :G<CR>
@@ -330,7 +338,7 @@ let g:go_gopls_enabled = 0
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " next error
 map <C-n> :cnext<CR>
