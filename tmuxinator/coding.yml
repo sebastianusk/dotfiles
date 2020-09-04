@@ -3,7 +3,7 @@
 name: coding
 windows:
   - editor:
-      layout: main-vertical
+      layout: main-horizontal
       panes:
         - vim
         - tmux rename-session `basename "$PWD"`
