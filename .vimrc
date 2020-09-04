@@ -90,7 +90,6 @@ Plug 'tpope/vim-surround'
 Plug 'dense-analysis/ale'
 
 " Language
-Plug 'leafgarland/typescript-vim'
 Plug 'udalov/kotlin-vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'fatih/vim-go'
@@ -101,7 +100,9 @@ Plug 'Vimjas/vim-python-pep8-indent'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
-Plug 'moll/vim-node'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 " autopair bracket
 Plug 'jiangmiao/auto-pairs'
@@ -114,6 +115,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -327,21 +329,6 @@ let g:go_list_type = "quickfix"
 let g:go_gopls_enabled = 0
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
-
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-
-autocmd FileType go nmap <leader>b <C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader>r <Plug>(go-run)
-autocmd FileType go nmap <leader>t <Plug>(go-test)
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 
