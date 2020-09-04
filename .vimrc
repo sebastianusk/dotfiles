@@ -2,7 +2,6 @@
 set clipboard=unnamed
 
 " add spaces in TABS
-set tabstop=2
 set softtabstop=2
 set expandtab " convert tab into spaces
 
@@ -19,7 +18,6 @@ set noerrorbells " Disable beep on errors.
 set visualbell " Flash the screen instead of beeping on errors.
 set mouse=a " Enable mouse for scrolling and resizing.
 set title " Set the window’s title, reflecting the file currently being edited.
-set cursorline
 colors zenburn
 
 filetype plugin indent on
@@ -46,8 +44,8 @@ set hlsearch
 set ignorecase
 set smartcase
 
-" Automatic change directory
-set autochdir
+" put leader cd to change directory
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Automatic write
 set autowrite
@@ -167,13 +165,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " abbrevation
 iabbrev @@ sebastianus.kurniawan@gmail.com
 
-" setup open files using ctrl p
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-
-command! ProjectFiles execute 'Files' s:find_git_root()
-nnoremap <silent> <expr> <C-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":ProjectFiles\<cr>"
+" setup search file using ctrl P
+nnoremap <silent> <expr> <C-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 
 " setup search string using ctrl F
 nnoremap <silent> <expr> <C-F> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Rg\<cr>"
