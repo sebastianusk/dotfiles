@@ -12,6 +12,9 @@
       },
       "homebrew/core": {
         "revision": "923457d5c49fdbc97d5d07fe8c36d67a3edae58b"
+      },
+      "koekeishiya/formulae": {
+        "revision": "c8c393c710f16e9f90d6d65132ee6bdc790b63c3"
       }
     },
     "cask": {
@@ -561,7 +564,7 @@
         }
       },
       "node": {
-        "version": "14.8.0",
+        "version": "14.9.0",
         "bottle": {
           "cellar": ":any",
           "prefix": "/usr/local",
@@ -900,7 +903,9 @@
             }
           }
         }
-      }
+      },
+      "koekeishiya/formulae/yabai": null,
+      "koekeishiya/formulae/skhd": null
     }
   },
   "system": {
