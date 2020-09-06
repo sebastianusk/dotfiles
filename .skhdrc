@@ -59,10 +59,6 @@ shift + alt - m : yabai -m window --space last && yabai -m space --focus last
 shift + alt - p : yabai -m window --space prev && yabai -m space --focus prev
 shift + alt - n : yabai -m window --space next && yabai -m space --focus next
 
-# change focus to other workspace
-shift + ctrl - l : yabai -m space --focus next || yabai -m space --focus first
-shift + ctrl - h : yabai -m space --focus prev || yabai -m space --focus last
-
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 shift + ctrl - n : yabai -m space --create
 shift + ctrl - x : yabai -m space --destroy
@@ -70,3 +66,7 @@ shift + ctrl - x : yabai -m space --destroy
 # focus monitor
 ctrl + shift - j  : yabai -m display --focus next
 ctrl + shift - k  : yabai -m display --focus prev
+
+# change focus to other workspace
+ctrl + shift - l : yabai -m space --focus next || yabai -m space --focus first
+ctrl + shift - h : yabai -m space --focus prev || yabai -m space --focus last
