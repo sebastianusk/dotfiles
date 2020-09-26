@@ -1,5 +1,5 @@
 " set clipboard enabled
-set clipboard=unnamed
+set clipboard^=unnamed,unnamedplus
 
 " add spaces in TABS
 set softtabstop=2
@@ -18,7 +18,6 @@ set noerrorbells " Disable beep on errors.
 set visualbell " Flash the screen instead of beeping on errors.
 set mouse=a " Enable mouse for scrolling and resizing.
 set title " Set the window’s title, reflecting the file currently being edited.
-colors zenburn
 
 filetype plugin indent on
 set lazyredraw
@@ -326,6 +325,8 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+
+colors zenburn
 
 " auto pair
 let g:AutoPairsFlyMode = 0
