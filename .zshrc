@@ -39,7 +39,8 @@ include ~/dotfiles/.pathrc
 include ~/dotfiles/.personalrc
 include ~/dotfiles/.secretrc
 
-include fzf.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 DEFAULT_USER=$USER
 
