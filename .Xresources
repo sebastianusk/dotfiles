@@ -9,7 +9,6 @@
 ! What degree of hinting to use (hintnone, hintslight, hintmedium, or hintfull)
 !Xft.hintstyle: hintslight
 
-xterm*faceName: terminus-12
 URxvt*font:     terminus-12
 URxvt*boldFont: terminus-12
 
@@ -22,23 +21,6 @@ URxvt*boldFont: terminus-12
 !:antialias=false:hintstyle=hintfull
 
 #define WINDOWGEOMETRY 90x20
-! xterm
-xterm*dynamiccolors:      true
-xterm*utf8:               2
-xterm*geometry:           WINDOWGEOMETRY
-xterm*visualBell:         off
-xterm*highlightSelection: true
-!xterm*background:      lightblack
-!xterm*foreground:      lightblue
-!xterm*colorMode:       on
-!xterm*colorBD:         lightcyan
-!xterm*colorBDMode:     on
-!xterm*colorUL:         white
-!xterm*colorULMode:     on
-!xterm*scrollTtyOutput: false
-!xterm*scrollKey:       true
-!xterm*scrollBar:       true
-
 ! URxvt
 URxvt.modifier: mod1
 URxvt*loginShell: true
