@@ -19,6 +19,8 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+export PY_SITE_PACKAGES=/usr/lib/python3.8/site-packages
+
 export CODE=~/Code
 export GOPATH=$CODE/go
 

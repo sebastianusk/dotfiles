@@ -9,18 +9,17 @@ plugins=(
     z
     aws
     brew
-    elixir
     docker
     gradle
     kubectl
     node
-    npm 
+    npm
     osx
     pip
     python
     redis-cli
     ssh-agent
-    sudo 
+    sudo
     vscode
     yarn
     vagrant
@@ -53,5 +52,8 @@ export LANG=en_US.UTF-8
 if type nvim > /dev/null 2>&1; then
     alias vim='nvim'
 fi
+
+powerline-daemon -q
+. $PY_SITE_PACKAGES/powerline/bindings/zsh/powerline.zsh
 
 export MYVIMRC=~/.vimrc

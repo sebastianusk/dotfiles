@@ -334,3 +334,5 @@ bind - split-window -v -c "#{pane_current_path}"
 bind q kill-session
 
 set-option -g detach-on-destroy off
+
+source $PY_SITE_PACKAGES/powerline/bindings/tmux/powerline.conf
