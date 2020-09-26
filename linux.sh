@@ -14,3 +14,5 @@ ln -sfn ~/dotfiles/.vimrc ~/.config/nvim/init.vim
 
 source ~/dotfiles/bootstrap.sh
 ln -sfn ~/dotfiles/.zshrc ~/.zshrc
+
+ln -sfn ~/dotfiles/tmuxinator ~/.tmuxinator
