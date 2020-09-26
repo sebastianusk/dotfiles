@@ -29,12 +29,17 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/.dotfiles/.aliasrc
-source ~/.dotfiles/.initrc
-source ~/.dotfiles/.pathrc
-source ~/.dotfiles/.personalrc
-source ~/.dotfiles/.secretrc
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+include () {
+    [[ -f "$1" ]] && source "$1"
+}
+
+include ~/dotfiles/.aliasrc
+include ~/dotfiles/.initrc
+include ~/dotfiles/.pathrc
+include ~/dotfiles/.personalrc
+include ~/dotfiles/.secretrc
+
+include fzf.zsh
 
 DEFAULT_USER=$USER
 
