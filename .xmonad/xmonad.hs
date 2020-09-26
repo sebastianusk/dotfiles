@@ -1,8 +1,13 @@
 import XMonad
-import XMonad.Hooks⎋
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig(additionalKeys)
+import System.IO
 
 
-main = xmonad def
-    { terminal = "st"
-    , borderWidth = 3
-    }
+main = xmonad defaultConfig
+        { layoutHook = avoidStruts $ layoutHook defaultConfig
+        , terminal = "st"
+        , modMask = mod4ask
+        }
