@@ -1,6 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="agnoster"
+export ZSH_THEME=robbyrussell
+
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
@@ -52,8 +53,3 @@ export LANG=en_US.UTF-8
 if type nvim > /dev/null 2>&1; then
     alias vim='nvim'
 fi
-
-powerline-daemon -q
-. $PY_SITE_PACKAGES/powerline/bindings/zsh/powerline.zsh
-
-export MYVIMRC=~/.vimrc
