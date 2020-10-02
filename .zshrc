@@ -55,7 +55,9 @@ if type nvim > /dev/null 2>&1; then
     alias vim='nvim'
 fi
 
-if [ -z "$TMUX" ]
-then
-    tmux attach -t main || tmux new -s main
+if [[ $DISPLAY ]]; then
+    if [ -z "$TMUX" ]
+    then
+        tmux attach -t main || tmux new -s main
+    fi
 fi
