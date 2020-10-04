@@ -1,8 +1,12 @@
 import XMonad
 import Data.Monoid
+import Data.List
 import System.Exit
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Prompt
+import XMonad.Prompt.Shell
+import XMonad.Prompt.XMonad
 import XMonad.Util.Run
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -47,6 +51,17 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
 
+myPromptConfig = defaultXPConfig
+                 {
+                   font =         "xft:JetBrains Mono:size=9:bold:antialias=true"
+                 , bgColor =      "black"
+                 , fgColor =      "#dcdccc"
+                 , position =     Top
+                 , borderColor =  "#646464"
+                 , defaultText = ""
+                 , alwaysHighlight = True
+                 , searchPredicate = isPrefixOf
+                 }
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -55,11 +70,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
-
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    -- launch prompt
+    , ((modm .|. shiftMask, xK_p     ), shellPrompt myPromptConfig)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
