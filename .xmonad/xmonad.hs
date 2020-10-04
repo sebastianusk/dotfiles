@@ -72,6 +72,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch prompt
     , ((modm .|. shiftMask, xK_p     ), shellPrompt myPromptConfig)
+    , ((modm, xK_p     ), shellPrompt myPromptConfig)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -290,9 +291,8 @@ help :: String
 help = unlines ["The default modifier key is 'alt'. Default keybindings:",
     "",
     "-- launching and killing programs",
-    "mod-Shift-Enter  Launch xterminal",
-    "mod-p            Launch dmenu",
-    "mod-Shift-p      Launch gmrun",
+    "mod-Shift-Enter  Launch alacritty",
+    "mod-Shift-p      Launch xmonad prompt",
     "mod-Shift-c      Close/kill the focused window",
     "mod-Space        Rotate through the available layout algorithms",
     "mod-Shift-Space  Reset the layouts on the current workSpace to default",
