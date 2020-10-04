@@ -9,3 +9,5 @@ alias main="tx start main"
 alias dotfiles="tx start dotfiles"
 alias monitor="tx start monitor"
 alias coding="tx start coding"
+
+alias ls="exa"
