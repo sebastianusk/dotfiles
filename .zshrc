@@ -58,6 +58,6 @@ fi
 if [[ $DISPLAY ]]; then
     if [ -z "$TMUX" ]
     then
-        tmux attach -t main || tmux new -s main
+        tmux new-session
     fi
 fi
