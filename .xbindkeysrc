@@ -17,3 +17,13 @@
 # increase brightness
 "xbacklight -dec 10"
    XF86MonBrightnessDown
+
+# lock the desktop
+"light-locker-command -l"
+    m:0xc + c:24
+    Control+Alt + q
+
+# screenshot
+"flameshot gui"
+    m:0xc + c:33
+    Control+Alt + p
