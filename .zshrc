@@ -9,10 +9,7 @@ plugins=(
     git
     z
     aws
-    brew
     docker
-    gradle
-    kubectl
     node
     npm
     osx
@@ -21,9 +18,7 @@ plugins=(
     redis-cli
     ssh-agent
     sudo
-    vscode
     yarn
-    vagrant
     ripgrep
 )
 
@@ -61,3 +56,5 @@ if [[ $DISPLAY ]]; then
         tmux new-session
     fi
 fi
+
+source <(kubectl completion zsh)
