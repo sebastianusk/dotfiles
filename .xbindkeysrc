@@ -19,7 +19,7 @@
    XF86MonBrightnessDown
 
 # lock the desktop
-"light-locker-command -l"
+"dm-tool lock"
     m:0xc + c:24
     Control+Alt + q
 
