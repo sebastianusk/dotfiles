@@ -248,7 +248,11 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = \xmproc -> dynamicLogWithPP $ def { ppOutput = hPutStrLn xmproc }
+myLogHook = \xmproc -> dynamicLogWithPP $ xmobarPP
+    { ppOutput = hPutStrLn xmproc
+    , ppCurrent = xmobarColor "#646464" "#dcdccc"
+    , ppVisible = xmobarColor "#646464" ""
+    }
 
 ------------------------------------------------------------------------
 -- Startup hook
