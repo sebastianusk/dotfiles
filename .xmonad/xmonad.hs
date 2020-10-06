@@ -251,7 +251,9 @@ myEventHook = mempty
 myLogHook = \xmproc -> dynamicLogWithPP $ xmobarPP
     { ppOutput = hPutStrLn xmproc
     , ppCurrent = xmobarColor "#646464" "#dcdccc"
-    , ppVisible = xmobarColor "#646464" ""
+    , ppVisible = xmobarColor "#dcdccc" ""
+    , ppHidden = xmobarColor "#646464" ""
+    , ppUrget = xmobarColor "#F0DFAF" ""
     }
 
 ------------------------------------------------------------------------
