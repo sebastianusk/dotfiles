@@ -4,9 +4,11 @@ import Data.List
 import System.Exit
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.UrgencyHook
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.XMonad
+import XMonad.Util.NamedWindows
 import XMonad.Util.Run
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -107,6 +109,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Move focus to the previous window
     , ((modm,               xK_k     ), windows W.focusUp  )
 
+    -- Move focus to the urget window
+    , ((mod4Mask             , xK_x      ), focusUrgent)
+
     -- Move focus to the master window
     , ((modm,               xK_m     ), windows W.focusMaster  )
 
@@ -186,6 +191,19 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
     ]
 
 ------------------------------------------------------------------------
+-- create LibNotify
+--
+
+data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
+
+instance UrgencyHook LibNotifyUrgencyHook where
+    urgencyHook LibNotifyUrgencyHook w = do
+        name      <- getName w
+        Just idx  <- fmap (W.findTag w) $ gets windowset
+
+        safeSpawn "notify-send" [show name, "workspace " ++ idx]
+
+------------------------------------------------------------------------
 -- Layouts:
 
 -- You can specify and transform your layouts by modifying these values.
@@ -248,12 +266,12 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = \xmproc -> dynamicLogWithPP $ xmobarPP
+myLogHook xmproc = dynamicLogWithPP $ xmobarPP
     { ppOutput = hPutStrLn xmproc
     , ppCurrent = xmobarColor "#646464" "#dcdccc"
     , ppVisible = xmobarColor "#dcdccc" ""
     , ppHidden = xmobarColor "#646464" ""
-    , ppUrget = xmobarColor "#F0DFAF" ""
+    , ppUrgent = xmobarColor "#F0DFAF" ""
     }
 
 ------------------------------------------------------------------------
@@ -273,7 +291,7 @@ myStartupHook = return ()
 --
 main = do
     xmproc <- spawnPipe "xmobar -x 1"
-    xmonad $ docks $ defaults xmproc
+    xmonad $ withUrgencyHook LibNotifyUrgencyHook $ docks $ defaults xmproc
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -281,7 +299,7 @@ main = do
 --
 -- No need to modify this.
 --
-defaults = \ xmproc -> def {
+defaults xmproc = def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
