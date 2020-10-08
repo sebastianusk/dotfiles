@@ -270,8 +270,8 @@ myLogHook xmproc = dynamicLogWithPP $ xmobarPP
     { ppOutput = hPutStrLn xmproc
     , ppCurrent = xmobarColor "#646464" "#dcdccc"
     , ppVisible = xmobarColor "#dcdccc" ""
+    , ppUrgent = xmobarColor "#333333" "#f18c96"
     , ppHidden = xmobarColor "#646464" ""
-    , ppUrgent = xmobarColor "#F0DFAF" ""
     }
 
 ------------------------------------------------------------------------
