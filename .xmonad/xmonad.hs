@@ -68,6 +68,8 @@ myPromptConfig = defaultXPConfig
                  }
 
 runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi"
+runCalc = spawn "rofi -show calc -modi calc -no-show-match -no-sort"
+
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -79,6 +81,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch prompt
     , ((modm .|. shiftMask, xK_p     ), runLauncher)
     , ((modm, xK_p     ), runLauncher)
+
+    -- launch calculator
+    , ((modm, xK_equal     ), runCalc)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
