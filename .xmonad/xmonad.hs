@@ -3,9 +3,11 @@ import Data.Monoid
 import Data.List
 import System.Exit
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Prompt
+import XMonad.Prompt.RunOrRaise
 import XMonad.Prompt.Shell
 import XMonad.Prompt.XMonad
 import XMonad.Util.NamedWindows
@@ -46,19 +48,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = clickable . (map xmobarEscape)
-    $ ["1:chat","2:dev","3:web","4:notes","5:work","6:secrets","7:media","8","9"]
-    where
-        clickable l = [ "<action=xdotool key super+" ++ show (n) ++ "> " ++ ws ++ " </action>" |
-                      (i,ws) <- zip [1..9] l,
-                      let n = i ]
-
-
-xmobarEscape :: String -> String
-xmobarEscape = concatMap doubleLts
-  where
-        doubleLts '<' = "<<"
-        doubleLts x   = [x]
+myWorkspaces    = map (wrap " " " ") ["1:chat","2:dev","3:web","4:notes","5:work","6:secrets","7:media","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -76,6 +66,8 @@ myPromptConfig = defaultXPConfig
                  , alwaysHighlight = True
                  , searchPredicate = isPrefixOf
                  }
+
+runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi"
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -85,8 +77,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch prompt
-    , ((modm .|. shiftMask, xK_p     ), shellPrompt myPromptConfig)
-    , ((modm, xK_p     ), shellPrompt myPromptConfig)
+    , ((modm .|. shiftMask, xK_p     ), runLauncher)
+    , ((modm, xK_p     ), runLauncher)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -258,7 +250,7 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+myEventHook = handleEventHook def <+> fullscreenEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -291,7 +283,7 @@ myStartupHook = return ()
 --
 main = do
     xmproc <- spawnPipe "xmobar -x 1"
-    xmonad $ withUrgencyHook LibNotifyUrgencyHook $ docks $ defaults xmproc
+    xmonad $ ewmh $ withUrgencyHook LibNotifyUrgencyHook $ docks $ defaults xmproc
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
