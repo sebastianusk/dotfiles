@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Notion
+GenericName=Notion
+Comment=Notion desktop webapp
+Exec=/opt/vivaldi/vivaldi --app=https://notion.so/
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Categories=Network;Application;
+Keywords=Notion;webapp;
+X-Ubuntu-Gettext-Domain=notion
+StartupWMClass=notion.so
