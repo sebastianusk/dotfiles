@@ -10,6 +10,7 @@ import XMonad.Prompt
 import XMonad.Prompt.RunOrRaise
 import XMonad.Prompt.Shell
 import XMonad.Prompt.XMonad
+import XMonad.Util.EZConfig
 import XMonad.Util.NamedWindows
 import XMonad.Util.Run
 import qualified XMonad.StackSet as W
@@ -67,94 +68,42 @@ myPromptConfig = defaultXPConfig
                  , searchPredicate = isPrefixOf
                  }
 
-runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi -p \"open\""
+runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi"
 runCalc = spawn "rofi -show calc -modi calc -no-show-match -no-sort"
-runSearch = spawn "surfraw google -browser=vivaldi-stable $(rofi -dmenu -i -p \"google\") -l 1"
--- runSearch = spawn "surfraw -browser=vivaldi-stable $(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1' | rofi -kb-row-select \"Tab\" -kb-row-tab \"Control+space\" -dmenu -mesg \">>> Tab = Autocomplete\" -i -p \"websearch: \")"
+runGoogle = spawn "surfraw -browser=vivaldi-stable $(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1' | rofi -kb-row-select \"Tab\" -kb-row-tab \"Control+space\" -dmenu -i -p \"search\")"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
-myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+myKeyBinds =
 
-    -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    -- rofi
+    [ ("M-/", runGoogle)
+    , ("M-p", runLauncher)
+    , ("M-=", runCalc)
 
-    -- launch prompt
-    , ((modm .|. shiftMask, xK_p     ), runLauncher)
-    , ((modm, xK_p     ), runLauncher)
+    -- default
+    , ("M-S-Return", spawn myTerminal)
+    , ("M-S-c", kill)
+    , ("M-Space", sendMessage NextLayout)
+    , ("M-n", refresh)
+    , ("M-j", windows W.focusDown)
+    , ("M-k", windows W.focusUp)
+    , ("M-x", focusUrgent)
+    , ("M-m", windows W.focusMaster)
+    , ("M-Return", windows W.swapMaster)
+    , ("M-S-j", windows W.swapDown)
+    , ("M-S-k", windows W.swapUp)
+    , ("M-h", sendMessage Shrink)
+    , ("M-l", sendMessage Expand)
+    , ("M-t", withFocused $ windows . W.sink)
+    , ("M-b", sendMessage ToggleStruts)
+    , ("M-S-q", io (exitWith ExitSuccess))
+    , ("M-q", spawn "xmonad --recompile; xmonad --restart")
 
-    -- launch calculator
-    , ((modm, xK_equal     ), runCalc)
-
-    -- launch search
-    -- , ((modm, xK_slash     ), runGoogle)
-    , ((modm, xK_slash     ), runSearch)
-
-    -- close focused window
-    , ((modm .|. shiftMask, xK_c     ), kill)
-
-     -- Rotate through the available layout algorithms
-    , ((modm,               xK_space ), sendMessage NextLayout)
-
-    --  Reset the layouts on the current workspace to default
-    , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
-
-    -- Resize viewed windows to the correct size
-    , ((modm,               xK_n     ), refresh)
-
-    -- Move focus to the next window
-    , ((modm,               xK_Tab   ), windows W.focusDown)
-
-    -- Move focus to the next window
-    , ((modm,               xK_j     ), windows W.focusDown)
-
-    -- Move focus to the previous window
-    , ((modm,               xK_k     ), windows W.focusUp  )
-
-    -- Move focus to the urget window
-    , ((mod4Mask             , xK_x      ), focusUrgent)
-
-    -- Move focus to the master window
-    , ((modm,               xK_m     ), windows W.focusMaster  )
-
-    -- Swap the focused window and the master window
-    , ((modm,               xK_Return), windows W.swapMaster)
-
-    -- Swap the focused window with the next window
-    , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
-
-    -- Swap the focused window with the previous window
-    , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
-
-    -- Shrink the master area
-    , ((modm,               xK_h     ), sendMessage Shrink)
-
-    -- Expand the master area
-    , ((modm,               xK_l     ), sendMessage Expand)
-
-    -- Push window back into tiling
-    , ((modm,               xK_t     ), withFocused $ windows . W.sink)
-
-    -- Increment the number of windows in the master area
-    , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
-
-    -- Deincrement the number of windows in the master area
-    , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
-
-    -- Toggle the status bar gap
-    , ((modm              , xK_b     ), sendMessage ToggleStruts)
-
-    -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
-
-    -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
-
-    -- Run xmessage with a summary of the default keybindings (useful for beginners)
-    , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
-    ++
+
+myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     --
     -- mod-[1..9], Switch to workspace N
@@ -323,7 +272,7 @@ defaults xmproc = def {
         handleEventHook    = myEventHook,
         logHook            = myLogHook xmproc,
         startupHook        = myStartupHook
-    }
+    } `additionalKeysP` myKeyBinds
 
 -- | Finally, a copy of the default bindings in simple textual tabular format.
 help :: String
