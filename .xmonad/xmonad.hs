@@ -83,15 +83,15 @@ myKeyBinds =
     , ("M-=", runCalc)
 
     -- default
-    , ("M-S-Return", spawn myTerminal)
+    , ("M-S-<Return>", spawn myTerminal)
     , ("M-S-c", kill)
-    , ("M-Space", sendMessage NextLayout)
+    , ("M-<Space>", sendMessage NextLayout)
     , ("M-n", refresh)
     , ("M-j", windows W.focusDown)
     , ("M-k", windows W.focusUp)
     , ("M-x", focusUrgent)
     , ("M-m", windows W.focusMaster)
-    , ("M-Return", windows W.swapMaster)
+    , ("M-<Return>", windows W.swapMaster)
     , ("M-S-j", windows W.swapDown)
     , ("M-S-k", windows W.swapUp)
     , ("M-h", sendMessage Shrink)
