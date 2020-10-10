@@ -1,5 +1,4 @@
 #!/bin/sh
-[[ -f ~/.config/zsh/.zshenv ]] && source ~/.config/zsh/.zshenv
 xbindkeys &
 ~/.fehbg &
 light-locker --lock-after-screensaver=300 &

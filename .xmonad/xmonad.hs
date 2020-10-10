@@ -67,8 +67,10 @@ myPromptConfig = defaultXPConfig
                  , searchPredicate = isPrefixOf
                  }
 
-runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi"
+runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi -p \"open\""
 runCalc = spawn "rofi -show calc -modi calc -no-show-match -no-sort"
+runSearch = spawn "surfraw google -browser=vivaldi-stable $(rofi -dmenu -i -p \"google\") -l 1"
+-- runSearch = spawn "surfraw -browser=vivaldi-stable $(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1' | rofi -kb-row-select \"Tab\" -kb-row-tab \"Control+space\" -dmenu -mesg \">>> Tab = Autocomplete\" -i -p \"websearch: \")"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -84,6 +86,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch calculator
     , ((modm, xK_equal     ), runCalc)
+
+    -- launch search
+    -- , ((modm, xK_slash     ), runGoogle)
+    , ((modm, xK_slash     ), runSearch)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
