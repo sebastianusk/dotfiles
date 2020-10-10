@@ -19,7 +19,7 @@
    XF86MonBrightnessDown
 
 # lock the desktop
-"dm-tool lock"
+"systemctl suspend"
     m:0xc + c:24
     Control+Alt + q
 

@@ -1,4 +1,5 @@
 #!/bin/sh
 xbindkeys &
 ~/.fehbg &
-light-locker --lock-after-screensaver=300 &
+light-locker &
+xss-lock -- "light-locker-command -l" &
