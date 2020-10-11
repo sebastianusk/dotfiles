@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=pulsemixer
+Comment=Launcer for modify mixer
+Icon=utilities-terminal
+Terminal=true
+Exec=pulsemixer
+Categories=ConsoleOnly;System;Audio
