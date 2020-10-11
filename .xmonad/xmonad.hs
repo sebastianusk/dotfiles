@@ -45,7 +45,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = map (wrap " " " ") ["1:chat","2:dev","3:web","4:notes","5:work","6:secrets","7:media","8","9"]
+myWorkspaces    = ["1:chat","2:dev","3:web","4:notes","5:work","6:secrets","7:media","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -210,6 +210,8 @@ myLogHook xmproc = dynamicLogWithPP $ xmobarPP
     , ppVisible = xmobarColor "#dcdccc" ""
     , ppUrgent = xmobarColor "#333333" "#f18c96"
     , ppHidden = xmobarColor "#646464" ""
+    , ppWsSep = " | "
+    , ppSep = " > "
     }
 
 ------------------------------------------------------------------------
