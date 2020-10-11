@@ -55,6 +55,7 @@ myFocusedBorderColor = "#ff0000"
 runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi"
 runCalc = spawn "rofi -show calc -modi calc -no-show-match -no-sort"
 runGoogle = spawn "surfraw -browser=vivaldi-stable $(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1' | rofi -kb-row-select \"Tab\" -kb-row-tab \"Control+space\" -dmenu -i -p \"search\")"
+runClipboard = spawn "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -65,6 +66,7 @@ myKeyBinds =
     [ ("M-/", runGoogle)
     , ("M-p", runLauncher)
     , ("M-=", runCalc)
+    , ("M-c", runClipboard)
 
     -- default
     , ("M-S-<Return>", spawn myTerminal)

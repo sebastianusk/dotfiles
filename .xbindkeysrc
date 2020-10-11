@@ -29,7 +29,7 @@
     Control+Alt + p
 
 # media player control
-"playerctl play-pause"
+"playerctl -a play-pause"
     m:0x10 + c:172
     Mod2 + XF86AudioPlay
 
