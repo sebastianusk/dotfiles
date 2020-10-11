@@ -6,10 +6,6 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
-import XMonad.Prompt
-import XMonad.Prompt.RunOrRaise
-import XMonad.Prompt.Shell
-import XMonad.Prompt.XMonad
 import XMonad.Util.EZConfig
 import XMonad.Util.NamedWindows
 import XMonad.Util.Run
@@ -55,18 +51,6 @@ myWorkspaces    = map (wrap " " " ") ["1:chat","2:dev","3:web","4:notes","5:work
 --
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
-
-myPromptConfig = defaultXPConfig
-                 {
-                   font =         "xft:JetBrains Mono:size=9:bold:antialias=true"
-                 , bgColor =      "black"
-                 , fgColor =      "#dcdccc"
-                 , position =     Top
-                 , borderColor =  "#646464"
-                 , defaultText = ""
-                 , alwaysHighlight = True
-                 , searchPredicate = isPrefixOf
-                 }
 
 runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi"
 runCalc = spawn "rofi -show calc -modi calc -no-show-match -no-sort"
