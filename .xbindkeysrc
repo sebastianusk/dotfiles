@@ -1,9 +1,9 @@
 # Increase volume
-"pactl set-sink-volume @DEFAULT_SINK@ +4000"
+"sh -e ~/dotfiles/scripts/changeVolume.sh +10"
    XF86AudioRaiseVolume
 
 # Decrease volume
-"pactl set-sink-volume @DEFAULT_SINK@ -4000"
+"sh -e ~/dotfiles/scripts/changeVolume.sh -10"
    XF86AudioLowerVolume
 
 # Mute volume
