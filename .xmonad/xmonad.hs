@@ -2,6 +2,7 @@ import XMonad
 import Data.Monoid
 import Data.List
 import System.Exit
+import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
@@ -54,8 +55,9 @@ myFocusedBorderColor = "#ff0000"
 
 runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi"
 runCalc = spawn "rofi -show calc -modi calc -no-show-match -no-sort"
-runGoogle = spawn "surfraw -browser=vivaldi-stable $(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1' | rofi -kb-row-select \"Tab\" -kb-row-tab \"Control+space\" -dmenu -i -p \"search\")"
+runGoogle = spawn "surfraw -browser=vivaldi-stable $(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1' | rofi -kb-row-select \"Ctrl-space\" -kb-row-tab \"Tab\" -dmenu -i -p \"search\")"
 runClipboard = spawn "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"
+runSymbol = spawn "~/dotfiles/scripts/rofinerdfont.py"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -67,6 +69,7 @@ myKeyBinds =
     , ("M-p", runLauncher)
     , ("M-=", runCalc)
     , ("M-c", runClipboard)
+    , ("M-s", runSymbol)
 
     -- default
     , ("M-S-<Return>", spawn myTerminal)
@@ -76,6 +79,8 @@ myKeyBinds =
     , ("M-j", windows W.focusDown)
     , ("M-k", windows W.focusUp)
     , ("M-x", focusUrgent)
+    , ("M-<Tab>", nextWS)
+    , ("M-S-<Tab>", prevWS)
     , ("M-m", windows W.focusMaster)
     , ("M-<Return>", windows W.swapMaster)
     , ("M-S-j", windows W.swapDown)
