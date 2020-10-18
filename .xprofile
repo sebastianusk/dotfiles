@@ -1,5 +1,6 @@
 #!/bin/sh
 xbindkeys &
 ~/.fehbg &
+greenclip daemon &
 light-locker --lock-on-suspend --lock-after-screensaver=5 --lock-on-lid &
 ~/.screenlayout/main.sh
