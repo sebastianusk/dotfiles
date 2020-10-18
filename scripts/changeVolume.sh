@@ -5,11 +5,10 @@
 msgId="991049"
 
 # Change the volume using alsa(might differ if you use pulseaudio)
-# amixer -c 0 set Master "$@" > /dev/null
 pulsemixer --change-volume $@
 
 # Query amixer for the current volume and whether or not the speaker is muted
-volume="$(pulsemixer --get-volume | awk '{print $1}')"
+let "volume = $(pulsemixer --get-volume | awk '{print $1}') * 2 / 3"
 mute="$(pulsemixer --get-mute)"
 if [[ $volume == 0 || "$mute" == "1" ]]; then
     # Show the sound muted notification
