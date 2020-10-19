@@ -73,7 +73,7 @@ myKeyBinds =
 
     -- default
     , ("M-S-<Return>", spawn myTerminal)
-    , ("M-S-c", kill)
+    , ("M-q", kill)
     , ("M-<Space>", sendMessage NextLayout)
     , ("M-n", refresh)
     , ("M-j", windows W.focusDown)
@@ -89,8 +89,7 @@ myKeyBinds =
     , ("M-l", sendMessage Expand)
     , ("M-t", withFocused $ windows . W.sink)
     , ("M-b", sendMessage ToggleStruts)
-    , ("M-S-q", io (exitWith ExitSuccess))
-    , ("M-q", spawn "xmonad --recompile; xmonad --restart")
+    , ("M-S-q", spawn "xmonad --recompile; xmonad --restart")
 
     ]
 
