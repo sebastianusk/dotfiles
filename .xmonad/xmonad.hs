@@ -46,18 +46,20 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1:chat","2:dev","3:web","4:notes","5:work","6:secrets","7:media","8","9"]
+myWorkspaces    = ["1:chat","2:dev","3:web","4:notes","5:media","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
 
-runLauncher = spawn "rofi -show combi -combi-modi \"window,drun\" -modi combi"
-runCalc = spawn "rofi -show calc -modi calc -no-show-match -no-sort"
-runGoogle = spawn "surfraw -browser=vivaldi-stable $(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1' | rofi -kb-row-select \"Ctrl-space\" -kb-row-tab \"Tab\" -dmenu -i -p \"search\")"
-runClipboard = spawn "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"
-runSymbol = spawn "~/dotfiles/scripts/rofinerdfont.py"
+runLauncher = spawn "~/dotfiles/scripts/rofi/runner.sh"
+runCalc = spawn "~/dotfiles/scripts/rofi/calc.sh"
+runGoogle = spawn "~/dotfiles/scripts/rofi/google.sh"
+runClipboard = spawn "~/dotfiles/scripts/rofi/clipboard.sh"
+runSymbol = spawn "~/dotfiles/scripts/rofi/nerdfont.py"
+runWifi = spawn "~/dotfiles/scripts/rofi/wifi.sh"
+runBluetooth = spawn "~/dotfiles/scripts/rofi/bluetooth.sh"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -69,28 +71,35 @@ myKeyBinds =
     , ("M-p", runLauncher)
     , ("M-=", runCalc)
     , ("M-c", runClipboard)
-    , ("M-s", runSymbol)
+    , ("M-;", runSymbol)
+    , ("M-v", runWifi)
+    , ("M-b", runBluetooth)
+
+    -- refresh config
+    , ("M-S-s", spawn "~/dotfiles/.screenlayout/refresh.sh")
+    , ("M-S-d", spawn "xmodmap ~/.Xmodmap")
+
+    , ("M-S-p", spawn "flameshot gui")
 
     -- default
-    , ("M-S-<Return>", spawn myTerminal)
+    , ("M-<Return>", spawn myTerminal)
     , ("M-q", kill)
+    , ("M-S-q", spawn "systemctl suspend")
     , ("M-<Space>", sendMessage NextLayout)
-    , ("M-n", refresh)
+    , ("M-r", refresh)
+    , ("M-S-r", spawn "xmonad --recompile; xmonad --restart")
     , ("M-j", windows W.focusDown)
     , ("M-k", windows W.focusUp)
-    , ("M-x", focusUrgent)
+    , ("M-n", focusUrgent)
     , ("M-<Tab>", nextWS)
     , ("M-S-<Tab>", prevWS)
     , ("M-m", windows W.focusMaster)
-    , ("M-<Return>", windows W.swapMaster)
     , ("M-S-j", windows W.swapDown)
     , ("M-S-k", windows W.swapUp)
     , ("M-h", sendMessage Shrink)
     , ("M-l", sendMessage Expand)
     , ("M-t", withFocused $ windows . W.sink)
-    , ("M-b", sendMessage ToggleStruts)
-    , ("M-S-q", spawn "xmonad --recompile; xmonad --restart")
-
+    , ("M-,", sendMessage ToggleStruts)
     ]
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
@@ -186,10 +195,9 @@ myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    [ className =? "Rambox"         --> doShift "1:chat"
+    , className =? "Spotify"        --> doShift "5:media"
+    ]
 
 ------------------------------------------------------------------------
 -- Event handling
