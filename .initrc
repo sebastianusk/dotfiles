@@ -1,7 +1,7 @@
 export FZF_DEFAULT_OPTS="
     --layout=reverse
     --info=inline
-    --height=70% 
+    --height=70%
     --preview-window=:hidden
     --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
     --preview-window=right:60%:wrap
@@ -9,3 +9,5 @@ export FZF_DEFAULT_OPTS="
 "
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export VAULT_ADDR=https://vault.service.fazz.id
