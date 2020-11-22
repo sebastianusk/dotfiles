@@ -1,6 +1,10 @@
 Config {
    -- appearance
      font =         "xft:JetBrains Mono:size=9:bold:antialias=true"
+   , additionalFonts = [ "xft:Mononoki Nerd Font:pixelsize=11:antialias=true:hinting=true"
+                       , "xft:Mononoki Nerd Font:pixelsize=16:antialias=true:hinting=true"
+                       , "xft:FontAwesome:pixelsize=13"
+                       ]
    , bgColor =      "black"
    , fgColor =      "#dcdccc"
    , position =     Top
@@ -44,7 +48,6 @@ Config {
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
                              ] 10
-
         -- cpu activity monitor
         , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
                              , "--Low"      , "50"         -- units: %
