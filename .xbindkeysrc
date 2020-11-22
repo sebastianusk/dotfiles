@@ -8,35 +8,25 @@
 
 # Mute volume
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-   XF86AudioMute
+  XF86AudioMute
 
 # increase brightness
 "xbacklight -inc 10"
-   XF86MonBrightnessUp
+  XF86MonBrightnessUp
 
 # increase brightness
 "xbacklight -dec 10"
-   XF86MonBrightnessDown
-
-# lock the desktop
-"systemctl suspend"
-    m:0xc + c:24
-    Control+Alt + q
-
-# screenshot
-"flameshot gui"
-    m:0xc + c:33
-    Control+Alt + p
+  XF86MonBrightnessDown
 
 # media player control
 "playerctl -a play-pause"
-    m:0x10 + c:172
-    Mod2 + XF86AudioPlay
+  m:0x10 + c:172
+  Mod2 + XF86AudioPlay
 
 "playerctl next"
-    m:0x10 + c:171
-    Mod2 + XF86AudioNext
+  m:0x10 + c:171
+  Mod2 + XF86AudioNext
 
 "playerctl previous"
-    m:0x10 + c:173
-    Mod2 + XF86AudioPrev
+  m:0x10 + c:173
+  Mod2 + XF86AudioPrev
