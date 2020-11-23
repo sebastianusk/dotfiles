@@ -58,7 +58,7 @@ runCalc = spawn "~/dotfiles/scripts/rofi/calc.sh"
 runGoogle = spawn "~/dotfiles/scripts/rofi/google.sh"
 runClipboard = spawn "~/dotfiles/scripts/rofi/clipboard.sh"
 runSymbol = spawn "~/dotfiles/scripts/rofi/nerdfont.py"
-runWifi = spawn "~/dotfiles/scripts/rofi/wifi.sh"
+runWifi = spawn "~/dotfiles/scripts/rofi/netmng.sh"
 runBluetooth = spawn "~/dotfiles/scripts/rofi/bluetooth.sh"
 
 ------------------------------------------------------------------------
