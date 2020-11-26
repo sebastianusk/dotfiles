@@ -3,7 +3,7 @@
 LOCATION=0
 Y_AXIS=0
 X_AXIS=0
-NOTIFICATIONS_INIT="off"
+NOTIFICATIONS_INIT="on"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [[ -f "$DIR/rofi-network-manager.conf" ]]; then
