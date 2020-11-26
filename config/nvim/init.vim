@@ -331,3 +331,6 @@ colors zenburn
 
 " auto pair
 let g:AutoPairsFlyMode = 0
+
+map <leader>2 :set softtabstop=2 shiftwidth=2<CR>
+map <leader>4 :set softtabstop=4 shiftwidth=4<CR>
