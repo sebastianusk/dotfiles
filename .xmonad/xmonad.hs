@@ -216,15 +216,7 @@ myEventHook = handleEventHook def <+> fullscreenEventHook
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook xmproc = dynamicLogWithPP $ xmobarPP
-    { ppOutput = hPutStrLn xmproc
-    , ppCurrent = xmobarColor "#646464" "#dcdccc"
-    , ppVisible = xmobarColor "#dcdccc" ""
-    , ppUrgent = xmobarColor "#333333" "#f18c96"
-    , ppHidden = xmobarColor "#646464" ""
-    , ppWsSep = " | "
-    , ppSep = " > "
-    }
+myLogHook = dynamicLog
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -242,10 +234,10 @@ myStartupHook = return ()
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    xmproc <- spawnPipe "xmobar -x 1"
-    xmonad $ ewmh $ withUrgencyHook LibNotifyUrgencyHook $ docks $ defaults xmproc
+    spawnPipe "polybar example"
+    xmonad $ ewmh $ withUrgencyHook LibNotifyUrgencyHook $ docks $ defaults
 
-defaults xmproc = def {
+defaults = def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
@@ -264,6 +256,6 @@ defaults xmproc = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = myLogHook xmproc,
+        logHook            = myLogHook,
         startupHook        = myStartupHook
     } `additionalKeysP` myKeyBinds
