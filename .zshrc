@@ -58,3 +58,4 @@ if [[ $DISPLAY ]]; then
 fi
 
 source <(kubectl completion zsh)
+source /usr/share/nvm/init-nvm.sh
