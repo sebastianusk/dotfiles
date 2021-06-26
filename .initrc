@@ -11,3 +11,8 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export VAULT_ADDR=https://vault.service.fazz.id
+
+autoload bashcompinit && bashcompinit
+complete -C '/bin/aws_completer' aws
+
+source <(kubectl completion zsh)
