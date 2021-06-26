@@ -30,7 +30,6 @@ ws-occupied = #709080
 ws-empty = #000000
 
 [bar/example]
-monitor = HDMI1
 width = 100%
 height = 27
 radius = 6.0
@@ -52,14 +51,14 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = JetBrains Mono:size=9;1
-font-1 = Font Awesome 5 Free Regular:size=10;4
-font-2 = Font Awesome 5 Free Solid:size=10;4
-font-3 = Font Awesome 5 Brands Regular:size=10;4
-font-4 = RobotoMono Nerd Font:pixelsize=10;1
+font-1 = Font Awesome 5 Free Regular:size=9;4
+font-2 = Font Awesome 5 Free Solid:size=9;4
+font-3 = Font Awesome 5 Brands Regular:size=9;4
+font-4 = RobotoMono Nerd Font:pixelsize=9;1
 
 modules-left = ewmh
 modules-center = xwindow
-modules-right = pulseaudio memory cpu wlan eth battery temperature date
+modules-right = pulseaudio bluetooth memory cpu wlan eth battery temperature date
 
 tray-position = none
 tray-padding = 2
@@ -116,19 +115,6 @@ exec = tail -F /tmp/.xmonad-workspace-log
 exec-if = [ -p /tmp/.xmonad-workspace-log ]
 tail = true
 
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -145,11 +131,6 @@ bar-fill-foreground = #9f78e1
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
@@ -292,17 +273,23 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+
+[module/bluetooth]
+type = custom/script
+exec = ~/dotfiles/scripts/check-bluetooth.sh
+interval = 2
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+
+click-left = exec ~/dotfiles/scripts/rofi/bluetooth.sh
+format-padding = 1
+format-background = #000000
+format-foreground = #ffffff
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-; vim:ft=dosini
