@@ -61,6 +61,7 @@ runSymbol = spawn "~/dotfiles/scripts/rofi/nerdfont.py"
 runWifi = spawn "~/dotfiles/scripts/rofi/netmng.sh"
 runBluetooth = spawn "~/dotfiles/scripts/rofi/bluetooth.sh"
 runPower = spawn "rofi -show power-menu -modi power-menu:~/dotfiles/scripts/rofi/powermenu.sh"
+runSnippet = spawn "~/dotfiles/scripts/rofi/snippet.py copy ~/dotfiles/snippet.yml"
 toggleTouchpad = spawn "~/dotfiles/scripts/touchpad.sh"
 
 ------------------------------------------------------------------------
@@ -76,6 +77,7 @@ myKeyBinds =
     , ("M-;", runSymbol)
     , ("M-v", runWifi)
     , ("M-b", runBluetooth)
+    , ("M-S-n", runSnippet)
     , ("M-t", toggleTouchpad)
     , ("M-S-q", runPower)
 
