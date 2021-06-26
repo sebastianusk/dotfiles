@@ -1,4 +1,5 @@
 #!/bin/sh
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 xbindkeys &
 ~/.fehbg &
 greenclip daemon &
