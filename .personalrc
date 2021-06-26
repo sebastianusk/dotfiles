@@ -1,6 +1,27 @@
-export DOCKER_ID_USER="sebastianuskh"
+function runningec2 () {
+    aws ec2 describe-instances --output text --filters Name=instance-state-name,Values=running --query "Reservations[].Instances[].[InstanceId,PrivateIpAddress,Tags[?Key=='Name']|[0].Value]" | fzf
+}
 
-function pf () {
-    open -a "Google Chrome" https://secure.payfazz.com/vpn
-    sudo openvpn ~/Documents/vpn/payfazz-prod.ovpn
+function ec2() {
+    runningec2 | awk '{print $2}' | xclip -sel clip
+}
+
+function vsh() {
+    vault ssh -role=sre -mode ca $1
+}
+
+function vshkey() {
+    vault ssh -role=sre -mode ca -format=json -no-exec root@0.0.0.0 | jq -r .data.signed_key > ~/.ssh/id_rsa-cert.pub
+}
+
+function clip() {
+    cat | xclip -selection clipboard
+}
+
+function db-cred () {
+    vault list database/roles | fzf | xargs -I '$' vault read 'database/creds/$'
+}
+
+function db-admin () {
+    vault list database/static-roles | fzf | xargs -I '$' vault read 'database/static-creds/$'
 }
