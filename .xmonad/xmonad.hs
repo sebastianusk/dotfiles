@@ -60,6 +60,8 @@ runClipboard = spawn "~/dotfiles/scripts/rofi/clipboard.sh"
 runSymbol = spawn "~/dotfiles/scripts/rofi/nerdfont.py"
 runWifi = spawn "~/dotfiles/scripts/rofi/netmng.sh"
 runBluetooth = spawn "~/dotfiles/scripts/rofi/bluetooth.sh"
+runPower = spawn "rofi -show power-menu -modi power-menu:~/dotfiles/scripts/rofi/powermenu.sh"
+toggleTouchpad = spawn "~/dotfiles/scripts/touchpad.sh"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -74,17 +76,18 @@ myKeyBinds =
     , ("M-;", runSymbol)
     , ("M-v", runWifi)
     , ("M-b", runBluetooth)
+    , ("M-t", toggleTouchpad)
+    , ("M-S-q", runPower)
 
     -- refresh config
     , ("M-S-s", spawn "~/dotfiles/.screenlayout/refresh.sh")
-    , ("M-S-d", spawn "xmodmap ~/.Xmodmap")
+    , ("M-S-d", spawn "~/dotfiles/scripts/keybind.sh")
 
     , ("M-S-p", spawn "flameshot gui")
 
     -- default
     , ("M-<Return>", spawn myTerminal)
     , ("M-q", kill)
-    , ("M-S-q", spawn "systemctl suspend")
     , ("M-<Space>", sendMessage NextLayout)
     , ("M-r", refresh)
     , ("M-S-r", spawn "xmonad --recompile; xmonad --restart")
@@ -197,6 +200,7 @@ myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 myManageHook = composeAll
     [ className =? "Rambox"         --> doShift "1:chat"
     , className =? "Spotify"        --> doShift "5:media"
+    , className =? "Gimp"           --> doFloat
     ]
 
 ------------------------------------------------------------------------
