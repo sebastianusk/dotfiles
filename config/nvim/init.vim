@@ -109,6 +109,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 " coc.nvim - completer and language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" jsonnet
+Plug 'google/vim-jsonnet'
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -225,7 +228,7 @@ function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
-    call CocAction('doHover')
+    CocAction
   endif
 endfunction
 
@@ -301,7 +304,8 @@ let g:ale_fixers = {
 \    'vue': ['eslint'],
 \    'scss': ['prettier'],
 \    'html': ['prettier'],
-\    'json': ['jq']
+\    'json': ['prettier'],
+\    'java': ['google_java_format']
 \}
 let g:ale_fix_on_save = 1
 nmap <leader>f <Plug>(ale_fix)
@@ -315,12 +319,19 @@ nmap <leader>gl :diffget //2<CR>
 
 " go
 let g:go_def_mapping_enabled = 0
-let g:go_list_type = "quickfix"
-let g:go_gopls_enabled = 0
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 1
+
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *.java setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " next error
 map <C-n> :cnext<CR>
