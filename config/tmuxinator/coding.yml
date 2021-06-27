@@ -6,4 +6,4 @@ windows:
       layout: main-horizontal
       panes:
         - vim
-        - tmux rename-session `basename "$PWD"`
+        - tmux rename-session (basename $PWD)
