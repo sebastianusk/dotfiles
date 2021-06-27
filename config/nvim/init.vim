@@ -93,6 +93,7 @@ Plug 'fatih/vim-go'
 " Python
 Plug 'nvie/vim-flake8'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'tmhedberg/SimpylFold'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
@@ -119,8 +120,8 @@ Plug 'airblade/vim-gitgutter'
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 
-" fold
-Plug 'tmhedberg/SimpylFold'
+" Tagbar
+Plug 'majutsushi/tagbar'
 
 " Initialize plugin system
 call plug#end()
@@ -129,8 +130,10 @@ call plug#end()
 " show hidden files
 let NERDTreeShowHidden=1
 
+
 " Key Commands
 map <C-\> :NERDTreeToggle<CR>
+map <leader>\ :TagbarToggle<CR>
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
