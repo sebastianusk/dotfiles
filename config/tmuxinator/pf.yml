@@ -6,6 +6,5 @@ root: ~/
 windows:
   - main:
       panes:
-        - xdg-open "https://secure.payfazz.com/vpn" && sudo openvpn ~/vpn/client.ovpn
         - aws sso login
         - vault login -method=oidc
