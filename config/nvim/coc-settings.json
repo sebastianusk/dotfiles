@@ -10,10 +10,16 @@
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
+      "disableWorkspaceFolders": true,
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "completeUnimported": true
+      }
     }
   },
   "go.goplsOptions": {
+    "completeUnimported": true,
     "staticcheck": true
-  }
+  },
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"]
 }

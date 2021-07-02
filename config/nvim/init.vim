@@ -123,6 +123,11 @@ Plug 'christoomey/vim-tmux-navigator'
 " Tagbar
 Plug 'majutsushi/tagbar'
 
+" Easymotion
+Plug 'easymotion/vim-easymotion'
+
+Plug 'honza/vim-snippets'
+
 " Initialize plugin system
 call plug#end()
 
@@ -132,8 +137,8 @@ let NERDTreeShowHidden=1
 
 
 " Key Commands
-map <C-\> :NERDTreeToggle<CR>
-map <leader>\ :TagbarToggle<CR>
+map <leader>\ :NERDTreeToggle<CR>
+map <leader>\| :TagbarToggle<CR>
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -367,3 +372,6 @@ let g:AutoPairsFlyMode = 0
 
 map <leader>2 :set softtabstop=2 shiftwidth=2<CR>
 map <leader>4 :set softtabstop=4 shiftwidth=4<CR>
+
+let g:coc_snippet_next = '<C-m>'
+let g:coc_snippet_prev = '<C-S-m>'
