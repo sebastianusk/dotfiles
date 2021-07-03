@@ -88,7 +88,6 @@ Plug 'dense-analysis/ale'
 " Language
 Plug 'udalov/kotlin-vim'
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'fatih/vim-go'
 
 " Python
 Plug 'nvie/vim-flake8'
@@ -103,12 +102,14 @@ Plug 'peitalin/vim-jsx-typescript'
 
 " autopair bracket
 Plug 'jiangmiao/auto-pairs'
-
-" split join
-Plug 'AndrewRadev/splitjoin.vim'
+" rainbow the bracket
+Plug 'luochen1990/rainbow'
 
 " coc.nvim - completer and language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" polygot - syntax highlight
+Plug 'sheerun/vim-polyglot'
 
 " jsonnet
 Plug 'google/vim-jsonnet'
@@ -126,7 +127,11 @@ Plug 'majutsushi/tagbar'
 " Easymotion
 Plug 'easymotion/vim-easymotion'
 
+" snippet
 Plug 'honza/vim-snippets'
+
+" multiple cursors
+Plug 'terryma/vim-multiple-cursors'
 
 " Initialize plugin system
 call plug#end()
@@ -135,6 +140,8 @@ call plug#end()
 " show hidden files
 let NERDTreeShowHidden=1
 
+" rainbow active
+let g:rainbow_active = 1
 
 " Key Commands
 map <leader>\ :NERDTreeToggle<CR>
@@ -343,19 +350,6 @@ nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gc :Git commit<CR>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gl :diffget //2<CR>
-
-" go
-let g:go_def_mapping_enabled = 0
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_fmt_command = "goimports"
-
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd BufNewFile,BufRead *.java setlocal noexpandtab tabstop=4 shiftwidth=4
