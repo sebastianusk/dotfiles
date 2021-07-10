@@ -188,6 +188,9 @@ nnoremap <silent> <expr> <C-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : ''
 " setup search string using ctrl F
 nnoremap <silent> <expr> <C-F> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Rg\<cr>"
 
+" setup search tag using leader t
+nnoremap <Leader>t :BTags<CR>
+
 " CoC
 " use <Tab> and <S-Tab> to navigate, use enter to select
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
