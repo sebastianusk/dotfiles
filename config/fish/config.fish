@@ -9,6 +9,7 @@ set -gx EDITOR 'nvim'
 set -gx VISUAL 'nvim'
 set -gx PAGER 'bat'
 set -gx BROWSER 'vivaldi-stable'
+set -gx CHROME_EXECUTABLE 'vivaldi-stable'
 
 set -gx FZF_DEFAULT_OPTS "
     --layout=reverse
@@ -22,4 +23,6 @@ set -gx FZF_DEFAULT_OPTS "
 set -gx FZF_DEFAULT_COMMAND "rg --files --hidden"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
-fish_add_path -p $GOPATH/bin $HOME/.local/bin $HOME/.krew/bin
+fish_add_path -p $GOPATH/bin $HOME/.local/bin $HOME/.krew/bin /usr/lib/node_modules/.bin $HOME/.pub-cache/bin
+
+source /opt/asdf-vm/asdf.fish
