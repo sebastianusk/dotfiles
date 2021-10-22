@@ -1,0 +1,180 @@
+k9s:
+  refreshRate: 2
+  maxConnRetry: 5
+  enableMouse: false
+  headless: false
+  logoless: false
+  crumbsless: false
+  readOnly: false
+  noIcons: false
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: 60
+    fullScreenLogs: false
+    textWrap: false
+    showTime: false
+  currentContext: gke_vibrant-arcana-324210_asia-southeast2-a_development
+  currentCluster: gke_vibrant-arcana-324210_asia-southeast2-a_development
+  clusters:
+    eks_aws1:
+      namespace:
+        active: fazzlog
+        favorites:
+        - fazzlog
+        - default
+      view:
+        active: ctx
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    gke_fazzcard_asia-southeast1-b_fazzcard-cluster:
+      namespace:
+        active: production
+        favorites:
+        - production
+        - all
+        - default
+      view:
+        active: ctx
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    gke_fazzcard_asia-southeast1-b_fazzcard-gke-test-cluster:
+      namespace:
+        active: default
+        favorites:
+        - ingress-nginx
+        - default
+      view:
+        active: deployment
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    gke_vibrant-arcana-324210_asia-southeast2-a_development:
+      namespace:
+        active: ""
+        favorites:
+        - kube-system
+        - all
+        - cashfazz-dev
+        - default
+      view:
+        active: daemonset
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    k8mgmt0:
+      namespace:
+        active: ""
+        favorites:
+        - pomerium
+        - nfs
+        - argocd
+        - dex
+        - elasticsearch
+        - monitoring
+        - fazzmon
+        - all
+        - default
+      view:
+        active: pod
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    kubefazz:
+      namespace:
+        active: helloneu
+        favorites:
+        - helloneu
+        - ingress-nginx
+        - inttools
+        - post
+        - argo
+        - payfazz
+        - neu
+        - all
+        - monitoring
+      view:
+        active: ingress
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    kubefazz-dev:
+      namespace:
+        active: billfazz
+        favorites:
+        - billfazz
+        - loanfazz
+        - ingress-nginx
+        - neu
+        - all
+        - default
+      view:
+        active: pod
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
