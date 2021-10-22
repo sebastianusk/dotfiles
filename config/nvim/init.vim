@@ -19,7 +19,6 @@ set visualbell " Flash the screen instead of beeping on errors.
 set mouse=a " Enable mouse for scrolling and resizing.
 set title " Set the window’s title, reflecting the file currently being edited.
 
-filetype plugin indent on
 set lazyredraw
 set showmatch
 set backspace=indent,eol,start
@@ -27,14 +26,14 @@ set backspace=indent,eol,start
 set shiftround " When shifting lines, round the indentation to the nearest multiple of “shiftwidth.”
 set shiftwidth=4 " When shifting, indent using four spaces.
 set smarttab " Insert “tabstop” number of spaces when the “tab” key is pressed.
-set tabstop=4 " Indent using four spaces.
+set tabstop=2 " Indent using four spaces.
 
 set display+=lastline " Always try to show a paragraph’s last line.
 set encoding=utf-8 " Use an encoding that supports unicode.
 set linebreak " Avoid wrapping a line in the middle of a word.
 set scrolloff=1 " The number of screen lines to keep above and below the cursor.
 set sidescrolloff=5 " The number of screen columns to keep to the left and right of the cursor.
-syntax enable " add syntax enabled
+syntax on " add syntax enabled
 set wrap " enable line wrapping
 
 " Search
@@ -59,12 +58,12 @@ let mapleader = ","
 set foldmethod=syntax
 set foldlevel=99
 
+filetype plugin indent on
+
 " Vim Plug
 call plug#begin('~/.vim/plugged')
 
-" Airline (status bar)
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -87,18 +86,11 @@ Plug 'dense-analysis/ale'
 
 " Language
 Plug 'udalov/kotlin-vim'
-Plug 'dart-lang/dart-vim-plugin'
 
 " Python
 Plug 'nvie/vim-flake8'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tmhedberg/SimpylFold'
-
-" Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 
 " autopair bracket
 Plug 'jiangmiao/auto-pairs'
@@ -110,9 +102,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " polygot - syntax highlight
 Plug 'sheerun/vim-polyglot'
-
-" jsonnet
-Plug 'google/vim-jsonnet'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -132,6 +121,21 @@ Plug 'honza/vim-snippets'
 
 " multiple cursors
 Plug 'terryma/vim-multiple-cursors'
+
+" fold
+Plug 'pedrohdz/vim-yaml-folds'
+
+" prisma
+Plug 'pantharshit00/vim-prisma'
+
+" leetcode
+Plug 'ianding1/leetcode.vim'
+
+" base64
+Plug 'christianrondeau/vim-base64'
+
+" for editing html tag
+Plug 'mattn/emmet-vim'
 
 " Initialize plugin system
 call plug#end()
@@ -156,6 +160,10 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " close vim when only NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+nmap <leader>n :NERDTreeFind<CR>
+let NERDTreeMapOpenSplit='x'
+let NERDTreeMapOpenVSplit='v'
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
@@ -190,6 +198,7 @@ nnoremap <silent> <expr> <C-F> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : ''
 
 " setup search tag using leader t
 nnoremap <Leader>t :BTags<CR>
+nnoremap <Leader>m :Marks<CR>
 
 " CoC
 " use <Tab> and <S-Tab> to navigate, use enter to select
@@ -318,10 +327,10 @@ imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_next = '<c-m>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
+let g:coc_snippet_prev = '<c-S-m>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
@@ -337,12 +346,18 @@ let g:ale_sign_warning = '.'
 let g:ale_fixers = {
 \    '*': ['remove_trailing_lines', 'trim_whitespace'],
 \    'javascript': ['eslint'],
-\    'typescript': ['prettier'],
+\    'typescript': ['eslint'],
+\    'graphql': ['eslint'],
 \    'vue': ['eslint'],
 \    'scss': ['prettier'],
+\    'css': ['prettier'],
 \    'html': ['prettier'],
 \    'json': ['prettier'],
-\    'java': ['google_java_format']
+\    'jsonc': ['prettier'],
+\    'java': ['google_java_format'],
+\    'terraform': ['terraform'],
+\    'dart': ['dartfmt'],
+\    'php': ['php_cs_fixer']
 \}
 let g:ale_fix_on_save = 1
 nmap <leader>f <Plug>(ale_fix)
@@ -351,16 +366,10 @@ nmap <leader>f <Plug>(ale_fix)
 nmap <leader>gs :G<CR>
 nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gc :Git commit<CR>
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gl :diffget //2<CR>
+nmap <leader>gh :Glog -10 -- %<CR>
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd BufNewFile,BufRead *.java setlocal noexpandtab tabstop=4 shiftwidth=4
-
-" next error
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
 
 colors zenburn
 
@@ -370,5 +379,38 @@ let g:AutoPairsFlyMode = 0
 map <leader>2 :set softtabstop=2 shiftwidth=2<CR>
 map <leader>4 :set softtabstop=4 shiftwidth=4<CR>
 
-let g:coc_snippet_next = '<C-m>'
-let g:coc_snippet_prev = '<C-S-m>'
+
+let g:tagbar_type_yaml = {
+    \ 'ctagstype' : 'yaml',
+    \ 'kinds' : [
+        \ 'a:anchors',
+        \ 's:section',
+        \ 'e:entry'
+    \ ],
+  \ 'sro' : '.',
+    \ 'scope2kind': {
+      \ 'section': 's',
+      \ 'entry': 'e'
+    \ },
+    \ 'kind2scope': {
+      \ 's': 'section',
+      \ 'e': 'entry'
+    \ },
+    \ 'sort' : 0
+    \ }
+
+
+let g:indentLine_char = '⦙'
+let g:indentLine_enabled = 1
+
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
+
+let g:lightline = {
+      \ 'component_function': {
+        \ 'filename': 'LightlineFilename'
+        \}
+      \}
+function! LightlineFilename()
+  return expand('%')
+endfunction
