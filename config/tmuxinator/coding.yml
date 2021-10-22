@@ -3,7 +3,9 @@
 name: coding
 windows:
   - editor:
-      layout: main-horizontal
+      layout: 57cc,273x62,0,0{184x62,0,0[184x53,0,0,14,184x8,0,54,16],88x62,185,0[88x45,185,0,15,88x16,185,46,18]}
       panes:
         - vim
         - tmux rename-session (basename $PWD)
+        - #empty
+        - #empty

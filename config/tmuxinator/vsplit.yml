@@ -1,0 +1,9 @@
+# /Users/sebastianuskh/.config/tmuxinator/vsplit.yml
+
+name: vsplit
+windows:
+  - editor:
+      layout: even-vertical
+      panes:
+        - vim
+        - tmux rename-session (basename $PWD)
