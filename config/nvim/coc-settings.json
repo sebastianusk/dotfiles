@@ -45,5 +45,7 @@
     "completeUnimported": true,
     "staticcheck": true
   },
-  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"]
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
+  "flutter.sdk.flutter-lookup": "asdf which flutter",
+  "flutter.sdk.dart-lookup": "asdf which dart"
 }
