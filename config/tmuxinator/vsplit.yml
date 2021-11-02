@@ -3,7 +3,7 @@
 name: vsplit
 windows:
   - editor:
-      layout: even-vertical
+      layout: 7a44,273x62,0,0{162x62,0,0,18,110x62,163,0,20}
       panes:
         - vim
         - tmux rename-session (basename $PWD)
