@@ -366,7 +366,7 @@ nmap <leader>f <Plug>(ale_fix)
 nmap <leader>gs :G<CR>
 nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gc :Git commit<CR>
-nmap <leader>gh :Glog -10 -- %<CR>
+nmap <leader>gh :Gclog -10 -- %<CR>
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd BufNewFile,BufRead *.java setlocal noexpandtab tabstop=4 shiftwidth=4
