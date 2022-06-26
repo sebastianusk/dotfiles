@@ -1,9 +1,9 @@
 set fish_greeting ""
 
-set -gx VAULT_ADDR https://vault.service.fazz.id
+set -gx VAULT_ADDR https://vault.infra.fazz.id
 set -gx CODE ~/Code
 set -gx GOPATH $CODE/go
-set -gx JDK_HOME /usr/lib/jvm/java-11-openjdk
+set -gx JDK_HOME /Applications/Android Studio.app/Contents/jre/Contents/Home
 set -gx JAVA_HOME $JDK_HOME
 set -gx EDITOR 'nvim'
 set -gx VISUAL 'nvim'
@@ -22,9 +22,11 @@ set -gx FZF_DEFAULT_OPTS "
 "
 set -gx FZF_DEFAULT_COMMAND "rg --files --hidden"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+set -gx GPG_TTY (tty)
 
-fish_add_path -p $GOPATH/bin $HOME/.local/bin $HOME/.krew/bin /usr/lib/node_modules/.bin $HOME/.pub-cache/bin $HOME/.deno/bin
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
-source /opt/asdf-vm/asdf.fish
+fish_add_path -p $GOPATH/bin $HOME/.local/bin $HOME/.krew/bin /usr/lib/node_modules/.bin $HOME/.pub-cache/bin $HOME/.deno/bin /Applications/Pritunl.app/Contents/Resources
 
 fish_vi_key_bindings
+source ~/dotfiles/.aliasrc
