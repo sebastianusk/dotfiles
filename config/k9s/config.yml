@@ -14,33 +14,13 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: gke_vibrant-arcana-324210_asia-southeast2-a_development
-  currentCluster: gke_vibrant-arcana-324210_asia-southeast2-a_development
+  currentContext: arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_prod
+  currentCluster: arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_prod
   clusters:
-    eks_aws1:
+    arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_prod:
       namespace:
-        active: fazzlog
+        active: all
         favorites:
-        - fazzlog
-        - default
-      view:
-        active: ctx
-      featureGates:
-        nodeShell: false
-      shellPod:
-        image: busybox:1.31
-        command: []
-        args: []
-        namespace: default
-        limits:
-          cpu: 100m
-          memory: 100Mi
-      portForwardAddress: localhost
-    gke_fazzcard_asia-southeast1-b_fazzcard-cluster:
-      namespace:
-        active: production
-        favorites:
-        - production
         - all
         - default
       view:
@@ -56,57 +36,30 @@ k9s:
           cpu: 100m
           memory: 100Mi
       portForwardAddress: localhost
-    gke_fazzcard_asia-southeast1-b_fazzcard-gke-test-cluster:
+    arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_sandbox:
       namespace:
-        active: default
+        active: all
         favorites:
-        - ingress-nginx
-        - default
-      view:
-        active: deployment
-      featureGates:
-        nodeShell: false
-      shellPod:
-        image: busybox:1.31
-        command: []
-        args: []
-        namespace: default
-        limits:
-          cpu: 100m
-          memory: 100Mi
-      portForwardAddress: localhost
-    gke_vibrant-arcana-324210_asia-southeast2-a_development:
-      namespace:
-        active: ""
-        favorites:
-        - kube-system
-        - all
-        - cashfazz-dev
-        - default
-      view:
-        active: daemonset
-      featureGates:
-        nodeShell: false
-      shellPod:
-        image: busybox:1.31
-        command: []
-        args: []
-        namespace: default
-        limits:
-          cpu: 100m
-          memory: 100Mi
-      portForwardAddress: localhost
-    k8mgmt0:
-      namespace:
-        active: ""
-        favorites:
-        - pomerium
-        - nfs
         - argocd
-        - dex
-        - elasticsearch
-        - monitoring
-        - fazzmon
+        - all
+        - default
+      view:
+        active: ingress
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_staging:
+      namespace:
+        active: all
+        favorites:
         - all
         - default
       view:
@@ -122,21 +75,15 @@ k9s:
           cpu: 100m
           memory: 100Mi
       portForwardAddress: localhost
-    kubefazz:
+    gke_vibrant-arcana-324210_asia-southeast2-a_development:
       namespace:
-        active: helloneu
+        active: all
         favorites:
-        - helloneu
-        - ingress-nginx
-        - inttools
-        - post
-        - argo
-        - payfazz
-        - neu
+        - cert-manager
         - all
-        - monitoring
+        - default
       view:
-        active: ingress
+        active: deploy
       featureGates:
         nodeShell: false
       shellPod:
@@ -148,15 +95,48 @@ k9s:
           cpu: 100m
           memory: 100Mi
       portForwardAddress: localhost
-    kubefazz-dev:
+    gke_vibrant-arcana-324210_asia-southeast2-a_wallet-service-cluster:
       namespace:
-        active: billfazz
+        active: default
         favorites:
-        - billfazz
-        - loanfazz
-        - ingress-nginx
-        - neu
-        - all
+        - default
+      view:
+        active: ing
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    k8cop1:
+      namespace:
+        active: cop
+        favorites:
+        - cop
+        - default
+      view:
+        active: ctx
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    k8mgmt0:
+      namespace:
+        active: argocd
+        favorites:
+        - argocd
         - default
       view:
         active: pod
@@ -178,3 +158,4 @@ k9s:
     memory:
       critical: 90
       warn: 70
+  screenDumpDir: /var/folders/2q/rfjxyxwn4zxg_nw417s27fw40000gn/T/k9s-screens-sebastianuskh
