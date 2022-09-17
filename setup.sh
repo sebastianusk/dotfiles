@@ -7,3 +7,5 @@ ln -sfn ~/dotfiles/fish ~/.config/fish
 ln -sfn ~/dotfiles/k9s ~/.config/k9s
 ln -sfn ~/dotfiles/tmuxinator ~/.tmuxinator
 ln -sfn ~/dotfiles/ctags.d ~/.ctags.d
+ln -sfn ~/dotfiles/Brewfile ~/Brewfile
+ln -sfn ~/dotfiles/Brewfile.lock.json ~/Brewfile.lock.json
