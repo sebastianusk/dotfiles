@@ -6,6 +6,7 @@ k9s:
   logoless: false
   crumbsless: false
   readOnly: false
+  noExitOnCtrlC: false
   noIcons: false
   logger:
     tail: 100
@@ -14,17 +15,23 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_prod
-  currentCluster: arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_prod
+  currentContext: ntt_test
+  currentCluster: ntt_test
   clusters:
     arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_prod:
       namespace:
         active: all
+        lockFavorites: false
         favorites:
+        - ingress
+        - argocd
+        - internal
+        - sg
+        - id
         - all
         - default
       view:
-        active: ctx
+        active: deployment
       featureGates:
         nodeShell: false
       shellPod:
@@ -39,12 +46,13 @@ k9s:
     arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_sandbox:
       namespace:
         active: all
+        lockFavorites: false
         favorites:
         - argocd
         - all
         - default
       view:
-        active: ingress
+        active: deploy
       featureGates:
         nodeShell: false
       shellPod:
@@ -59,11 +67,34 @@ k9s:
     arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_staging:
       namespace:
         active: all
+        lockFavorites: false
         favorites:
+        - logging
+        - argocd
         - all
         - default
       view:
-        active: pod
+        active: deploy
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    dci_prod:
+      namespace:
+        active: cop
+        lockFavorites: false
+        favorites:
+        - cop
+        - default
+      view:
+        active: job
       featureGates:
         nodeShell: false
       shellPod:
@@ -78,6 +109,7 @@ k9s:
     gke_vibrant-arcana-324210_asia-southeast2-a_development:
       namespace:
         active: all
+        lockFavorites: false
         favorites:
         - cert-manager
         - all
@@ -98,6 +130,7 @@ k9s:
     gke_vibrant-arcana-324210_asia-southeast2-a_wallet-service-cluster:
       namespace:
         active: default
+        lockFavorites: false
         favorites:
         - default
       view:
@@ -115,12 +148,14 @@ k9s:
       portForwardAddress: localhost
     k8cop1:
       namespace:
-        active: cop
+        active: all
+        lockFavorites: false
         favorites:
+        - all
         - cop
         - default
       view:
-        active: ctx
+        active: pod
       featureGates:
         nodeShell: false
       shellPod:
@@ -134,9 +169,79 @@ k9s:
       portForwardAddress: localhost
     k8mgmt0:
       namespace:
-        active: argocd
+        active: all
+        lockFavorites: false
         favorites:
+        - all
         - argocd
+        - default
+      view:
+        active: pod
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    kubefazz:
+      namespace:
+        active: post
+        lockFavorites: false
+        favorites:
+        - ingress-nginx
+        - billfazz
+        - neu
+        - post
+        - all
+        - default
+      view:
+        active: deploy
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    kubefazz-dev:
+      namespace:
+        active: neu
+        lockFavorites: false
+        favorites:
+        - neu
+        - bisainvest
+        - all
+        - post
+        - default
+      view:
+        active: statefulset
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    ntt_test:
+      namespace:
+        active: cop
+        lockFavorites: false
+        favorites:
+        - all
+        - cop
         - default
       view:
         active: pod
