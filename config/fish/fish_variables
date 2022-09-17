@@ -9,12 +9,12 @@ SETUVAR --export JDK_HOME:/usr/lib/jvm/java\x2d11\x2dopenjdk
 SETUVAR --export VAULT_ADDR:https\x3a//vault\x2eservice\x2efazz\x2eid
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
-SETUVAR Z_DATA:/home/seb/\x2elocal/share/z/data
-SETUVAR Z_DATA_DIR:/home/seb/\x2elocal/share/z
-SETUVAR Z_EXCLUDE:\x5e/home/seb\x24
+SETUVAR Z_DATA:/Users/sebastianuskh/\x2elocal/share/z/data
+SETUVAR Z_DATA_DIR:/Users/sebastianuskh/\x2elocal/share/z
+SETUVAR Z_EXCLUDE:\x5e/Users/sebastianuskh\x24
 SETUVAR --export __ABBR_TIPS_KEYS:mux\x1ea__coding\x1ea__dotfiles\x1ea__fish_key_reader\x1ea__ls\x1ea__random\x1ea__tx\x1ea__vim
 SETUVAR --export __ABBR_TIPS_VALUES:tmuxinator\x1etx\x20start\x20coding\x1etx\x20start\x20dotfiles\x1e/usr/bin/fish_key_reader\x1eexa\x1edate\x20\x7c\x20md5\x1etmuxinator\x1envim
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR __git_plugin_abbreviations:g\x1ega\x1egaa\x1egapa\x1egap\x1egb\x1egba\x1egban\x1egbd\x1egbD\x1egbl\x1egbs\x1egbsb\x1egbsg\x1egbsr\x1egbss\x1egc\x1egc\x21\x1egcn\x21\x1egca\x1egca\x21\x1egcan\x21\x1egcv\x1egcav\x1egcav\x21\x1egcm\x1egcam\x1egscam\x1egcfx\x1egcf\x1egcl\x1egclean\x1egclean\x21\x1egclean\x21\x21\x1egcount\x1egcp\x1egcpa\x1egcpc\x1egd\x1egdca\x1egds\x1egdsc\x1egdw\x1egdwc\x1egdto\x1egignore\x1egf\x1egfa\x1egfm\x1egfo\x1egl\x1egll\x1eglr\x1eglg\x1eglgg\x1eglgga\x1eglo\x1eglog\x1eglom\x1eglod\x1egloo\x1egm\x1egmt\x1egp\x1egp\x21\x1egpo\x1egpo\x21\x1egpv\x1egpv\x21\x1eggp\x21\x1egpu\x1egr\x1egra\x1egrb\x1egrba\x1egrbc\x1egrbi\x1egrbm\x1egrbmi\x1egrbmia\x1egrbd\x1egrbdi\x1egrbdia\x1egrbs\x1egrev\x1egrh\x1egrhh\x1egrhpa\x1egrm\x1egrmc\x1egrmv\x1egrrm\x1egrs\x1egrset\x1egrss\x1egrup\x1egrv\x1egsh\x1egsd\x1egsr\x1egss\x1egst\x1egsta\x1egstd\x1egstp\x1egsts\x1egsu\x1egsur\x1egsuri\x1egts\x1egtv\x1egsw\x1egswc\x1egunignore\x1egup\x1egwch\x1egco\x1egcb\x1egcod\x1egcom\x1egfb\x1egff\x1egfr\x1egfh\x1egfs\x1egfbs\x1egffs\x1egfrs\x1egfhs\x1egfss\x1egfbt\x1egfft\x1egfrt\x1egfht\x1egfst\x1egfp
 SETUVAR __git_plugin_initialized:Sat\x20Jun\x2026\x2005\x3a28\x3a11\x20PM\x20WIB\x202021
 SETUVAR _fish_abbr_cl:clear
@@ -955,10 +955,10 @@ SETUVAR _fisher_danhper_2F_fish_2D_ssh_2D_agent_files:/home/seb/\x2econfig/fish/
 SETUVAR _fisher_edc_2F_bass_files:/home/seb/\x2econfig/fish/functions/__bass\x2epy\x1e/home/seb/\x2econfig/fish/functions/bass\x2efish
 SETUVAR _fisher_evanlucas_2F_fish_2D_kubectl_2D_completions_files:/home/seb/\x2econfig/fish/completions/kubectl\x2efish
 SETUVAR _fisher_gazorby_2F_fish_2D_abbreviation_2D_tips_files:/home/seb/\x2econfig/fish/functions/__abbr_tips_bind_newline\x2efish\x1e/home/seb/\x2econfig/fish/functions/__abbr_tips_bind_space\x2efish\x1e/home/seb/\x2econfig/fish/functions/__abbr_tips_init\x2efish\x1e/home/seb/\x2econfig/fish/conf\x2ed/abbr_tips\x2efish
-SETUVAR _fisher_jethrokuan_2F_z_files:/home/seb/\x2econfig/fish/functions/__z\x2efish\x1e/home/seb/\x2econfig/fish/functions/__z_add\x2efish\x1e/home/seb/\x2econfig/fish/functions/__z_clean\x2efish\x1e/home/seb/\x2econfig/fish/functions/__z_complete\x2efish\x1e/home/seb/\x2econfig/fish/conf\x2ed/z\x2efish
 SETUVAR _fisher_jhillyerd_2F_plugin_2D_git_files:/home/seb/\x2econfig/fish/functions/__git\x2ebranch_has_wip\x2efish\x1e/home/seb/\x2econfig/fish/functions/__git\x2ecurrent_branch\x2efish\x1e/home/seb/\x2econfig/fish/functions/__git\x2edefault_branch\x2efish\x1e/home/seb/\x2econfig/fish/functions/__git\x2edestroy\x2efish\x1e/home/seb/\x2econfig/fish/functions/__git\x2einit\x2efish\x1e/home/seb/\x2econfig/fish/functions/__git\x2ereset\x2efish\x1e/home/seb/\x2econfig/fish/functions/gbage\x2efish\x1e/home/seb/\x2econfig/fish/functions/gbda\x2efish\x1e/home/seb/\x2econfig/fish/functions/gdt\x2efish\x1e/home/seb/\x2econfig/fish/functions/gdv\x2efish\x1e/home/seb/\x2econfig/fish/functions/ggl\x2efish\x1e/home/seb/\x2econfig/fish/functions/ggp\x2efish\x1e/home/seb/\x2econfig/fish/functions/ggpnp\x2efish\x1e/home/seb/\x2econfig/fish/functions/ggsup\x2efish\x1e/home/seb/\x2econfig/fish/functions/ggu\x2efish\x1e/home/seb/\x2econfig/fish/functions/gignored\x2efish\x1e/home/seb/\x2econfig/fish/functions/glp\x2efish\x1e/home/seb/\x2econfig/fish/functions/gpoat\x2efish\x1e/home/seb/\x2econfig/fish/functions/grename\x2efish\x1e/home/seb/\x2econfig/fish/functions/grt\x2efish\x1e/home/seb/\x2econfig/fish/functions/gtl\x2efish\x1e/home/seb/\x2econfig/fish/functions/gunwip\x2efish\x1e/home/seb/\x2econfig/fish/functions/gwip\x2efish\x1e/home/seb/\x2econfig/fish/conf\x2ed/git\x2efish
 SETUVAR _fisher_jorgebucaran_2F_autopair_2E_fish_files:/home/seb/\x2econfig/fish/functions/_autopair_backspace\x2efish\x1e/home/seb/\x2econfig/fish/functions/_autopair_insert_left\x2efish\x1e/home/seb/\x2econfig/fish/functions/_autopair_insert_right\x2efish\x1e/home/seb/\x2econfig/fish/functions/_autopair_insert_same\x2efish\x1e/home/seb/\x2econfig/fish/functions/_autopair_tab\x2efish\x1e/home/seb/\x2econfig/fish/conf\x2ed/autopair\x2efish
-SETUVAR _fisher_plugins:jethrokuan/z\x1ePatrickF1/fzf\x2efish\x1ejorgebucaran/autopair\x2efish\x1egazorby/fish\x2dabbreviation\x2dtips\x1eevanlucas/fish\x2dkubectl\x2dcompletions\x1ejhillyerd/plugin\x2dgit\x1eedc/bass\x1edanhper/fish\x2dssh\x2dagent
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/sebastianuskh/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/sebastianuskh/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_plugins:PatrickF1/fzf\x2efish\x1ejorgebucaran/autopair\x2efish\x1egazorby/fish\x2dabbreviation\x2dtips\x1eevanlucas/fish\x2dkubectl\x2dcompletions\x1ejhillyerd/plugin\x2dgit\x1eedc/bass\x1edanhper/fish\x2dssh\x2dagent\x1ejorgebucaran/fisher
 SETUVAR fish_color_autosuggestion:747369
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:99cc99
@@ -987,4 +987,5 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/home/seb/\x2edeno/bin\x1e/home/seb/\x2epub\x2dcache/bin\x1e/home/seb/\x2ekrew/bin\x1e/home/seb/\x2elocal/bin\x1e/home/seb/Code/go/bin
+SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/opt/homebrew/opt/mysql\x2dclient/bin\x1e/Applications/Pritunl\x2eapp/Contents/Resources\x1e/opt/homebrew/sbin\x1e/opt/homebrew/bin\x1e/home/seb/\x2edeno/bin\x1e/home/seb/\x2epub\x2dcache/bin\x1e/home/seb/\x2ekrew/bin\x1e/home/seb/\x2elocal/bin\x1e/home/seb/Code/go/bin
