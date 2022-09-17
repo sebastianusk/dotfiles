@@ -1,7 +1,6 @@
 #!/bin/sh
 
 ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
-ln -sfn ~/dotfiles/.initrc ~/.initrc
 ln -sfn ~/dotfiles/.pathrc ~/.pathrc
 ln -sfn ~/dotfiles/.personalrc ~/.personalrc
 ln -sfn ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
