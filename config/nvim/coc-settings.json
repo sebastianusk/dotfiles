@@ -47,5 +47,6 @@
   },
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
   "flutter.sdk.flutter-lookup": "asdf which flutter",
-  "flutter.sdk.dart-lookup": "asdf which dart"
+  "flutter.sdk.dart-lookup": "asdf which dart",
+  "python.jediEnabled": false
 }
