@@ -1,6 +1,5 @@
 #!/bin/sh
 
-ln -sfn ~/dotfiles/.aliasrc ~/.aliasrc
 ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
 ln -sfn ~/dotfiles/.gitignore ~/.gitignore
 ln -sfn ~/dotfiles/.initrc ~/.initrc
