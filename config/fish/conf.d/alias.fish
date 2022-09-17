@@ -3,6 +3,7 @@ alias cat="bat -p"
 alias vim="nvim"
 alias random="date | md5sum"
 alias dig="dog"
+alias curl="curlie"
 
 # for tmuxinator
 alias tx=tmuxinator
