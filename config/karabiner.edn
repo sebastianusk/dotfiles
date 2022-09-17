@@ -1,0 +1,61 @@
+{
+ :layers {
+             :hyper-mode {:key :caps_lock :alone {:key :escape }}
+             :shift-hyper-mode {:key :shift :condi :hyper-mode}
+             },
+ :applications {
+                :terminal ["^io\\.alacritty"]
+                }
+ :simlayer-threshold 1000
+ :main [
+        {:des "ctrlkeyterminal",
+         :rules [
+                 [:!FSv :!Cv [:terminal]]
+                 [:!FSc :!Cc [:terminal]]
+                 ]}
+        {:des "ctrlnotterminal",
+         :rules [
+                 [:!Fa :!Ca [:!terminal]]
+                 [:!FSa :!CSa [:!terminal]]
+                 [:!Fc :!Cc [:!terminal]]
+                 [:!Ff :!Cf [:!terminal]]
+                 [:!Fk :!Ck [:!terminal]]
+                 [:!FSk :!CSk [:!terminal]]
+                 [:!Fl :!Cl [:!terminal]]
+                 [:!Fr :!Cr [:!terminal]]
+                 [:!Ft :!Ct [:!terminal]]
+                 [:!Fv :!Cv [:!terminal]]
+                 [:!FSv :!CSv [:!terminal]]
+                 [:!Fw :!Cw [:!terminal]]
+                 [:!Fx :!Cx [:!terminal]]
+                 [:!Fz :!Cz [:!terminal]]
+                 ]}
+        {:des "capskey",
+         :rules [:hyper-mode
+                 [:x :!COx]
+                 [:c :!COc]
+                 [:v :!COv]
+                 [:b :!COb]
+                 [:t :!OCSt]
+                 [:q :!Cq]
+                 [:z :!OSz]
+                 [:h :!OSh]
+                 [:l :!OSl]
+                 [:j :!OSj]
+                 [:i :!OSi]
+                 [:k :!OSk]
+                 [:p :!OSp]
+                 [:n :!OSn]
+                 [:spacebar :!Cspacebar]
+                 ]}
+        {:des "generic",
+         :rules [
+                 [:!Fleft_arrow :!Oleft_arrow]
+                 [:!FSleft_arrow :!OSleft_arrow]
+                 [:!Fright_arrow :!Oright_arrow]
+                 [:!FSright_arrow :!OSright_arrow]
+                 [:!Fdelete_or_backspace :!Odelete_or_backspace]
+                 [:!Fbutton1 :button1]
+                 ]}
+        ]
+ }
