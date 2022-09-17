@@ -2,6 +2,7 @@ alias ls="exa"
 alias cat="bat -p"
 alias vim="nvim"
 alias random="date | md5sum"
+alias dig="dog"
 
 # for tmuxinator
 alias tx=tmuxinator
