@@ -1,13 +1,9 @@
 #!/bin/sh
-
 ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
 ln -sfn ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
-ln -sfn ~/dotfiles/tmuxinator ~/tmuxinator
-mkdir -p ~/.config/nvim
-ln -sfn ~/dotfiles/.vim/ftplugin ~/.config/nvim/ftplugin
-ln -sfn ~/dotfiles/.vimrc ~/.config/nvim/init.vim
-
-source ~/dotfiles/bootstrap.sh
-ln -sfn ~/dotfiles/.zshrc ~/.zshrc
-
+ln -sfn ~/dotfiles/config/nvim ~/.config/nvim
+ln -sfn ~/dotfiles/alacritty.yml ~/.config/alacritty.yml
+ln -sfn ~/dotfiles/fish ~/.config/fish
+ln -sfn ~/dotfiles/k9s ~/.config/k9s
 ln -sfn ~/dotfiles/tmuxinator ~/.tmuxinator
+ln -sfn ~/dotfiles/ctags.d ~/.ctags.d
