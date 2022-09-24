@@ -11,3 +11,4 @@ ln -sfn ~/dotfiles/config/karabiner.edn ~/.config/karabiner.edn
 ln -sfn ~/dotfiles/ctags.d ~/.ctags.d
 ln -sfn ~/dotfiles/Brewfile ~/Brewfile
 ln -sfn ~/dotfiles/Brewfile.lock.json ~/Brewfile.lock.json
+ln -sfn ~/dotfiles/amethyst.yml ~/.amethyst.yml

@@ -1,0 +1,19 @@
+# Use tall and fullscreen layouts
+layouts:
+    - tall
+    - wide
+    - column
+    - fullscreen
+
+# Add "command" to the default mods
+mod1:
+    - option
+    - shift
+mod2:
+    - option
+    - shift
+    - control
+
+# Enable focus-follows-mouse
+mouse-follows-focus: false
+focus-follows-mouse: true
