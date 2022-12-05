@@ -16,4 +16,4 @@ mod2:
 
 # Enable focus-follows-mouse
 mouse-follows-focus: false
-focus-follows-mouse: true
+focus-follows-mouse: false
