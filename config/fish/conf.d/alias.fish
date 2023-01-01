@@ -2,9 +2,11 @@ alias pingg="ping google.com"
 alias ls="exa"
 alias cat="bat -p"
 alias vim="nvim"
+alias diff="delta"
 alias random="date | md5sum"
 alias dig="dog"
 alias curl="curlie"
+alias tree="broot"
 
 # for tmuxinator
 alias tx=tmuxinator
