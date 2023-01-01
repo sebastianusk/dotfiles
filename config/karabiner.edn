@@ -4,7 +4,7 @@
              :shift-hyper-mode {:key :shift :condi :hyper-mode}
              },
  :applications {
-                :terminal ["^io\\.alacritty"]
+                :terminal ["^org\\.alacritty"]
                 }
  :simlayer-threshold 1000
  :main [
