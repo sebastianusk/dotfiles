@@ -357,7 +357,8 @@ let g:ale_fixers = {
 \    'java': ['google_java_format'],
 \    'terraform': ['terraform'],
 \    'dart': ['dartfmt'],
-\    'php': ['php_cs_fixer']
+\    'php': ['php_cs_fixer'],
+\    'xml': ['xmllint']
 \}
 let g:ale_fix_on_save = 1
 nmap <leader>f <Plug>(ale_fix)
