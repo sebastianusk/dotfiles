@@ -15,34 +15,9 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: ntt_test
-  currentCluster: ntt_test
+  currentContext: kubefazz-mngr
+  currentCluster: k8mgmt0
   clusters:
-    arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_prod:
-      namespace:
-        active: all
-        lockFavorites: false
-        favorites:
-        - ingress
-        - argocd
-        - internal
-        - sg
-        - id
-        - all
-        - default
-      view:
-        active: deployment
-      featureGates:
-        nodeShell: false
-      shellPod:
-        image: busybox:1.31
-        command: []
-        args: []
-        namespace: default
-        limits:
-          cpu: 100m
-          memory: 100Mi
-      portForwardAddress: localhost
     arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_sandbox:
       namespace:
         active: all
@@ -64,21 +39,60 @@ k9s:
           cpu: 100m
           memory: 100Mi
       portForwardAddress: localhost
-    arn:aws:eks:ap-southeast-1:873824401526:cluster/xfers_staging:
+    cfz_prod:
       namespace:
         active: all
         lockFavorites: false
         favorites:
-        - logging
-        - argocd
-        - all
+        - default
+      view:
+        active: pod
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    cfz_prod-8d88t754gb:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - kube-system
+        - cashfazz
         - default
       view:
         active: deploy
       featureGates:
         nodeShell: false
       shellPod:
-        image: busybox:1.31
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    cop-staging:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - all
+        - argocd
+        - default
+      view:
+        active: ingress
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
         command: []
         args: []
         namespace: default
@@ -94,7 +108,7 @@ k9s:
         - cop
         - default
       view:
-        active: job
+        active: secret
       featureGates:
         nodeShell: false
       shellPod:
@@ -148,14 +162,14 @@ k9s:
       portForwardAddress: localhost
     k8cop1:
       namespace:
-        active: all
+        active: cop
         lockFavorites: false
         favorites:
         - all
         - cop
         - default
       view:
-        active: pod
+        active: ingress
       featureGates:
         nodeShell: false
       shellPod:
@@ -169,14 +183,16 @@ k9s:
       portForwardAddress: localhost
     k8mgmt0:
       namespace:
-        active: all
+        active: observability
         lockFavorites: false
         favorites:
+        - security
+        - observability
         - all
         - argocd
         - default
       view:
-        active: pod
+        active: ctx
       featureGates:
         nodeShell: false
       shellPod:
@@ -190,9 +206,11 @@ k9s:
       portForwardAddress: localhost
     kubefazz:
       namespace:
-        active: post
+        active: all
         lockFavorites: false
         favorites:
+        - vswh
+        - frontend
         - ingress-nginx
         - billfazz
         - neu
@@ -244,11 +262,53 @@ k9s:
         - cop
         - default
       view:
-        active: pod
+        active: ctx
       featureGates:
         nodeShell: false
       shellPod:
         image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    xfers_prod:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - id
+        - sg
+        - all
+        - internal
+        - default
+      view:
+        active: deploy
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    xfers_staging_pomerium:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - default
+      view:
+        active: ing
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
         command: []
         args: []
         namespace: default
