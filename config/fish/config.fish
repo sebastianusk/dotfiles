@@ -1,7 +1,7 @@
 set fish_greeting ""
 
 source ~/.config/fish/alias.fish
-source ~/.config/fish/functions.fish
+source ~/.config/fish/funct.fish
 source ~/.config/fish/opts.fish
 
 set -gx VAULT_ADDR https://vault.infra.fazz.id
@@ -31,5 +31,5 @@ if not set -q TMUX
 end
 
 if type -q starship
-    starship init fish | source
+    starship init fish --print-full-init | source
 end

@@ -8,7 +8,7 @@ mkdir -p ~/.config/fish
 ln -sfn ~/dotfiles/config/fish/config.fish ~/.config/fish/config.fish
 ln -sfn ~/dotfiles/config/fish/fish_plugins ~/.config/fish/fish_plugins
 ln -sfn ~/dotfiles/config/fish/alias.fish ~/.config/fish/alias.fish
-ln -sfn ~/dotfiles/config/fish/functions.fish ~/.config/fish/functions.fish
+ln -sfn ~/dotfiles/config/fish/funct.fish ~/.config/fish/funct.fish
 ln -sfn ~/dotfiles/config/fish/opts.fish ~/.config/fish/opts.fish
 
 ln -sfn ~/dotfiles/config/tmuxinator ~/.tmuxinator
