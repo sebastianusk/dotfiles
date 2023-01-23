@@ -20,6 +20,8 @@ fish_add_path -p $GOPATH/bin $HOME/.local/bin $HOME/.krew/bin /usr/lib/node_modu
 if type -q brew
     fish_add_path /opt/homebrew/bin
     source $(brew --prefix asdf)/libexec/asdf.fish
+else
+    source /opt/asdf-vm/asdf.fish
 end
 
 fish_vi_key_bindings
