@@ -477,4 +477,4 @@ set-option -g detach-on-destroy on
 if-shell -b '[[ $OSTYPE == 'darwin'* ]]' \
     "set-option -g default-command 'reattach-to-user-namespace -l $SHELL'"
 
-set-option -g default-shell /usr/local/bin/fish
+set-option -g default-command /usr/local/bin/fish
