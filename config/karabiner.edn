@@ -5,6 +5,7 @@
              },
  :applications {
                 :terminal ["^org\\.alacritty"]
+                :rdp ["^com\\.microsoft\\.rdc\\.macos"]
                 }
  :simlayer-threshold 1000
  :main [
@@ -15,20 +16,20 @@
                  ]}
         {:des "ctrlnotterminal",
          :rules [
-                 [:!Fa :!Ca [:!terminal]]
-                 [:!FSa :!CSa [:!terminal]]
-                 [:!Fc :!Cc [:!terminal]]
-                 [:!Ff :!Cf [:!terminal]]
-                 [:!Fk :!Ck [:!terminal]]
-                 [:!FSk :!CSk [:!terminal]]
-                 [:!Fl :!Cl [:!terminal]]
-                 [:!Fr :!Cr [:!terminal]]
-                 [:!Ft :!Ct [:!terminal]]
-                 [:!Fv :!Cv [:!terminal]]
-                 [:!FSv :!CSv [:!terminal]]
-                 [:!Fw :!Cw [:!terminal]]
-                 [:!Fx :!Cx [:!terminal]]
-                 [:!Fz :!Cz [:!terminal]]
+                 [:!Fa :!Ca [:!terminal :!rdp]]
+                 [:!FSa :!CSa [:!terminal :!rdp]]
+                 [:!Fc :!Cc [:!terminal :!rdp]]
+                 [:!Ff :!Cf [:!terminal :!rdp]]
+                 [:!Fk :!Ck [:!terminal :!rdp]]
+                 [:!FSk :!CSk [:!terminal :!rdp]]
+                 [:!Fl :!Cl [:!terminal :!rdp]]
+                 [:!Fr :!Cr [:!terminal :!rdp]]
+                 [:!Ft :!Ct [:!terminal :!rdp]]
+                 [:!Fv :!Cv [:!terminal :!rdp]]
+                 [:!FSv :!CSv [:!terminal :!rdp]]
+                 [:!Fw :!Cw [:!terminal :!rdp]]
+                 [:!Fx :!Cx [:!terminal :!rdp]]
+                 [:!Fz :!Cz [:!terminal :!rdp]]
                  ]}
         {:des "capskey",
          :rules [:hyper-mode

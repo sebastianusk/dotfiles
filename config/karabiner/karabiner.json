@@ -86,6 +86,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -102,6 +105,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -118,6 +124,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -134,6 +143,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -150,6 +162,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -166,6 +181,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -182,6 +200,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -198,6 +219,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -214,6 +238,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -230,6 +257,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -246,6 +276,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -262,6 +295,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -278,6 +314,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         }, {
@@ -294,6 +333,9 @@
           "conditions" : [ {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^org\\.alacritty" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
           } ],
           "type" : "basic"
         } ]
