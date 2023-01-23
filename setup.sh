@@ -15,6 +15,7 @@ ln -sfn ~/dotfiles/config/tmuxinator ~/.tmuxinator
 ln -sfn ~/dotfiles/config/k9s ~/.config/k9s
 ln -sfn ~/dotfiles/ctags.d ~/.ctags.d
 ln -sfn ~/dotfiles/.asdfrc ~/.asdfrc
+ln -sfn ~/dotfiles/config/starship.toml ~/.config/starship.toml
 
 if [[ $OSTYPE == 'darwin'* ]]; then
   ln -sfn ~/dotfiles/config/karabiner ~/.config/karabiner
