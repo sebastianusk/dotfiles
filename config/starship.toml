@@ -7,7 +7,7 @@ right_format='$cmd_duration'
 disabled = true
 
 [kubernetes]
-format = '[$symbol $context \($namespace\)](dimmed green)'
+format = '[$symbol $context \($namespace\)](dimmed green) '
 disabled = false
 
 [character]
@@ -32,6 +32,7 @@ symbol = " "
 
 [directory]
 read_only = " "
+fish_style_pwd_dir_length = 3
 
 [docker_context]
 symbol = " "
