@@ -27,12 +27,6 @@ end
 
 fish_vi_key_bindings
 
-if not set -q TMUX
-    set -g TMUX tmux new-session -d -s base
-    eval $TMUX
-    tmux attach-session -d -t base
-end
-
 if type -q starship
     starship init fish --print-full-init | source
 end

@@ -17,6 +17,8 @@ ln -sfn ~/dotfiles/ctags.d ~/.ctags.d
 ln -sfn ~/dotfiles/.asdfrc ~/.asdfrc
 ln -sfn ~/dotfiles/config/starship.toml ~/.config/starship.toml
 
+sudo ln -sfn $(which tmux) /usr/local/bin/tmux
+
 if [[ $OSTYPE == 'darwin'* ]]; then
   ln -sfn ~/dotfiles/config/karabiner ~/.config/karabiner
   ln -sfn ~/dotfiles/config/karabiner.edn ~/.config/karabiner.edn
