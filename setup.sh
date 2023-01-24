@@ -17,6 +17,7 @@ ln -sfn ~/dotfiles/ctags.d ~/.ctags.d
 ln -sfn ~/dotfiles/.asdfrc ~/.asdfrc
 ln -sfn ~/dotfiles/config/starship.toml ~/.config/starship.toml
 
+sudo ln -sfn $(which fish) /usr/local/bin/fish
 sudo ln -sfn $(which tmux) /usr/local/bin/tmux
 
 if [[ $OSTYPE == 'darwin'* ]]; then
