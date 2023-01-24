@@ -1,6 +1,5 @@
 format="""
-$all$kubernetes
-$directory$character
+$all$directory$character
 """
 right_format='$cmd_duration'
 
