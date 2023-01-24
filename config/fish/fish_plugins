@@ -1,6 +1,6 @@
 PatrickF1/fzf.fish
 jorgebucaran/autopair.fish
-jhillyerd/plugin-git
 danhper/fish-ssh-agent
 jethrokuan/z
-blackjid/plugin-kubectl
+sebastianusk/plugin-git
+sebastianusk/plugin-kubectl
