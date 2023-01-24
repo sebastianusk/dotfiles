@@ -33,6 +33,7 @@ symbol = " "
 [directory]
 read_only = " "
 fish_style_pwd_dir_length = 3
+style = 'bold yellow'
 
 [docker_context]
 symbol = " "
