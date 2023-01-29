@@ -2,6 +2,7 @@ format="""
 $all$directory$character
 """
 right_format='$cmd_duration'
+command_timeout=1000
 
 [gcloud]
 disabled = true
