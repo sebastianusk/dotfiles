@@ -474,5 +474,4 @@ bind q kill-session
 
 set-option -g detach-on-destroy on
 
-if-shell -b 'uname | grep -q Darwin' "set-option -g default-command \"reattach-to-user-namespace -l $SHELL\""
-if-shell -b 'uname | grep -vq Darwin' "set-option -g default-command $SHELL"
+set-option -g default-shell /usr/local/bin/fish
