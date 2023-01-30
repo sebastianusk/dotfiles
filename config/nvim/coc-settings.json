@@ -9,14 +9,14 @@
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "disableWorkspaceFolders": true,
       "filetypes": ["go"],
       "initializationOptions": {
         "completeUnimported": true
       }
     },
     "terraform": {
-      "command": "terraform-lsp",
+      "command": "terraform-ls",
+			"args": ["serve"],
       "filetypes": ["terraform"],
       "initializationOptions": {}
     },
@@ -34,19 +34,18 @@
   },
   "yaml.schemaStore.enable": true,
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json": [
+    "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json": 
+    [
       "openapi.yaml"
     ],
-    "https://raw.githubusercontent.com/docker/cli/master/cli/compose/schema/data/config_schema_v3.9.json": [
+    "https://raw.githubusercontent.com/docker/cli/master/cli/compose/schema/data/config_schema_v3.9.json": 
+    [
       "**/docker-compose*.yml"
-    ]
+    ],
+    "kubernetes": "/*.yaml"
   },
-  "go.goplsOptions": {
-    "completeUnimported": true,
-    "staticcheck": true
-  },
-  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
   "flutter.sdk.flutter-lookup": "asdf which flutter",
   "flutter.sdk.dart-lookup": "asdf which dart",
-  "python.jediEnabled": false
+  "python.jediEnabled": false,
+  "snippets.ultisnips.pythonPrompt": false
 }
