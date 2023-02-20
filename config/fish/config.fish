@@ -16,7 +16,7 @@ set -gx BROWSER 'brave'
 set -gx CHROME_EXECUTABLE 'brave'
 set -gx SHELL (which fish)
 
-fish_add_path -p $GOPATH/bin $HOME/.local/bin $HOME/.krew/bin /usr/lib/node_modules/.bin $HOME/.pub-cache/bin $HOME/.deno/bin
+fish_add_path -p $GOPATH/bin $HOME/.local/bin $HOME/.krew/bin /usr/lib/node_modules/.bin $HOME/.pub-cache/bin $HOME/.cargo/bin
 
 if type -q brew
     fish_add_path /opt/homebrew/bin
