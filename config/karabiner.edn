@@ -1,6 +1,6 @@
 {
  :layers {
-             :hyper-mode {:key :caps_lock :alone {:key :escape }}
+             :hyper-mode {:key :caps_lock :alone {:key :!Tup_arrow }}
              :shift-hyper-mode {:key :shift :condi :hyper-mode}
              },
  :applications {
@@ -11,25 +11,25 @@
  :main [
         {:des "ctrlkeyterminal",
          :rules [
-                 [:!FSv :!Cv [:terminal]]
-                 [:!FSc :!Cc [:terminal]]
+                 [:!TSv :!Cv [:terminal]]
+                 [:!TSc :!Cc [:terminal]]
                  ]}
         {:des "ctrlnotterminal",
          :rules [
-                 [:!Fa :!Ca [:!terminal :!rdp]]
-                 [:!FSa :!CSa [:!terminal :!rdp]]
-                 [:!Fc :!Cc [:!terminal :!rdp]]
-                 [:!Ff :!Cf [:!terminal :!rdp]]
-                 [:!Fk :!Ck [:!terminal :!rdp]]
-                 [:!FSk :!CSk [:!terminal :!rdp]]
-                 [:!Fl :!Cl [:!terminal :!rdp]]
-                 [:!Fr :!Cr [:!terminal :!rdp]]
-                 [:!Ft :!Ct [:!terminal :!rdp]]
-                 [:!Fv :!Cv [:!terminal :!rdp]]
-                 [:!FSv :!CSv [:!terminal :!rdp]]
-                 [:!Fw :!Cw [:!terminal :!rdp]]
-                 [:!Fx :!Cx [:!terminal :!rdp]]
-                 [:!Fz :!Cz [:!terminal :!rdp]]
+                 [:!Ta :!Ca [:!terminal :!rdp]]
+                 [:!TSa :!CSa [:!terminal :!rdp]]
+                 [:!Tc :!Cc [:!terminal :!rdp]]
+                 [:!Tf :!Cf [:!terminal :!rdp]]
+                 [:!Tk :!Ck [:!terminal :!rdp]]
+                 [:!TSk :!CSk [:!terminal :!rdp]]
+                 [:!Tl :!Cl [:!terminal :!rdp]]
+                 [:!Tr :!Cr [:!terminal :!rdp]]
+                 [:!Tt :!Ct [:!terminal :!rdp]]
+                 [:!Tv :!Cv [:!terminal :!rdp]]
+                 [:!TSv :!CSv [:!terminal :!rdp]]
+                 [:!Tw :!Cw [:!terminal :!rdp]]
+                 [:!Tx :!Cx [:!terminal :!rdp]]
+                 [:!Tz :!Cz [:!terminal :!rdp]]
                  ]}
         {:des "capskey",
          :rules [:hyper-mode
@@ -47,6 +47,9 @@
                  [:k :!OSk]
                  [:p :!OSp]
                  [:n :!OSn]
+                 [:y :!Tleft_arrow]
+                 [:o :!Tright_arrow]
+                 [:tab :!Ctab]
                  [:spacebar :!Cspacebar]
                  ]}
         {:des "generic",
