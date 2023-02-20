@@ -231,7 +231,7 @@ colors:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/local/bin/tmux
+  program: /usr/local/bin/fish
 
 # Startup directory
 #
