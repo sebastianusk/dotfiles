@@ -1,7 +1,6 @@
 {
  :layers {
              :hyper-mode {:key :caps_lock :alone {:key :!Tup_arrow }}
-             :shift-hyper-mode {:key :shift :condi :hyper-mode}
              },
  :applications {
                 :terminal ["^org\\.alacritty"]
@@ -33,33 +32,46 @@
                  ]}
         {:des "capskey",
          :rules [:hyper-mode
-                 [:x :!COx]
-                 [:c :!COc]
-                 [:v :!COv]
-                 [:b :!COb]
-                 [:t :!OCSt]
-                 [:q :!Cq]
-                 [:z :!OSz]
-                 [:h :!OSh]
-                 [:l :!OSl]
-                 [:j :!OSj]
-                 [:i :!OSi]
-                 [:k :!OSk]
-                 [:p :!OSp]
-                 [:n :!OSn]
-                 [:y :!Tleft_arrow]
-                 [:o :!Tright_arrow]
-                 [:tab :!Ctab]
-                 [:spacebar :!Cspacebar]
+                 [:x :!COx] ;shottr basic
+                 [:s :!COTo] ;shottr text
+                 [:d :!COd] ;shottr screen
+                 [:c :!COc] ;alfred clipboard
+                 [:v :!COv] ;alfred snippet
+                 [:b :!COb] ;raindrop bookmark
+                 [:t :!OCTt] ;keyboard maestro
+                 [:q :!Cq] ;quit
+                 [:z :!OSz] ;restart amethyst
+                 [:y :!OSh] ;amethyst downsize
+                 [:o :!OSl] ;amethyst upsize
+                 [:j :!OSj] ;amethyst next windows
+                 [:i :!OSi] ;amethyst change layout
+                 [:k :!OSk] ;amehtyst prev windows
+                 [:p :!OSp] ;amethyst prev display
+                 [:n :!OSn] ;amethyst next display
+                 [:h :!Tleft_arrow] ;next desktop
+                 [:l :!Tright_arrow] ;prev desktop
+                 [:tab :!Otab] ;alt-tab all
+                 [:grave_accent_and_tilde :!Ograve_accent_and_tilde] ;alt-tab in apps
+                 [:spacebar :!Cspacebar] ;alfred
+                 [:f :!CSspacebar] ;1password
+                 [:1 :!CS1] ;keyboard maestro windows
+                 [:2 :!CS2] ;keyboard maestro windows
+                 [:3 :!CS3] ;keyboard maestro windows
+                 [:4 :!CS4] ;keyboard maestro windows
+                 [:5 :!CS5] ;keyboard maestro windows
+                 [:6 :!CS6] ;keyboard maestro windows
+                 [:7 :!CS7] ;keyboard maestro windows
+                 [:8 :!CS8] ;keyboard maestro windows
+                 [:9 :!CS9] ;keyboard maestro windows
                  ]}
         {:des "generic",
          :rules [
-                 [:!Fleft_arrow :!Oleft_arrow]
-                 [:!FSleft_arrow :!OSleft_arrow]
-                 [:!Fright_arrow :!Oright_arrow]
-                 [:!FSright_arrow :!OSright_arrow]
-                 [:!Fdelete_or_backspace :!Odelete_or_backspace]
-                 [:!Fbutton1 :button1]
+                 [:!Tleft_arrow :!Oleft_arrow]
+                 [:!TSleft_arrow :!OSleft_arrow]
+                 [:!Tright_arrow :!Oright_arrow]
+                 [:!TSright_arrow :!OSright_arrow]
+                 [:!Tdelete_or_backspace :!Odelete_or_backspace]
+                 [:!Tbutton1 :button1]
                  ]}
         ]
  }
