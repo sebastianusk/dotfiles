@@ -430,20 +430,6 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "t"
-          },
-          "to" : [ {
-            "key_code" : "t",
-            "modifiers" : [ "left_command", "left_control", "left_option" ]
-          } ],
-          "conditions" : [ {
-            "name" : "hyper-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
             "key_code" : "q"
           },
           "to" : [ {
@@ -570,34 +556,6 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "h"
-          },
-          "to" : [ {
-            "key_code" : "left_arrow",
-            "modifiers" : [ "left_control" ]
-          } ],
-          "conditions" : [ {
-            "name" : "hyper-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "l"
-          },
-          "to" : [ {
-            "key_code" : "right_arrow",
-            "modifiers" : [ "left_control" ]
-          } ],
-          "conditions" : [ {
-            "name" : "hyper-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
             "key_code" : "tab"
           },
           "to" : [ {
@@ -658,7 +616,7 @@
           },
           "to" : [ {
             "key_code" : "1",
-            "modifiers" : [ "left_command", "left_shift" ]
+            "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
@@ -672,7 +630,7 @@
           },
           "to" : [ {
             "key_code" : "2",
-            "modifiers" : [ "left_command", "left_shift" ]
+            "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
@@ -686,7 +644,7 @@
           },
           "to" : [ {
             "key_code" : "3",
-            "modifiers" : [ "left_command", "left_shift" ]
+            "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
@@ -700,7 +658,7 @@
           },
           "to" : [ {
             "key_code" : "4",
-            "modifiers" : [ "left_command", "left_shift" ]
+            "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
@@ -714,7 +672,7 @@
           },
           "to" : [ {
             "key_code" : "5",
-            "modifiers" : [ "left_command", "left_shift" ]
+            "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
@@ -728,7 +686,7 @@
           },
           "to" : [ {
             "key_code" : "6",
-            "modifiers" : [ "left_command", "left_shift" ]
+            "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
@@ -742,7 +700,7 @@
           },
           "to" : [ {
             "key_code" : "7",
-            "modifiers" : [ "left_command", "left_shift" ]
+            "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
@@ -756,7 +714,7 @@
           },
           "to" : [ {
             "key_code" : "8",
-            "modifiers" : [ "left_command", "left_shift" ]
+            "modifiers" : [ "left_control" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
@@ -770,7 +728,35 @@
           },
           "to" : [ {
             "key_code" : "9",
-            "modifiers" : [ "left_command", "left_shift" ]
+            "modifiers" : [ "left_control" ]
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "h"
+          },
+          "to" : [ {
+            "key_code" : "left_arrow",
+            "modifiers" : [ "left_command", "left_control", "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "l"
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_command", "left_control", "left_shift" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
