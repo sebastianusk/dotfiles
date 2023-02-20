@@ -26,5 +26,6 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   ln -sfn ~/dotfiles/Brewfile ~/Brewfile
   ln -sfn ~/dotfiles/Brewfile.lock.json ~/Brewfile.lock.json
   ln -sfn ~/dotfiles/amethyst.yml ~/.amethyst.yml
+  ln -sfn ~/dotfiles/amethyst.yml ~/.config/amethyst/amethyst.yml
   sudo ln -sfn /opt/homebrew/bin/reattach-to-user-namespace /usr/local/bin/reattach-to-user-namespace
 fi
