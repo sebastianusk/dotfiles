@@ -24,6 +24,7 @@
                  [:!Tl :!Cl [:!terminal :!rdp]]
                  [:!Tr :!Cr [:!terminal :!rdp]]
                  [:!Tt :!Ct [:!terminal :!rdp]]
+                 [:!TSt :!CSt [:!terminal :!rdp]]
                  [:!Tv :!Cv [:!terminal :!rdp]]
                  [:!TSv :!CSv [:!terminal :!rdp]]
                  [:!Tw :!Cw [:!terminal :!rdp]]
@@ -32,26 +33,33 @@
                  ]}
         {:des "capskey",
          :rules [:hyper-mode
+                 ;; screenshot
                  [:x :!COx] ;shottr basic
                  [:s :!COTo] ;shottr text
                  [:d :!COd] ;shottr screen
+
+                 ;; alfred
+                 [:spacebar :!Cspacebar] ;alfred
                  [:c :!COc] ;alfred clipboard
                  [:v :!COv] ;alfred snippet
+
+                 ;; general
                  [:b :!COb] ;raindrop bookmark
-                 [:q :!Cq] ;quit
-                 [:z :!OSz] ;restart amethyst
-                 [:y :!OSh] ;amethyst downsize
-                 [:o :!OSl] ;amethyst upsize
-                 [:j :!OSj] ;amethyst next windows
-                 [:i :!OSi] ;amethyst change layout
-                 [:k :!OSk] ;amehtyst prev windows
-                 [:p :!OSp] ;amethyst prev display
-                 [:n :!OSn] ;amethyst next display
-                 [:tab :!Otab] ;alt-tab all
-                 [:grave_accent_and_tilde :!Ograve_accent_and_tilde] ;alt-tab in apps
-                 [:spacebar :!Cspacebar] ;alfred
                  [:f :!CSspacebar] ;1password
-                 ; https://forum.keyboardmaestro.com/t/macros-desktop-spaces-macros-for-navigation-and-window-management-v1-1/21507
+                 [:q :!Cq] ;quit
+
+                 ;; windows mananger
+                 [:z :!OSTz] ;restart amethyst
+                 [:h :!OSh] ;amethyst downsize
+                 [:l :!OSl] ;amethyst upsize
+                 [:j :!OSj] ;amethyst next windows
+                 [:k :!OSk] ;amehtyst prev windows
+                 [:m :!OSspacebar] ;amethyst change layout
+                 [:y :!OSTleft_arrow] ;amethyst throw to left
+                 [:o :!OSTright_arrow] ;amethyst throw to right
+                 [:n :!OSn] ;amethyst next display
+                 [:u :!CTSleft_arrow] ;next desktop
+                 [:i :!CTSright_arrow] ;prev desktop
                  [:1 :!T1] ;desktop 1
                  [:2 :!T2] ;desktop 2
                  [:3 :!T3] ;desktop 3
@@ -61,8 +69,12 @@
                  [:7 :!T7] ;desktop 7
                  [:8 :!T8] ;desktop 8
                  [:9 :!T9] ;desktop 9
-                 [:h :!CTSleft_arrow] ;next desktop
-                 [:l :!CTSright_arrow] ;prev desktop
+
+                 ;; alt tab
+                 [:tab :!Otab] ;alt-tab all
+                 [:grave_accent_and_tilde :!Ograve_accent_and_tilde] ;alt-tab in apps
+
+
                  ]}
         {:des "generic",
          :rules [
