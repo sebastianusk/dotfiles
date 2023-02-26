@@ -115,10 +115,10 @@
          :rules [
                  [:!Om [[:noti :cmdq "Mouse Mode"] ["mouse_mode" 1]]]
                  :mouse_mode
-                  [:j {:mkey {:y 1536}}]
-                  [:k {:mkey {:y -1536}}]
-                  [:h {:mkey {:x -1536}}]
-                  [:l {:mkey {:x 1536}}]
+                  [:j {:mkey {:y 2000}}]
+                  [:k {:mkey {:y -2000}}]
+                  [:h {:mkey {:x -2000}}]
+                  [:l {:mkey {:x 2000}}]
                   [:spacebar {:pkey :button1}]
                   [:return_or_enter {:pkey :button2}]
                   [:!On [["mouse_mode" 0] [:noti :cmdq]]]
