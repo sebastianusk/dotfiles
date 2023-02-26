@@ -3,7 +3,7 @@
              :hyper-mode {:key :caps_lock :alone {:key :!Tup_arrow }}
              },
  :applications {
-                :terminal ["^org\\.alacritty"]
+                :terminal ["^org\\.alacritty", "^com\\.apple\\.terminal"]
                 :rdp ["^com\\.microsoft\\.rdc\\.macos"]
                 }
  :simlayer-threshold 1000
@@ -134,6 +134,12 @@
         {:des "generic",
          :rules [
                  [:!Tdelete_or_backspace :!Odelete_or_backspace]
+
+                 ; quick navigate using Option + HJKL
+                 [:!Oj :down_arrow]
+                 [:!Ok :up_arrow]
+                 [:!Oh :left_arrow]
+                 [:!Ol :right_arrow]
                  ]}
         {:des "navigate",
          :rules [
