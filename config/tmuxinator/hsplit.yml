@@ -1,9 +1,0 @@
-# /Users/sebastianuskh/.config/tmuxinator/hsplit.yml
-
-name: hsplit
-windows:
-  - editor:
-      layout: 364a,273x62,0,0[273x45,0,0,11,273x16,0,46,12]
-      panes:
-        - vim
-        - tmux rename-session (basename $PWD)
