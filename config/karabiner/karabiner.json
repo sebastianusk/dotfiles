@@ -910,6 +910,79 @@
             "type" : "variable_if"
           } ],
           "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "q"
+          },
+          "to" : [ {
+            "key_code" : "q",
+            "modifiers" : [ "left_command" ]
+          }, {
+            "set_variable" : {
+              "name" : "command-q",
+              "value" : 0
+            }
+          }, {
+            "set_notification_message" : {
+              "id" : "cmdq",
+              "text" : ""
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "command-q",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "to_delayed_action" : {
+            "to_if_invoked" : [ {
+              "set_variable" : {
+                "name" : "command-q",
+                "value" : 0
+              }
+            }, {
+              "set_notification_message" : {
+                "id" : "cmdq",
+                "text" : ""
+              }
+            } ],
+            "to_if_canceled" : [ {
+              "set_variable" : {
+                "name" : "command-q",
+                "value" : 0
+              }
+            }, {
+              "set_notification_message" : {
+                "id" : "cmdq",
+                "text" : ""
+              }
+            } ]
+          },
+          "from" : {
+            "key_code" : "q"
+          },
+          "to" : [ {
+            "set_notification_message" : {
+              "id" : "cmdq",
+              "text" : "Press Again to QUIT"
+            }
+          }, {
+            "set_variable" : {
+              "name" : "command-q",
+              "value" : 1
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
         } ]
       }, {
         "description" : "generic",
@@ -1140,7 +1213,7 @@
           },
           "to" : [ {
             "mouse_key" : {
-              "y" : 1536
+              "y" : 2000
             }
           } ],
           "conditions" : [ {
@@ -1155,7 +1228,7 @@
           },
           "to" : [ {
             "mouse_key" : {
-              "y" : -1536
+              "y" : -2000
             }
           } ],
           "conditions" : [ {
@@ -1170,7 +1243,7 @@
           },
           "to" : [ {
             "mouse_key" : {
-              "x" : -1536
+              "x" : -2000
             }
           } ],
           "conditions" : [ {
@@ -1185,7 +1258,7 @@
           },
           "to" : [ {
             "mouse_key" : {
-              "x" : 1536
+              "x" : 2000
             }
           } ],
           "conditions" : [ {
@@ -1240,82 +1313,6 @@
           } ],
           "conditions" : [ {
             "name" : "mouse_mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "Quit application by pressing command-q twice",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "q"
-          },
-          "to" : [ {
-            "key_code" : "q",
-            "modifiers" : [ "left_command" ]
-          }, {
-            "set_variable" : {
-              "name" : "command-q",
-              "value" : 0
-            }
-          }, {
-            "set_notification_message" : {
-              "id" : "cmdq",
-              "text" : ""
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "hyper-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          }, {
-            "name" : "command-q",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "to_delayed_action" : {
-            "to_if_invoked" : [ {
-              "set_variable" : {
-                "name" : "command-q",
-                "value" : 0
-              }
-            }, {
-              "set_notification_message" : {
-                "id" : "cmdq",
-                "text" : ""
-              }
-            } ],
-            "to_if_canceled" : [ {
-              "set_variable" : {
-                "name" : "command-q",
-                "value" : 0
-              }
-            }, {
-              "set_notification_message" : {
-                "id" : "cmdq",
-                "text" : ""
-              }
-            } ]
-          },
-          "from" : {
-            "key_code" : "q"
-          },
-          "to" : [ {
-            "set_notification_message" : {
-              "id" : "cmdq",
-              "text" : "Press Again to QUIT"
-            }
-          }, {
-            "set_variable" : {
-              "name" : "command-q",
-              "value" : 1
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "hyper-mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
