@@ -111,6 +111,18 @@
                  [:0 :home]
                  [:!Ou [["navigate" 0] [:noti :cmdq]]]
                  ]}
+        {:des "mouse",
+         :rules [
+                 [:!Om [[:noti :cmdq "Mouse Mode"] ["mouse_mode" 1]]]
+                 :mouse_mode
+                  [:j {:mkey {:y 1536}}]
+                  [:k {:mkey {:y -1536}}]
+                  [:h {:mkey {:x -1536}}]
+                  [:l {:mkey {:x 1536}}]
+                  [:spacebar {:pkey :button1}]
+                  [:return_or_enter {:pkey :button2}]
+                  [:!On [["mouse_mode" 0] [:noti :cmdq]]]
+                 ]}
         {:des   "Quit application by pressing command-q twice"
          :rules [
 

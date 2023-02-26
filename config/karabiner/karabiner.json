@@ -1114,6 +1114,138 @@
           "type" : "basic"
         } ]
       }, {
+        "description" : "mouse",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "m",
+            "modifiers" : {
+              "mandatory" : [ "left_option" ]
+            }
+          },
+          "to" : [ {
+            "set_notification_message" : {
+              "id" : "cmdq",
+              "text" : "Mouse Mode"
+            }
+          }, {
+            "set_variable" : {
+              "name" : "mouse_mode",
+              "value" : 1
+            }
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "j"
+          },
+          "to" : [ {
+            "mouse_key" : {
+              "y" : 1536
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "mouse_mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "k"
+          },
+          "to" : [ {
+            "mouse_key" : {
+              "y" : -1536
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "mouse_mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "h"
+          },
+          "to" : [ {
+            "mouse_key" : {
+              "x" : -1536
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "mouse_mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "l"
+          },
+          "to" : [ {
+            "mouse_key" : {
+              "x" : 1536
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "mouse_mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "spacebar"
+          },
+          "to" : [ {
+            "pointing_button" : "button1"
+          } ],
+          "conditions" : [ {
+            "name" : "mouse_mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "return_or_enter"
+          },
+          "to" : [ {
+            "pointing_button" : "button2"
+          } ],
+          "conditions" : [ {
+            "name" : "mouse_mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "n",
+            "modifiers" : {
+              "mandatory" : [ "left_option" ]
+            }
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "mouse_mode",
+              "value" : 0
+            }
+          }, {
+            "set_notification_message" : {
+              "id" : "cmdq",
+              "text" : ""
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "mouse_mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
         "description" : "Quit application by pressing command-q twice",
         "manipulators" : [ {
           "from" : {
