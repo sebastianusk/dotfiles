@@ -7,7 +7,20 @@
                 :rdp ["^com\\.microsoft\\.rdc\\.macos"]
                 }
  :simlayer-threshold 1000
+ :devices {
+           :apple [
+                    {:vendor_id 1452 :product_id 641}
+                   ]
+           }
  :main [
+        {:des "apple keyboard mapping",
+         :rules [
+                 :apple
+                 [:##fn :left_control]
+                 [:##left_control :left_option]
+                 [:##left_option :fn]
+
+                 ]}
         {:des "ctrlkeyterminal",
          :rules [
                  [:!TSv :!Cv [:terminal]]
@@ -45,8 +58,12 @@
 
                  ;; general
                  [:b :!COb] ;raindrop bookmark
-                 [:f :!CSspacebar] ;1password
-                 [:q :!Cq] ;quit
+                 [:t :!COSt] ;raindrop bookmark
+                 [:comma :!CScomma] ;1password
+                 [:f :!CSspacebar] ;homerow
+                 [:return_or_enter :!Creturn_or_enter] ;quit
+                 [:hyphen :!Chyphen] ;quit
+                 [:equal_sign :!Cequal_sign] ;quit
 
                  ;; windows mananger
                  [:z :!OSTz] ;restart amethyst
@@ -71,19 +88,70 @@
                  [:9 :!T9] ;desktop 9
 
                  ;; alt tab
-                 [:tab :!Otab] ;alt-tab all
-                 [:grave_accent_and_tilde :!Ograve_accent_and_tilde] ;alt-tab in apps
-
+                 [:tab :!Oslash] ;alt-tab all
+                 [:grave_accent_and_tilde :!Ograve_accent_and_tilde] ;alt-tab all
 
                  ]}
         {:des "generic",
          :rules [
-                 [:!Tleft_arrow :!Oleft_arrow]
-                 [:!TSleft_arrow :!OSleft_arrow]
-                 [:!Tright_arrow :!Oright_arrow]
-                 [:!TSright_arrow :!OSright_arrow]
                  [:!Tdelete_or_backspace :!Odelete_or_backspace]
-                 [:!Tbutton1 :button1]
                  ]}
+        {:des "navigate",
+         :rules [
+                 [:!Oi [[:noti :cmdq "Navigate Mode"] ["navigate" 1]]]
+                 :navigate
+                 [:##j :down_arrow]
+                 [:##k :up_arrow]
+                 [:##h :left_arrow]
+                 [:##l :right_arrow]
+                 [:!R4 :end]
+                 [:!S4 :end]
+                 [:!Tu :page_up]
+                 [:!Td :page_down]
+                 [:0 :home]
+                 [:!Ou [["navigate" 0] [:noti :cmdq]]]
+                 ]}
+        {:des   "Quit application by pressing command-q twice"
+         :rules [
+
+                 :hyper-mode
+                 [
+                  ;; <from> second cmd-q (when variable "command-q" is 1)
+                  :q
+                  ;; <to>, 3 to action
+                  ;; 1. call cmd-q
+                  ;; 2. set variable "command-q" to 0
+                  ;; 3. cleanup the :cmdq notification (omit the thrid item to cleanup notification)
+                  [:!Cq ["command-q" 0] [:noti :cmdq]]
+                  ;; <condition> when variable "command-q" is 1
+                  ["command-q" 1]]
+
+
+                 [
+                  ;; <from> first cmd-q (when variable "command-q" is 0)
+                  :q
+
+                  ;; <to>, 2 to action
+                  ;; 1. show notification with :id :cmdq, :text "Press Again to QUIT"
+                  ;; 2. set variable "command-q" to 1 (for the second press)
+                  [[:noti :cmdq "Press Again to QUIT"] ["command-q" 1]]
+
+                  ;; <condition> nil means no required condition
+                  nil
+
+                  ;; <additional-option>
+                  {
+                   ;; to_delayed_action documentation
+                   ;; https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to-delayed-action/
+                   :delayed {
+                             ;; run 2 actions when no other key presses after basic.to_delayed_action_delay_milliseconds
+                             ;; 1. set variable "command-q" to 0
+                             ;; 2. cleanup notification :id :cmdq
+                             :invoked  [["command-q" 0] [:noti :cmdq]]
+
+                             ;; run 2 actions when another key presses within basic.to_delayed_action_delay_milliseconds
+                             ;; 1. set variable "command-q" to 0
+                             ;; 2. cleanup notification :id :cmdq
+                             :canceled [["command-q" 0] [:noti :cmdq]]}}]]}
         ]
  }
