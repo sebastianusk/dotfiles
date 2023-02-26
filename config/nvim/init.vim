@@ -128,9 +128,6 @@ Plug 'pedrohdz/vim-yaml-folds'
 " prisma
 Plug 'pantharshit00/vim-prisma'
 
-" leetcode
-Plug 'ianding1/leetcode.vim'
-
 " base64
 Plug 'christianrondeau/vim-base64'
 
@@ -270,10 +267,20 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
+" Remap keys for applying code actions at the cursor position
+nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
+" Run the Code Lens action on the current line
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -359,7 +366,8 @@ let g:ale_fixers = {
 \    'terraform': ['terraform'],
 \    'dart': ['dartfmt'],
 \    'php': ['php_cs_fixer'],
-\    'xml': ['xmllint']
+\    'xml': ['xmllint'],
+\    'python': ['isort', 'yapf', 'remove_trailing_lines', 'trim_whitespace']
 \}
 let g:ale_fix_on_save = 1
 nmap <leader>f <Plug>(ale_fix)
@@ -428,9 +436,12 @@ let g:coc_global_extensions = [
   \ 'coc-actions',
   \ 'coc-lists',
   \ 'coc-json',
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-flutter',
   \ 'coc-snippets',
+  \ 'coc-go',
+  \ 'coc-marketplace',
+  \ 'coc-prisma',
   \ ]
 
 " Remap for do codeAction of selected region

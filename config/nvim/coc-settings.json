@@ -5,6 +5,8 @@
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "?",
   "diagnostic.checkCurrentLine": true,
+  "colors.enable": true,
+  "codeLens.enable": true,
   "languageserver": {
     "golang": {
       "command": "gopls",
@@ -16,7 +18,7 @@
     },
     "terraform": {
       "command": "terraform-ls",
-			"args": ["serve"],
+      "args": ["serve"],
       "filetypes": ["terraform"],
       "initializationOptions": {}
     },
@@ -34,12 +36,10 @@
   },
   "yaml.schemaStore.enable": true,
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json": 
-    [
+    "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json": [
       "openapi.yaml"
     ],
-    "https://raw.githubusercontent.com/docker/cli/master/cli/compose/schema/data/config_schema_v3.9.json": 
-    [
+    "https://raw.githubusercontent.com/docker/cli/master/cli/compose/schema/data/config_schema_v3.9.json": [
       "**/docker-compose*.yml"
     ],
     "kubernetes": "/*.yaml"
