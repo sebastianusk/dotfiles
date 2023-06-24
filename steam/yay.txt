@@ -1,7 +1,6 @@
 alacritty
 asdf-vm
 bat
-brave-bin
 broot
 curlie
 dog
@@ -28,6 +27,6 @@ ripgrep
 starship
 terraform
 tldr
+tmux
 tmuxinator
 vault-cli
-xdg-utils
