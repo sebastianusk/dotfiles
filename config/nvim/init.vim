@@ -134,6 +134,9 @@ Plug 'christianrondeau/vim-base64'
 " for editing html tag
 Plug 'mattn/emmet-vim'
 
+" for golang
+Plug 'fatih/vim-go'
+
 " Initialize plugin system
 call plug#end()
 
@@ -202,8 +205,12 @@ nnoremap <Leader>m :Marks<CR>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" use enter when no selected to complete
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -226,13 +233,8 @@ set updatetime=300
 set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+" diagnostics appear/become resolved
+set signcolumn=yes
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -367,9 +369,10 @@ let g:ale_fixers = {
 \    'dart': ['dartfmt'],
 \    'php': ['php_cs_fixer'],
 \    'xml': ['xmllint'],
+\    'go': ['gofmt', 'goimports'],
+\    'jsonnet': ['jsonnetfmt'],
 \    'python': ['isort', 'yapf', 'remove_trailing_lines', 'trim_whitespace']
 \}
-let g:ale_fix_on_save = 1
 nmap <leader>f <Plug>(ale_fix)
 
 " Git
@@ -440,6 +443,7 @@ let g:coc_global_extensions = [
   \ 'coc-flutter',
   \ 'coc-snippets',
   \ 'coc-go',
+  \ 'coc-sh',
   \ 'coc-marketplace',
   \ 'coc-prisma',
   \ ]
@@ -450,3 +454,6 @@ function! s:cocActionsOpenFromSelected(type) abort
 endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 map <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
+" Remap fold to z<space>
+nnoremap z<space> za
