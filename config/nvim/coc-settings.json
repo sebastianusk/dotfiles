@@ -8,14 +8,6 @@
   "colors.enable": true,
   "codeLens.enable": true,
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "completeUnimported": true
-      }
-    },
     "terraform": {
       "command": "terraform-ls",
       "args": ["serve"],
@@ -47,5 +39,11 @@
   "flutter.sdk.flutter-lookup": "asdf which flutter",
   "flutter.sdk.dart-lookup": "asdf which dart",
   "python.jediEnabled": false,
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "go.goplsOptions": {
+    "completeUnimported": true,
+    "codelenses": {
+      "generate": true
+    }
+  }
 }
