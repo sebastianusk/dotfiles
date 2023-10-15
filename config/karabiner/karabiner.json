@@ -15,30 +15,6 @@
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
-        "description" : "Auto generated layer conditions",
-        "manipulators" : [ {
-          "type" : "basic",
-          "to" : [ {
-            "set_variable" : {
-              "name" : "hyper-mode",
-              "value" : 1
-            }
-          } ],
-          "from" : {
-            "key_code" : "caps_lock"
-          },
-          "to_after_key_up" : [ {
-            "set_variable" : {
-              "name" : "hyper-mode",
-              "value" : 0
-            }
-          } ],
-          "to_if_alone" : [ {
-            "key_code" : "up_arrow",
-            "modifiers" : [ "left_control" ]
-          } ]
-        } ]
-      }, {
         "description" : "apple keyboard mapping",
         "manipulators" : [ {
           "from" : {
@@ -110,7 +86,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           } ],
           "type" : "basic"
         }, {
@@ -126,7 +102,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           } ],
           "type" : "basic"
         } ]
@@ -145,10 +121,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -164,10 +140,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -183,10 +159,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -202,10 +178,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -221,10 +197,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -240,10 +216,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -259,10 +235,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -278,10 +254,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -297,10 +273,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -316,10 +292,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -335,10 +311,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -354,10 +330,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -373,10 +349,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -392,10 +368,10 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         }, {
@@ -411,16 +387,36 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal" ]
           }, {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos" ]
+            "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
           } ],
           "type" : "basic"
         } ]
       }, {
         "description" : "capskey",
         "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "escape"
+          } ],
+          "to_after_key_up" : [ {
+            "set_variable" : {
+              "name" : "hyper-mode",
+              "value" : 0
+            }
+          } ],
+          "from" : {
+            "key_code" : "caps_lock"
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "hyper-mode",
+              "value" : 1
+            }
+          } ],
+          "type" : "basic"
+        }, {
           "from" : {
             "key_code" : "x"
           },
@@ -996,6 +992,102 @@
           "to" : [ {
             "key_code" : "delete_or_backspace",
             "modifiers" : [ "left_option" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "left_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_arrow",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "up_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "up_arrow",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "down_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "down_arrow",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "right_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "left_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_control", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_arrow",
+            "modifiers" : [ "left_option", "left_shift" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "up_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_control", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "up_arrow",
+            "modifiers" : [ "left_option", "left_shift" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "down_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_control", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "down_arrow",
+            "modifiers" : [ "left_option", "left_shift" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "right_arrow",
+            "modifiers" : {
+              "mandatory" : [ "left_control", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_option", "left_shift" ]
           } ],
           "type" : "basic"
         }, {

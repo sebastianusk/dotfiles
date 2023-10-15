@@ -1,10 +1,10 @@
 {
  :layers {
-             :hyper-mode {:key :caps_lock :alone {:key :!Tup_arrow }}
+             ; :hyper-mode {:key :caps_lock :alone {:key :!Tup_arrow }}
              },
  :applications {
                 :terminal ["^org\\.alacritty", "^com\\.apple\\.terminal"]
-                :rdp ["^com\\.microsoft\\.rdc\\.macos"]
+                :rdp ["^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer"]
                 }
  :simlayer-threshold 1000
  :devices {
@@ -45,7 +45,10 @@
                  [:!Tz :!Cz [:!terminal :!rdp]]
                  ]}
         {:des "capskey",
-         :rules [:hyper-mode
+         :rules [
+                 [:caps_lock ["hyper-mode" 1] nil {:afterup ["hyper-mode" 0] :alone :escape}]
+
+                 :hyper-mode
                  ;; screenshot
                  [:x :!COx] ;shottr basic
                  [:s :!COTo] ;shottr text
@@ -134,6 +137,15 @@
         {:des "generic",
          :rules [
                  [:!Tdelete_or_backspace :!Odelete_or_backspace]
+                 [:!Tleft_arrow :!Oleft_arrow]
+                 [:!Tup_arrow :!Oup_arrow]
+                 [:!Tdown_arrow :!Odown_arrow]
+                 [:!Tright_arrow :!Oright_arrow]
+
+                 [:!STleft_arrow :!SOleft_arrow]
+                 [:!STup_arrow :!SOup_arrow]
+                 [:!STdown_arrow :!SOdown_arrow]
+                 [:!STright_arrow :!SOright_arrow]
 
                  ; quick navigate using Option + HJKL
                  [:!Oj :down_arrow]
@@ -168,5 +180,6 @@
                   [:return_or_enter {:pkey :button2}]
                   [:!On [["mouse_mode" 0] [:noti :cmdq]]]
                  ]}
+        ; https://dreymar.colemak.org/layers-extend.html
         ]
  }
