@@ -457,3 +457,5 @@ map <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR
 
 " Remap fold to z<space>
 nnoremap z<space> za
+
+lua require('init')

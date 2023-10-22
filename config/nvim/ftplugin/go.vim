@@ -28,4 +28,4 @@ let g:go_debug_windows = {
       \ 'stack':      'rightbelow 10new',
 \ }
 
-autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
