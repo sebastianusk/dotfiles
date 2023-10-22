@@ -5,5 +5,5 @@ return {
 	formatter = {
 		require("formatter.filetypes.terraform"),
 	},
-	config = {},
+  lspconfig = {},
 }

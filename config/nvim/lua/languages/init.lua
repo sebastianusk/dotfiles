@@ -1,9 +1,11 @@
 local generate = function()
 	local languages = {
 		require("languages/go"),
+		require("languages/json"),
 		require("languages/lua"),
 		require("languages/markdown"),
 		require("languages/terraform"),
+		require("languages/yaml"),
 	}
 
 	local lsp = {}
@@ -14,8 +16,8 @@ local generate = function()
 		if value["lsp"] ~= nil then
 			table.insert(lsp, value["lsp"])
 		end
-		if value["config"] ~= nil then
-			table.insert(config, { value["lsp"], value["config"] })
+		if value["lspconfig"] ~= nil then
+			table.insert(config, { value["lsp"], value["lspconfig"] })
 		else
 			table.insert(config, { value["lsp"], {} })
 		end

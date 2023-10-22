@@ -1,4 +1,5 @@
 return {
+	--[[ completion ]]
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
@@ -6,7 +7,9 @@ return {
 	"L3MON4D3/LuaSnip",
 	"saadparwaiz1/cmp_luasnip",
 	"hrsh7th/nvim-cmp",
+	--[[ lint ]]
 	"mfussenegger/nvim-lint",
+	--[[ lsp ]]
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
@@ -112,8 +115,8 @@ return {
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-			vim.keymap.set("n", "K", vim.diagnostic.goto_prev)
-			vim.keymap.set("n", "J", vim.diagnostic.goto_next)
+			vim.keymap.set("n", "[n", vim.diagnostic.goto_prev)
+			vim.keymap.set("n", "]n", vim.diagnostic.goto_next)
 			vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
 			-- Use LspAttach autocommand to only map the following keys
@@ -129,7 +132,9 @@ return {
 					local opts = { buffer = ev.buf }
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+					--[[ vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts) ]]
 					vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
 					vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
 					vim.keymap.set("n", "<space>wl", function()

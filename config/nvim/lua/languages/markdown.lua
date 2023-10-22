@@ -4,5 +4,5 @@ return {
 	formatter = {
 		require("formatter.filetypes.markdown").prettier,
 	},
-	config = {},
+	lspconfig = {},
 }

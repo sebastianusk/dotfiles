@@ -5,7 +5,7 @@ return {
 	formatter = {
 		require("formatter.filetypes.go"),
 	},
-	config = {
+	lspconfig = {
 		settings = {
 			gopls = {
 				analyses = {
