@@ -6,13 +6,12 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			require("lualine").setup({})
+			require("lualine").setup({
+				tabline = {
+					lualine_a = { "buffers" },
+				},
+			})
 		end,
-	},
-	{
-		"akinsho/bufferline.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		config = true,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",

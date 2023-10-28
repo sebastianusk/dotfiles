@@ -6,9 +6,11 @@ return {
 	"hrsh7th/cmp-cmdline",
 	"L3MON4D3/LuaSnip",
 	"saadparwaiz1/cmp_luasnip",
+	"nvimdev/lspsaga.nvim",
 	"hrsh7th/nvim-cmp",
 	--[[ lint ]]
 	"mfussenegger/nvim-lint",
+	{ "folke/neodev.nvim" },
 	--[[ lsp ]]
 	{
 		"williamboman/mason.nvim",
@@ -29,7 +31,11 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = languages.lsp,
 			})
+
+			require("neodev").setup({})
+
 			local lspconfig = require("lspconfig")
+			require("lspsaga").setup({})
 
 			local cmp = require("cmp")
 			cmp.setup({
