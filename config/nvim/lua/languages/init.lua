@@ -22,10 +22,14 @@ local generate = function()
 			table.insert(config, { value["lsp"], {} })
 		end
 		if value["formatter"] ~= nil then
-			formatter[value["filetype"]] = value["formatter"]
+			for _, filetype in pairs(value["filetype"]) do
+				formatter[filetype] = value["formatter"]
+			end
 		end
 		if value["formatter"] ~= nil then
-			lint[value["filetype"]] = value["lint"]
+			for _, filetype in pairs(value["filetype"]) do
+				lint[filetype] = value["lint"]
+			end
 		end
 	end
 

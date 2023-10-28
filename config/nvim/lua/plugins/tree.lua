@@ -6,8 +6,10 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	keys = {
-		{ "<Leader>\\", ":NvimTreeToggle<CR>" },
-		{ "<Leader>n", ":NvimTreeFindFile<CR>" },
+		-- { "<Leader>\\", ":NvimTreeToggle<CR>" },
+		{ "<Leader>\\", vim.cmd.NvimTreeToggle, desc = "Tree Toggle" },
+		-- { "<Leader>n", ":NvimTreeFindFile<CR>" },
+		{ "<Leader>n", vim.cmd.NvimTreeFindFile, desc = "Tree find file" },
 	},
 	config = function()
 		-- close when it's the last

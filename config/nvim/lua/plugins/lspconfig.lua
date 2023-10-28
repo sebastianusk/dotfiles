@@ -13,7 +13,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
-		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+		keys = { { "<Leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
 		cmd = "Mason",
 	},
 	{
@@ -71,6 +71,9 @@ return {
 				}),
 			})
 
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 			-- Set up lspconfig.
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			for _, value in pairs(languages.config) do
@@ -114,10 +117,10 @@ return {
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-			vim.keymap.set("n", "[n", vim.diagnostic.goto_prev)
-			vim.keymap.set("n", "]n", vim.diagnostic.goto_next)
-			vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+			vim.keymap.set("n", "<Leader>e", vim.diagnostic.open_float, { desc = "Diagnostic Open Float" })
+			vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Diagnostic Prev" })
+			vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Diagnostic Next" })
+			vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "Diagnostic set loc list" })
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
@@ -129,21 +132,45 @@ return {
 
 					-- Buffer local mappings.
 					-- See `:help vim.lsp.*` for documentation on any of the below functions
-					local opts = { buffer = ev.buf }
-					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = ev.buf })
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = ev.buf })
+					vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover description", buffer = ev.buf })
+					vim.keymap.set(
+						"n",
+						"gi",
+						vim.lsp.buf.implementation,
+						{ desc = "Go to implementation", buffer = ev.buf }
+					)
 					--[[ vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts) ]]
-					vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-					vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-					vim.keymap.set("n", "<space>wl", function()
+					vim.keymap.set(
+						"n",
+						"<Leader>wa",
+						vim.lsp.buf.add_workspace_folder,
+						{ desc = "Add workspace folder", buffer = ev.buf }
+					)
+					vim.keymap.set(
+						"n",
+						"<Leader>wr",
+						vim.lsp.buf.remove_workspace_folder,
+						{ desc = "Remove workspace folder", buffer = ev.buf }
+					)
+					vim.keymap.set("n", "<Leader>wl", function()
 						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-					end, opts)
-					vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-					vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-					vim.keymap.set({ "n", "v" }, "<space>a", vim.lsp.buf.code_action, opts)
-					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+					end, { desc = "List workspace folder", buffer = ev.buf })
+					vim.keymap.set(
+						"n",
+						"<Leader>D",
+						vim.lsp.buf.type_definition,
+						{ desc = "Type Definition", buffer = ev.buf }
+					)
+					vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, { desc = "Rename", buffer = ev.buf })
+					vim.keymap.set(
+						{ "n", "v" },
+						"<Leader>a",
+						vim.lsp.buf.code_action,
+						{ desc = "Code Action", buffer = ev.buf }
+					)
+					vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to References", buffer = ev.buf })
 				end,
 			})
 		end,

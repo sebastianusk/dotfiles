@@ -1,7 +1,7 @@
 return {
 	lsp = "gopls",
 	lint = { "golangci-lint" },
-	filetype = "go",
+	filetype = { "go" },
 	formatter = {
 		require("formatter.filetypes.go"),
 	},

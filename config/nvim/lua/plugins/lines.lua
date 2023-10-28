@@ -14,4 +14,9 @@ return {
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = true,
 	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
+	},
 }

@@ -1,9 +1,9 @@
 return {
 	lsp = "terraformls",
 	lint = { "tflint" },
-	filetype = "terraform",
+	filetype = { "terraform", "tf" },
 	formatter = {
 		require("formatter.filetypes.terraform"),
 	},
-  lspconfig = {},
+	lspconfig = {},
 }

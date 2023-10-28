@@ -1,7 +1,7 @@
 return {
 	lsp = "lua_ls",
 	lint = { "luacheck" },
-	filetype = "lua",
+	filetype = { "lua" },
 	formatter = {
 		require("formatter.filetypes.lua").stylua,
 	},

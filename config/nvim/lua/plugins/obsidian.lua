@@ -8,11 +8,11 @@ return {
 		"BufNewFile /home/sebastianuskh/obsidian/**.md",
 	},
 	keys = {
-		{ "<leader>ot", vim.cmd.ObsidianToday, desc = "Obsidian Today" },
-		{ "<leader>of", vim.cmd.ObsidianSearch, desc = "Obsidian Search" },
-		{ "<leader>op", vim.cmd.ObsidianQuickSwitch, desc = "Obsidian Switch" },
-		{ "<leader>ol", vim.cmd.ObsidianFollowLink, desc = "Obsidian Link" },
-		{ "<leader>ob", vim.cmd.ObsidianBacklinks, desc = "Obsidian Back Links" },
+		{ "<Leader>ot", vim.cmd.ObsidianToday, desc = "Obsidian Today" },
+		{ "<Leader>of", vim.cmd.ObsidianSearch, desc = "Obsidian Search" },
+		{ "<Leader>op", vim.cmd.ObsidianQuickSwitch, desc = "Obsidian Switch" },
+		{ "<Leader>ol", vim.cmd.ObsidianFollowLink, desc = "Obsidian Link" },
+		{ "<Leader>ob", vim.cmd.ObsidianBacklinks, desc = "Obsidian Back Links" },
 	},
 	dependencies = {
 		-- Required.

@@ -1,6 +1,6 @@
 return {
 	lsp = "yamlls",
-	filetype = "yaml",
+	filetype = { "yaml" },
 	formatter = {
 		require("formatter.filetypes.yaml").prettier,
 	},

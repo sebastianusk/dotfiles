@@ -1,6 +1,6 @@
 return {
 	lsp = "jsonls",
-	filetype = "json",
+	filetype = { "json" },
 	formatter = {
 		require("formatter.filetypes.json").prettier,
 	},
