@@ -123,10 +123,9 @@ return {
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-			vim.keymap.set("n", "<Leader>e", vim.diagnostic.open_float, { desc = "Diagnostic Open Float" })
 			vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Diagnostic Prev" })
 			vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Diagnostic Next" })
-			vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "Diagnostic set loc list" })
+			vim.keymap.set("n", "<Leader>qq", vim.diagnostic.setqflist, { desc = "Diagnostic set qf list" })
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
