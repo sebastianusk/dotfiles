@@ -100,3 +100,41 @@ function extract --description "Expand or extract bundled & compressed files"
       echo "unknown extension"
   end
 end
+
+function obsidian_today
+    echo "~/obsidian/$(date +%Y-%m-%d).md"
+end
+abbr -a ot --position anywhere --function obsidian_today
+
+function rec --description "Run asciinema rec"
+  set file $(date +"%y-%m-%d_%T")
+  if count $argv[1] > /dev/null
+    set file ( string join '' $file '-' $argv[1] )
+  end
+  set file ( string join '' "$HOME/asciinema/" $file '.cast')
+  asciinema rec $file
+end
+
+function fzf-rec --description "Search asciinema rec"
+  ls ~/asciinema | fzf
+end
+
+function rec-ot --description "select rect and add to obsidian today"
+  fzf-rec | read -l result; and asciinema cat ~/asciinema/$result | sed -e 's/\x1b\[[0-9;]*m//g' >> cuk
+end
+
+function tmpa --description "create tmp file on /tmp/files"
+  if not test -d /tmp/files/
+    mkdir /tmp/files
+  end
+  set file $(date +"%y-%m-%d_%T")
+  if count $argv[1] > /dev/null
+    set file ( string join '' $file '.' $argv[1])
+  end
+  set file (string join '' "/tmp/files/" $file)
+  nvim $file
+end
+
+function tmpl --description "find and edit the files on /tmp/files"
+  ls /tmp/files | fzf | read -l result; and nvim /tmp/files/$result
+end

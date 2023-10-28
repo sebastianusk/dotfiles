@@ -2,5 +2,5 @@ PatrickF1/fzf.fish
 jorgebucaran/autopair.fish
 danhper/fish-ssh-agent
 jethrokuan/z
-sebastianusk/plugin-git
-sebastianusk/plugin-kubectl
+jhillyerd/plugin-git
+blackjid/plugin-kubectl

@@ -15,6 +15,11 @@ alias dotfiles="tx start dotfiles"
 alias vsplit="tx start vsplit"
 alias hsplit="tx start hsplit"
 
+# obsidian aliases
+alias oo="nvim '+:ObsidianToday'"
+alias ov="tmux split-window -h nvim '+:ObsidianToday'"
+alias oh="tmux split-window -v nvim '+:ObsidianToday'"
+
 abbr --add kctx kubectl-ctx
 abbr --add kns kubectl-ns
 abbr --add kcm kubectl-kc
