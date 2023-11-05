@@ -55,4 +55,19 @@ M.formatters_by_ft = function()
 	return list
 end
 
+M.linters_by_ft = function()
+	local langs = get_languages()
+	local list = {}
+	for _, lang in pairs(langs) do
+		if lang["filetype"] ~= nil then
+			for _, ft in pairs(lang["filetype"]) do
+				if lang["linters"] ~= nil then
+					list[ft] = lang["linters"]
+				end
+			end
+		end
+	end
+	return list
+end
+
 return M

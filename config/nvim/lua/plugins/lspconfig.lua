@@ -8,8 +8,6 @@ return {
 	"saadparwaiz1/cmp_luasnip",
 	"nvimdev/lspsaga.nvim",
 	"hrsh7th/nvim-cmp",
-	--[[ lint ]]
-	"mfussenegger/nvim-lint",
 	{ "folke/neodev.nvim" },
 	--[[ lsp ]]
 	{
@@ -86,14 +84,6 @@ return {
 				config["capabilities"] = capabilities
 				lspconfig[value[1]].setup(config)
 			end
-
-			-- setup lint
-			require("lint").linters_by_ft = languages.lint
-			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-				callback = function()
-					require("lint").try_lint()
-				end,
-			})
 
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Diagnostic Prev" })
