@@ -40,4 +40,19 @@ M.tool_install_list = function()
 	return list
 end
 
+M.formatters_by_ft = function()
+	local langs = get_languages()
+	local list = {}
+	for _, lang in pairs(langs) do
+		if lang["filetype"] ~= nil then
+			for _, ft in pairs(lang["filetype"]) do
+				if lang["formatters"] ~= nil then
+					list[ft] = lang["formatters"]
+				end
+			end
+		end
+	end
+	return list
+end
+
 return M
