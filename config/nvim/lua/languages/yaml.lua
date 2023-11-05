@@ -1,10 +1,7 @@
 return {
 	lsp = { "yamlls" },
 	filetype = { "yaml" },
-	formatter = {
-		require("formatter.filetypes.yaml").prettier,
-	},
-	lint = { "yamllint" },
+		lint = { "yamllint" },
 	lspconfig = {
 		settings = {
 			yaml = {

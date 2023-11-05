@@ -10,7 +10,6 @@ local generate = function()
 
 	local lsp = {}
 	local config = {}
-	local formatter = {}
 	local lint = {}
 	for _, value in pairs(languages) do
 		if value["lsp"] ~= nil then
@@ -21,22 +20,11 @@ local generate = function()
 		else
 			table.insert(config, { value["lsp"][1], {} })
 		end
-		if value["formatter"] ~= nil then
-			for _, filetype in pairs(value["filetype"]) do
-				formatter[filetype] = value["formatter"]
-			end
-		end
-		if value["formatter"] ~= nil then
-			for _, filetype in pairs(value["filetype"]) do
-				lint[filetype] = value["lint"]
-			end
-		end
 	end
 
 	return {
 		lsp = lsp,
 		config = config,
-		formatter = formatter,
 		lint = lint,
 	}
 end

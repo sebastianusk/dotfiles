@@ -23,7 +23,6 @@ return {
 		dependencies = {
 			"mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"mhartington/formatter.nvim",
 		},
 		config = function()
 			local languages = require("languages")
@@ -96,32 +95,6 @@ return {
 				end,
 			})
 
-			local filetype = languages.formatter
-			filetype["*"] = {
-				require("formatter.filetypes.any").remove_trailing_whitespace,
-			}
-
-			require("formatter").setup({
-				logging = true,
-				log_level = vim.log.levels.WARN,
-				filetype = filetype,
-			})
-
-			vim.cmd([[
-        augroup FormatAutogroup
-          autocmd!
-          autocmd BufWritePost * FormatWrite
-        augroup END
-      ]])
-
-			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-				pattern = { "*.tf", "*.tfvars" },
-				callback = function()
-					vim.lsp.buf.format()
-				end,
-			})
-
-			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Diagnostic Prev" })
 			vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Diagnostic Next" })

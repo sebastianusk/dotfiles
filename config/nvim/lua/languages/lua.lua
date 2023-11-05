@@ -13,9 +13,6 @@ return {
 	},
 	lint = { "luacheck" },
 	filetype = { "lua" },
-	formatter = {
-		require("formatter.filetypes.lua").stylua,
-	},
 	formatters = { "stylua" },
 	linters = { "luacheck" },
 	lspconfig = {
