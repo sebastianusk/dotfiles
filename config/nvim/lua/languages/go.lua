@@ -1,5 +1,5 @@
 return {
-	lsp = "gopls",
+	lsp = { "gopls" },
 	lint = { "golangcilint" },
 	filetype = { "go" },
 	formatter = {

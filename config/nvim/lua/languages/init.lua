@@ -14,12 +14,12 @@ local generate = function()
 	local lint = {}
 	for _, value in pairs(languages) do
 		if value["lsp"] ~= nil then
-			table.insert(lsp, value["lsp"])
+			table.insert(lsp, value["lsp"][1])
 		end
 		if value["lspconfig"] ~= nil then
-			table.insert(config, { value["lsp"], value["lspconfig"] })
+			table.insert(config, { value["lsp"][1], value["lspconfig"] })
 		else
-			table.insert(config, { value["lsp"], {} })
+			table.insert(config, { value["lsp"][1], {} })
 		end
 		if value["formatter"] ~= nil then
 			for _, filetype in pairs(value["filetype"]) do

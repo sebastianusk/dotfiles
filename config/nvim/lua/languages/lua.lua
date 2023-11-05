@@ -1,5 +1,5 @@
 return {
-	lsp = "lua_ls",
+	lsp = { "lua_ls" },
 	lint = { "luacheck" },
 	filetype = { "lua" },
 	formatter = {

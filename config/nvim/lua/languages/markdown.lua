@@ -1,5 +1,5 @@
 return {
-	lsp = "marksman",
+	lsp = { "marksman" },
 	filetype = { "markdown" },
 	formatter = {
 		require("formatter.filetypes.markdown").prettier,

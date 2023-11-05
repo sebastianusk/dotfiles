@@ -1,5 +1,5 @@
 return {
-	lsp = "terraformls",
+	lsp = { "terraformls" },
 	lint = { "tflint" },
 	filetype = { "terraform", "tf" },
 	formatter = {
