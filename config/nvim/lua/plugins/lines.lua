@@ -10,6 +10,9 @@ return {
         tabline = {
           lualine_a = { "buffers" },
         },
+        sections = {
+          lualine_c = { { "filename", path = 3 } }
+        }
       })
     end,
   },
