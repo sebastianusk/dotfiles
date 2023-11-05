@@ -4,6 +4,7 @@ local get_languages = function()
   return {
     require("languages/go"),
     require("languages/json"),
+    require("languages/helm"),
     require("languages/lua"),
     require("languages/markdown"),
     require("languages/terraform"),
