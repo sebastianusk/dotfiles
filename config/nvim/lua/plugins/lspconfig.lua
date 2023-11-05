@@ -7,7 +7,7 @@ return {
       "hrsh7th/nvim-cmp",
     },
     config = function()
-      local configs = require("languages.newinit").lsp_config()
+      local configs = require("languages").lsp_config()
       local lspconfig = require("lspconfig")
       require("lspsaga").setup({})
 

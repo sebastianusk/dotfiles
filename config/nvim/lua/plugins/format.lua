@@ -17,7 +17,7 @@ return {
     },
   },
   config = function()
-    local formatters = require("languages.newinit").formatters_by_ft()
+    local formatters = require("languages").formatters_by_ft()
     formatters["*"] = { "trim_whitespace", "trim_newlines " }
     require("conform").setup({
       -- formatters_by_ft = formatters,
