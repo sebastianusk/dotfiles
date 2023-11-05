@@ -33,7 +33,15 @@ M.tool_install_list = function()
     end
     if lang["linters"] ~= nil then
       for _, linter in pairs(lang["linters"]) do
-        table.insert(list, linter)
+        if type(linter) == "string" then
+          table.insert(list, linter)
+        else
+          if linter["mason"] ~= nil then
+            table.insert(list, linter["mason"])
+          else
+            table.insert(list, linter[1])
+          end
+        end
       end
     end
   end
@@ -62,7 +70,15 @@ M.linters_by_ft = function()
     if lang["filetype"] ~= nil then
       for _, ft in pairs(lang["filetype"]) do
         if lang["linters"] ~= nil then
-          list[ft] = lang["linters"]
+          local linters = {}
+          for _, linter in pairs(lang["linters"]) do
+            if type(linter) == "string" then
+              table.insert(linters, linter)
+            else
+              table.insert(linters, linter[1])
+            end
+          end
+          list[ft] = linters
         end
       end
     end

@@ -13,7 +13,7 @@ return {
       },
     }
   },
-  linters = { "golangci-lint" },
+  linters = { { "golangcilint", mason = "golangci-lint" } },
   formatters = {
     "gofumpt",
     "goimports",

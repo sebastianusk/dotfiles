@@ -75,7 +75,7 @@ return {
           vim.keymap.set(
             { "n", "v" },
             "<Leader>a",
-            vim.lsp.buf.code_action,
+            "<cmd>Lspsaga code_action<CR>",
             { desc = "Code Action", buffer = ev.buf }
           )
           vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to References", buffer = ev.buf })
