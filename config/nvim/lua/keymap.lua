@@ -21,5 +21,7 @@ vim.keymap.set("n", "L", "g$")
 -- make sure paste will stay
 vim.keymap.set("v", "p", '"_dP')
 
-vim.keymap.set("n", "<Leader>qc", vim.cmd.cclose, { desc = "Close quick fix" })
+vim.keymap.set("n", "<Leader>qq", vim.cmd.cclose, { desc = "Close quick fix" })
 vim.keymap.set("n", "<Leader>ll", vim.cmd.lclose, { desc = "Close location list" })
+
+vim.keymap.set("n", "<Leader>cc", vim.cmd.noh, { desc = "Clear highlight" })

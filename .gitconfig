@@ -10,8 +10,8 @@
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	undo = reset HEAD~1 --mixed
-[url "git@github.com:payfazz"]
-  insteadOf = https://github.com/payfazz
+[url "git@github.com:"]
+  insteadOf = https://github.com/
 [pull]
 	rebase = false
 [core]

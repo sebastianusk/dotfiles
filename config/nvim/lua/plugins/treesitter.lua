@@ -2,10 +2,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    keys = {
-      { "<leader>zz", "za", desc = "trigger fold" },
-      { "<leader>zr", "zR", desc = "trigger fold" },
-    },
     config = function()
       local configs = require("nvim-treesitter.configs")
 
