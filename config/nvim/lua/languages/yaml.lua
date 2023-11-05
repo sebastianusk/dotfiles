@@ -1,7 +1,7 @@
 return {
 	lsp = { "yamlls" },
 	filetype = { "yaml" },
-		lint = { "yamllint" },
+	lint = { "yamllint" },
 	lspconfig = {
 		settings = {
 			yaml = {

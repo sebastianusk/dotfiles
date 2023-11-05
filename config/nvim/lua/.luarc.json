@@ -36,6 +36,7 @@
         "/Users/sebastianuskh/.local/share/nvim/lazy/mason.nvim/lua",
         "/Users/sebastianuskh/.local/share/nvim/lazy/nvim-surround/lua",
         "/Users/sebastianuskh/dotfiles/config/nvim/lua",
-        "${3rd}/luv/library"
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
     ]
 }

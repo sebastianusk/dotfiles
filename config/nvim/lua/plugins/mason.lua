@@ -1,5 +1,11 @@
 return {
-	{ "williamboman/mason.nvim", opts = {} },
+	{
+		"williamboman/mason.nvim",
+		build = ":MasonUpdate",
+		keys = { { "<Leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+		opts = {},
+		cmd = "Mason",
+	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = {
