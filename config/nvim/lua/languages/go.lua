@@ -1,16 +1,23 @@
 return {
-	lsp = { "gopls" },
-	lint = { "golangcilint" },
-	filetype = { "go" },
-	lspconfig = {
-		settings = {
-			gopls = {
-				analyses = {
-					unusedparams = true,
-				},
-				staticcheck = true,
-				gofumpt = true,
-			},
-		},
-	},
+  lsp = {
+    "gopls",
+    lspconfig = {
+      settings = {
+        gopls = {
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
+          gofumpt = true,
+        },
+      },
+    }
+  },
+  linters = { "golangci-lint" },
+  formatters = {
+    "gofumpt",
+    "goimports",
+    "golines"
+  },
+  filetype = { "go" },
 }

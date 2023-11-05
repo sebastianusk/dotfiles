@@ -1,6 +1,6 @@
 return {
-	lsp = { "jsonls" },
-	filetype = { "json" },
-	lint = { "jsonlint" },
-	lspconfig = {},
+  lsp = { "jsonls" },
+  filetype = { "json" },
+  linters = { "jsonlint" },
+  formatters = { "prettier" },
 }

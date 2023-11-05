@@ -1,6 +1,5 @@
 return {
-	lsp = { "terraformls" },
-	lint = { "tflint" },
-	filetype = { "terraform", "tf" },
-	lspconfig = {},
+  lsp = { "terraformls" },
+  lint = { "tflint" },
+  filetype = { "terraform", "tf" },
 }

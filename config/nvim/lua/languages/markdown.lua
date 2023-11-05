@@ -1,5 +1,6 @@
 return {
-	lsp = { "marksman" },
-	filetype = { "markdown" },
-	lspconfig = {},
+  lsp = { "marksman" },
+  filetype = { "markdown" },
+  formatters = { "prettier" },
+  linters = { "vale" },
 }
