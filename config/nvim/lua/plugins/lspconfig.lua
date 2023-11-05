@@ -9,7 +9,19 @@ return {
     config = function()
       local configs = require("languages").lsp_config()
       local lspconfig = require("lspconfig")
-      require("lspsaga").setup({})
+      require("lspsaga").setup({
+        finder = {
+          keys = {
+            toggle_or_open = "<CR>"
+          }
+        },
+        rename = {
+          keys = {
+            quit = "<esc>"
+          }
+        }
+
+      })
 
       -- Set up lspconfig.
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -26,8 +38,8 @@ return {
       end
 
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Diagnostic Prev" })
-      vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Diagnostic Next" })
+      vim.keymap.set("n", "[n", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Diagnostic Prev" })
+      vim.keymap.set("n", "]n", "<Cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Diagnostic Next" })
       vim.keymap.set("n", "<Leader>qq", vim.diagnostic.setqflist, { desc = "Diagnostic set qf list" })
 
       -- Use LspAttach autocommand to only map the following keys
@@ -40,8 +52,11 @@ return {
 
           -- Buffer local mappings.
           -- See `:help vim.lsp.*` for documentation on any of the below functions
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = ev.buf })
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = ev.buf })
+          vim.keymap.set("n", "gD", "<Cmd>Lspsaga finder<CR>",
+            { desc = "Go to declaration", buffer = ev.buf })
+          vim.keymap.set("n", "gt", "<Cmd>Lspsaga goto_type_definition<CR>",
+            { desc = "Go to type definition", buffer = ev.buf })
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover description", buffer = ev.buf })
           vim.keymap.set(
             "n",
@@ -71,7 +86,7 @@ return {
             vim.lsp.buf.type_definition,
             { desc = "Type Definition", buffer = ev.buf }
           )
-          vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, { desc = "Rename", buffer = ev.buf })
+          vim.keymap.set("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", { desc = "Rename", buffer = ev.buf })
           vim.keymap.set(
             { "n", "v" },
             "<Leader>a",
