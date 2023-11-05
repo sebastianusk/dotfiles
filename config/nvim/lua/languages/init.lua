@@ -81,5 +81,15 @@ M.lsp_config = function()
   return list
 end
 
-return M
+M.additional_plugins = function()
+  local langs = get_languages()
+  local list = {}
+  for _, lang in pairs(langs) do
+    if lang["plugins"] ~= nil then
+      table.insert(list, lang["plugins"])
+    end
+  end
+  return list
+end
 
+return M

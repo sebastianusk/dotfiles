@@ -1,7 +1,7 @@
 local function compare_to_clipboard()
-	local ftype = vim.api.nvim_eval("&filetype")
-	vim.cmd(string.format(
-		[[
+  local ftype = vim.api.nvim_eval("&filetype")
+  vim.cmd(string.format(
+    [[
     execute "normal! \"xy"
     vsplit
     enew
@@ -15,9 +15,9 @@ local function compare_to_clipboard()
     normal! "xP
     diffthis
   ]],
-		ftype,
-		ftype
-	))
+    ftype,
+    ftype
+  ))
 end
 
 vim.keymap.set("x", "<Space>d", compare_to_clipboard, { desc = "Compare to clipboard" })
