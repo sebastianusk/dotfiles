@@ -1,10 +1,17 @@
 return {
   {
+    "sindrets/diffview.nvim",
+    keys = {
+      { "<leader>hd", "<cmd>DiffviewOpen<cr>", desc = "Open diff" },
+      { "<leader>hd", "<cmd>DiffviewOpen<cr>", desc = "Open diff" },
+    },
+  },
+  {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim", -- optional
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "sindrets/diffview.nvim",
     },
     keys = {
       {
@@ -69,9 +76,6 @@ return {
           end, { desc = "Blame Line" })
           map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "Current Line Blame" })
           map("n", "<leader>hd", gs.diffthis, { desc = "Git Diff" })
-          map("n", "<leader>hD", function()
-            gs.diffthis("~")
-          end, { desc = "Diff Tilde" })
           map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle Deleted" })
 
           -- Text object
