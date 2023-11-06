@@ -20,6 +20,12 @@ return {
             quit = "<esc>",
           },
         },
+        outline = {
+          keys = {
+            toggle_or_jump = "<space>",
+            jump = "<cr>",
+          },
+        },
       })
 
       -- Set up lspconfig.
@@ -40,6 +46,7 @@ return {
       vim.keymap.set("n", "[n", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Diagnostic Prev" })
       vim.keymap.set("n", "]n", "<Cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Diagnostic Next" })
       vim.keymap.set("n", "<Leader>qd", vim.diagnostic.setqflist, { desc = "Diagnostic set qf list" })
+      vim.keymap.set("n", "<Leader>\\", "<cmd>Lspsaga outline<CR>", { desc = "Diagnostic set qf list" })
 
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer

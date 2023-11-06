@@ -7,7 +7,7 @@ return {
   },
   keys = {
     -- { "<Leader>\\", ":NvimTreeToggle<CR>" },
-    { "<Leader>\\", vim.cmd.NvimTreeToggle, desc = "Tree Toggle" },
+    { "<Leader>|", vim.cmd.NvimTreeToggle, desc = "Tree Toggle" },
     -- { "<Leader>n", ":NvimTreeFindFile<CR>" },
     { "<Leader>n", vim.cmd.NvimTreeFindFile, desc = "Tree find file" },
   },
