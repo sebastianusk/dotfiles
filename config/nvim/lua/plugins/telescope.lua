@@ -7,7 +7,8 @@ return {
   keys = {
     { "<C-P>", require("telescope.builtin").find_files, desc = "Find Files" },
     { "<C-F>", require("telescope.builtin").live_grep, desc = "Search String" },
-    { "<leader>gh", require("telescope.builtin").git_bcommits, desc = "Buffer Commit History" },
+    { "<leader>hl", require("telescope.builtin").git_bcommits, desc = "Buffer Commit Log" },
+    { "<leader>hc", require("telescope.builtin").git_commits, desc = "Commit Log" },
     { "<leader>u", "<cmd>Telescope undo<cr>", desc = "Find Files" },
   },
   config = function()
