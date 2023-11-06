@@ -11,13 +11,13 @@ return {
           gofumpt = true,
         },
       },
-    }
+    },
   },
   linters = { { "golangcilint", mason = "golangci-lint" } },
   formatters = {
     "gofumpt",
     "goimports",
-    "golines"
+    "golines",
   },
   filetype = { "go" },
 }

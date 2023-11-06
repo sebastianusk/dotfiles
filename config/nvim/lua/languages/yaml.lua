@@ -10,14 +10,14 @@ return {
       settings = {
         yaml = {
           schemas = {
-            ['https://json.schemastore.org/chart.json'] = "templates/*.{yml,yaml}",
+            ["https://json.schemastore.org/chart.json"] = "templates/*.{yml,yaml}",
           },
           schemaStore = {
             enable = true,
           },
         },
       },
-    }
+    },
   },
   filetype = { "yaml" },
   linters = { "yamllint" },

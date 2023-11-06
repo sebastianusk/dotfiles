@@ -7,7 +7,7 @@ return {
     },
     keys = {
       { "<Leader>gl", ":Gclog -10 -- %<CR>", desc = "Show Commit History" },
-      { "<Leader>gg", vim.cmd.Git,           desc = "Fugitive" },
+      { "<Leader>gg", vim.cmd.Git, desc = "Fugitive" },
     },
   },
   {
