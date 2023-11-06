@@ -1,11 +1,17 @@
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "debugloop/telescope-undo.nvim",
+  },
+  keys = {
+    { "<C-P>", require("telescope.builtin").find_files, desc = "Find Files" },
+    { "<C-F>", require("telescope.builtin").live_grep, desc = "Search String" },
+    { "<leader>|", require("telescope.builtin").treesitter, desc = "Treesitter" },
+    { "<leader>gh", require("telescope.builtin").git_bcommits, desc = "Buffer Commit History" },
+    { "<leader>u", "<cmd>Telescope undo<cr>", desc = "Find Files" },
+  },
   config = function()
-    local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<C-P>", builtin.find_files, { desc = "Find Files" })
-    vim.keymap.set("n", "<C-F>", builtin.live_grep, { desc = "Search All" })
-    vim.keymap.set("n", "<leader>|", builtin.treesitter, { desc = "Search Treesitter" })
     require("telescope").setup({
       defaults = {
         mappings = {
@@ -15,5 +21,6 @@ return {
         },
       },
     })
+    require("telescope").load_extension("undo")
   end,
 }

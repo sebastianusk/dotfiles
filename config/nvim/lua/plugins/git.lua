@@ -1,14 +1,21 @@
 return {
   {
-    "tpope/vim-fugitive",
-    lazy = false,
+    "NeogitOrg/neogit",
     dependencies = {
-      "tpope/vim-unimpaired",
+      "nvim-lua/plenary.nvim", -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim", -- optional
     },
     keys = {
-      { "<Leader>gl", ":Gclog -10 -- %<CR>", desc = "Show Commit History" },
-      { "<Leader>gg", vim.cmd.Git, desc = "Fugitive" },
+      {
+        "<leader>gg",
+        function()
+          require("neogit").open()
+        end,
+        desc = "Open Neogit",
+      },
     },
+    config = true,
   },
   {
     "lewis6991/gitsigns.nvim",
