@@ -30,4 +30,16 @@ return {
       })
     end,
   },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    dependencies = {
+      "mason.nvim",
+    },
+    config = function()
+      local langs = require("languages")
+      require("mason-nvim-dap").setup({
+        ensure_installed = langs.dap_install_list(),
+      })
+    end,
+  },
 }

@@ -20,4 +20,6 @@ return {
     "golines",
   },
   filetype = { "go" },
+  debuggers = { "delve" },
+  plugins = { "https://github.com/leoluz/nvim-dap-go", opts = {} },
 }

@@ -49,6 +49,19 @@ M.tool_install_list = function()
   return list
 end
 
+M.dap_install_list = function()
+  local langs = get_languages()
+  local list = {}
+  for _, lang in pairs(langs) do
+    if lang["debuggers"] ~= nil then
+      for _, debugger in pairs(lang["debuggers"]) do
+        table.insert(list, debugger)
+      end
+    end
+  end
+  return list
+end
+
 M.formatters_by_ft = function()
   local langs = get_languages()
   local list = {}

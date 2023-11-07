@@ -30,4 +30,4 @@ vim.keymap.set("n", "[q", vim.cmd.cprevious, { desc = "Prev Quick Search" })
 vim.keymap.set("n", "]l", vim.cmd.lnext, { desc = "Next List Search" })
 vim.keymap.set("n", "[l", vim.cmd.lprevious, { desc = "Prev List Search" })
 
-vim.keymap.set("n", "<leader>dd", "<C-W><C-O>", { desc = "Close others Windows" })
+vim.keymap.set("n", "<leader>wd", "<C-W><C-O>", { desc = "Close others Windows" })
