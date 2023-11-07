@@ -38,5 +38,9 @@ return {
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
     require("nvim-tree").setup({})
+
+    local utils = require("utls.nvim-tree")
+    vim.keymap.set("n", "<c-p>", utils.launch_find_files, { desc = "Launch Find Files" })
+    vim.keymap.set("n", "<c-f>", utils.launch_live_grep, { desc = "Launch Live Grep" })
   end,
 }
