@@ -1,12 +1,5 @@
 return {
   {
-    "sindrets/diffview.nvim",
-    keys = {
-      { "<leader>hd", "<cmd>DiffviewOpen<cr>", desc = "Open diff" },
-      { "<leader>hd", "<cmd>DiffviewOpen<cr>", desc = "Open diff" },
-    },
-  },
-  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",

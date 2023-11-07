@@ -41,6 +41,6 @@ return {
 
     local utils = require("utls.nvim-tree")
     vim.keymap.set("n", "<c-p>", utils.launch_find_files, { desc = "Launch Find Files" })
-    vim.keymap.set("n", "<c-f>", utils.launch_live_grep, { desc = "Launch Live Grep" })
+    vim.keymap.set("n", "<c-g>", utils.launch_live_grep, { desc = "Launch Live Grep" })
   end,
 }
