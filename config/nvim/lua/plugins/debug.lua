@@ -37,6 +37,52 @@ return {
         end,
         desc = "Debug Step Over",
       },
+      {
+        "<leader>dr",
+        function()
+          require("dap").repl.open()
+        end,
+        desc = "Debug Open REPL",
+      },
+      {
+        "<leader>dl",
+        function()
+          require("dap").run_last()
+        end,
+        desc = "Debug Run Last",
+      },
+      {
+        "<leader>dh",
+        function()
+          require("dap.ui.widgets").hover()
+        end,
+        mode = { "n", "v" },
+        desc = "Debug hover UI",
+      },
+      {
+        "<leader>dp",
+        function()
+          require("dap.ui.widgets").preview()
+        end,
+        mode = { "n", "v" },
+        desc = "Debug preview UI",
+      },
+      {
+        "<leader>df",
+        function()
+          local widgets = require("dap.ui.widgets")
+          widgets.centered_float(widgets.frames)
+        end,
+        desc = "Debug float UI frames",
+      },
+      {
+        "<leader>ds",
+        function()
+          local widgets = require("dap.ui.widgets")
+          widgets.centered_float(widgets.scopes)
+        end,
+        desc = "Debug float UI scopes",
+      },
     },
   },
   {
