@@ -12,13 +12,17 @@ return {
     { "<leader>u", "<cmd>Telescope undo<cr>", desc = "Find Files" },
   },
   config = function()
+    local actions = require("telescope.actions")
     require("telescope").setup({
       defaults = {
         mappings = {
           i = {
             ["<esc>"] = require("telescope.actions").close,
+            ["<C-j>"] = actions.cycle_previewers_next,
+            ["<C-k>"] = actions.cycle_previewers_prev,
           },
         },
+        layout_strategy = "vertical",
       },
     })
     require("telescope").load_extension("undo")
