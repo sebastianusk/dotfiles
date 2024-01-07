@@ -3,10 +3,13 @@ local M = {}
 local get_languages = function()
   return {
     require("languages/go"),
+    require("languages/javascript"),
     require("languages/json"),
+    require("languages/jsonnet"),
     require("languages/helm"),
     require("languages/lua"),
     require("languages/markdown"),
+    require("languages/svelte"),
     require("languages/terraform"),
     require("languages/yaml"),
   }
