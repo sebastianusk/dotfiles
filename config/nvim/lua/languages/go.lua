@@ -20,5 +20,4 @@ return {
     "golines",
   },
   filetype = { "go" },
-  debuggers = { "delve" },
 }
