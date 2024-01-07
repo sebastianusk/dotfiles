@@ -2,7 +2,7 @@
 ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
 ln -sfn ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
 ln -sfn ~/dotfiles/config/nvim ~/.config/nvim
-ln -sfn ~/dotfiles/config/alacritty.yml ~/.config/alacritty.yml
+ln -sfn ~/dotfiles/config/alacritty ~/.config/alacritty
 
 mkdir -p ~/.config/fish
 ln -sfn ~/dotfiles/config/fish/config.fish ~/.config/fish/config.fish
