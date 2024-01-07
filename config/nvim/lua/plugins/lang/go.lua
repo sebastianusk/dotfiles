@@ -1,9 +1,12 @@
+local mason = require("utls.mason")
 return {
   { "leoluz/nvim-dap-go", opts = {} },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    opts = {
-      ensure_installed = { "delve" },
-    },
-  },
+  mason.ensure_install({
+    "delve",
+    "gofumpt",
+    "goimports",
+    "golines",
+    "golangci-lint",
+    "gopls",
+  }),
 }

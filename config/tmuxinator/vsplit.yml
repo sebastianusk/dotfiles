@@ -7,6 +7,3 @@ windows:
       panes:
         - vim
         - tmux rename-session (basename $PWD)
-  - git:
-      panes:
-        - lazygit
