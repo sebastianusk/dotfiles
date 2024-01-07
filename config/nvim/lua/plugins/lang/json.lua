@@ -1,10 +1,11 @@
-local mason = require("utls.mason")
+local install = require("utls.install")
 return {
-  mason.ensure_install({
+  install.ensure_installed_mason({
     "json-lsp",
     "jsonlint",
     "prettier",
   }),
+  install.ensure_installed_treesitter({ "json", "json5", "jsonc" }),
   {
     "stevearc/conform.nvim",
     optional = true,

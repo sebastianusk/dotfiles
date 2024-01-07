@@ -1,13 +1,19 @@
-local mason = require("utls.mason")
+local install = require("utls.install")
 return {
   { "leoluz/nvim-dap-go", opts = {} },
-  mason.ensure_install({
+  install.ensure_installed_mason({
     "delve",
     "gofumpt",
     "goimports",
     "golines",
     "golangci-lint",
     "gopls",
+  }),
+  install.ensure_installed_treesitter({
+    "go",
+    "gomod",
+    "gowork",
+    "gosum",
   }),
   {
     "stevearc/conform.nvim",

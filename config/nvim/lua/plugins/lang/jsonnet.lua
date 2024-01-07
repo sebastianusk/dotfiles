@@ -1,6 +1,7 @@
-local mason = require("utls.mason")
+local install = require("utls.install")
 return {
-  mason.ensure_install({
+  install.ensure_installed_mason({
     "jsonnet-language-server",
   }),
+  install.ensure_installed_treesitter({ "jsonnet" }),
 }

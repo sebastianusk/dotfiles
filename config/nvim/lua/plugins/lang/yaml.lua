@@ -1,10 +1,11 @@
-local mason = require("utls.mason")
+local install = require("utls.install")
 return {
-  mason.ensure_install({
+  install.ensure_installed_mason({
     "yaml-language-server",
     "yamllint",
     "prettier",
   }),
+  install.ensure_installed_treesitter({ "yaml" }),
   {
     "stevearc/conform.nvim",
     optional = true,

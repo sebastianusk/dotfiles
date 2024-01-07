@@ -1,11 +1,12 @@
-local mason = require("utls.mason")
+local install = require("utls.install")
 return {
   { "folke/neodev.nvim", opts = {}, dependencies = "nvim-cmp" },
-  mason.ensure_install({
+  install.ensure_installed_mason({
     "lua-language-server",
     "luacheck",
     "stylua",
   }),
+  install.ensure_installed_treesitter({ "lua", "luadoc", "luap" }),
   {
     "stevearc/conform.nvim",
     optional = true,

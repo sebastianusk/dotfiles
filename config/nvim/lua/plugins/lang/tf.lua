@@ -1,9 +1,13 @@
-local mason = require("utls.mason")
+local install = require("utls.install")
 return {
-  mason.ensure_install({
+  install.ensure_installed_mason({
     "terraform-ls",
     "tflint",
     "terraform",
+  }),
+  install.ensure_installed_treesitter({
+    "terraform",
+    "hcl",
   }),
   {
     "stevearc/conform.nvim",

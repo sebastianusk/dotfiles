@@ -1,9 +1,13 @@
-local mason = require("utls.mason")
+local install = require("utls.install")
 return {
-  mason.ensure_install({
+  install.ensure_installed_mason({
     "typescript-language-server",
     "eslint_d",
     "prettier",
+  }),
+  install.ensure_installed_treesitter({
+    "typescript",
+    "tsx",
   }),
   {
     "stevearc/conform.nvim",

@@ -1,10 +1,11 @@
-local mason = require("utls.mason")
+local install = require("utls.install")
 return {
-  mason.ensure_install({
+  install.ensure_installed_mason({
     "marksman",
     "vale",
     "prettier",
   }),
+  install.ensure_installed_treesitter({ "markdown" }),
   {
     "stevearc/conform.nvim",
     optional = true,
