@@ -5,4 +5,13 @@ return {
     "jsonlint",
     "prettier",
   }),
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        json = { "prettier" },
+      },
+    },
+  },
 }
