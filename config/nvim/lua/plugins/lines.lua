@@ -5,16 +5,14 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      require("lualine").setup({
-        tabline = {
-          lualine_a = { "buffers" },
-        },
-        sections = {
-          lualine_c = { { "filename", path = 3 } },
-        },
-      })
-    end,
+    opts = {
+      tabline = {
+        lualine_a = { "buffers" },
+      },
+      sections = {
+        lualine_c = { { "filename", path = 3 } },
+      },
+    },
   },
   {
     "lukas-reineke/indent-blankline.nvim",
