@@ -6,7 +6,6 @@ return {
     "luacheck",
     "stylua",
   }),
-  install.ensure_installed_treesitter({ "lua", "luadoc", "luap" }),
   {
     "stevearc/conform.nvim",
     optional = true,
