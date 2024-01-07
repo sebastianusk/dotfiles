@@ -25,5 +25,4 @@ return {
   filetype = { "lua" },
   formatters = { "stylua" },
   linters = { "luacheck" },
-  plugins = { "folke/neodev.nvim", opts = {}, dependencies = "nvim-cmp" },
 }
