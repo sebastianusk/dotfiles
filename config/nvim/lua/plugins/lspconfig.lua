@@ -2,51 +2,77 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "nvimdev/lspsaga.nvim",
       "hrsh7th/nvim-cmp",
+      { "williamboman/mason-lspconfig.nvim", dependencies = "williamboman/mason.nvim" },
+      {
+        "nvimdev/lspsaga.nvim",
+        keys = {
+          { "[n", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Diagnostic Prev" },
+          { "]n", "<Cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Diagnostic Next" },
+          { "<Leader>qd", vim.diagnostic.setqflist, desc = "Diagnostic set qf list" },
+          { "<Leader>\\", "<cmd>Lspsaga outline<CR>", desc = "Diagnostic set qf list" },
+        },
+        opts = {
+          finder = {
+            keys = {
+              toggle_or_open = "<CR>",
+            },
+          },
+          rename = {
+            keys = {
+              quit = "<esc>",
+            },
+          },
+          outline = {
+            keys = {
+              toggle_or_jump = "<space>",
+              jump = "<cr>",
+            },
+          },
+        },
+      },
     },
-    config = function()
-      local configs = require("languages").lsp_config()
-      local lspconfig = require("lspconfig")
-      require("lspsaga").setup({
-        finder = {
-          keys = {
-            toggle_or_open = "<CR>",
-          },
-        },
-        rename = {
-          keys = {
-            quit = "<esc>",
-          },
-        },
-        outline = {
-          keys = {
-            toggle_or_jump = "<space>",
-            jump = "<cr>",
-          },
-        },
-      })
+    config = function(_, opts)
+      local servers = opts.servers
+      local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+      local capabilities = vim.tbl_deep_extend(
+        "force",
+        {},
+        vim.lsp.protocol.make_client_capabilities(),
+        has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+        opts.capabilities or {}
+      )
 
-      -- Set up lspconfig.
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      for _, value in pairs(configs) do
-        if value["lspconfig"] ~= nil then
-          local config = value["lspconfig"]
-          config["capabilities"] = capabilities
-          lspconfig[value[1]].setup(config)
-        else
-          local config = {}
-          config["capabilities"] = capabilities
-          lspconfig[value[1]].setup(config)
+      local function setup(server)
+        local server_opts = vim.tbl_deep_extend("force", {
+          capabilities = vim.deepcopy(capabilities),
+        }, servers[server] or {})
+        require("lspconfig")[server].setup(server_opts)
+      end
+
+      -- get all the servers that are available through mason-lspconfig
+      local have_mason, mlsp = pcall(require, "mason-lspconfig")
+      local all_mslp_servers = {}
+      if have_mason then
+        all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+      end
+
+      local ensure_installed = {} ---@type string[]
+      for server, server_opts in pairs(servers) do
+        if server_opts then
+          server_opts = server_opts == true and {} or server_opts
+          -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
+          if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
+            setup(server)
+          else
+            ensure_installed[#ensure_installed + 1] = server
+          end
         end
       end
 
-      -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      vim.keymap.set("n", "[n", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Diagnostic Prev" })
-      vim.keymap.set("n", "]n", "<Cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Diagnostic Next" })
-      vim.keymap.set("n", "<Leader>qd", vim.diagnostic.setqflist, { desc = "Diagnostic set qf list" })
-      vim.keymap.set("n", "<Leader>\\", "<cmd>Lspsaga outline<CR>", { desc = "Diagnostic set qf list" })
+      if have_mason then
+        mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
+      end
 
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer

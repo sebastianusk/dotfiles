@@ -1,13 +1,15 @@
 local install = require("utls.install")
+local lsp = require("utls.lsp")
 return {
   install.ensure_installed_mason({
-    "terraform-ls",
     "tflint",
-    "terraform",
   }),
   install.ensure_installed_treesitter({
     "terraform",
     "hcl",
+  }),
+  lsp.lsp_config_server({
+    terraformls = {},
   }),
   {
     "stevearc/conform.nvim",

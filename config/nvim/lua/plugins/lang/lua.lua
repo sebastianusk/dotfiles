@@ -1,4 +1,5 @@
 local install = require("utls.install")
+local lsp = require("utls.lsp")
 return {
   { "folke/neodev.nvim", opts = {}, dependencies = "nvim-cmp" },
   install.ensure_installed_mason({
@@ -15,4 +16,26 @@ return {
       },
     },
   },
+  lsp.lsp_config_server({
+    lua_ls = {
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            library = {
+              vim.env.VIMRUNTIME,
+            },
+          },
+          completion = {
+            callSnippet = "Replace",
+          },
+        },
+      },
+    },
+  }),
 }

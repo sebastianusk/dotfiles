@@ -1,4 +1,5 @@
 local install = require("utls.install")
+local lsp = require("utls.lsp")
 return {
   install.ensure_installed_mason({
     "marksman",
@@ -6,6 +7,9 @@ return {
     "prettier",
   }),
   install.ensure_installed_treesitter({ "markdown" }),
+  lsp.lsp_config_server({
+    marksman = {},
+  }),
   {
     "stevearc/conform.nvim",
     optional = true,
