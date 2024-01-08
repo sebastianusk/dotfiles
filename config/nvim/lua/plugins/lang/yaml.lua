@@ -42,6 +42,9 @@ return {
             -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
             url = "",
           },
+          schema = {
+            kubernetes = "*.yaml",
+          },
         },
       },
     },
