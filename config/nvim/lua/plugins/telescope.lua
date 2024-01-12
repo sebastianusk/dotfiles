@@ -17,12 +17,20 @@ return {
       defaults = {
         mappings = {
           i = {
-            ["<esc>"] = require("telescope.actions").close,
+            ["<esc>"] = actions.close,
             ["<C-j>"] = actions.cycle_previewers_next,
             ["<C-k>"] = actions.cycle_previewers_prev,
           },
         },
         layout_strategy = "vertical",
+      },
+      pickers = {
+        find_files = {
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        },
+        live_grep = {
+          additional_args = { "--hidden", "--no-ignore-vcs" },
+        },
       },
     })
     require("telescope").load_extension("undo")

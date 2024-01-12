@@ -3,4 +3,5 @@ vim.filetype.add({
     tf = "terraform",
     ["tfvars"] = "terraform", -- Example for .tfvars files
   },
+  filename = { [".kube/config"] = "yaml" },
 })

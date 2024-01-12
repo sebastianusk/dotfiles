@@ -1,5 +1,6 @@
 tap "candid82/brew"
 tap "datawire/blackbird"
+tap "derailed/k9s"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
