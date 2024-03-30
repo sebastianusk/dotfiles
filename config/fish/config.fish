@@ -19,7 +19,7 @@ set -gx DISPLAY ':0.0'
 set -gx LC_CTYPE 'en_US.UTF-8'
 set -gx LC_ALL 'en_US.UTF-8'
 
-fish_add_path -p $GOPATH/bin $HOME/.local/bin $HOME/.krew/bin /usr/lib/node_modules/.bin $HOME/.pub-cache/bin $HOME/.cargo/bin /opt/homebrew/Caskroom/sqlcl/23.3.0.270.1251/sqlcl/bin /opt/homebrew/opt/mysql-client/bin $HOME/.local/share/nvim/mason/bin $HOME/dotfiles/bin
+fish_add_path -p $GOPATH/bin $HOME/.local/bin $HOME/.krew/bin /usr/lib/node_modules/.bin $HOME/.pub-cache/bin $HOME/.cargo/bin /opt/homebrew/opt/mysql-client/bin $HOME/.local/share/nvim/mason/bin $HOME/dotfiles/bin /opt/homebrew/sbin
 
 if type -q brew
     fish_add_path /opt/homebrew/bin
