@@ -520,7 +520,7 @@
           },
           "to" : [ {
             "key_code" : "t",
-            "modifiers" : [ "left_command", "left_option", "left_shift" ]
+            "modifiers" : [ "left_command", "left_control", "left_shift" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",

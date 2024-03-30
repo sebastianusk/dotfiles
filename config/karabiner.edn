@@ -61,7 +61,7 @@
 
                  ;; general
                  [:b :!COb] ;raindrop bookmark
-                 [:t :!COSt] ;raindrop bookmark
+                 [:t :!CTSt] ;todoist
                  [:comma :!CScomma] ;1password
                  [:f :!CSspacebar] ;homerow
                  [:return_or_enter :!Creturn_or_enter] ;quit
