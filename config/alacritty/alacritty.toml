@@ -1,9 +1,5 @@
 import = [
-  # uncomment the flavour you want below:
-  "~/.config/alacritty/catppuccin-mocha.toml"
-  # "~/.config/alacritty/catppuccin-macchiato.toml"
-  # "~/.config/alacritty/catppuccin-frappe.toml"
-  # "~/.config/alacritty/catppuccin-latte.toml"
+  "~/dotfiles/config/alacritty/catppuccin/catppuccin-mocha.toml"
 ]
 
 [shell]
@@ -11,17 +7,13 @@ program = "/usr/local/bin/fish"
 
 [window]
 decorations = "None"
-opacity = 0.90
+opacity = 0.85
 
 [font]
 size = 12
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
-
-[colors.primary]
-background = '#282828'
-foreground = '#dfbf8e'
 
 [env]
 TERM = "xterm-256color"
