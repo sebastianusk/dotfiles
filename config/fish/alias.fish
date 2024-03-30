@@ -7,6 +7,7 @@ alias random="date | md5sum"
 alias dig="dog"
 alias curl="curlie"
 alias tree="broot"
+alias docker="podman"
 
 # for tmuxinator
 alias tx=tmuxinator
