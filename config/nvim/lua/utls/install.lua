@@ -10,6 +10,7 @@ function M.ensure_installed_mason(packages)
   }
 end
 
+-- see: https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
 function M.ensure_installed_treesitter(packages)
   return {
     "nvim-treesitter/nvim-treesitter",
