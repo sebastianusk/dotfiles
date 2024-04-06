@@ -31,3 +31,6 @@ vim.keymap.set("n", "]l", vim.cmd.lnext, { desc = "Next List Search" })
 vim.keymap.set("n", "[l", vim.cmd.lprevious, { desc = "Prev List Search" })
 
 vim.keymap.set("n", "<leader>wd", "<C-W><C-O>", { desc = "Close others Windows" })
+
+vim.keymap.set("v", "<leader>b", "c<c-r>=system('base64',          @\")<cr><esc>", { desc = "encode base64" })
+vim.keymap.set("v", "<leader>B", "c<c-r>=system('base64 --decode', @\")<cr><esc>", { desc = "decode base64" })
