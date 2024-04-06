@@ -1,5 +1,6 @@
 alias pingg="ping google.com"
-alias ls="exa"
+alias ls="eza"
+alias dig="drill"
 alias cat="bat -p"
 alias vim="nvim"
 alias diff="delta"
