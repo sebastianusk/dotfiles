@@ -1,0 +1,130 @@
+[
+  { "name": "Atlantis Destroy", "text": "atlantis plan -- -destroy" },
+  { "name": "Dir Space", "text": "du -sh * | sort -hr" },
+  { "name": "Date Code", "text": "{date \"yyyyMMdd\"}" },
+  {
+    "name": "Keytool Selfsigned",
+    "text": "keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass password -validity 360 -keysize 2048"
+  },
+  {
+    "name": "Netshoot Kube",
+    "text": "kubectl run -i --tty --rm netshoot --image=nicolaka/netshoot --restart=Never -- sh"
+  },
+  {
+    "text": "SELECT ID, USER, HOST, DB, INFO, TIME FROM INFORMATION_SCHEMA.PROCESSLIST where time>1 and command<>\"Sleep\";",
+    "name": "MySQL Slow"
+  },
+  { "name": "MySQL master", "text": "SHOW MASTER STATUS \\G" },
+  { "name": "MySQL slave", "text": "SHOW SLAVE HOSTS;" },
+  { "name": "MySQL Users", "text": "SELECT user FROM mysql.user; " },
+  { "name": "MySQL grants", "text": "SHOW GRANTS FOR \"user\";" },
+  {
+    "name": "MySQL Tables",
+    "text": "SELECT TABLE_NAME AS `Table`, ROUND((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024) AS `Size (MB)` FROM information_schema.TABLES order by `Size (MB)` desc; "
+  },
+  {
+    "name": "MySQL Queries",
+    "text": "SELECT ID, USER, HOST, DB, INFO, TIME FROM INFORMATION_SCHEMA.PROCESSLIST;"
+  },
+  { "text": "SHOW BINLOG EVENTS;", "name": "MySQL Binlog" },
+  {
+    "text": "mysqldump -h {cursor}<host> -u <user> -p <db> --column-statistics=0 --set-gtid-purged=OFF > <file>.sql",
+    "name": "MySQL Dump"
+  },
+  { "text": "SHOW INDEX FROM yourtable;", "name": "MySQL Index" },
+  { "name": "MySQL Kill RDS", "text": "CALL mysql.rds_kill(process_id);" },
+  { "name": "MySQL Variables", "text": "show variables;" },
+  { "name": "TCP IP", "text": "tcpdump -i " },
+  {
+    "text": "docker run -it --net=host --rm nicolaka/netshoot",
+    "name": "Netshoot Docker"
+  },
+  { "text": "https checkip.clydev.com", "name": "Net Echo" },
+  { "name": "Net IP Link", "text": "ip link show" },
+  { "text": "ip neigh show", "name": "Net Neighbor" },
+  { "name": "Netcat test port", "text": "nc -vzw2" },
+  { "name": "SSL RSA", "text": "openssl rsa -check -in " },
+  { "text": "openssl x509 -text -noout -in ", "name": "SSL Cert" },
+  { "text": "openssl req -out CSR.csr -new -key ", "name": "SSL CSR" },
+  { "text": "openssl req -text -noout -verify -in ", "name": "SSL Priv" },
+  {
+    "name": "SSL Gen CSR",
+    "text": "openssl req -new -newkey rsa:2048 -nodes -out CSR.csr -keyout "
+  },
+  {
+    "name": "Oracle Logfile",
+    "text": "select GROUP#,TYPE,MEMBER from v$logfile order by group#;"
+  },
+  {
+    "name": "Oracle Curr DB",
+    "text": "select name,open_mode,database_role,log_mode,force_logging from v$database;"
+  },
+  {
+    "name": "Oracle Standby Log",
+    "text": "select GROUP#,THREAD# ,BYTES/1024/1024, status from v$standby_log;"
+  },
+  {
+    "text": "select b.sid, b.serial#, a.spid, b.client_info from  v$process a, v$session b where  a.addr=b.paddr and client_info like  'rman%';",
+    "name": "Oracle RMAN"
+  },
+  { "name": "Oracle DGMGRL", "text": "dgmgrl / as sysdba" },
+  {
+    "name": "Oracle Invalid Objects",
+    "text": "SELECT owner, object_type, object_name FROM all_objects WHERE status = 'INVALID';"
+  },
+  {
+    "name": "Oracle Add Datafile",
+    "text": "alter tablespace <tablespace> add datafile '/oradata/SVBO/user_data_tbs06.dbf' size 5G autoextend on next 100M maxsize 28G;"
+  },
+  {
+    "name": "Oracle Check RMAN",
+    "text": "select SESSION_KEY, INPUT_TYPE, STATUS, to_char(START_TIME,'mm/dd/yy hh24:mi') start_time, to_char(END_TIME,'mm/dd/yy hh24:mi') end_time, elapsed_seconds/3600 hrs from V$RMAN_BACKUP_JOB_DETAILS order by session_key;"
+  },
+  {
+    "name": "Oracle Tablespaces",
+    "text": "select df.tablespace_name \"Tablespace\", totalusedspace \"Used MB\",(df.totalspace - tu.totalusedspace) \"Free MB\", df.totalspace \"Total MB\", round(100 * ( (df.totalspace - tu.totalusedspace)/ df.totalspace)) \"Pct. Free\" from (select tablespace_name, round(sum(bytes) / 1048576) TotalSpace from dba_data_files group by tablespace_name) df, (select round(sum(bytes)/(1024*1024)) totalusedspace, tablespace_name from dba_segments group by tablespace_name) tu where df.tablespace_name = tu.tablespace_name;"
+  },
+  { "name": "Oracle List Dir", "text": "SELECT * FROM dba_directories;" },
+  { "name": "Oracle List Datafiles", "text": "select * from dba_data_files;" },
+  { "name": "Oracle CSV Format", "text": "SET MARKUP CSV ON;" },
+  { "name": "Oracle lsnrctl", "text": "lsnrctl status" },
+  {
+    "text": "select SESSION_KEY,SESSION_RECID,SESSION_STAMP, INPUT_TYPE, STATUS, to_char(START_TIME,'mm/dd/yy hh24:mi') start_time, to_char(END_TIME,'mm/dd/yy hh24:mi') end_time, elapsed_seconds/3600 hrs from V$RMAN_BACKUP_JOB_DETAILS order by session_key;",
+    "name": "Oracle List RMAN"
+  },
+  {
+    "name": "Oracle Corrupt",
+    "text": "select * from v$database_block_corruption;"
+  },
+  {
+    "text": "select GROUP#,THREAD#,BYTES/1024/1024, status from v$log; ",
+    "name": "Oracle Redolog"
+  },
+  { "name": "PG queries", "text": "SELECT * FROM pg_stat_activity;" },
+  {
+    "name": "PG slowquery",
+    "text": "SELECT  pid,  user,  now() - pg_stat_activity.query_start AS query_time,  state,  query FROM pg_stat_activity WHERE (now() - pg_stat_activity.query_start) > interval '5 minutes' AND state = 'active' order by query_time desc;"
+  },
+  {
+    "name": "PG List Replica Slot",
+    "text": "select * from pg_replication_slots;"
+  },
+  {
+    "name": "PG List Tables",
+    "text": "select  table_name,  pg_size_pretty(pg_relation_size(quote_ident(table_name))),  pg_relation_size(quote_ident(table_name)) from information_schema.tableswhere table_schema = 'public' order by 3 desc;"
+  },
+  {
+    "name": "PG Drop Replica Slot",
+    "text": "select pg_drop_replication_slot('bottledwater');"
+  },
+  { "text": "select * from pg_stat_replication;", "name": "PG List Streaming" },
+  { "text": "vmstat 1", "name": "Linux vmstat" },
+  { "name": "Linux pidstat", "text": "pidstat 1" },
+  { "name": "Linux free", "text": "free -m" },
+  { "name": "Linux sar (network interface)", "text": "sar -n DEV 1" },
+  { "name": "Linux iostat", "text": "iostat -xz 1" },
+  { "text": "sar -n TCP,ETCP 1", "name": "Linux sar (tcp)" },
+  { "name": "Linux uptime", "text": "uptime" },
+  { "text": "dmesg | tail", "name": "Linux dmesg (kernel ring buffer)" },
+  { "text": "mpstat -P ALL 1", "name": "Linux mpstat" }
+]
