@@ -138,3 +138,11 @@ end
 function tmpl --description "find and edit the files on /tmp/files"
   ls /tmp/files | fzf | read -l result; and nvim /tmp/files/$result
 end
+
+function sudo
+    if test "$argv" = !!
+        eval command sudo $history[1]
+    else
+        command sudo $argv
+    end
+end
