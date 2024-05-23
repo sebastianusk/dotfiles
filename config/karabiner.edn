@@ -90,10 +90,6 @@
                  [:8 :!T8] ;desktop 8
                  [:9 :!T9] ;desktop 9
 
-                 ;; alt tab
-                 [:tab :!Oslash] ;alt-tab all
-                 [:grave_accent_and_tilde :!Ograve_accent_and_tilde] ;alt-tab all
-
                  [
                   ;; <from> second cmd-q (when variable "command-q" is 1)
                   :q

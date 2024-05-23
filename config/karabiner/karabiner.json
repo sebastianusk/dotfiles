@@ -880,34 +880,6 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "tab"
-          },
-          "to" : [ {
-            "key_code" : "slash",
-            "modifiers" : [ "left_option" ]
-          } ],
-          "conditions" : [ {
-            "name" : "hyper-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "grave_accent_and_tilde"
-          },
-          "to" : [ {
-            "key_code" : "grave_accent_and_tilde",
-            "modifiers" : [ "left_option" ]
-          } ],
-          "conditions" : [ {
-            "name" : "hyper-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
             "key_code" : "q"
           },
           "to" : [ {
