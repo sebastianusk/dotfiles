@@ -52,12 +52,17 @@
                  ;; screenshot
                  [:x :!COx] ;shottr basic
                  [:s :!COTo] ;shottr text
-                 [:d :!COd] ;shottr screen
+                 [:a :!COa] ;shottr scroll
 
-                 ;; alfred
-                 [:spacebar :!Cspacebar] ;alfred
-                 [:c :!COc] ;alfred clipboard
-                 [:v :!COv] ;alfred snippet
+                 ;; launcher
+                 [:spacebar :!Cspacebar] ;launcher
+                 [:c :!COc] ;clipboard
+                 [:v :!COv] ;snippet
+                 [:e :!COe] ;slack
+                 [:w :!COw] ;AI
+                 [:r :!COr] ;jira
+                 [:d :!COd] ;daily
+                 [:p :!COp] ;throw screen
 
                  ;; general
                  [:b :!COb] ;raindrop bookmark
