@@ -17,6 +17,9 @@ ln -sfn ~/dotfiles/ctags.d ~/.ctags.d
 ln -sfn ~/dotfiles/.asdfrc ~/.asdfrc
 ln -sfn ~/dotfiles/config/starship.toml ~/.config/starship.toml
 
+ln -sfn ~/dotfiles/.tool-versions ~/.tool-versions
+ln -sfn ~/dotfiles/.default-npm-packages ~/.default-npm-packages
+
 sudo ln -sfn $(which fish) /usr/local/bin/fish
 sudo ln -sfn $(which tmux) /usr/local/bin/tmux
 
