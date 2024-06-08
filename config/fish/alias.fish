@@ -7,7 +7,6 @@ alias diff="delta"
 alias random="pwgen -c -n -1 -s"
 alias curl="curlie"
 alias tree="broot"
-alias docker="podman"
 
 # for tmuxinator
 alias tx=tmuxinator
