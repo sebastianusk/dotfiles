@@ -9,6 +9,3 @@ windows:
       panes:
         - vim
         -  #empty
-  - git:
-      panes:
-        - lazygit
