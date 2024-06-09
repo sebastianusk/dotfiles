@@ -29,6 +29,9 @@ else
     source /opt/asdf-vm/asdf.fish
 end
 
+set -gx PIPX_DEFAULT_PYTHON $(asdf which python)
+set -gx PIP_REQUIRE_VIRTUALENV true
+
 fish_vi_key_bindings
 
 if type -q starship
