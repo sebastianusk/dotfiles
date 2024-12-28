@@ -8,7 +8,7 @@
 	process = git-lfs filter-process
 	required = true
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --reverse --abbrev-commit --
 	undo = reset HEAD~1 --mixed
 [url "git@github.com:"]
   insteadOf = https://github.com/
