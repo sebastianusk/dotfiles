@@ -20,7 +20,7 @@ return {
     },
   },
   lsp.lsp_config_server({
-    tsserver = {
+    ts_ls = {
       keys = {
         {
           "<leader>co",
