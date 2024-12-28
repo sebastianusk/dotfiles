@@ -63,6 +63,11 @@
                  [:r :!COr] ;jira
                  [:d :!COd] ;daily
                  [:p :!COp] ;throw screen
+                 [:1 :!TS1] ;open Slack
+                 [:2 :!TS2] ;open alacritty
+                 [:3 :!TS3] ;open arc
+                 [:4 :!TS4] ;open Todoist
+                 [:5 :!TS5] ;open Obsidian
 
                  ;; general
                  [:b :!COb] ;raindrop bookmark
@@ -153,6 +158,8 @@
                  [:!Ok :up_arrow]
                  [:!Oh :left_arrow]
                  [:!Ol :right_arrow]
+                 [:!OSh :!Oleft_arrow]
+                 [:!OSl :!Oright_arrow]
                  ]}
         {:des "navigate",
          :rules [
