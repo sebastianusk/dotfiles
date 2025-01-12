@@ -92,6 +92,17 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+
+    go
+    cargo
+    rustc
+    clang-tools
+    cmake
+    gcc
+    gnumake
+
+    nodejs
+    python3
   ];
 
   # basic configuration of git, please change to your own
@@ -113,6 +124,28 @@
     };
   };
 
+  programs.neovim = {
+    enable = true;
+
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    plugins = with pkgs.vimPlugins; [
+      lazy-nvim
+    ];
+
+    extraConfig = ''
+      luafile ${../config/nvim/init.lua}
+    '';
+  };
+
+  home.file = {
+    ".config/nvim/lua" = {
+      source = ../config/nvim/lua;
+      recursive = true;
+    };
+  };
+
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
@@ -126,4 +159,3 @@
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
-
