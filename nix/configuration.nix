@@ -106,4 +106,6 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  programs._1password.enable = true;
+
 }
