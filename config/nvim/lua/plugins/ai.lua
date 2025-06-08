@@ -1,59 +1,54 @@
 return {
-  "jackMort/ChatGPT.nvim",
-  keys = {
-    {
-      "<leader>cc",
-      vim.cmd.ChatGPT,
-      desc = "Chat GPT",
-      mode = { "n", "v" },
-    },
-    {
-      "<leader>ce",
-      vim.cmd.ChatGPTEditWithInstructions,
-      desc = "GPT Edit With Instruction",
-      mode = { "n", "v" },
-    },
-    {
-      "<leader>cx",
-      "<cmd>ChatGPTRun explain<CR>",
-      desc = "GPT Summarize",
-      mode = { "n", "v" },
-    },
-    {
-      "<leader>cf",
-      "<cmd>ChatGPTRun fix_bugs<CR>",
-      desc = "GPT Fix Bugs",
-      mode = { "n", "v" },
-    },
-    {
-      "<leader>ct",
-      "<cmd>ChatGPTRun add_tests<CR>",
-      desc = "GPT Add Test",
-      mode = { "n", "v" },
-    },
-    {
-      "<leader>co",
-      "<cmd>ChatGPTRun optimize_code<CR>",
-      desc = "GPT Optimize Code",
-      mode = { "n", "v" },
-    },
-  },
+  "yetone/avante.nvim",
   event = "VeryLazy",
-  dependencies = {
-    "MunifTanjim/nui.nvim",
-    "nvim-lua/plenary.nvim",
-    "folke/trouble.nvim",
-    "nvim-telescope/telescope.nvim",
+  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  opts = {
+    -- add any opts here
+    -- for example
+    provider = "openai",
+    openai = {
+      endpoint = "https://api.openai.com/v1",
+      model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+      timeout = 30000, -- timeout in milliseconds
+      temperature = 0, -- adjust if needed
+      max_tokens = 4096,
+      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+    },
   },
-  config = function()
-    require("chatgpt").setup({
-      api_key_cmd = "op item get NeoVimGPT --fields label=password",
-      openai_params = {
-        model = "gpt-4o",
+  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  build = "make",
+  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+    "stevearc/dressing.nvim",
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    --- The below dependencies are optional,
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    {
+      -- support for image pasting
+      "HakonHarnes/img-clip.nvim",
+      event = "VeryLazy",
+      opts = {
+        -- recommended settings
+        default = {
+          embed_image_as_base64 = false,
+          prompt_for_file_name = false,
+          drag_and_drop = {
+            insert_mode = true,
+          },
+          -- required for Windows users
+          use_absolute_path = true,
+        },
       },
-      openai_edit_params = {
-        model = "gpt-4o",
+    },
+    {
+      -- Make sure to set this up properly if you have lazy=true
+      "MeanderingProgrammer/render-markdown.nvim",
+      opts = {
+        file_types = { "markdown", "Avante" },
       },
-    })
-  end,
+      ft = { "markdown", "Avante" },
+    },
+  },
 }
