@@ -11,11 +11,18 @@
            :apple [
                     {:vendor_id 1452 :product_id 641}
                    ]
+           :apple-m4 [
+                    {:vendor_id 0 :product_id 0}
+                   ]
            }
  :main [
         {:des "apple keyboard mapping",
          :rules [
                  :apple
+                 [:##fn :left_control]
+                 [:##left_control :left_option]
+                 [:##left_option :fn]
+                 :apple-m4
                  [:##fn :left_control]
                  [:##left_control :left_option]
                  [:##left_option :fn]
@@ -51,7 +58,7 @@
                  :hyper-mode
                  ;; screenshot
                  [:x :!COx] ;shottr basic
-                 [:s :!COTo] ;shottr text
+                 [:s :!COs] ;shottr text
                  [:a :!COa] ;shottr scroll
 
                  ;; launcher
