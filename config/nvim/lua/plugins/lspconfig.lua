@@ -3,7 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "hrsh7th/nvim-cmp",
-      { "williamboman/mason-lspconfig.nvim", dependencies = "williamboman/mason.nvim" },
+      { "williamboman/mason-lspconfig.nvim", dependencies = "williamboman/mason.nvim", version = "^1.0.0" },
       {
         "nvimdev/lspsaga.nvim",
         keys = {
