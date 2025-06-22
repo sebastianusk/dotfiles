@@ -5,6 +5,7 @@
  :applications {
                 :terminal ["^org\\.alacritty", "^com\\.apple\\.terminal"]
                 :rdp ["^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer"]
+                :chrome ["^com\\.google\\.Chrome"]
                 }
  :simlayer-threshold 1000
  :devices {
@@ -20,6 +21,11 @@
                  [:##fn :left_control]
                  [:##left_control :left_option]
                  [:##left_option :fn]
+                 ]}
+        {:des "chrome ctrl tab"
+         :rules [
+                 ; [:!Ttab :!Ty [:chrome]]
+                 ; [:!TStab :!TSy [:chrome]]
                  ]}
         {:des "ctrlkeyterminal",
          :rules [
@@ -58,20 +64,18 @@
                  [:spacebar :!Cspacebar] ;launcher
                  [:c :!COc] ;clipboard
                  [:v :!COv] ;snippet
-                 [:e :!COe] ;slack
-                 [:w :!COw] ;AI
-                 [:r :!COr] ;jira
+                 [:g :!COg] ;AI
+                 [:b :!COb] ;raindrop bookmark
                  [:d :!COd] ;daily
                  [:p :!COp] ;throw screen
                  [:1 :!TS1] ;open Slack
                  [:2 :!TS2] ;open alacritty
-                 [:3 :!TS3] ;open arc
+                 [:3 :!TS3] ;open browser
                  [:4 :!TS4] ;open Todoist
                  [:5 :!TS5] ;open Obsidian
 
                  ;; general
-                 [:b :!COb] ;raindrop bookmark
-                 [:t :!CTSt] ;todoist
+                 [:t :!COSt] ;todoist
                  [:comma :!CScomma] ;1password
                  [:f :!CSspacebar] ;homerow
                  [:return_or_enter :!Creturn_or_enter] ;quit

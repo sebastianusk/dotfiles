@@ -661,11 +661,25 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "g"
+          },
+          "to" : [ {
+            "key_code" : "g",
+            "modifiers" : [ "left_command", "left_option" ]
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "t"
           },
           "to" : [ {
             "key_code" : "t",
-            "modifiers" : [ "left_command", "left_control", "left_shift" ]
+            "modifiers" : [ "left_command", "left_option", "left_shift" ]
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
