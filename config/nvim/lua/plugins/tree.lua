@@ -38,7 +38,11 @@ return {
     end
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
-    require("nvim-tree").setup({})
+    require("nvim-tree").setup({
+      filters = {
+        dotfiles = false,  -- show hidden files by default
+      },
+    })
 
     local utils = require("utls.nvim-tree")
     vim.keymap.set("n", "<c-p>", utils.launch_find_files, { desc = "Launch Find Files" })
