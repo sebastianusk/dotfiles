@@ -6,7 +6,6 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   keys = {
-    { "<Leader>+", require("nvim-tree.api").tree.toggle_hidden_filter, desc = "Toggle hidden files" },
     -- { "<Leader>\\", ":NvimTreeToggle<CR>" },
     { "<Leader>|", vim.cmd.NvimTreeToggle, desc = "Tree Toggle" },
     -- { "<Leader>n", ":NvimTreeFindFile<CR>" },
@@ -40,7 +39,7 @@ return {
 
     require("nvim-tree").setup({
       filters = {
-        dotfiles = false,  -- show hidden files by default
+        dotfiles = false, -- show hidden files by default
       },
     })
 
