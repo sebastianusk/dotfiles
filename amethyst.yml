@@ -17,3 +17,5 @@ mod2:
 # Enable focus-follows-mouse
 mouse-follows-focus: true
 focus-follows-mouse: false
+
+enables-layout-hud-on-space-change: false
