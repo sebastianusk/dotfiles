@@ -82,4 +82,5 @@ return {
       { "<leader>hy", "<cmd>lua require('gitlinker').get_buf_range_url('n')<cr>", desc = "Get git link" },
     },
   },
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
 }
