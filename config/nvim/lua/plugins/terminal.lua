@@ -14,6 +14,14 @@ return {
         desc = "Toggle terminal horizontally",
       },
     },
-    config = true,
+    opts = {
+      size = function(term)
+        if term.direction == "horizontal" then
+          return 20
+        elseif term.direction == "vertical" then
+          return math.floor(vim.o.columns * 0.4)
+        end
+      end,
+    },
   },
 }
