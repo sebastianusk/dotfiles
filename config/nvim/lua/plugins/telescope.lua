@@ -10,6 +10,16 @@ return {
     { "<leader>hl", require("telescope.builtin").git_bcommits, desc = "Buffer Commit Log" },
     { "<leader>hc", require("telescope.builtin").git_commits, desc = "Commit Log" },
     { "<leader>u", "<cmd>Telescope undo<cr>", desc = "Find Files" },
+    {
+      "<leader>P",
+      function()
+        require("telescope.builtin").find_files({
+          -- Use the 'fd' command explicitly with flags to include hidden and ignored files
+          find_command = { "fd", "--type", "f", "--hidden", "--no-ignore", "." },
+        })
+      end,
+      desc = "Telescope Find Files (incl. hidden & ignored)",
+    },
   },
   config = function()
     local actions = require("telescope.actions")
