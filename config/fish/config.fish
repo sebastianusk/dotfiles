@@ -4,6 +4,10 @@ source ~/.config/fish/alias.fish
 source ~/.config/fish/funct.fish
 source ~/.config/fish/opts.fish
 
+if test -e ~/.config/fish/secret.fish
+    source ~/.config/fish/secret.fish
+end
+
 set -gx VAULT_ADDR https://vault.infra.fazz.cloud
 set -gx CODE ~/Code
 set -gx GOPATH $CODE/go
