@@ -1,3 +1,4 @@
+GOOSE_PROVIDER: anthropic
 extensions:
   computercontroller:
     bundled: true
@@ -8,8 +9,8 @@ extensions:
     type: builtin
   context7:
     args:
-    - -y
-    - '@upstash/context7-mcp'
+      - -y
+      - "@upstash/context7-mcp"
     bundled: null
     cmd: npx
     description: null
@@ -28,7 +29,7 @@ extensions:
     type: builtin
   fetch:
     args:
-    - mcp-server-fetch
+      - mcp-server-fetch
     bundled: null
     cmd: uvx
     description: null
@@ -45,10 +46,24 @@ extensions:
     name: memory
     timeout: 300
     type: builtin
+  repomix:
+    args:
+      - -y
+      - repomix
+      - --mcp
+    bundled: null
+    cmd: npx
+    description: null
+    enabled: true
+    env_keys: []
+    envs: {}
+    name: repomix
+    timeout: 300
+    type: stdio
   tavily:
     args:
-    - -y
-    - tavily-mcp
+      - -y
+      - tavily-mcp
     bundled: null
     cmd: npx
     description: null
@@ -59,7 +74,6 @@ extensions:
     timeout: 300
     type: stdio
 AWS_PROFILE: personal
-GOOSE_MODEL: claude-sonnet-4-20250514
 ANTHROPIC_HOST: https://api.anthropic.com
 GOOSE_MODE: user
-GOOSE_PROVIDER: anthropic
+GOOSE_MODEL: claude-sonnet-4-20250514

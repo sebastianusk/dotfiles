@@ -1,44 +1,44 @@
 user:
   always_allow:
-  - context7__resolve-library-id
-  - context7__get-library-docs
-  - computercontroller__web_scrape
-  - computercontroller__cache
-  - memory__remember_memory
-  - memory__retrieve_memories
-  - tavily__tavily-search
-  - tavily__tavily-extract
-  - developer__text_editor
+    - context7__resolve-library-id
+    - context7__get-library-docs
+    - computercontroller__web_scrape
+    - computercontroller__cache
+    - memory__remember_memory
+    - memory__retrieve_memories
+    - tavily__tavily-search
+    - tavily__tavily-extract
+    - developer__text_editor
   ask_before:
-  - developer__shell
-  - computercontroller__automation_script
-  - computercontroller__computer_control
-  - computercontroller__pdf_tool
-  - computercontroller__docx_tool
-  - computercontroller__xlsx_tool
-  - memory__remove_memory_category
-  - memory__remove_specific_memory
-  - tavily__tavily-crawl
-  - tavily__tavily-map
+    - developer__shell
+    - computercontroller__automation_script
+    - computercontroller__computer_control
+    - computercontroller__pdf_tool
+    - computercontroller__docx_tool
+    - computercontroller__xlsx_tool
+    - memory__remove_memory_category
+    - memory__remove_specific_memory
+    - tavily__tavily-crawl
+    - tavily__tavily-map
   never_allow: []
 smart_approve:
   always_allow:
-  - tavily__tavily-search
-  - context7__resolve-library-id
-  - context7__get-library-docs
-  - computercontroller__web_scrape
-  - computercontroller__automation_script
-  - computercontroller__computer_control
-  - computercontroller__cache
-  - computercontroller__pdf_tool
-  - computercontroller__docx_tool
-  - computercontroller__xlsx_tool
-  - memory__remember_memory
-  - memory__retrieve_memories
-  - memory__remove_memory_category
-  - memory__remove_specific_memory
-  - tavily__tavily-extract
-  - tavily__tavily-crawl
-  - tavily__tavily-map
+    - tavily__tavily-search
+    - context7__resolve-library-id
+    - context7__get-library-docs
+    - computercontroller__web_scrape
+    - computercontroller__automation_script
+    - computercontroller__computer_control
+    - computercontroller__cache
+    - computercontroller__pdf_tool
+    - computercontroller__docx_tool
+    - computercontroller__xlsx_tool
+    - memory__remember_memory
+    - memory__retrieve_memories
+    - memory__remove_memory_category
+    - memory__remove_specific_memory
+    - tavily__tavily-extract
+    - tavily__tavily-crawl
+    - tavily__tavily-map
   ask_before: []
   never_allow: []
