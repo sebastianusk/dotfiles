@@ -21,25 +21,34 @@ if [ ! -d "$GOOSE_CONFIG_DIR" ]; then
     exit 1
 fi
 
-# Create dotfiles goose directory if it doesn't exist
-mkdir -p "$DOTFILES_GOOSE_DIR"
+# Remove existing dotfiles goose directory and copy fresh
+echo -e "Removing old configuration..."
+rm -rf "$DOTFILES_GOOSE_DIR"
 
-# Files to sync (excluding sensitive/temporary files)
-FILES_TO_SYNC=(
-    "config.yaml"
-    "permission.yaml"
-)
+echo -e "Copying current configuration..."
+cp -r "$GOOSE_CONFIG_DIR" "$DOTFILES_GOOSE_DIR"
 
-# Sync each file
-for file in "${FILES_TO_SYNC[@]}"; do
-    if [ -f "$GOOSE_CONFIG_DIR/$file" ]; then
-        echo -e "Syncing ${GREEN}$file${NC}..."
-        cp "$GOOSE_CONFIG_DIR/$file" "$DOTFILES_GOOSE_DIR/$file"
-        echo -e "  ✓ Updated $DOTFILES_GOOSE_DIR/$file"
-    else
-        echo -e "${YELLOW}Warning: $GOOSE_CONFIG_DIR/$file not found, skipping...${NC}"
-    fi
-done
+# Restore .gitignore (it gets overwritten by the copy)
+cat > "$DOTFILES_GOOSE_DIR/.gitignore" << 'EOF'
+# Goose files to ignore in version control
+
+# History and temporary files
+history.txt
+*.bak
+*.bak.*
+
+# Memory directory (user-specific data)
+memory/
+
+# Log files
+*.log
+
+# Any other temporary or user-specific files
+.DS_Store
+*~
+*.swp
+*.swo
+EOF
 
 echo -e "${GREEN}Sync complete!${NC}"
 echo -e "${YELLOW}Don't forget to commit the changes to your dotfiles repository.${NC}"

@@ -14,8 +14,7 @@ ln -sfn ~/dotfiles/config/fish/opts.fish ~/.config/fish/opts.fish
 cp ~/dotfiles/config/fish/secret.fish.example ~/dotfiles/config/fish/secret.fish
 ln -sfn ~/dotfiles/config/fish/secret.fish ~/.config/fish/secret.fish
 
-ln -sfn ~/dotfiles/config/goose/config.yaml ~/.config/goose/config.yaml
-ln -sfn ~/dotfiles/config/goose/permission.yaml ~/.config/goose/permission.yaml
+ln -sfn ~/dotfiles/config/goose ~/.config/goose
 
 ln -sfn ~/dotfiles/config/tmuxinator ~/.tmuxinator
 ln -sfn ~/dotfiles/config/k9s ~/.config/k9s
