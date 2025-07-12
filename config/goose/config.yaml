@@ -61,5 +61,5 @@ extensions:
 AWS_PROFILE: personal
 GOOSE_MODEL: claude-sonnet-4-20250514
 ANTHROPIC_HOST: https://api.anthropic.com
-GOOSE_MODE: smart_approve
+GOOSE_MODE: user
 GOOSE_PROVIDER: anthropic
