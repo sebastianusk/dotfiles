@@ -8,9 +8,9 @@ user:
   - memory__retrieve_memories
   - tavily__tavily-search
   - tavily__tavily-extract
-  - developer__shell
-  ask_before:
   - developer__text_editor
+  ask_before:
+  - developer__shell
   - computercontroller__automation_script
   - computercontroller__computer_control
   - computercontroller__pdf_tool
