@@ -19,6 +19,9 @@ alias oo="nvim '+:ObsidianToday'"
 alias ov="tmux split-window -h nvim '+:ObsidianToday'"
 alias oh="tmux split-window -v nvim '+:ObsidianToday'"
 
+# goose configuration sync
+alias sync-goose="~/dotfiles/sync-goose.sh"
+
 abbr --add kctx kubectl-ctx
 abbr --add kns kubectl-ns
 abbr --add kcm kubectl-kc
