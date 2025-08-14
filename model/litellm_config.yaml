@@ -1,0 +1,22 @@
+model_list:
+  # Claude 3.7 Sonnet - Latest Sonnet model (APAC inference profile)
+  - model_name: claude-3-7-sonnet
+    litellm_params:
+      model: bedrock/apac.anthropic.claude-3-7-sonnet-20250219-v1:0
+      aws_region_name: ap-southeast-1
+      
+  # Claude Sonnet 4 - Most capable (APAC inference profile)
+  - model_name: claude-sonnet-4
+    litellm_params:
+      model: bedrock/apac.anthropic.claude-sonnet-4-20250514-v1:0
+      aws_region_name: ap-southeast-1
+
+# General settings
+general_settings:
+  master_key: sk-litellm-proxy
+  drop_params: true
+  
+# Optional: Add logging configuration
+litellm_settings:
+  drop_params: true
+  set_verbose: false
