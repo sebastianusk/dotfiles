@@ -7,9 +7,6 @@ alias random="pwgen -c -n -1 -s"
 alias curl="curlie"
 alias tree="broot"
 
-# obsidian aliases
-alias oo="nvim '+:ObsidianToday'"
-
 # goose configuration sync
 alias sync-goose="~/dotfiles/sync-goose.sh"
 
