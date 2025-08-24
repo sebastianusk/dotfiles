@@ -1,0 +1,18 @@
+default_shell "fish"
+simplified_ui true
+
+ui {
+    pane_frames {
+        rounded_corners false
+        hide_session_name false
+    }
+}
+
+keybinds {
+    normal {
+        bind "Ctrl h" { MoveFocus "Left"; }
+        bind "Ctrl j" { MoveFocus "Down"; }
+        bind "Ctrl k" { MoveFocus "Up"; }
+        bind "Ctrl l" { MoveFocus "Right"; }
+    }
+}

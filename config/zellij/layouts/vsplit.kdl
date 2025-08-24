@@ -1,8 +1,7 @@
 layout {
     pane split_direction="vertical" {
         pane { 
-            command "/opt/homebrew/bin/fish"
-            args "-c" "nvim"
+            command "nvim"
             size "60%"
         }
         pane {
