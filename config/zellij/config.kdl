@@ -1,9 +1,0 @@
-default_shell "fish"
-simplified_ui true
-
-ui {
-    pane_frames {
-        rounded_corners false
-        hide_session_name false
-    }
-}

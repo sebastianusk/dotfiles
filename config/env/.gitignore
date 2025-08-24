@@ -1,0 +1,3 @@
+# Secret configuration file - contains actual secret values
+# Use secret.yaml.example as template
+secret.yaml
