@@ -64,16 +64,8 @@ if [ "$TOOLS_EXIST" -gt 0 ]; then
     done
 fi
 
-# Add secret configuration if it exists
-if [ -f "$SECRET_CONFIG" ]; then
-    # Parse all secret sections
-    for section in $(yq eval 'keys | .[]' "$SECRET_CONFIG" 2>/dev/null || echo ""); do
-        SECTION_EXIST=$(yq eval ".$section | length" "$SECRET_CONFIG" 2>/dev/null || echo "0")
-        if [ "$SECTION_EXIST" -gt 0 ]; then
-            yq eval ".$section | to_entries | .[] | \"    \" + .key + \" \\\"\" + .value + \"\\\"\"" "$SECRET_CONFIG" >> "$TEMP_ENV"
-        fi
-    done
-fi
+# Note: Secrets are intentionally excluded from zellij config for security
+# They should be loaded in shell initialization files instead
 
 echo "}" >> "$TEMP_ENV"
 
@@ -88,18 +80,12 @@ echo "}" >> "$TEMP_ENV"
 rm "$TEMP_ENV"
 
 echo "✅ Zellij config generated at $ZELLIJ_CONFIG"
-if [ -f "$SECRET_CONFIG" ]; then
-    echo "🔐 Secrets included from $SECRET_CONFIG"
-else
-    echo "⚠️  No secrets file found - create $SECRET_CONFIG from secret.yaml.example"
-fi
+echo "🔐 Secrets excluded for security (loaded in shell instead)"
 echo ""
 echo "Configuration merged from:"
 echo "  • Environment: $YAML_CONFIG"
 echo "  • Base config: $ZELLIJ_BASE"
-if [ -f "$SECRET_CONFIG" ]; then
-    echo "  • Secrets: $SECRET_CONFIG"
-fi
+echo "  • Secrets: Excluded for security"
 echo ""
 echo "Next steps:"
 echo "  • Restart zellij or start new session to pick up changes"
