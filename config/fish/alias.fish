@@ -7,17 +7,10 @@ alias random="pwgen -c -n -1 -s"
 alias curl="curlie"
 alias tree="broot"
 
-# for tmuxinator
-alias tx=tmuxinator
-alias coding="tx start coding"
-alias dotfiles="tx start dotfiles"
-alias vsplit="tx start vsplit"
-alias hsplit="tx start hsplit"
+
 
 # obsidian aliases
 alias oo="nvim '+:ObsidianToday'"
-alias ov="tmux split-window -h nvim '+:ObsidianToday'"
-alias oh="tmux split-window -v nvim '+:ObsidianToday'"
 
 # goose configuration sync
 alias sync-goose="~/dotfiles/sync-goose.sh"

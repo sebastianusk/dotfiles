@@ -146,3 +146,25 @@ function sudo
         command sudo $argv
     end
 end
+
+function dotfiles --description "Start dotfiles session with current multiplexer"
+    if test "$MULTIPLEXER" = "tmux"
+        tmuxinator start dotfiles
+    else if test "$MULTIPLEXER" = "zellij"
+        # TODO: implement zellij dotfiles session
+        echo "Zellij dotfiles session not implemented yet"
+    else
+        echo "No multiplexer configured"
+    end
+end
+
+function vsplit --description "Start vsplit session with current multiplexer"
+    if test "$MULTIPLEXER" = "tmux"
+        tmuxinator start vsplit
+    else if test "$MULTIPLEXER" = "zellij"
+        # TODO: implement zellij vsplit session
+        echo "Zellij vsplit session not implemented yet"
+    else
+        echo "No multiplexer configured"
+    end
+end
