@@ -20,6 +20,7 @@ mkdir -p ~/.aws/amazonq
 ln -sfn ~/dotfiles/config/amazonq/mcp.json ~/.aws/amazonq/mcp.json
 
 ln -sfn ~/dotfiles/config/tmuxinator ~/.tmuxinator
+ln -sfn ~/dotfiles/config/zellij ~/.config/zellij
 
 # VS Code
 mkdir -p ~/Library/Application\ Support/Code/User
@@ -50,6 +51,6 @@ asdf plugin add python https://github.com/asdf-community/asdf-python.git || echo
 asdf plugin add flutter https://github.com/oerdnj/asdf-flutter.git || echo "Flutter plugin already added or failed to add."
 asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git || echo "Terraform plugin already added or failed to add."
 
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher && fisher update
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fish && fish -c "fisher install jorgebucaran/fisher && fisher update"
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
