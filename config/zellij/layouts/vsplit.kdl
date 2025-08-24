@@ -1,0 +1,17 @@
+layout {
+    pane split_direction="vertical" {
+        pane { 
+            command "/opt/homebrew/bin/fish"
+            args "-c" "nvim"
+            size "60%"
+        }
+        pane {
+            // Empty pane for commands
+            size "40%"
+        }
+    }
+    
+    pane_template name="status_bar" {
+        plugin location="zellij:status-bar"
+    }
+}

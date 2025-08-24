@@ -1,56 +1,9 @@
-// Zellij configuration
 default_shell "fish"
+simplified_ui true
 
-// Theme
-theme "catppuccin-mocha"
-
-// Keybindings
-keybinds {
-    normal {
-        // Add Ctrl+a as prefix (similar to tmux)
-        bind "Ctrl a" { SwitchToMode "tmux"; }
-    }
-    tmux {
-        bind "[" { SwitchToMode "scroll"; }
-        bind "Ctrl c" { NewTab; SwitchToMode "normal"; }
-        bind "," { SwitchToMode "renamepane"; }
-        bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
-        bind "n" { GoToNextTab; SwitchToMode "normal"; }
-        bind "Left" { MoveFocus "left"; SwitchToMode "normal"; }
-        bind "Right" { MoveFocus "right"; SwitchToMode "normal"; }
-        bind "Down" { MoveFocus "down"; SwitchToMode "normal"; }
-        bind "Up" { MoveFocus "up"; SwitchToMode "normal"; }
-        bind "h" { MoveFocus "left"; SwitchToMode "normal"; }
-        bind "l" { MoveFocus "right"; SwitchToMode "normal"; }
-        bind "j" { MoveFocus "down"; SwitchToMode "normal"; }
-        bind "k" { MoveFocus "up"; SwitchToMode "normal"; }
-        bind "o" { FocusNextPane; SwitchToMode "normal"; }
-        bind "d" { Detach; }
-        bind "Space" { NextSwapLayout; SwitchToMode "normal"; }
-        bind "x" { CloseFocus; SwitchToMode "normal"; }
-        bind "|" { NewPane "right"; SwitchToMode "normal"; }
-        bind "-" { NewPane "down"; SwitchToMode "normal"; }
-        bind "H" { Resize "left"; }
-        bind "J" { Resize "down"; }
-        bind "K" { Resize "up"; }
-        bind "L" { Resize "right"; }
-        bind "=" { Resize "increase"; }
-        bind "+" { Resize "increase"; }
-        bind "_" { Resize "decrease"; }
-        bind "Ctrl c" { SwitchToMode "normal"; }
-    }
-}
-
-// UI configuration
 ui {
     pane_frames {
-        rounded_corners true
+        rounded_corners false
+        hide_session_name false
     }
 }
-
-// Copy configuration
-copy_command "pbcopy"
-
-// Session configuration
-session_serialization false
-pane_viewport_serialization false
