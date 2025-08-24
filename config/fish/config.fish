@@ -26,11 +26,12 @@ fish_vi_key_bindings
 if type -q starship
     starship init fish --print-full-init | source
 end
-
-if test "$MULTIPLEXER" = "tmux"; and not set -q TMUX
-    set -g TMUX tmux new-session -d -s base
-    eval $TMUX
-    tmux attach-session -d -t base
-else if test "$MULTIPLEXER" = "zellij"; and status is-interactive; and not set -q ZELLIJ
-    # zellij
+if status is-interactive
+    if test "$MULTIPLEXER" = "tmux"; and not set -q TMUX
+        set -g TMUX tmux new-session -d -s base
+        eval $TMUX
+        tmux attach-session -d -t base
+    else if test "$MULTIPLEXER" = "zellij"; and not set -q ZELLIJ
+        # zellij
+    end
 end

@@ -1,13 +1,11 @@
 
 [terminal.shell]
-# program = "/usr/local/bin/fish"
-program = "/opt/homebrew/bin/zellij"
+program = "/usr/local/bin/fish"
+# program = "/opt/homebrew/bin/zellij"
 
 [window]
 decorations = "None"
 opacity = 0.85
-dynamic_padding = false
-startup_mode = "Windowed"
 
 [window.padding]
 x = 0
@@ -21,6 +19,6 @@ italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 
 [env]
 TERM = "xterm-256color"
-MULTIPLEXER = "zellij"
+MULTIPLEXER = "tmux"
 
 [terminal]
