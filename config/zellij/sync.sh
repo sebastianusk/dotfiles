@@ -18,7 +18,7 @@ mkdir -p ~/.config/zellij/layouts
 echo "🔗 Creating symlinks..."
 ln -sfn ~/dotfiles/config/zellij/config.kdl ~/.config/zellij/config.kdl
 
-# Symlink layouts directory
+# Symlink layout files
 ln -sfn ~/dotfiles/config/zellij/layouts/vsplit.kdl ~/.config/zellij/layouts/vsplit.kdl
 
 echo ""
@@ -27,7 +27,7 @@ echo ""
 echo "📝 Summary:"
 echo "   • Completely removed old ~/.config/zellij directory"
 echo "   • Created fresh directory with symlinks"
-echo "   • Symlinked config.kdl"
+echo "   • Symlinked config.kdl with Ctrl+hjkl navigation"
 echo "   • Symlinked layouts/vsplit.kdl"
 echo ""
 echo "🔄 To apply changes, restart Zellij or start a new session"
