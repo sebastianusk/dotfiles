@@ -14,7 +14,7 @@
 # @raycast.author sebastianus_kurniawan
 # @raycast.authorURL https://raycast.com/sebastianus_kurniawan
 
-profile=jperdief878c1lby
+profile=xtkgsumlbuehevpt
 
 if [[ "$1" == "d" ]]; then
   /Applications/Pritunl.app/Contents/Resources/pritunl-client stop "${profile}"
