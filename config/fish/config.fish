@@ -43,10 +43,12 @@ if type -q starship
     starship init fish --print-full-init | source
 end
 
-if not set -q TMUX
+if test "$MULTIPLEXER" = "tmux"
     set -g TMUX tmux new-session -d -s base
     eval $TMUX
     tmux attach-session -d -t base
+else if test "$MULTIPLEXER" = "zellij"
+    zellij attach -c base
 end
 
 fish_add_path /opt/homebrew/opt/libpq/bin
