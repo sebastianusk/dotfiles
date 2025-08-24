@@ -6,8 +6,8 @@ environment:
   EDITOR: nvim
   VISUAL: nvim
   PAGER: bat
-  BROWSER: brave
-  CHROME_EXECUTABLE: brave
+  BROWSER: chrome
+  CHROME_EXECUTABLE: chrome
   DISPLAY: ":0.0"
   LC_CTYPE: en_US.UTF-8
   LC_ALL: en_US.UTF-8
@@ -48,9 +48,3 @@ path:
   - /opt/homebrew/opt/mysql-client/bin
   - /opt/homebrew/opt/libpq/bin
   - /Applications/Pritunl.app/Contents/Resources
-
-# Fish-specific configurations
-fish:
-  # FZF key bindings
-  fzf_bindings:
-    directory: "\\ct"

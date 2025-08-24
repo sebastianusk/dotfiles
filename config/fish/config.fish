@@ -1,6 +1,9 @@
 set fish_greeting ""
 
-# Source generated base environment (includes secrets)
+# Ensure basic system paths are available first
+fish_add_path -p /usr/bin /bin /usr/sbin /sbin
+
+# Source generated base environment (includes secrets and full PATH)
 source ~/.config/fish/env.fish
 
 source ~/.config/fish/alias.fish
@@ -23,6 +26,11 @@ set -gx PIPX_DEFAULT_PYTHON $(asdf which python)
 # Fish-specific features
 fish_vi_key_bindings
 
+# Custom FZF bindings (load after plugins)
+if functions -q fzf_configure_bindings
+    fzf_configure_bindings --directory=\ct
+end
+
 if type -q starship
     starship init fish --print-full-init | source
 end
@@ -32,6 +40,6 @@ if status is-interactive
         eval $TMUX
         tmux attach-session -d -t base
     else if test "$MULTIPLEXER" = "zellij"; and not set -q ZELLIJ
-        # zellij
+        zellij
     end
 end

@@ -19,6 +19,6 @@ italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 
 [env]
 TERM = "xterm-256color"
-MULTIPLEXER = "tmux"
+MULTIPLEXER = "zellij"
 
 [terminal]
