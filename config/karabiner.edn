@@ -3,7 +3,7 @@
              ; :hyper-mode {:key :caps_lock :alone {:key :!Tup_arrow }}
              },
  :applications {
-                :terminal ["^org\\.alacritty", "^com\\.apple\\.terminal"]
+                :terminal ["^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode"]
                 :rdp ["^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer"]
                 :chrome ["^com\\.google\\.Chrome"]
                 }
@@ -164,33 +164,6 @@
                  [:!Ol :right_arrow]
                  [:!OSh :!Oleft_arrow]
                  [:!OSl :!Oright_arrow]
-                 ]}
-        {:des "navigate",
-         :rules [
-                 [:!Oi [[:noti :cmdq "Navigate Mode"] ["navigate" 1]]]
-                 :navigate
-                 [:##j :down_arrow]
-                 [:##k :up_arrow]
-                 [:##h :left_arrow]
-                 [:##l :right_arrow]
-                 [:!R4 :end]
-                 [:!S4 :end]
-                 [:!Tu :page_up]
-                 [:!Td :page_down]
-                 [:0 :home]
-                 [:!Ou [["navigate" 0] [:noti :cmdq]]]
-                 ]}
-        {:des "mouse",
-         :rules [
-                 [:!Om [[:noti :cmdq "Mouse Mode"] ["mouse_mode" 1]]]
-                 :mouse_mode
-                  [:j {:mkey {:y 2000}}]
-                  [:k {:mkey {:y -2000}}]
-                  [:h {:mkey {:x -2000}}]
-                  [:l {:mkey {:x 2000}}]
-                  [:spacebar {:pkey :button1}]
-                  [:return_or_enter {:pkey :button2}]
-                  [:!On [["mouse_mode" 0] [:noti :cmdq]]]
                  ]}
         ; https://dreymar.colemak.org/layers-extend.html
         ]
