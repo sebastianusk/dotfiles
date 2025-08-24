@@ -11,12 +11,20 @@ ln -sfn ~/dotfiles/config/fish/fish_plugins ~/.config/fish/fish_plugins
 ln -sfn ~/dotfiles/config/fish/alias.fish ~/.config/fish/alias.fish
 ln -sfn ~/dotfiles/config/fish/funct.fish ~/.config/fish/funct.fish
 ln -sfn ~/dotfiles/config/fish/opts.fish ~/.config/fish/opts.fish
-cp ~/dotfiles/config/fish/secret.fish.example ~/dotfiles/config/fish/secret.fish
+[ ! -f ~/dotfiles/config/fish/secret.fish ] && cp ~/dotfiles/config/fish/secret.fish.example ~/dotfiles/config/fish/secret.fish
 ln -sfn ~/dotfiles/config/fish/secret.fish ~/.config/fish/secret.fish
 
 ln -sfn ~/dotfiles/config/goose ~/.config/goose
+ln -sfn ~/dotfiles/config/opencode ~/.config/opencode
+mkdir -p ~/.aws/amazonq
+ln -sfn ~/dotfiles/config/amazonq/mcp.json ~/.aws/amazonq/mcp.json
 
 ln -sfn ~/dotfiles/config/tmuxinator ~/.tmuxinator
+
+# VS Code
+mkdir -p ~/Library/Application\ Support/Code/User
+ln -sfn ~/dotfiles/config/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -sfn ~/dotfiles/config/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ln -sfn ~/dotfiles/config/k9s ~/.config/k9s
 ln -sfn ~/dotfiles/ctags.d ~/.ctags.d
 ln -sfn ~/dotfiles/.asdfrc ~/.asdfrc
