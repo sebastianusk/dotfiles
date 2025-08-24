@@ -1,10 +1,10 @@
 {
-  "editor.accessibilitySupport": "off",
-  "terminal.integrated.env.osx": {
-    "Q_NEW_SESSION": "1"
-  },
   "amazonQ.suppressPrompts": {
     "amazonQChatDisclaimer": true
   },
-  "terminal.integrated.defaultProfile.osx": "fish"
+  "editor.accessibilitySupport": "off",
+  "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.env.osx": {
+    "Q_NEW_SESSION": "1"
+  }
 }
