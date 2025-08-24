@@ -43,11 +43,11 @@ if type -q starship
     starship init fish --print-full-init | source
 end
 
-if test "$MULTIPLEXER" = "tmux"
+if test "$MULTIPLEXER" = "tmux"; and not set -q TMUX
     set -g TMUX tmux new-session -d -s base
     eval $TMUX
     tmux attach-session -d -t base
-else if test "$MULTIPLEXER" = "zellij"
+else if test "$MULTIPLEXER" = "zellij"; and test "$ZELLIJ_SESSION_NAME" != "base"
     zellij attach -c base
 end
 
