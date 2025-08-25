@@ -65,9 +65,10 @@ return {
     { "<C-k>", function() require('smart-splits').move_cursor_up() end, desc = "Move to above split" },
     { "<C-l>", function() require('smart-splits').move_cursor_right() end, desc = "Move to right split" },
     -- Resizing
-    { "<A-h>", function() require('smart-splits').resize_left() end, desc = "Resize split left" },
-    { "<A-j>", function() require('smart-splits').resize_down() end, desc = "Resize split down" },
-    { "<A-k>", function() require('smart-splits').resize_up() end, desc = "Resize split up" },
-    { "<A-l>", function() require('smart-splits').resize_right() end, desc = "Resize split right" },
+    { "<C-a>+", function() require('smart-splits').resize_up() end, desc = "Resize split up" },
+    { "<C-a>=", function() require('smart-splits').resize_down() end, desc = "Resize split down" },
+    -- Splitting
+    { "<C-->", "<cmd>split<cr>", desc = "Split horizontally" },
+    { "<C-\\>", "<cmd>vsplit<cr>", desc = "Split vertically" },
   },
 }
