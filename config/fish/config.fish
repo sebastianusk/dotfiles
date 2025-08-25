@@ -26,6 +26,11 @@ set -gx PIPX_DEFAULT_PYTHON $(asdf which python)
 # Fish-specific features
 fish_vi_key_bindings
 
+# Catppuccin Mocha theme activation
+if test -f ~/.config/fish/themes/Catppuccin\ Mocha.theme
+    fish_config theme choose "Catppuccin Mocha" >/dev/null 2>&1
+end
+
 # Custom FZF bindings (load after plugins)
 if functions -q fzf_configure_bindings
     fzf_configure_bindings --directory=\ct
@@ -40,6 +45,6 @@ if status is-interactive
         eval $TMUX
         tmux attach-session -d -t base
     else if test "$MULTIPLEXER" = "zellij"; and not set -q ZELLIJ
-        zellij
+        eval (zellij setup --generate-auto-start fish | string collect)
     end
 end
