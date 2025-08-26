@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "context7-mcp": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "exa-mcp-server"],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "brave": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "BSAslgBMdpqOL4rH62DyNnSCKb-ey40"
+      },
+      "timeout": 120000,
+      "disabled": false
+    }
+  }
+}
