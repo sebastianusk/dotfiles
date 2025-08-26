@@ -4,7 +4,7 @@ simplified_ui true
 pane_frames false
 copy_command "pbcopy"
 show_startup_tips false
-theme "catppuccin-mocha"
+theme "default"
 
 ui {
     pane_frames {
@@ -39,11 +39,17 @@ keybinds {
                 payload "right";
             };
         }
-        bind "Ctrl Shift =" {
-            Resize "Increase";
+        bind "Ctrl Shift h" {
+            Resize "Left";
         }
-        bind "Ctrl =" {
-            Resize "Decrease";
+        bind "Ctrl Shift j" {
+            Resize "Down";
+        }
+        bind "Ctrl Shift k" {
+            Resize "Up";
+        }
+        bind "Ctrl Shift l" {
+            Resize "Right";
         }
         bind "Ctrl -" {
             NewPane "Down";
