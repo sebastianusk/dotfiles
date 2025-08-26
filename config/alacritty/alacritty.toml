@@ -1,4 +1,7 @@
 
+[general]
+import = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+
 [terminal.shell]
 program = "/usr/local/bin/fish"
 # program = "/opt/homebrew/bin/zellij"
