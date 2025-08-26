@@ -91,7 +91,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           } ],
           "type" : "basic"
         }, {
@@ -107,7 +107,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           } ],
           "type" : "basic"
         } ]
@@ -126,7 +126,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -145,7 +145,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -164,7 +164,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -183,7 +183,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -202,7 +202,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -221,7 +221,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -240,7 +240,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -259,7 +259,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -278,7 +278,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -297,7 +297,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -316,7 +316,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -335,7 +335,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -354,7 +354,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -373,7 +373,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]
@@ -392,7 +392,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode" ]
+            "bundle_identifiers" : [ "^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode" ]
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer" ]

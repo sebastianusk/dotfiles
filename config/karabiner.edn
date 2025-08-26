@@ -3,7 +3,7 @@
              ; :hyper-mode {:key :caps_lock :alone {:key :!Tup_arrow }}
              },
  :applications {
-                :terminal ["^org\\.alacritty", "^com\\.apple\\.terminal", "^com\\.microsoft\\.VSCode"]
+                :terminal ["^org\\.alacritty", "^com\\.apple\\.Terminal", "^com\\.microsoft\\.VSCode"]
                 :rdp ["^com\\.microsoft\\.rdc\\.macos", "^com\\.realvnc\\.vncviewer"]
                 :chrome ["^com\\.google\\.Chrome"]
                 }
