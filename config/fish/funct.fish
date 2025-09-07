@@ -54,6 +54,100 @@ function sudo
     end
 end
 
+function ap --description "AWS Profile selector with fzf and SSO login"
+    # Check if AWS CLI is available
+    if not command -v aws >/dev/null 2>&1
+        echo "❌ AWS CLI not found. Please install it first."
+        return 1
+    end
+
+    # Check if fzf is available
+    if not command -v fzf >/dev/null 2>&1
+        echo "❌ fzf not found. Please install it first."
+        return 1
+    end
+
+    # Check if AWS config file exists
+    if not test -f ~/.aws/config
+        echo "❌ AWS config file not found at ~/.aws/config"
+        return 1
+    end
+
+    echo "🔍 Loading profile information from ~/.aws/config..."
+    
+    # Parse AWS config file and format for fzf
+    set selection (awk '
+        /^\[profile / {
+            if (profile != "") {
+                printf "%-20s %-15s %s\n", profile, account_id, region
+            }
+            profile = $2
+            gsub(/\]/, "", profile)
+            account_id = "unknown"
+            region = "unknown"
+        }
+        /^sso_account_id/ && profile != "" { account_id = $3 }
+        /^region/ && profile != "" { region = $3 }
+        END {
+            if (profile != "") {
+                printf "%-20s %-15s %s\n", profile, account_id, region
+            }
+        }
+    ' ~/.aws/config | fzf \
+        --prompt="Select AWS Profile: " \
+        --height=40% \
+        --border \
+        --header="Profile              Account ID      Region")
+    
+    if test -z "$selection"
+        echo "❌ No profile selected."
+        return 1
+    end
+
+    # Extract just the profile name (first column)
+    set selected_profile (echo $selection | awk '{print $1}')
+    
+    echo "🔄 Setting AWS profile to: $selected_profile"
+    
+    # Set the AWS profile
+    set -gx AWS_PROFILE $selected_profile
+    
+    # Test if the session is valid by trying to get caller identity
+    echo "🔍 Testing AWS session..."
+    
+    if aws sts get-caller-identity >/dev/null 2>&1
+        echo "✅ AWS session is valid!"
+        echo "👤 Current identity:"
+        aws sts get-caller-identity --output table
+        
+        # Show current profile info
+        echo ""
+        echo "📋 Profile: $AWS_PROFILE"
+        set region (aws configure get region --profile $AWS_PROFILE 2>/dev/null)
+        if test -n "$region"
+            echo "🌍 Region: $region"
+        end
+    else
+        echo "❌ AWS session invalid or expired. Running SSO login..."
+        
+        # Run SSO login for the selected profile
+        aws sso login --profile $selected_profile
+        
+        # Test again after login
+        if aws sts get-caller-identity >/dev/null 2>&1
+            echo "✅ AWS SSO login successful!"
+            echo "👤 Current identity:"
+            aws sts get-caller-identity --output table
+        else
+            echo "❌ AWS SSO login failed. Please check your configuration."
+            return 1
+        end
+    end
+    
+    # Refresh the shell prompt to show the new AWS profile
+    echo "🔄 Refreshing shell prompt..."
+end
+
 function vsplit --description "Start vsplit session with current multiplexer"
     if test "$MULTIPLEXER" = "tmux"
         tmuxinator start vsplit

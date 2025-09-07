@@ -48,3 +48,6 @@ if status is-interactive
         eval (zellij setup --generate-auto-start fish | string collect)
     end
 end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/homebrew/share/google-cloud-sdk/path.fish.inc' ]; . '/opt/homebrew/share/google-cloud-sdk/path.fish.inc'; end
