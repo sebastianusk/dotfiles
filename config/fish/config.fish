@@ -21,8 +21,6 @@ else
     source /opt/asdf-vm/asdf.fish
 end
 
-set -gx PIPX_DEFAULT_PYTHON $(asdf which python)
-
 # Fish-specific features
 fish_vi_key_bindings
 
