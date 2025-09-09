@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixgl, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -13,7 +13,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "25.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -30,6 +30,8 @@
     yq-go # yaml processor https://github.com/mikefarah/yq
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
+    bat
+    curlie
 
     # networking tools
     mtr # A network diagnostic tool
@@ -92,6 +94,20 @@
     neovim
     fish
     tmux
+    tmuxinator
+    starship
+
+    # alacritty without desktop files (we have custom desktop entry in home.file)
+    (alacritty.overrideAttrs (oldAttrs: {
+      postInstall = (oldAttrs.postInstall or "") + ''
+        rm -rf $out/share/applications
+      '';
+    }))
+    nixgl.packages.x86_64-linux.nixGLIntel
+    claude-code
+
+    # fonts
+    nerd-fonts.jetbrains-mono
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -107,6 +123,28 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    # Override alacritty desktop file to use nixGL
+    ".local/share/applications/alacritty.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      TryExec=nixGLIntel
+      Exec=nixGLIntel alacritty
+      Icon=Alacritty
+      Terminal=false
+      Categories=System;TerminalEmulator;
+
+      Name=Alacritty
+      GenericName=Terminal
+      Comment=A fast, cross-platform, OpenGL terminal emulator (with nixGL)
+      StartupNotify=true
+      StartupWMClass=Alacritty
+      Actions=New;
+
+      [Desktop Action New]
+      Name=New Terminal
+      Exec=nixGLIntel alacritty
+    '';
   };
 
   # Home Manager can also manage your environment variables through
@@ -131,4 +169,9 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Enable font configuration
+  fonts.fontconfig.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
 }
