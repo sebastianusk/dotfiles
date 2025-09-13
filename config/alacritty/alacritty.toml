@@ -3,7 +3,8 @@
 import = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
 
 [terminal.shell]
-program = "/usr/local/bin/fish"
+program = "/usr/bin/env"
+args = ["fish"]
 # program = "/opt/homebrew/bin/zellij"
 
 [window]
@@ -23,5 +24,3 @@ italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 [env]
 TERM = "xterm-256color"
 MULTIPLEXER = "tmux"
-
-[terminal]
