@@ -21,10 +21,9 @@ rm -rf ~/.config/fish
 echo "📁 Creating fresh Fish config directory..."
 mkdir -p ~/.config/fish
 
-# Create symlinks for Fish configuration files
+# Create symlinks for Fish configuration files (except fish_plugins - we'll do that after Fisher is installed)
 echo "🔗 Creating symlinks..."
 ln -sfn ~/dotfiles/config/fish/config.fish ~/.config/fish/config.fish
-ln -sfn ~/dotfiles/config/fish/fish_plugins ~/.config/fish/fish_plugins
 ln -sfn ~/dotfiles/config/fish/alias.fish ~/.config/fish/alias.fish
 ln -sfn ~/dotfiles/config/fish/funct.fish ~/.config/fish/funct.fish
 
@@ -57,7 +56,7 @@ EOF
         if [ "$TOOLS_EXIST" -gt 0 ]; then
             echo "" >> "$FISH_ENV"
             echo "# Tool configurations" >> "$FISH_ENV"
-            
+
             # Handle each tool variable individually to preserve multiline strings
             for key in $(yq eval '.tools | keys | .[]' "$YAML_CONFIG"); do
                 value=$(yq eval ".tools.$key" "$YAML_CONFIG")
@@ -71,7 +70,7 @@ EOF
         if [ -f "$SECRET_CONFIG" ]; then
             echo "" >> "$FISH_ENV"
             echo "# Secret environment variables" >> "$FISH_ENV"
-            
+
             # Parse all secret sections
             for section in $(yq eval 'keys | .[]' "$SECRET_CONFIG" 2>/dev/null || echo ""); do
                 SECTION_EXIST=$(yq eval ".$section | length" "$SECRET_CONFIG" 2>/dev/null || echo "0")
@@ -120,30 +119,31 @@ EOF
     fi
 fi
 
-# Install Fisher and plugins
-echo "🎣 Installing Fisher and plugins..."
+# Install Fisher first
+echo "🎣 Installing Fisher..."
 if command -v fish >/dev/null 2>&1; then
-    # Install Fisher if not already installed
-    fish -c "
-        if not functions -q fisher
-            echo '📦 Installing Fisher...'
-            curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
-            fisher install jorgebucaran/fisher
-        else
-            echo '✅ Fisher already installed'
-        end
-    "
-    
-    # Install plugins from fish_plugins file
-    if [ -f ~/.config/fish/fish_plugins ]; then
+    # Install Fisher manually to ~/.config/fish/functions
+    echo '📦 Installing Fisher...'
+    mkdir -p ~/.config/fish/functions
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish > ~/.config/fish/functions/fisher.fish
+
+    # Verify Fisher is working
+    if fish -c "functions -q fisher" 2>/dev/null; then
+        echo "✅ Fisher installed successfully"
+
+        # Now create the fish_plugins symlink
+        echo "🔗 Creating fish_plugins symlink..."
+        ln -sfn ~/dotfiles/config/fish/fish_plugins ~/.config/fish/fish_plugins
+
+        # Install plugins using fisher update
         echo "📋 Installing plugins from fish_plugins..."
         fish -c "fisher update"
-        
+
         # List installed plugins for confirmation
         echo "🔌 Installed plugins:"
         fish -c "fisher list" 2>/dev/null || echo "   (Fisher list not available)"
     else
-        echo "⚠️  No fish_plugins file found, skipping plugin installation"
+        echo "❌ Fisher installation failed"
     fi
 else
     echo "⚠️  Fish shell not found, skipping Fisher installation"
