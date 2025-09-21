@@ -8,11 +8,109 @@ layouts:
 # Add "command" to the default mods
 mod1:
   - option
-  - shift
+  - command
 mod2:
   - option
   - shift
-  - control
+  - command
+
+# Layout shortcuts
+cycle-layout:
+  mod: mod2
+  key: space
+
+cycle-layout-backward:
+  mod: mod1
+  key: "`"
+
+# Space throwing
+throw-space-left:
+  mod: mod1
+  key: y
+
+throw-space-right:
+  mod: mod1
+  key: o
+
+throw-space-1:
+  mod: mod1
+  key: "`"
+throw-space-2:
+  mod: mod1
+  key: "`"
+throw-space-3:
+  mod: mod1
+  key: "`"
+throw-space-4:
+  mod: mod1
+  key: "`"
+throw-space-5:
+  mod: mod1
+  key: "`"
+throw-space-6:
+  mod: mod1
+  key: "`"
+throw-space-7:
+  mod: mod1
+  key: "`"
+throw-space-8:
+  mod: mod1
+  key: "`"
+throw-space-9:
+  mod: mod1
+  key: "`"
+throw-space-10:
+  mod: mod1
+  key: "`"
+# Screen focus by number
+focus-screen-1:
+  mod: mod1
+  key: "`"
+focus-screen-2:
+  mod: mod1
+  key: "`"
+focus-screen-3:
+  mod: mod1
+  key: "`"
+focus-screen-4:
+  mod: mod1
+  key: "`"
+# Screen throwing by number
+throw-screen-1:
+  mod: mod1
+  key: "`"
+throw-screen-2:
+  mod: mod1
+  key: "`"
+throw-screen-3:
+  mod: mod1
+  key: "`"
+throw-screen-4:
+  mod: mod1
+  key: "`"
+# Layout selection
+select-tall-layout:
+  mod: mod1
+  key: "`"
+select-wide-layout:
+  mod: mod1
+  key: "`"
+select-fullscreen-layout:
+  mod: mod1
+  key: "`"
+select-column-layout:
+  mod: mod1
+  key: "`"
+# Utility
+toggle-float:
+  mod: mod1
+  key: "`"
+toggle-tiling:
+  mod: mod1
+  key: "`"
+display-current-layout:
+  mod: mod1
+  key: "`"
 
 # Enable focus-follows-mouse
 mouse-follows-focus: true

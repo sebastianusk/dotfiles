@@ -3,7 +3,7 @@
 )
 
 (defsrc
-  caps   s   d   f   j   k   l   ;
+  caps a s d f g h j k l ;
 )
 
 (defvar
@@ -12,15 +12,29 @@
 )
 
 (defalias
-  caps (tap-hold $tap-time $hold-time esc lmet)
-  s (tap-hold $tap-time $hold-time s lalt)
-  d (tap-hold $tap-time $hold-time d lctl)
-  f (tap-hold $tap-time $hold-time f lsft)
-  j (tap-hold $tap-time $hold-time j rsft)
-  k (tap-hold $tap-time $hold-time k rctl)
-  l (tap-hold $tap-time $hold-time l ralt)
-  ; (tap-hold $tap-time $hold-time ; rmet)
+  ;; Caps Lock: tap=Esc, hold=Cmd+Opt for desktop commands
+  caps (tap-hold $tap-time $hold-time esc (multi lmet lalt))
+
+  ;; Navigation layer: A hold activates nav layer
+  a (tap-hold $tap-time $hold-time a (layer-toggle nav))
+
+  ;; Homerow modifiers following your spec:
+  ;; F/J = Ctrl, D/K = Super, S/L = Alt
+  s (tap-hold $tap-time $hold-time s lalt)  ;; Alt
+  d (tap-hold $tap-time $hold-time d lmet)  ;; Super/Cmd
+  f (tap-hold $tap-time $hold-time f lctl)  ;; Ctrl
+
+  j (tap-hold $tap-time $hold-time j rctl)  ;; Ctrl
+  k (tap-hold $tap-time $hold-time k rmet)  ;; Super/Cmd
+  l (tap-hold $tap-time $hold-time l ralt)  ;; Alt
+  ; (tap-hold $tap-time $hold-time ; rsft)   ;; Shift
 )
+
 (deflayer base
-  @caps @s  @d  @f  @j  @k  @l  @;
+  @caps @a @s @d @f g h @j @k @l @;
+)
+
+;; Navigation layer: A+hjkl for arrows
+(deflayer nav
+  _ _ _ _ _ _ left down up right _
 )
