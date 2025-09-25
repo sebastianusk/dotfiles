@@ -1,25 +1,32 @@
 (defcfg
   process-unmapped-keys yes
+  macos-dev-names-exclude (
+    "MX Master 3"
+  )
 )
 
 (defsrc
-  caps a s d f g h j k l ;
+  caps a s d f g h j k l ; spc grv
 )
 
 (defvar
-  tap-time 300
-  hold-time 250
+  tap-time 200
+  hold-time 200
 )
 
 (defalias
   ;; Caps Lock: tap=Esc, hold=Cmd+Opt for desktop commands
   caps (tap-hold $tap-time $hold-time esc (multi lmet lalt))
 
-  ;; Navigation layer: A hold activates nav layer
-  a (tap-hold $tap-time $hold-time a (layer-toggle nav))
+  ;; Navigation layer: Space hold activates nav layer
+  spc (tap-hold $tap-time $hold-time spc (layer-toggle nav))
 
-  ;; Homerow modifiers following your spec:
-  ;; F/J = Ctrl, D/K = Super, S/L = Alt
+  ;; Live reload: ~ hold reloads configuration
+  grv (tap-hold $tap-time $hold-time grv lrld)
+
+  ;; Homerow modifiers:
+  ;; A/; = Shift, S/L = Alt, D/K = Super, F/J = Ctrl
+  a (tap-hold $tap-time $hold-time a lsft)  ;; Shift
   s (tap-hold $tap-time $hold-time s lalt)  ;; Alt
   d (tap-hold $tap-time $hold-time d lmet)  ;; Super/Cmd
   f (tap-hold $tap-time $hold-time f lctl)  ;; Ctrl
@@ -31,10 +38,10 @@
 )
 
 (deflayer base
-  @caps @a @s @d @f g h @j @k @l @;
+  @caps @a @s @d @f g h @j @k @l @; @spc @grv
 )
 
-;; Navigation layer: A+hjkl for arrows
+;; Navigation layer: Space+hjkl for arrows
 (deflayer nav
-  _ _ _ _ _ _ left down up right _
+  _ _ _ _ _ _ left down up right _ _ _
 )
