@@ -23,6 +23,16 @@ cycle-layout-backward:
   mod: mod1
   key: "`"
 
+# Increase the number of windows in the main pane. Note that not all layouts respond to this command.
+increase-main:
+  mod: mod1
+  key: "`"
+
+# Decrease the number of windows in the main pane. Note that not all layouts respond to this command.
+decrease-main:
+  mod: mod1
+  key: "`"
+
 # Space throwing
 throw-space-left:
   mod: mod1
