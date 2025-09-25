@@ -8,7 +8,7 @@ palette = "catppuccin_mocha"
 # Custom format with Kubernetes & AWS on top line
 format = """
 $kubernetes$aws$nodejs$python$golang$rust$java$c$lua$ruby$php$dart$elixir$elm$haskell$julia$kotlin$nim$ocaml$perl$purescript$scala$swift$zig
-$directory$git_branch$git_status$git_state$git_commit
+$directory$git_branch$git_status$git_state$git_commit$character
 """
 
 # Starship modules
@@ -40,7 +40,7 @@ format = '[⎈ $context($namespace)]($style) '
 style = "bold mauve"
 
 [directory]
-truncation_length = 2
+truncation_length = 3
 style = "bold lavender"
 
 # Palette definitions
