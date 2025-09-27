@@ -1,90 +1,77 @@
 # Kanata Keyboard Remapper Setup
 
-## Architecture
+## Directory Structure
 
-- **Home Manager**: Installs the kanata binary only
-- **Platform setup scripts**: Handle system permissions and service installation
-- **Sync script**: Manages configuration symlinks and service lifecycle
-
-## Setup Instructions
-
-### 1. Install Kanata Binary
-
-Home Manager installs the kanata binary. Apply changes:
-
-```bash
-# From nix/steamdeck/ directory
-home-manager switch
+```
+config/kanata/
+├── kanata.kbd                 # Main configuration file
+├── README.md                  # This file
+├── mac/                       # macOS-specific setup
+│   ├── README.md              # Detailed macOS setup guide
+│   ├── setup-mac.sh           # macOS setup script
+│   └── sync-mac.sh            # macOS sync script
+└── steamdeck/                 # Steam Deck/Linux setup
+    ├── README.md              # Detailed Steam Deck setup guide
+    ├── setup-steamdeck.sh     # Steam Deck setup script
+    ├── sync-steamdeck.sh      # Steam Deck sync script
+    ├── kanata.service         # Systemd user service
+    └── kanata.openrc          # OpenRC service
 ```
 
-### 2. Platform Setup (Run Once)
+## Quick Start
 
-#### Linux/SteamOS
-```bash
-# Handles system permissions, groups, and service installation
-./setup-linux.sh
-```
+### 1. Choose Your Platform
 
-#### macOS (Future)
+Navigate to the appropriate platform directory and follow the detailed setup instructions:
+
+#### macOS
 ```bash
-# Will handle launchd service setup
+cd config/kanata/mac
+cat README.md  # Read the full setup guide
 ./setup-mac.sh
 ```
 
-**Note**: You may need sudo privileges. Log out and log back in after running for group changes to take effect.
-
-### 3. Configuration Management
-
+#### Steam Deck / SteamOS / Linux
 ```bash
-# Sync configuration and manage service
-./sync.sh
+cd config/kanata/steamdeck  
+cat README.md  # Read the full setup guide
+./setup-steamdeck.sh
 ```
 
-The sync script:
-- Creates symlinks for kanata.kbd in ~/.config/kanata/
-- Manages systemd service (restart if running, start if enabled)
+### 2. Configuration Management
 
-### 4. Service Management
+Each platform has its own sync script:
 
 ```bash
-# Enable service to start on login
-systemctl --user enable kanata
+# macOS
+./mac/sync-mac.sh
 
-# Manual service control
-systemctl --user start kanata
-systemctl --user stop kanata
-systemctl --user status kanata
-
-# View service logs
-journalctl --user -u kanata -f
+# Steam Deck/Linux  
+./steamdeck/sync-steamdeck.sh
 ```
 
-## Troubleshooting
+## Configuration Overview
 
-### Service Won't Start
+The main `kanata.kbd` file includes:
 
-1. Check if user is in required groups:
-   ```bash
-   groups $USER
-   # Should include: input uinput
-   ```
+**Homerow Modifiers:**
+- **Caps Lock**: tap=Escape, hold=Cmd+Opt for desktop commands
+- **A/S/D/F and J/K/L/;**: Hold for Shift/Alt/Super/Ctrl modifiers
+- **Space**: Hold for navigation layer (hjkl → arrow keys)
 
-2. Verify uinput device exists:
-   ```bash
-   ls -la /dev/uinput
-   # Should show: crw-rw---- 1 root uinput
-   ```
+**Function Keys:**  
+- **Default**: F1/F2=brightness, F7-F12=media controls
+- **With Fn**: Regular F1-F12 function keys
 
-3. Check keyboard devices:
-   ```bash
-   ls /dev/input/by-path/ | grep kbd
-   ```
+**Live Reload:**
+- Hold **`** (backtick/grave) to reload configuration
 
-4. View detailed logs:
-   ```bash
-   journalctl --user -u kanata --no-pager
-   ```
+## Platform-Specific Details
 
-### SteamOS Updates
+Each platform directory contains:
+- **README.md**: Comprehensive setup and troubleshooting guide
+- **Setup script**: One-time installation and configuration  
+- **Sync script**: Configuration updates and service management
+- **Service files**: Platform-appropriate service definitions
 
-After SteamOS updates, you may need to re-run `./setup.sh` as the system files could be reset.
+For detailed installation instructions, troubleshooting, and platform-specific notes, see the README in your platform's directory.

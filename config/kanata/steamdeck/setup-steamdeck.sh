@@ -1,10 +1,10 @@
 #!/bin/sh
-# Kanata setup script for Linux
+# Kanata setup script for Steam Deck/SteamOS
 # Run this script once to set up system permissions and services for kanata
 
 set -e
 
-echo "Setting up kanata permissions and services for Linux..."
+echo "Setting up kanata permissions and services for Steam Deck/SteamOS..."
 
 # Create uinput group first
 echo "Creating uinput group..."
@@ -53,7 +53,7 @@ fi
 
 echo ""
 echo "Running sync script to configure kanata..."
-"$(dirname "$0")/sync.sh"
+"$(dirname "$0")/sync-steamdeck.sh"
 
 echo ""
 echo "Setup complete!"
