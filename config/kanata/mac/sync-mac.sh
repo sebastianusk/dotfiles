@@ -18,6 +18,11 @@ ln -sf "$KANATA_DIR/kanata.kbd" "$CONFIG_DIR/kanata.kbd"
 
 echo "Configuration synced: $CONFIG_DIR/kanata.kbd -> $KANATA_DIR/kanata.kbd"
 
+# Kill any existing kanata processes to avoid device access conflicts
+echo "Stopping any existing kanata processes..."
+sudo pkill -f kanata 2>/dev/null || true
+sleep 1
+
 # Check if system services are loaded and restart if needed
 if sudo launchctl list | grep -q "com.kanata"; then
     echo "Restarting kanata services..."
