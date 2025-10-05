@@ -1,0 +1,72 @@
+# Load environment variables
+source "$HOME/dotfiles/config/zsh/env.zsh"
+[[ -f "$HOME/dotfiles/config/zsh/secret.zsh" ]] && source "$HOME/dotfiles/config/zsh/secret.zsh"
+
+# Load aliases and functions
+source "$HOME/dotfiles/config/zsh/aliases.zsh"
+source "$HOME/dotfiles/config/zsh/functions.zsh"
+
+# Zinit initialization (Homebrew installation)
+source "$(brew --prefix zinit)/zinit.zsh"
+
+# Essential plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light Aloxaf/fzf-tab
+zinit light MichaelAquilina/zsh-you-should-use
+
+# FZF key bindings (conditional loading) - Load before Atuin
+if command -v fzf >/dev/null 2>&1; then
+    eval "$(fzf --zsh)"
+fi
+
+# Starship prompt (conditional loading)
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+fi
+
+# Atuin (conditional loading) - Load after FZF to override Ctrl+R
+if command -v atuin >/dev/null 2>&1; then
+    eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
+# Zoxide (conditional loading)
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init --cmd cd zsh)"
+fi
+
+# Completion configuration
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+# Add in snippets
+zinit snippet OMZL::git.zsh
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::aws
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::command-not-found
+
+# Load completions
+autoload -Uz compinit && compinit
+zinit cdreplay -q
+
+# Multiplexer auto-start (interactive sessions only)
+if [[ $- == *i* ]]; then
+    if [[ "$MULTIPLEXER" == "tmux" ]] && [[ -z "$TMUX" ]]; then
+        TMUX="tmux new-session -d -s base"
+        eval $TMUX
+        tmux attach-session -d -t base
+    elif [[ "$MULTIPLEXER" == "zellij" ]] && [[ -z "$ZELLIJ" ]]; then
+        eval "$(zellij setup --generate-auto-start zsh)"
+    fi
+fi
+
+# Emacs keybinding
+bindkey -e

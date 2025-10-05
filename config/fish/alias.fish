@@ -6,6 +6,7 @@ alias diff="delta"
 alias random="pwgen -c -n -1 -s"
 alias curl="curlie"
 alias tree="broot"
+alias grep="grep -i"
 
 # goose configuration sync
 alias sync-goose="~/dotfiles/sync-goose.sh"
