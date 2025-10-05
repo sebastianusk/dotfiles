@@ -1,0 +1,10 @@
+#!/bin/bash
+# Change directory to git repository root
+
+TOPLEVEL=$(git rev-parse --show-toplevel 2>/dev/null)
+if [ $? -eq 0 ]; then
+    cd "$TOPLEVEL"
+else
+    echo "Not in a git repository"
+    exit 1
+fi

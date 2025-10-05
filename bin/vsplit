@@ -1,0 +1,11 @@
+#!/bin/bash
+# Start vsplit session with current multiplexer
+
+if [ "$MULTIPLEXER" = "tmux" ]; then
+    tmuxinator start vsplit
+elif [ "$MULTIPLEXER" = "zellij" ]; then
+    zellij --layout vsplit
+else
+    echo "No multiplexer configured"
+    exit 1
+fi

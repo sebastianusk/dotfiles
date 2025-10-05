@@ -1,0 +1,44 @@
+#!/bin/bash
+# Expand or extract bundled & compressed files
+
+if [ $# -eq 0 ]; then
+    echo "Usage: extract <file>"
+    exit 1
+fi
+
+file="$1"
+if [ ! -f "$file" ]; then
+    echo "File not found: $file"
+    exit 1
+fi
+
+ext="${file##*.}"
+
+case "$ext" in
+    tar)
+        tar -xvf "$file"
+        ;;
+    gz)
+        if [[ "$file" == *.tar.gz ]]; then
+            tar -zxvf "$file"
+        else
+            gunzip "$file"
+        fi
+        ;;
+    tgz)
+        tar -zxvf "$file"
+        ;;
+    bz2)
+        tar -jxvf "$file"
+        ;;
+    rar)
+        unrar x "$file"
+        ;;
+    zip)
+        unzip "$file"
+        ;;
+    *)
+        echo "Unknown extension: $ext"
+        exit 1
+        ;;
+esac

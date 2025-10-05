@@ -1,0 +1,93 @@
+#!/bin/bash
+# AWS Profile selector with fzf and SSO login
+
+# Check if AWS CLI is available
+if ! command -v aws >/dev/null 2>&1; then
+    echo "❌ AWS CLI not found. Please install it first."
+    exit 1
+fi
+
+# Check if fzf is available
+if ! command -v fzf >/dev/null 2>&1; then
+    echo "❌ fzf not found. Please install it first."
+    exit 1
+fi
+
+# Check if AWS config file exists
+if [ ! -f ~/.aws/config ]; then
+    echo "❌ AWS config file not found at ~/.aws/config"
+    exit 1
+fi
+
+echo "🔍 Loading profile information from ~/.aws/config..."
+
+# Parse AWS config file and format for fzf
+selection=$(awk '
+    /^\[profile / {
+        if (profile != "") {
+            printf "%-20s %-15s %s\n", profile, account_id, region
+        }
+        profile = $2
+        gsub(/\]/, "", profile)
+        account_id = "unknown"
+        region = "unknown"
+    }
+    /^sso_account_id/ && profile != "" { account_id = $3 }
+    /^region/ && profile != "" { region = $3 }
+    END {
+        if (profile != "") {
+            printf "%-20s %-15s %s\n", profile, account_id, region
+        }
+    }
+' ~/.aws/config | fzf \
+    --prompt="Select AWS Profile: " \
+    --height=40% \
+    --border \
+    --header="Profile              Account ID      Region")
+
+if [ -z "$selection" ]; then
+    echo "❌ No profile selected."
+    exit 1
+fi
+
+# Extract just the profile name (first column)
+selected_profile=$(echo "$selection" | awk '{print $1}')
+
+echo "🔄 Setting AWS profile to: $selected_profile"
+
+# Set the AWS profile
+export AWS_PROFILE="$selected_profile"
+
+# Test if the session is valid by trying to get caller identity
+echo "🔍 Testing AWS session..."
+
+if aws sts get-caller-identity >/dev/null 2>&1; then
+    echo "✅ AWS session is valid!"
+    echo "👤 Current identity:"
+    aws sts get-caller-identity --output table
+    
+    # Show current profile info
+    echo ""
+    echo "📋 Profile: $AWS_PROFILE"
+    region=$(aws configure get region --profile "$AWS_PROFILE" 2>/dev/null)
+    if [ -n "$region" ]; then
+        echo "🌍 Region: $region"
+    fi
+else
+    echo "❌ AWS session invalid or expired. Running SSO login..."
+    
+    # Run SSO login for the selected profile
+    aws sso login --profile "$selected_profile"
+    
+    # Test again after login
+    if aws sts get-caller-identity >/dev/null 2>&1; then
+        echo "✅ AWS SSO login successful!"
+        echo "👤 Current identity:"
+        aws sts get-caller-identity --output table
+    else
+        echo "❌ AWS SSO login failed. Please check your configuration."
+        exit 1
+    fi
+fi
+
+echo "🔄 Refreshing shell prompt..."

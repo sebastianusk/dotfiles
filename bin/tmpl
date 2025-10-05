@@ -1,0 +1,17 @@
+#!/bin/bash
+# Find and edit files in /tmp/files using fzf
+
+if [ ! -d "/tmp/files" ]; then
+    echo "No temporary files directory found"
+    exit 1
+fi
+
+if ! command -v fzf >/dev/null 2>&1; then
+    echo "fzf not found"
+    exit 1
+fi
+
+result=$(ls /tmp/files 2>/dev/null | fzf --prompt="Select temp file: ")
+if [ -n "$result" ]; then
+    nvim "/tmp/files/$result"
+fi

@@ -1,0 +1,14 @@
+#!/bin/bash
+# Create timestamped temporary file in /tmp/files
+
+if [ ! -d "/tmp/files" ]; then
+    mkdir -p /tmp/files
+fi
+
+file=$(date +"%y-%m-%d_%T")
+if [ -n "$1" ]; then
+    file="${file}.$1"
+fi
+
+file="/tmp/files/$file"
+nvim "$file"
