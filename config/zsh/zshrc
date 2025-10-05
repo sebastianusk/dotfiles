@@ -2,10 +2,6 @@
 source "$HOME/dotfiles/config/zsh/env.zsh"
 [[ -f "$HOME/dotfiles/config/zsh/secret.zsh" ]] && source "$HOME/dotfiles/config/zsh/secret.zsh"
 
-# Load aliases and functions
-source "$HOME/dotfiles/config/zsh/aliases.zsh"
-source "$HOME/dotfiles/config/zsh/functions.zsh"
-
 # Zinit initialization (Homebrew installation)
 source "$(brew --prefix zinit)/zinit.zsh"
 
@@ -67,6 +63,9 @@ if [[ $- == *i* ]]; then
         eval "$(zellij setup --generate-auto-start zsh)"
     fi
 fi
+
+# Load aliases
+source "$HOME/dotfiles/config/zsh/aliases.zsh"
 
 # Emacs keybinding
 bindkey -e

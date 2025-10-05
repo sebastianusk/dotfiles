@@ -19,3 +19,5 @@ alias docker-cleanup='docker container prune --filter "until=168h"'
 alias kctx='kubectl config use-context'
 alias kns='kubectl config set-context --current --namespace'
 alias kcm='kubectl config get-contexts'
+
+alias gcm='git commit -m'
