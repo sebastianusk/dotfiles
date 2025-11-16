@@ -1,6 +1,6 @@
 
 [general]
-import = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
 [terminal.shell]
 program = "/usr/bin/env"
