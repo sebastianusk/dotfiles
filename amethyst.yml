@@ -35,12 +35,20 @@ decrease-main:
 
 # Space throwing
 throw-space-left:
-  mod: mod1
-  key: y
+  mod: mod2
+  key: h
 
 throw-space-right:
-  mod: mod1
-  key: o
+  mod: mod2
+  key: l
+
+swap-screen-ccw:
+  mod: mod2
+  key: n
+
+swap-screen-cw:
+  mod: mod2
+  key: p
 
 throw-space-1:
   mod: mod1
