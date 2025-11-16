@@ -16,8 +16,9 @@ alias random='pwgen -c -n -1 -s'
 alias docker-cleanup='docker container prune --filter "until=168h"'
 
 # Kubernetes Quick Commands
-alias kctx='kubectl config use-context'
-alias kns='kubectl config set-context --current --namespace'
-alias kcm='kubectl config get-contexts'
+alias kctx='kubectl-ctx'
+alias kns='kubectl-ns'
+alias kcm='kubectl-kc'
 
 alias gcm='git commit -m'
+alias gpu='git push -u origin HEAD'

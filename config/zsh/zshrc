@@ -46,6 +46,7 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::aws
+zinit snippet OMZP::gcloud
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
@@ -70,3 +71,5 @@ source "$HOME/dotfiles/config/zsh/aliases.zsh"
 
 # Emacs keybinding
 bindkey -e
+
+alias gam="/Users/admin/bin/gam7/gam"

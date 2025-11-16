@@ -1,12 +1,15 @@
 # Environment Variables Configuration
 # Generated from config/env/base.yaml
 
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Basic environment variables
 export EDITOR="nvim"
 export VISUAL="nvim"
 export PAGER="bat"
-export BROWSER="chrome"
-export CHROME_EXECUTABLE="chrome"
+export BROWSER="open -a 'Google Chrome'"
+export CHROME_EXECUTABLE="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export DISPLAY=":0.0"
 export LC_CTYPE="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
