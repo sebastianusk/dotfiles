@@ -19,6 +19,21 @@
       "args": ["-y", "@modelcontextprotocol/server-brave-search"],
       "timeout": 120000,
       "disabled": false
+    },
+    "aws-bedrock-kb": {
+      "command": "uvx",
+      "args": ["awslabs.bedrock-kb-retrieval-mcp-server@latest"],
+      "config": {
+        "knowledge_base_ids": ["6SCYU7E8JM"],
+        "default_knowledge_base_id": "6SCYU7E8JM"
+      },
+      "env": {
+        "AWS_PROFILE": "ai-infra",
+        "AWS_REGION": "us-east-1",
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "timeout": 120000,
+      "disabled": false
     }
   }
 }
