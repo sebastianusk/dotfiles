@@ -1,25 +1,28 @@
 {
-  description = "A simple NixOS flake";
+  description = "Multi-machine NixOS Configuration";
 
   inputs = {
-    # NixOS official package source, using the nixos-24.11 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    jovian.url = "github:sebastianusk/Jovian-NixOS";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nixosConfigurations.devbox = nixpkgs.lib.nixosSystem {
+  outputs = { nixpkgs, jovian, home-manager, ... }: {
+    nixosConfigurations.steamdeck = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        ./hosts/steamdeck
+        jovian.nixosModules.jovian
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.seb = import ./home.nix;
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.deck = import ./users/deck;
+          };
         }
       ];
     };
