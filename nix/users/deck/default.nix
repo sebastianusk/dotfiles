@@ -5,6 +5,9 @@
   home.packages = with pkgs; [
     alacritty
     firefox
+    rofi
+    rofi-power-menu
+    claude-code
   ];
 
   # Home Manager version
