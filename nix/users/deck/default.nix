@@ -3,18 +3,19 @@
 {
   imports = [
     ../../modules/home/terminal.nix
+    ../../modules/home/wayland.nix
   ];
 
   # Enable terminal environment
   modules.terminal.enable = true;
 
+  # Enable Wayland desktop environment
+  modules.wayland.enable = true;
+
   # User packages
   home.packages = with pkgs; [
     firefox
-    rofi
-    rofi-power-menu
     claude-code
-    kitty
   ];
 
   # Home Manager version
@@ -30,11 +31,6 @@
           email = "deck@steamdeck.local";
         };
       };
-    };
-
-    rofi = {
-      enable = true;
-      theme = "gruvbox-dark";
     };
   };
 }

@@ -1,7 +1,7 @@
 # Zsh Aliases Configuration
 
 # Command Replacements
-alias ls='eza'
+# alias ls='eza'
 alias cat='bat -p'
 alias vim='nvim'
 alias diff='delta'
