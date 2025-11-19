@@ -24,6 +24,9 @@
     xwayland.enable = true;  # For Steam games
   };
 
+  # Enable zsh system-wide
+  programs.zsh.enable = true;
+
   # Display manager
   services.greetd = {
     enable = true;
@@ -40,6 +43,7 @@
   environment.systemPackages = with pkgs; [
     git
     vim
+    zsh
   ];
 
   # Use latest kernel
@@ -51,6 +55,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     initialPassword = "deck";
+    shell = pkgs.zsh;  # Set zsh as default shell
   };
 
   networking.networkmanager.enable = true;

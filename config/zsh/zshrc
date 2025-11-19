@@ -2,8 +2,17 @@
 source "$HOME/dotfiles/config/zsh/env.zsh"
 [[ -f "$HOME/dotfiles/config/zsh/secret.zsh" ]] && source "$HOME/dotfiles/config/zsh/secret.zsh"
 
-# Zinit initialization (Homebrew installation)
-source "$(brew --prefix zinit)/zinit.zsh"
+# Zinit initialization (platform-agnostic)
+if command -v brew >/dev/null 2>&1 && [[ -f "$(brew --prefix zinit)/zinit.zsh" ]]; then
+    # macOS (Homebrew)
+    source "$(brew --prefix zinit)/zinit.zsh"
+elif [[ -f "$HOME/.local/share/zinit/zinit.git/zinit.zsh" ]]; then
+    # Manual installation or NixOS
+    source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+elif [[ -f "/usr/share/zinit/zinit.zsh" ]]; then
+    # System package manager
+    source "/usr/share/zinit/zinit.zsh"
+fi
 
 # Essential plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -71,5 +80,3 @@ source "$HOME/dotfiles/config/zsh/aliases.zsh"
 
 # Emacs keybinding
 bindkey -e
-
-alias gam="/Users/admin/bin/gam7/gam"

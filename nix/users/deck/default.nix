@@ -1,13 +1,20 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../modules/home/terminal.nix
+  ];
+
+  # Enable terminal environment
+  modules.terminal.enable = true;
+
   # User packages
   home.packages = with pkgs; [
-    alacritty
     firefox
     rofi
     rofi-power-menu
     claude-code
+    kitty
   ];
 
   # Home Manager version
@@ -17,8 +24,12 @@
   programs = {
     git = {
       enable = true;
-      userName = "deck";
-      userEmail = "deck@steamdeck.local";
+      settings = {
+        user = {
+          name = "deck";
+          email = "deck@steamdeck.local";
+        };
+      };
     };
 
     rofi = {
