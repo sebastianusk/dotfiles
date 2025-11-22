@@ -34,6 +34,7 @@ in
       fd
       bat
       eza
+      broot
     ];
   };
 }
