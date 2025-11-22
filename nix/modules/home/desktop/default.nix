@@ -9,6 +9,7 @@ in
   imports = [
     ./wayland.nix
     ./waybar.nix
+    ./ashell.nix
     ./apps.nix
     ./media.nix
     ./system-utils.nix

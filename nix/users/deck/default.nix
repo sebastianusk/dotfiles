@@ -21,6 +21,9 @@
   modules.desktop = {
     enable = true;
 
+    # ashell - replaces waybar and system utilities with built-in widgets
+    ashell.enable = true;
+
     # GUI Applications
     apps = {
       enable = true;
@@ -41,16 +44,9 @@
       screenRecording = true;
     };
 
-    # System utilities
+    # System utilities - DISABLED (replaced by ashell's Settings module)
     systemUtils = {
-      enable = true;
-      networkManager = true;
-      bluetooth = true;
-      audio = true;
-      brightness = true;
-      systemMonitor = "btop";
-      powerManagement = true;
-      wallpaper = "hyprpaper";
+      enable = false;
     };
 
     # Themes and appearance

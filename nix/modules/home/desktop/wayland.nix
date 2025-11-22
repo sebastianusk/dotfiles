@@ -30,7 +30,7 @@ in
 
       waybar.enable = mkOption {
         type = types.bool;
-        default = true;
+        default = false;  # Disabled by default, use ashell instead
         description = "Install Waybar status bar";
       };
 
