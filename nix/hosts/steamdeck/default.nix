@@ -15,7 +15,7 @@
     };
     steam = {
       enable = true;
-      autoStart = false;  # Manual launch
+      autoStart = true;  # Boot into gaming mode
       user = "deck";
       desktopSession = "hyprland";  # Switch to Hyprland from gaming mode
     };
@@ -30,15 +30,6 @@
   # Enable shell system-wide
   programs.zsh.enable = true;
   programs.bash.enable = true;
-
-  # Display manager
-  services.greetd = {
-    enable = true;
-    settings.default_session = {
-      command = "${pkgs.hyprland}/bin/Hyprland";
-      user = "deck";
-    };
-  };
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

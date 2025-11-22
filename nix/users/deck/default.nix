@@ -4,10 +4,18 @@
   imports = [
     ../../modules/home/terminal
     ../../modules/home/desktop
+    ../../modules/home/games.nix
   ];
 
   # Enable terminal environment
   modules.terminal.enable = true;
+
+  # Enable gaming applications
+  modules.games = {
+    enable = true;
+    retroarch = true;
+    chiaki = true;
+  };
 
   # Enable desktop environment (includes Wayland, apps, media, etc.)
   modules.desktop = {
