@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Expand or extract bundled & compressed files
 
 if [ $# -eq 0 ]; then

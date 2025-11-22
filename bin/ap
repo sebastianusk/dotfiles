@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # AWS Profile selector with fzf and SSO login
 
 # Check if AWS CLI is available

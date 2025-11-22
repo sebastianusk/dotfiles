@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Change directory to git repository root
 
 TOPLEVEL=$(git rev-parse --show-toplevel 2>/dev/null)

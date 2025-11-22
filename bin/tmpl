@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Find and edit files in /tmp/files using fzf
 
 if [ ! -d "/tmp/files" ]; then
