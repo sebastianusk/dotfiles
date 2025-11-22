@@ -3,6 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/system/development.nix
+    ../../modules/system/fonts.nix
+    ../../modules/system/base-utils.nix
   ];
 
   jovian = {
@@ -24,8 +27,9 @@
     xwayland.enable = true;  # For Steam games
   };
 
-  # Enable zsh system-wide
+  # Enable shell system-wide
   programs.zsh.enable = true;
+  programs.bash.enable = true;
 
   # Display manager
   services.greetd = {
@@ -39,12 +43,12 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Essential system tools
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    zsh
-  ];
+  # Enable system modules
+  modules.system = {
+    development.enable = true;
+    fonts.enable = true;
+    base-utils.enable = true;
+  };
 
   # Use latest kernel
   boot.loader.systemd-boot.enable = true;
