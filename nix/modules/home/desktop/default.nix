@@ -8,6 +8,7 @@ in
 {
   imports = [
     ./wayland.nix
+    ./waybar.nix
     ./apps.nix
     ./media.nix
     ./system-utils.nix
