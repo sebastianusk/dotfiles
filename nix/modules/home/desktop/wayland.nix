@@ -68,7 +68,6 @@ in
     home.packages = with pkgs; [
       (mkIf cfg.packages.rofi.enable rofi)
       (mkIf cfg.packages.rofi.enable rofi-power-menu)
-      (mkIf cfg.packages.waybar.enable waybar)
       (mkIf cfg.packages.dunst.enable dunst)
       (mkIf cfg.packages.wl-clipboard.enable wl-clipboard)
       (mkIf cfg.packages.grimblast.enable grimblast)
@@ -85,19 +84,179 @@ in
       theme = cfg.rofi.theme;
     };
 
+    # Waybar declarative configuration
+    programs.waybar = mkIf cfg.packages.waybar.enable {
+      enable = true;
+      systemd.enable = true;
+
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "top";
+          height = 30;
+          spacing = 4;
+
+          modules-left = [ "hyprland/workspaces" "hyprland/window" ];
+          modules-center = [ "clock" ];
+          modules-right = [ "pulseaudio" "network" "cpu" "memory" "battery" "tray" ];
+
+          "hyprland/workspaces" = {
+            disable-scroll = false;
+            all-outputs = true;
+            format = "{icon}";
+            format-icons = {
+              "1" = "1";
+              "2" = "2";
+              "3" = "3";
+              "4" = "4";
+              "5" = "5";
+              "6" = "6";
+              "7" = "7";
+              "8" = "8";
+              "9" = "9";
+              "10" = "10";
+            };
+          };
+
+          "hyprland/window" = {
+            format = "{}";
+            max-length = 50;
+            separate-outputs = true;
+          };
+
+          clock = {
+            format = "{:%a %b %d  %H:%M}";
+            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          };
+
+          cpu = {
+            format = " {usage}%";
+            tooltip = false;
+          };
+
+          memory = {
+            format = " {}%";
+          };
+
+          battery = {
+            states = {
+              warning = 30;
+              critical = 15;
+            };
+            format = "{icon} {capacity}%";
+            format-charging = " {capacity}%";
+            format-plugged = " {capacity}%";
+            format-icons = ["" "" "" "" ""];
+          };
+
+          network = {
+            format-wifi = " {essid} ({signalStrength}%)";
+            format-ethernet = " {ipaddr}/{cidr}";
+            format-disconnected = "⚠ Disconnected";
+            tooltip-format = "{ifname} via {gwaddr}";
+          };
+
+          pulseaudio = {
+            format = "{icon} {volume}%";
+            format-bluetooth = "{icon} {volume}%";
+            format-muted = " Muted";
+            format-icons = {
+              headphone = "";
+              hands-free = "";
+              headset = "";
+              phone = "";
+              portable = "";
+              car = "";
+              default = ["" "" ""];
+            };
+            on-click = "pavucontrol";
+          };
+
+          tray = {
+            spacing = 10;
+          };
+        };
+      };
+
+      style = ''
+        * {
+          border: none;
+          border-radius: 0;
+          font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+          font-size: 13px;
+          min-height: 0;
+        }
+
+        window#waybar {
+          background-color: rgba(43, 48, 59, 0.9);
+          color: #ffffff;
+        }
+
+        #workspaces button {
+          padding: 0 8px;
+          background-color: transparent;
+          color: #ffffff;
+          border-bottom: 2px solid transparent;
+        }
+
+        #workspaces button:hover {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        #workspaces button.active {
+          background-color: #64727D;
+          border-bottom: 2px solid #ffffff;
+        }
+
+        #workspaces button.urgent {
+          background-color: #eb4d4b;
+        }
+
+        #window {
+          margin: 0 8px;
+          color: #64727D;
+        }
+
+        #clock,
+        #battery,
+        #cpu,
+        #memory,
+        #network,
+        #pulseaudio,
+        #tray {
+          padding: 0 10px;
+          margin: 0 4px;
+          color: #ffffff;
+        }
+
+        #battery.charging {
+          color: #26A65B;
+        }
+
+        #battery.warning:not(.charging) {
+          color: #ffbe61;
+        }
+
+        #battery.critical:not(.charging) {
+          color: #f53c3c;
+        }
+
+        #pulseaudio.muted {
+          color: #a0a0a0;
+        }
+
+        #network.disconnected {
+          color: #f53c3c;
+        }
+      '';
+    };
+
     # Symlink configuration files from dotfiles if they exist
     home.file = mkMerge [
       # Hyprland config
       (mkIf cfg.packages.hyprland.enable {
         ".config/hypr" = {
           source = config.lib.file.mkOutOfStoreSymlink "${cfg.dotfilesPath}/config/hypr";
-        };
-      })
-
-      # Waybar config
-      (mkIf cfg.packages.waybar.enable {
-        ".config/waybar" = {
-          source = config.lib.file.mkOutOfStoreSymlink "${cfg.dotfilesPath}/config/waybar";
         };
       })
 
