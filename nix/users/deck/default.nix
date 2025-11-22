@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../modules/home/terminal.nix
+    ../../modules/terminal  # New directory-based terminal module
     ../../modules/home/wayland.nix
   ];
 
