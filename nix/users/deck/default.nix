@@ -6,6 +6,7 @@
     ../../modules/home/desktop
     ../../modules/home/dev
     ../../modules/home/games.nix
+    ../../modules/home/services/mcp.nix
   ];
 
   # Enable terminal environment
@@ -62,15 +63,68 @@
   # Enable development tools
   modules.dev = {
     enable = true;
+  };
 
-    # MCP servers for Claude Code
-    mcp = {
-      enable = true;
-      servers = {
-        context7 = true;
-        brave = true;
-        exa = true;
+  # MCP Service - Declarative MCP server configuration
+  services.mcp = {
+    enable = true;
+
+    # Define MCP servers
+    servers = {
+      # Context7 - Enhanced context management
+      context7 = {
+        type = "stdio";
+        command = "npx";
+        args = [ "-y" "@upstash/context7-mcp" ];
       };
+
+      # Brave Search - Web search capabilities
+      brave-search = {
+        type = "stdio";
+        command = "npx";
+        args = [ "-y" "@modelcontextprotocol/server-brave-search" ];
+        env = {
+          BRAVE_API_KEY = "\${BRAVE_API_KEY}";
+        };
+      };
+
+      # Exa - Advanced web search
+      exa = {
+        type = "stdio";
+        command = "npx";
+        args = [ "-y" "exa-mcp-server" ];
+        env = {
+          EXA_API_KEY = "\${EXA_API_KEY}";
+        };
+      };
+
+      # Filesystem - Access to local directories
+      filesystem = {
+        type = "stdio";
+        command = "npx";
+        args = [
+          "-y"
+          "@modelcontextprotocol/server-filesystem"
+          "${config.home.homeDirectory}/Code"
+          "${config.home.homeDirectory}/dotfiles"
+        ];
+      };
+    };
+
+    # Configure where MCP configs should be written
+    targets = {
+      claude = {
+        enable = true;
+        directory = "${config.home.homeDirectory}";
+        fileName = ".claude.json";
+        mergeMode = "deep";  # Safely merges with existing config
+      };
+    };
+
+    # Install required packages
+    packages = {
+      nodejs = true;   # Required for npx-based servers
+      python = false;  # Set to true if you use uvx-based servers
     };
   };
 

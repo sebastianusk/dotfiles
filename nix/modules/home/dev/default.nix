@@ -6,10 +6,6 @@ let
   cfg = config.modules.dev;
 in
 {
-  imports = [
-    ./mcp.nix
-  ];
-
   options.modules.dev = {
     enable = mkEnableOption "development tools and environments";
   };
