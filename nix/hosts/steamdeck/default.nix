@@ -58,6 +58,7 @@
 
   # Device management for automounting USB drives, external disks, etc.
   services.udisks2.enable = true;
+  services.gvfs.enable = true;  # Virtual filesystem support for file managers
 
   nixpkgs.config.allowUnfree = true;
 

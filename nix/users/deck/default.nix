@@ -4,6 +4,7 @@
   imports = [
     ../../modules/home/terminal
     ../../modules/home/desktop
+    ../../modules/home/dev
     ../../modules/home/games.nix
   ];
 
@@ -55,6 +56,21 @@
       gtkTheme = "gruvbox";
       iconTheme = "papirus";
       cursorTheme = "bibata";
+    };
+  };
+
+  # Enable development tools
+  modules.dev = {
+    enable = true;
+
+    # MCP servers for Claude Code
+    mcp = {
+      enable = true;
+      servers = {
+        context7 = true;
+        brave = true;
+        exa = true;
+      };
     };
   };
 

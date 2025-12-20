@@ -62,7 +62,7 @@ in
       # File managers
       (mkIf (cfg.fileManager == "thunar") xfce.thunar)
       (mkIf (cfg.fileManager == "thunar") xfce.thunar-volman)  # Thunar volume manager for automounting
-      (mkIf (cfg.fileManager == "thunar") gvfs)  # Virtual filesystem support for Thunar
+      (mkIf (cfg.fileManager == "thunar") xfce.xfconf)  # Xfce configuration system (required for Thunar settings)
       (mkIf (cfg.fileManager == "nautilus") gnome.nautilus)
       (mkIf (cfg.fileManager == "nemo") cinnamon.nemo)
 
