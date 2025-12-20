@@ -9,28 +9,68 @@ let
   tomlFormat = pkgs.formats.toml {};
 
   ashellConfig = {
-    bar = {
-      position = cfg.bar.position;
-      height = cfg.bar.height;
-      exclusive_zone = cfg.bar.exclusiveZone;
+    log_level = cfg.logLevel;
+
+    outputs = {
+      Targets = cfg.outputs.targets;
+    };
+
+    position = cfg.position;
+    app_launcher_cmd = cfg.appLauncherCmd;
+
+    modules = {
+      left = cfg.modules.left;
+      center = cfg.modules.center;
+      right = cfg.modules.right;
+    };
+
+    updates = mkIf cfg.updates.enable {
+      check_cmd = cfg.updates.checkCmd;
+      update_cmd = cfg.updates.updateCmd;
+    };
+
+    workspaces = mkIf cfg.workspaces.enable {
+      enable_workspace_filling = cfg.workspaces.enableWorkspaceFilling;
+    };
+
+    CustomModule = cfg.customModules;
+
+    window_title = mkIf cfg.windowTitle.enable {
+      truncate_title_after_length = cfg.windowTitle.truncateTitleAfterLength;
+    };
+
+    settings = {
+      lock_cmd = cfg.settings.lockCmd;
+      audio_sinks_more_cmd = cfg.settings.audioSinksMoreCmd;
+      audio_sources_more_cmd = cfg.settings.audioSourcesMoreCmd;
+      wifi_more_cmd = cfg.settings.wifiMoreCmd;
+      vpn_more_cmd = cfg.settings.vpnMoreCmd;
+      bluetooth_more_cmd = cfg.settings.bluetoothMoreCmd;
     };
 
     appearance = {
-      background = cfg.appearance.background;
-      foreground = cfg.appearance.foreground;
+      style = cfg.appearance.style;
+      primary_color = cfg.appearance.primaryColor;
+      success_color = cfg.appearance.successColor;
+      text_color = cfg.appearance.textColor;
+      workspace_colors = cfg.appearance.workspaceColors;
+      special_workspace_colors = cfg.appearance.specialWorkspaceColors;
+
+      danger_color = {
+        base = cfg.appearance.dangerColor.base;
+        weak = cfg.appearance.dangerColor.weak;
+      };
+
+      background_color = {
+        base = cfg.appearance.backgroundColor.base;
+        weak = cfg.appearance.backgroundColor.weak;
+        strong = cfg.appearance.backgroundColor.strong;
+      };
+
+      secondary_color = {
+        base = cfg.appearance.secondaryColor.base;
+      };
     };
-
-    # Left modules
-    left = cfg.modules.left;
-
-    # Center modules
-    center = cfg.modules.center;
-
-    # Right modules
-    right = cfg.modules.right;
-
-    # Module configurations
-    modules = cfg.moduleConfig;
   };
 
   configFile = tomlFormat.generate "ashell-config.toml" ashellConfig;
@@ -45,90 +85,226 @@ in
       description = "ashell package to use";
     };
 
-    bar = {
-      position = mkOption {
-        type = types.enum [ "top" "bottom" "left" "right" ];
-        default = "top";
-        description = "Bar position on screen";
-      };
+    logLevel = mkOption {
+      type = types.enum [ "trace" "debug" "info" "warn" "error" ];
+      default = "warn";
+      description = "Log level for ashell";
+    };
 
-      height = mkOption {
-        type = types.int;
-        default = 32;
-        description = "Bar height in pixels";
-      };
-
-      exclusiveZone = mkOption {
-        type = types.bool;
-        default = true;
-        description = "Reserve space for the bar";
+    outputs = {
+      targets = mkOption {
+        type = types.listOf types.str;
+        default = [ "eDP-1" ];
+        description = "List of output displays to show the bar on";
       };
     };
 
-    appearance = {
-      background = mkOption {
-        type = types.str;
-        default = "#1e1e2e";
-        description = "Background color (hex or rgba)";
-      };
+    position = mkOption {
+      type = types.enum [ "Top" "Bottom" "Left" "Right" ];
+      default = "Top";
+      description = "Bar position on screen";
+    };
 
-      foreground = mkOption {
-        type = types.str;
-        default = "#cdd6f4";
-        description = "Foreground color (hex or rgba)";
-      };
+    appLauncherCmd = mkOption {
+      type = types.str;
+      default = "rofi -show drun";
+      description = "Command to launch application launcher";
     };
 
     modules = {
       left = mkOption {
-        type = types.listOf types.attrs;
-        default = [
-          { type = "Workspaces"; }
-          { type = "WindowTitle"; }
-        ];
+        type = types.listOf (types.either types.str (types.listOf types.str));
+        default = [ [ "appLauncher" "Workspaces" ] ];
         description = "Modules displayed on the left side";
       };
 
       center = mkOption {
-        type = types.listOf types.attrs;
-        default = [
-          {
-            type = "Clock";
-            config.format = "%a %b %d  %H:%M";
-          }
-        ];
+        type = types.listOf types.str;
+        default = [ "WindowTitle" ];
         description = "Modules displayed in the center";
       };
 
       right = mkOption {
-        type = types.listOf types.attrs;
-        default = [
-          { type = "MediaPlayer"; }
-          { type = "Tray"; }
-          { type = "Settings"; }
-        ];
+        type = types.listOf (types.either types.str (types.listOf types.str));
+        default = [ "SystemInfo" [ "Tray" "Clock" "Privacy" "Settings" ] ];
         description = "Modules displayed on the right side";
       };
     };
 
-    moduleConfig = mkOption {
-      type = types.attrs;
-      default = {
-        Workspaces = {
-          show_empty = true;
+    updates = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+        description = "Enable updates module";
+      };
+
+      checkCmd = mkOption {
+        type = types.str;
+        default = "";
+        description = "Command to check for updates";
+      };
+
+      updateCmd = mkOption {
+        type = types.str;
+        default = "";
+        description = "Command to run updates";
+      };
+    };
+
+    workspaces = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Enable workspaces configuration";
+      };
+
+      enableWorkspaceFilling = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Enable workspace filling";
+      };
+    };
+
+    customModules = mkOption {
+      type = types.listOf types.attrs;
+      default = [{
+        name = "appLauncher";
+        icon = "󱗼";
+        command = "rofi -show drun";
+      }];
+      description = "Custom module definitions";
+    };
+
+    windowTitle = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Enable window title configuration";
+      };
+
+      truncateTitleAfterLength = mkOption {
+        type = types.int;
+        default = 100;
+        description = "Truncate window title after this many characters";
+      };
+    };
+
+    settings = {
+      lockCmd = mkOption {
+        type = types.str;
+        default = "playerctl --all-players pause; hyprctl dispatch dpms off";
+        description = "Command to lock the screen";
+      };
+
+      audioSinksMoreCmd = mkOption {
+        type = types.str;
+        default = "pavucontrol -t 3";
+        description = "Command to open audio sinks settings";
+      };
+
+      audioSourcesMoreCmd = mkOption {
+        type = types.str;
+        default = "pavucontrol -t 4";
+        description = "Command to open audio sources settings";
+      };
+
+      wifiMoreCmd = mkOption {
+        type = types.str;
+        default = "nm-connection-editor";
+        description = "Command to open WiFi settings";
+      };
+
+      vpnMoreCmd = mkOption {
+        type = types.str;
+        default = "nm-connection-editor";
+        description = "Command to open VPN settings";
+      };
+
+      bluetoothMoreCmd = mkOption {
+        type = types.str;
+        default = "blueman-manager";
+        description = "Command to open Bluetooth settings";
+      };
+    };
+
+    appearance = {
+      style = mkOption {
+        type = types.str;
+        default = "Islands";
+        description = "Visual style for the bar";
+      };
+
+      primaryColor = mkOption {
+        type = types.str;
+        default = "#7aa2f7";
+        description = "Primary theme color";
+      };
+
+      successColor = mkOption {
+        type = types.str;
+        default = "#9ece6a";
+        description = "Success color";
+      };
+
+      textColor = mkOption {
+        type = types.str;
+        default = "#a9b1d6";
+        description = "Text color";
+      };
+
+      workspaceColors = mkOption {
+        type = types.listOf types.str;
+        default = [ "#7aa2f7" "#9ece6a" ];
+        description = "Colors for workspace indicators";
+      };
+
+      specialWorkspaceColors = mkOption {
+        type = types.listOf types.str;
+        default = [ "#7aa2f7" "#9ece6a" ];
+        description = "Colors for special workspace indicators";
+      };
+
+      dangerColor = {
+        base = mkOption {
+          type = types.str;
+          default = "#f7768e";
+          description = "Base danger color";
         };
-        Clock = {
-          tooltip_format = "%Y %B";
-        };
-        Settings = {
-          show_audio = true;
-          show_network = true;
-          show_bluetooth = true;
-          show_battery = true;
-          show_power = true;
+
+        weak = mkOption {
+          type = types.str;
+          default = "#e0af68";
+          description = "Weak danger color";
         };
       };
-      description = "Configuration for individual modules";
+
+      backgroundColor = {
+        base = mkOption {
+          type = types.str;
+          default = "#1a1b26";
+          description = "Base background color";
+        };
+
+        weak = mkOption {
+          type = types.str;
+          default = "#24273a";
+          description = "Weak background color";
+        };
+
+        strong = mkOption {
+          type = types.str;
+          default = "#414868";
+          description = "Strong background color";
+        };
+      };
+
+      secondaryColor = {
+        base = mkOption {
+          type = types.str;
+          default = "#0c0d14";
+          description = "Secondary color";
+        };
+      };
     };
 
     runAsService = mkOption {
@@ -143,7 +319,7 @@ in
     home.packages = [ cfg.package ];
 
     # Generate configuration file
-    home.file.".config/ashell".source = configFile;
+    home.file.".config/ashell/config.toml".source = configFile;
 
     # Systemd service for ashell
     systemd.user.services.ashell = mkIf cfg.runAsService {

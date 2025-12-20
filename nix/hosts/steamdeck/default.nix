@@ -55,6 +55,10 @@
 
   networking.networkmanager.enable = true;
   services.openssh.enable = true;
+
+  # Device management for automounting USB drives, external disks, etc.
+  services.udisks2.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "24.05";

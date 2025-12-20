@@ -44,9 +44,9 @@
       screenRecording = true;
     };
 
-    # System utilities - DISABLED (replaced by ashell's Settings module)
+    # System utilities
     systemUtils = {
-      enable = false;
+      enable = true;
     };
 
     # Themes and appearance
