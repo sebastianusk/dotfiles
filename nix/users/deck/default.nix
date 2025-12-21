@@ -54,7 +54,7 @@
     # Themes and appearance
     themes = {
       enable = true;
-      gtkTheme = "gruvbox";
+      gtkTheme = "catppuccin";
       iconTheme = "papirus";
       cursorTheme = "bibata";
     };

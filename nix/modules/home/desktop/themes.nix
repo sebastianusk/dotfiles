@@ -4,6 +4,53 @@ with lib;
 
 let
   cfg = config.modules.desktop.themes;
+
+  # Color palettes for each theme
+  colorPalettes = {
+    gruvbox = {
+      background = "#282828";
+      backgroundAlt = "#3c3836";
+      backgroundAlt2 = "#504945";
+      foreground = "#ebdbb2";
+      primary = "#83a598";      # bright blue
+      secondary = "#b8bb26";    # bright green
+      accent = "#fabd2f";       # bright yellow
+      urgent = "#fb4934";       # bright red
+    };
+    dracula = {
+      background = "#282a36";
+      backgroundAlt = "#44475a";
+      backgroundAlt2 = "#6272a4";
+      foreground = "#f8f8f2";
+      primary = "#bd93f9";      # purple
+      secondary = "#50fa7b";    # green
+      accent = "#ffb86c";       # orange
+      urgent = "#ff5555";       # red
+    };
+    nord = {
+      background = "#2e3440";
+      backgroundAlt = "#3b4252";
+      backgroundAlt2 = "#434c5e";
+      foreground = "#eceff4";
+      primary = "#88c0d0";      # frost blue
+      secondary = "#a3be8c";    # green
+      accent = "#ebcb8b";       # yellow
+      urgent = "#bf616a";       # red
+    };
+    catppuccin = {
+      background = "#1e1e2e";
+      backgroundAlt = "#313244";
+      backgroundAlt2 = "#45475a";
+      foreground = "#cdd6f4";
+      primary = "#89b4fa";      # blue
+      secondary = "#a6e3a1";    # green
+      accent = "#f9e2af";       # yellow
+      urgent = "#f38ba8";       # red
+    };
+  };
+
+  # Get colors for current theme, fallback to gruvbox
+  themeColors = colorPalettes.${cfg.gtkTheme} or colorPalettes.gruvbox;
 in
 {
   options.modules.desktop.themes = {
@@ -13,6 +60,13 @@ in
       type = types.enum [ "gruvbox" "dracula" "nord" "catppuccin" "none" ];
       default = "gruvbox";
       description = "GTK theme to install and configure";
+    };
+
+    colors = mkOption {
+      type = types.attrs;
+      default = themeColors;
+      description = "Color palette for the selected theme (auto-generated)";
+      readOnly = true;
     };
 
     iconTheme = mkOption {

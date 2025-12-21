@@ -18,7 +18,8 @@
 # Usage:
 #   modules.desktop.eww.enable = true;
 #
-# Customize colors:
+# Colors automatically match your desktop theme (modules.desktop.themes.gtkTheme).
+# Customize colors manually if needed:
 #   modules.desktop.eww.appearance.primaryColor = "#7aa2f7";
 #
 
@@ -26,6 +27,13 @@ with lib;
 
 let
   cfg = config.modules.desktop.eww;
+  themeColors = config.modules.desktop.themes.colors or {
+    background = "#282828";
+    backgroundAlt = "#3c3836";
+    backgroundAlt2 = "#504945";
+    foreground = "#ebdbb2";
+    primary = "#83a598";
+  };
 
   # Helper scripts for system info
   cpuScript = pkgs.writeShellScript "eww-cpu" ''
@@ -186,17 +194,18 @@ let
 
     // Workspaces
     .workspaces {
-      padding: 2px 5px;
+      padding: 0px 5px;
     }
 
     .workspace {
-      min-width: 25px;
-      padding: 2px 8px;
-      margin: 0 2px;
-      border-radius: 5px;
+      min-width: 18px;
+      padding: 1px 4px;
+      margin: 0 1px;
+      border-radius: 3px;
       background-color: ${cfg.appearance.workspaceInactive};
       color: ${cfg.appearance.textColor};
       transition: all 0.3s ease;
+      font-size: 12px;
 
       &.active {
         background-color: ${cfg.appearance.primaryColor};
@@ -253,38 +262,38 @@ in
     appearance = {
       backgroundColor = mkOption {
         type = types.str;
-        default = "#1a1b26";
-        description = "Bar background color";
+        default = themeColors.background;
+        description = "Bar background color (from theme)";
       };
 
       textColor = mkOption {
         type = types.str;
-        default = "#a9b1d6";
-        description = "Text color";
+        default = themeColors.foreground;
+        description = "Text color (from theme)";
       };
 
       primaryColor = mkOption {
         type = types.str;
-        default = "#7aa2f7";
-        description = "Primary accent color";
+        default = themeColors.primary;
+        description = "Primary accent color (from theme)";
       };
 
       workspaceInactive = mkOption {
         type = types.str;
-        default = "#24273a";
-        description = "Inactive workspace background color";
+        default = themeColors.backgroundAlt;
+        description = "Inactive workspace background color (from theme)";
       };
 
       workspaceOccupied = mkOption {
         type = types.str;
-        default = "#414868";
-        description = "Occupied workspace background color";
+        default = themeColors.backgroundAlt2;
+        description = "Occupied workspace background color (from theme)";
       };
 
       moduleBackground = mkOption {
         type = types.str;
-        default = "#24273a";
-        description = "Module background color";
+        default = themeColors.backgroundAlt;
+        description = "Module background color (from theme)";
       };
     };
 
