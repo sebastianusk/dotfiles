@@ -23,8 +23,8 @@
   modules.desktop = {
     enable = true;
 
-    # ashell - replaces waybar and system utilities with built-in widgets
-    ashell.enable = true;
+    # eww - status bar with widgets
+    eww.enable = true;
 
     # GUI Applications
     apps = {
