@@ -28,12 +28,6 @@ in
         description = "Install and configure Rofi application launcher";
       };
 
-      waybar.enable = mkOption {
-        type = types.bool;
-        default = false;  # Disabled by default, use ashell instead
-        description = "Install Waybar status bar";
-      };
-
       dunst.enable = mkOption {
         type = types.bool;
         default = true;
@@ -83,9 +77,6 @@ in
       enable = true;
       theme = cfg.rofi.theme;
     };
-
-    # Enable waybar module
-    modules.desktop.waybar.enable = mkIf cfg.packages.waybar.enable true;
 
     # Symlink configuration files from dotfiles if they exist
     home.file = mkMerge [

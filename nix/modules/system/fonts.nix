@@ -59,7 +59,7 @@ in
 
       # Install selected Nerd Fonts
       packages = [
-        # Nerd Fonts provide icons/glyphs used by terminal apps, nvim, waybar, etc.
+        # Nerd Fonts provide icons/glyphs used by terminal apps, nvim, eww, etc.
         (mkIf cfg.nerdfonts.jetbrainsMono pkgs.nerd-fonts.jetbrains-mono)
         (mkIf cfg.nerdfonts.firaCode pkgs.nerd-fonts.fira-code)
         (mkIf cfg.nerdfonts.hack pkgs.nerd-fonts.hack)

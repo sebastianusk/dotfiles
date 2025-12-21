@@ -38,7 +38,7 @@ Terminal environment with essential development tools:
 Wayland desktop environment with Hyprland and essential tools:
 - **hyprland**: Wayland compositor/window manager (user-space config)
 - **rofi**: Application launcher with power menu
-- **waybar**: Status bar for Wayland
+- **eww**: Status bar with widgets (theme-aware)
 - **dunst**: Notification daemon
 - **wl-clipboard**: Wayland clipboard utilities
 - **grimblast**: Screenshot tool
@@ -59,14 +59,13 @@ Wayland desktop environment with Hyprland and essential tools:
     # dotfilesPath = "/path/to/your/dotfiles";
 
     # Optional: disable specific packages
-    # packages.waybar.enable = false;
     # packages.dunst.enable = false;
   };
 }
 ```
 
 **Configuration Management:**
-- Symlinks config files from `~/dotfiles/config/` (hypr, waybar, dunst)
+- Symlinks config files from `~/dotfiles/config/` (hypr, dunst)
 - Sets Wayland-specific environment variables (MOZ_ENABLE_WAYLAND, QT_QPA_PLATFORM, etc.)
 - Uses `mkOutOfStoreSymlink` for mutable configuration
 - Only creates symlinks if config directories exist
