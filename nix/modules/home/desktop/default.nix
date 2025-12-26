@@ -9,6 +9,7 @@ in
   imports = [
     ./wayland.nix
     ./eww.nix
+    # ./walker.nix  # Disabled - using official walker home-manager module instead
     ./apps.nix
     ./media.nix
     ./system-utils.nix

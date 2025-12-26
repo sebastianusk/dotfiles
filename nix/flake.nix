@@ -8,14 +8,23 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Walker application launcher and its backend
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
   };
 
-  outputs = { self, nixpkgs, jovian, home-manager, ... }:
+  outputs = { self, nixpkgs, jovian, home-manager, elephant, walker, ... }:
     let
       # Helper function to create a host configuration
       mkHost = hostname: system: user: extraModules: nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit self nixpkgs jovian home-manager; };
+        specialArgs = {
+          inherit self nixpkgs jovian home-manager elephant walker;
+        };
         modules = [
           ./hosts/${hostname}
           home-manager.nixosModules.home-manager
@@ -26,6 +35,9 @@
               useUserPackages = true;
               backupFileExtension = "backup";
               users.${user} = import ./users/${user};
+              extraSpecialArgs = {
+                inherit elephant walker;
+              };
             };
           }
         ] ++ extraModules;

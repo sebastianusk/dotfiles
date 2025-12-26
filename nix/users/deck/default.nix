@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, walker, elephant, ... }:
 
 {
   imports = [
@@ -7,6 +7,7 @@
     ../../modules/home/dev
     ../../modules/home/games.nix
     ../../modules/home/services/mcp.nix
+    walker.homeManagerModules.default
   ];
 
   # Enable terminal environment
@@ -131,6 +132,7 @@
   # User packages
   home.packages = with pkgs; [
     claude-code
+    elephant.packages.${pkgs.system}.default
   ];
 
   # Home Manager version
@@ -145,6 +147,42 @@
           name = "deck";
           email = "deck@steamdeck.local";
         };
+      };
+    };
+
+    # Walker - Application Launcher (official module)
+    walker = {
+      enable = true;
+      runAsService = true;
+
+      # Walker configuration
+      config = {
+        search = {
+          delay = 100;
+          placeholder = "Search...";
+        };
+        list = {
+          height = 400;
+          always_show = true;
+        };
+        modules = [
+          {
+            name = "desktopapplications";
+            prefix = "";
+          }
+          {
+            name = "runner";
+            prefix = "";
+          }
+          {
+            name = "calc";
+            prefix = "=";
+          }
+          {
+            name = "finder";
+            prefix = "/";
+          }
+        ];
       };
     };
   };
