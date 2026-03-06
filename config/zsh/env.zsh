@@ -32,7 +32,6 @@ path_dirs=(
     "$HOME/.local/share/nvim/mason/bin"
     "$HOME/.local/bin"
     "$HOME/.cargo/bin"
-    "$HOME/dotfiles/bin"
     "$GOPATH/bin"
     "$HOME/.krew/bin"
     "$HOME/.pub-cache/bin"

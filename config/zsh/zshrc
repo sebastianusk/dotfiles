@@ -78,5 +78,8 @@ fi
 # Load aliases
 source "$HOME/dotfiles/config/zsh/aliases.zsh"
 
+# Load custom functions
+source "$HOME/dotfiles/config/zsh/functions.zsh"
+
 # Emacs keybinding
 bindkey -e
