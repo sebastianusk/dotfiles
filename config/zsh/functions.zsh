@@ -223,8 +223,8 @@ function vsplit() {
     fi
 }
 
-# Quick gcloud project switcher
-function gcp() {
+# Quick gcloud project switcher with instant cache & live refresh
+function gproj() {
     if ! command -v gcloud >/dev/null 2>&1; then
         echo "❌ gcloud CLI not found. Please install it first."
         return 1
@@ -235,10 +235,31 @@ function gcp() {
         return 1
     fi
 
-    local project=$(gcloud projects list --format="value(projectId)" | fzf --height 40% --reverse --header "Select GCP Project")
+    local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}"
+    local cache_file="$cache_dir/gcp_projects"
+    mkdir -p "$cache_dir"
+
+    # Streaming input for fzf:
+    # 1. Output the current cache first (instant)
+    # 2. Output the live projects from gcloud (slow)
+    # 3. Deduplicate using awk, keeping the first occurrence (cached projects stay at the top)
+    local project=$( (
+        [[ -f "$cache_file" ]] && cat "$cache_file"
+        gcloud projects list --format="value(projectId)" 2>/dev/null
+    ) | awk '!seen[$0]++' | fzf --height 40% --reverse --header "Select GCP Project (Loading live...)")
+
     if [[ -n "$project" ]]; then
         gcloud config set project "$project"
         echo "✓ Active project set to: $project"
+
+        # Refresh the cache file in the background to keep it up to date
+        (
+            local updated_projects=$(gcloud projects list --format="value(projectId)" 2>/dev/null)
+            if [[ -n "$updated_projects" ]]; then
+                # Prepend the selected project to the cache so it's first next time
+                (echo "$project"; echo "$updated_projects") | awk '!seen[$0]++' > "$cache_file"
+            fi
+        ) &!
     fi
 }
 
