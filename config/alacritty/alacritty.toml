@@ -13,8 +13,8 @@ opacity = 0.85
 option_as_alt = "Both"
 
 [window.padding]
-x = 0
-y = 0
+x = 5
+y = 5
 
 [font]
 size = 12
