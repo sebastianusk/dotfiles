@@ -156,6 +156,7 @@ Your setup includes homerow modifiers and function key improvements:
 
 **Navigation Layer:**
 - **Space (hold) + hjkl** → Arrow keys
+- **Space (hold) + nm,.** → Home/PgDn/PgUp/End
 
 ## Troubleshooting
 

@@ -1,23 +1,21 @@
 (defcfg
   process-unmapped-keys yes
-  macos-dev-names-exclude (
-    "MX Master 3"
-    "Logitech MX Master 3"
-    "MX Master 3S"
-    "Logitech MX Master 3S"
-    "Logi MX Master 3"
+  macos-dev-names-include (
+    "Apple Internal Keyboard / Trackpad"
   )
 )
 
 (defsrc
   f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 fn
-  y u i o
+  q w e r
   caps a s d f g h j k l ; spc grv
+  n m , .
 )
 
 (defvar
   tap-time 200
   hold-time 250
+  chord-timeout 50
 )
 
 (defalias
@@ -35,28 +33,39 @@
   a (tap-hold $tap-time $hold-time a lsft)  ;; Shift
   s (tap-hold $tap-time $hold-time s lalt)  ;; Alt
   d (tap-hold $tap-time $hold-time d lmet)  ;; Super/Cmd
-  f (tap-hold $tap-time $hold-time f lctl)  ;; Ctrl
+  f (tap-hold $tap-time $hold-time (chord system f) lctl)  ;; Ctrl
 
-  j (tap-hold $tap-time $hold-time j rctl)  ;; Ctrl
+  j (tap-hold $tap-time $hold-time (chord system j) rctl)  ;; Ctrl
   k (tap-hold $tap-time $hold-time k rmet)  ;; Super/Cmd
   l (tap-hold $tap-time $hold-time l ralt)  ;; Alt
   ; (tap-hold $tap-time $hold-time ; rsft)   ;; Shift
 
+  ;; Chords for QWER and Mouse Navigation
+  cq (chord mouse-nav q)
+  cw (chord mouse-nav w)
+  ce (chord mouse-nav e)
+  cr (chord mouse-nav r)
+
   ;; Function key: tap=fn, hold=function layer
   fn (tap-hold $tap-time $hold-time fn (layer-toggle function))
+
+  ;; Caps-word alias
+  capswrd (caps-word 2000)
 )
 
 (deflayer base
   brdn brup M-f3 M-f4 _ _ prev pp next mute vold volu @fn
-  y u i o
+  @cq @cw @ce @cr
   @caps @a @s @d @f g h @j @k @l @; @spc @grv
+  n m , .
 )
 
-;; Navigation layer: Space+hjkl for arrows, yuio for home/pgup/pgdn/end
+;; Navigation layer: Space+hjkl for arrows, nm,. for home/pgdn/pgup/end
 (deflayer nav
   _ _ _ _ _ _ _ _ _ _ _ _ _
-  home pgup pgdn end
+  _ _ _ _
   _ _ _ _ _ _ left down up right _ _ _
+  home pgdn pgup end
 )
 
 ;; Function layer: Fn+F-keys for regular function keys
@@ -64,4 +73,21 @@
   f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 _
   _ _ _ _
   _ _ _ _ _ _ _ _ _ _ _ _ _
+  _ _ _ _
+)
+
+;; Chord definitions
+(defchords mouse-nav $chord-timeout
+  (q) q
+  (w) w
+  (e) e
+  (r) r
+  (q w) mbck
+  (e r) mfwd
+)
+
+(defchords system $chord-timeout
+  (f) f
+  (j) j
+  (f j) @capswrd
 )

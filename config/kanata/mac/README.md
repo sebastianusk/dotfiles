@@ -42,7 +42,7 @@ brew install kanata
 ### 3. Run Setup Script
 
 ```bash
-cd /Users/admin/dotfiles/config/kanata/mac
+cd ~/dotfiles/config/kanata/mac
 ./setup-mac.sh
 ```
 
@@ -152,9 +152,11 @@ sudo tail -f /Library/Logs/Kanata/kanata.err.log
 ### Current Configuration
 Your basic setup includes homerow modifiers:
 - **Caps Lock (hold)** → Cmd+Opt, **tap** → Escape
-- **S/L (hold)** → Alt, **tap** → S/L
-- **D/K (hold)** → Ctrl, **tap** → D/K
-- **F/J (hold)** → Shift, **tap** → F/J
+- **A / ; (hold)** → Shift
+- **S / L (hold)** → Alt
+- **D / K (hold)** → Cmd
+- **F / J (hold)** → Ctrl
+- **Space (hold)** → Navigation Layer (hjkl: arrows, nm,.: home/pgdn/pgup/end)
 
 ### Test Basic Functionality
 1. Hold **Caps Lock + Space** → Should trigger Spotlight (Cmd+Opt+Space)
@@ -195,6 +197,11 @@ plutil /Library/LaunchDaemons/com.kanata.plist
 - **Version compatibility**: Use latest Karabiner-DriverKit-VirtualHIDDevice (v6.2.0+)
 - **Conflicts**: Cannot run alongside Karabiner-Elements
 - **Permissions**: Both Input Monitoring AND Accessibility are required
+
+### External Keyboard Compatibility
+Kanata is configured to **only** affect the internal macOS keyboard (`Apple Internal Keyboard / Trackpad`). This allows you to use external keyboards (like ZMK/QMK split keyboards) without any interference from Kanata's layers.
+
+If you want Kanata to manage an external keyboard, you must add its Product Name to the `macos-dev-names-include` list in `kanata.kbd`.
 - **Single instance**: Only one Kanata process can run at a time
 - **System daemons**: Kanata runs as system daemon, not user agent
 

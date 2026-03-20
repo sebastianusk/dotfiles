@@ -57,7 +57,7 @@ The main `kanata.kbd` file includes:
 **Homerow Modifiers:**
 - **Caps Lock**: tap=Escape, hold=Cmd+Opt for desktop commands
 - **A/S/D/F and J/K/L/;**: Hold for Shift/Alt/Super/Ctrl modifiers
-- **Space**: Hold for navigation layer (hjkl → arrow keys)
+- **Space**: Hold for navigation layer (hjkl → arrow keys, nm,. → home/pgdn/pgup/end)
 
 **Function Keys:**  
 - **Default**: F1/F2=brightness, F7-F12=media controls
