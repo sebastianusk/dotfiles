@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": "system",
+  "keybinds": {
+    "input_newline": "shift+return",
+    "input_delete_to_line_end": "none",
+    "session_child_cycle": "none",
+    "session_child_cycle_reverse": "none"
+  }
+}
