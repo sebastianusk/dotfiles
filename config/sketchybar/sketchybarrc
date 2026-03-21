@@ -42,6 +42,7 @@ sketchybar --default "${default[@]}"
 
 ##### Add Event #####
 sketchybar --add event aerospace_workspace_change
+sketchybar --add event media_change
 
 ##### Create workspace items for each monitor #####
 # Map aerospace monitor-id to sketchybar display using NSScreen IDs
@@ -74,7 +75,9 @@ done
 ##### Adding Center Items #####
 sketchybar --add item front_app q \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched
+           --subscribe front_app front_app_switched \
+           --add item media e \
+           --set media update_freq=2 icon= label.color=0xffffffff label.max_chars=40 label.scroll_duration=300 scroll_texts=on icon.padding_left=0 background.drawing=off script="$PLUGIN_DIR/media.sh" click_script="open -a 'Kaset'" \
 
 ##### Adding Right Items #####
 sketchybar --add item clock right \

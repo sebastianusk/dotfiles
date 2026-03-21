@@ -38,3 +38,9 @@ Swipe:start(3, function(direction, distance, id)
 		runCommand("/opt/homebrew/bin/aerospace workspace --wrap-around next --no-stdin")
 	end
 end)
+
+-- Display change watcher (HDMI plug/unplug)
+local displayWatcher = hs.screen.watcher.new(function()
+	runCommand("/opt/homebrew/bin/sketchybar --reload")
+end)
+displayWatcher:start()

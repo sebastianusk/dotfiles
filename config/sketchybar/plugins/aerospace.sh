@@ -28,6 +28,7 @@ elif [ "$COUNT" -eq 1 ]; then
 	*Obsidian*) ICON=" " ;;
 	*Calendar*) ICON=" " ;;
 	*Mail*) ICON=" " ;;
+	*Kaset*) ICON=" " ;;
 	*) ICON="● " ;;
 	esac
 else
