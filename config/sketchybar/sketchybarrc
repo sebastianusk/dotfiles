@@ -1,24 +1,31 @@
-# This is a demo config to showcase some of the most important commands.
-# It is meant to be changed and configured, as it is intentionally kept sparse.
-# For a (much) more advanced configuration example see my dotfiles:
-# https://github.com/FelixKratz/dotfiles
+#!/usr/bin/env bash
+
+# AeroSpace + SketchyBar Configuration
+# Dynamically creates workspace items based on aerospace workspace-to-monitor assignment
+# Each monitor shows only its assigned workspaces
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar.
-# These are only some of the options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+##### Helper Functions #####
+to_chinese() {
+  case "$1" in
+    0) echo "零" ;;
+    1) echo "一" ;;
+    2) echo "二" ;;
+    3) echo "三" ;;
+    4) echo "四" ;;
+    5) echo "五" ;;
+    6) echo "六" ;;
+    7) echo "七" ;;
+    8) echo "八" ;;
+    9) echo "九" ;;
+  esac
+}
 
+##### Bar Appearance #####
 sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
 
 ##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
-
 default=(
   padding_left=5
   padding_right=5
@@ -33,41 +40,43 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-##### Adding Mission Control Space Indicators #####
-# Let's add some mission control spaces:
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
-# to indicate active and available mission control spaces.
+##### Add Event #####
 sketchybar --add event aerospace_workspace_change
-for sid in $(aerospace list-workspaces --all); do
-    sketchybar --add item space.$sid left \
-        --subscribe space.$sid aerospace_workspace_change \
-        --set space.$sid \
-        background.color=0x44ffffff \
-        background.corner_radius=5 \
-        background.height=20 \
-        background.drawing=off \
-        label="$sid" \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+
+##### Create workspace items for each monitor #####
+# Map aerospace monitor-id to sketchybar display using NSScreen IDs
+# aerospace format: "%{monitor-id} %{monitor-appkit-nsscreen-screens-id}"
+aerospace list-monitors --format "%{monitor-id} %{monitor-appkit-nsscreen-screens-id}" | while read -r aero_monitor sb_display; do
+  # Get workspaces for this monitor
+  for ws in $(aerospace list-workspaces --monitor "$aero_monitor" 2>/dev/null | sort -n); do
+    sketchybar --add item space.$ws left \
+        --subscribe space.$ws aerospace_workspace_change \
+        --set space.$ws \
+        display=$sb_display \
+        padding_left=3 \
+        padding_right=3 \
+        background.color=0x15ffffff \
+        background.border_color=0x66ffffff \
+        background.border_width=1 \
+        background.corner_radius=4 \
+        background.height=22 \
+        background.drawing=on \
+        icon.drawing=on \
+        icon="" \
+        icon.padding_left=6 \
+        icon.padding_right=4 \
+        label="$(to_chinese $ws)" \
+        click_script="aerospace workspace $ws" \
+        script="$PLUGIN_DIR/aerospace.sh $ws"
+  done
 done
 
 ##### Adding Center Items #####
-
 sketchybar --add item front_app q \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
-# In the same way as the left items we can add items to the right side.
-# Additional position (e.g. center) are available, see:
-# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
-
-# Some items refresh on a fixed cycle, e.g. the clock runs its script once
-# every 10s. Other items respond to events they subscribe to, e.g. the
-# volume.sh script is only executed once an actual change in system audio
-# volume is registered. More info about the event system can be found here:
-# https://felixkratz.github.io/SketchyBar/config/events
-
 sketchybar --add item clock right \
            --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
            --add item volume right \
@@ -77,5 +86,5 @@ sketchybar --add item clock right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
 
-##### Force all scripts to run the first time (never do this in a script) #####
+##### Force all scripts to run the first time #####
 sketchybar --update
