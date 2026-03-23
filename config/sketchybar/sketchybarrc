@@ -77,17 +77,20 @@ sketchybar --add item front_app q \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched \
            --add item media e \
-           --set media update_freq=2 icon= label.color=0xffffffff label.max_chars=40 label.scroll_duration=300 scroll_texts=on icon.padding_left=0 background.drawing=off script="$PLUGIN_DIR/media.sh" click_script="open -a 'Kaset'" \
+           --set media update_freq=2 icon= label.color=0xffffffff label.max_chars=35 label.scroll_duration=300 scroll_texts=on icon.padding_left=0 background.drawing=off script="$PLUGIN_DIR/media.sh" click_script="open -a 'Kaset'"
 
 ##### Adding Right Items #####
 sketchybar --add item clock right \
            --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
-           --add item volume right \
-           --set volume script="$PLUGIN_DIR/volume.sh" \
-           --subscribe volume volume_change \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change
+           --subscribe battery system_woke power_source_change \
+           --add item cpu right \
+           --set cpu update_freq=5 icon=C icon.color=0xffffffff script="$PLUGIN_DIR/cpu.sh" \
+           --add item memory right \
+           --set memory update_freq=5 icon=M icon.color=0xffffffff script="$PLUGIN_DIR/memory.sh" \
+           --add item bluetooth right \
+           --set bluetooth icon= click_script="open raycast://extensions/VladCuciureanu/toothpick/manage-bluetooth-connections"
 
 ##### Force all scripts to run the first time #####
 sketchybar --update

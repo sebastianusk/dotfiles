@@ -122,3 +122,4 @@ cask "visual-studio-code"
 cask "wireshark-app"
 cask "zoom"
 mas "Whatsapp", id: 310633997
+mas "TaskForge", id: 6744716215

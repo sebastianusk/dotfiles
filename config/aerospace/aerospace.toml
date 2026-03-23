@@ -182,8 +182,7 @@ on-mode-changed = []
     cmd-alt-n = 'focus-monitor --wrap-around next'
     cmd-alt-shift-n = 'move-node-to-monitor --focus-follows-window --wrap-around next'
 
-    cmd-alt-z = ['flatten-workspace-tree']
-    shift-cmd-alt-z = ['reload-config']
+    cmd-alt-z = 'flatten-workspace-tree'
 
 [[on-window-detected]]
     if.app-id = 'md.obsidian'

@@ -26,5 +26,19 @@
       "command": ["npx", "-y", "tavily-mcp"],
       "enabled": true
     }
+  },
+  "agent": {
+    "plan": {
+      "model": "opencode/kimi-k2.5",
+      "temperature": 0.1
+    },
+    "build": {
+      "model": "opencode/glm-5",
+      "temperature": 0.2
+    },
+    "general": {
+      "model": "opencode/kimi-k2.5",
+      "description": "Used for quick adjustments and general questions."
+    }
   }
 }
