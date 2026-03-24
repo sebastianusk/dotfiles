@@ -64,11 +64,18 @@ hs.hotkey.bind({ "cmd", "alt", "shift" }, "g", function()
 end)
 
 local lastHandledId = 0
+local SWIPE_THRESHOLD = 0.07
+
 Swipe = hs.loadSpoon("Swipe")
 Swipe:start(3, function(direction, distance, id)
 	if id <= lastHandledId then
 		return
 	end
+
+	if distance < SWIPE_THRESHOLD then
+		return
+	end
+
 	lastHandledId = id
 
 	if direction == "left" then
