@@ -1,6 +1,28 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["opencode-gemini-auth"],
+  "plugin": [
+    "opencode-gemini-auth",
+    "superpowers@git+https://github.com/obra/superpowers.git",
+    "oh-my-openagent",
+    "opencode-mem",
+    "@nick-vi/opencode-type-inject",
+    "opencode-vibeguard",
+    "@rama_nigg/open-cursor@latest"
+  ],
+  "provider": {
+    "cursor-acp": {
+      "name": "Cursor ACP",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:32124/v1"
+      },
+      "models": {
+        "cursor-acp/auto": { "name": "Auto" },
+        "cursor-acp/composer-1.5": { "name": "Composer 1.5" },
+        "cursor-acp/composer-1": { "name": "Composer 1" }
+      }
+    }
+  },
   "permission": {
     "bash": "ask",
     "write": "ask",
@@ -25,20 +47,10 @@
       "type": "local",
       "command": ["npx", "-y", "tavily-mcp"],
       "enabled": true
-    }
-  },
-  "agent": {
-    "plan": {
-      "model": "opencode/kimi-k2.5",
-      "temperature": 0.1
     },
-    "build": {
-      "model": "opencode/glm-5",
-      "temperature": 0.2
-    },
-    "general": {
-      "model": "opencode/kimi-k2.5",
-      "description": "Used for quick adjustments and general questions."
+    "glean": {
+      "type": "remote",
+      "url": "https://jago-be.glean.com/mcp/default"
     }
   }
 }

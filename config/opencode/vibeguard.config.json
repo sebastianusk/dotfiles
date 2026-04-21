@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "redact": {
+    "patterns": [
+      "AKIA.*",
+      "sk-.*",
+      "xoxb-.*",
+      "ey[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*",
+      "(?i)password[:=].*"
+    ]
+  }
+}

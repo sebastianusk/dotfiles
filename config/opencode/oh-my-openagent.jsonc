@@ -1,0 +1,189 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+  "agents": {
+    // ── PRIMARY AGENTS (Tab-cyclable in UI) ──
+    // Subscription models for daily driving
+
+    // Main orchestrator - coordinates subagents, tracks todos
+    "sisyphus": {
+      "model": "opencode-go/kimi-k2.5",
+      "temperature": 1,
+      "fallback_models": ["opencode/gpt-5.4"]
+    },
+
+    // Strategic planner - interviews, scopes, creates plans
+    "prometheus": {
+      "model": "opencode-go/glm-5.1",
+      "fallback_models": ["opencode/claude-opus-4-6"]
+    },
+
+    // Interactive builder - Tab to it for direct coding
+    // GPT-optimized but kimi-k2.5 works well; warning is advisory only
+    "hephaestus": {
+      "model": "opencode-go/kimi-k2.5",
+      "temperature": 1,
+      "fallback_models": ["opencode/gpt-5.4"]
+    },
+
+    // ── SUBAGENTS (dispatched by Sisyphus on demand) ──
+    // Daily-driving subagents use opencode-go (subscription)
+
+    // Documentation researcher - fast/cheap
+    "librarian": {
+      "model": "opencode-go/minimax-m2.7",
+      "mode": "subagent",
+      "fallback_models": ["opencode/claude-haiku-4-5"]
+    },
+
+    // Codebase explorer - fast/cheap
+    "explore": {
+      "model": "opencode-go/minimax-m2.5",
+      "mode": "subagent",
+      "fallback_models": ["opencode/claude-haiku-4-5"]
+    },
+
+    // ── EXPENSIVE SUBAGENTS (pay-per-use, on demand) ──
+    // These use Opus for deep review when things get rough
+
+    // Architecture consultant - deep read-only analysis
+    "oracle": {
+      "model": "opencode/claude-opus-4-6",
+      "mode": "subagent",
+      "variant": "max",
+      "fallback_models": ["opencode/gpt-5.4"]
+    },
+
+    // Plan reviewer - catches gaps before execution
+    "metis": {
+      "model": "opencode/claude-opus-4-6",
+      "mode": "subagent",
+      "variant": "max",
+      "fallback_models": ["opencode/gpt-5.4"]
+    },
+
+    // Plan critic - validates clarity and completeness
+    "momus": {
+      "model": "opencode/claude-opus-4-6",
+      "mode": "subagent",
+      "variant": "max",
+      "fallback_models": ["opencode/gpt-5.4"]
+    },
+
+    // Task executor - inherits model from categories below
+    "sisyphus-junior": {
+      "mode": "subagent"
+    },
+
+    // Plan executor - distributes tasks to subagents
+    "atlas": {
+      "model": "opencode-go/kimi-k2.5",
+      "mode": "subagent",
+      "temperature": 1,
+      "fallback_models": ["opencode/gpt-5.4"]
+    },
+
+    // Vision specialist - multimodal for images/screenshots
+    "multimodal-looker": {
+      "mode": "subagent",
+      "model": "opencode-go/mimo-v2-omni"
+    }
+  },
+
+  // ── CATEGORIES ──
+  // Controls Sisyphus-junior model selection per task type.
+  // Most categories use opencode-go (subscription = cheap).
+  // Only ultrabrain uses opencode (expensive, rare).
+  "categories": {
+    // Trivial tasks - cheapest model
+    "quick": {
+      "model": "opencode-go/minimax-m2.5",
+      "description": "Trivial tasks: typo fixes, single-file changes"
+    },
+
+    // General low-effort
+    "unspecified-low": {
+      "model": "opencode-go/kimi-k2.5",
+      "temperature": 1,
+      "description": "General tasks with low effort"
+    },
+
+    // General high-effort - strongest subscription model
+    "unspecified-high": {
+      "model": "opencode-go/kimi-k2.5",
+      "temperature": 1,
+      "description": "General tasks with high effort"
+    },
+
+    // Frontend/UI/UX - Gemini is best for visual tasks
+    "visual-engineering": {
+      "model": "opencode/gemini-3.1-pro",
+      "variant": "high",
+      "description": "Frontend, UI/UX, design, animation"
+    },
+
+    // Deep logical reasoning - EXPENSIVE, use sparingly
+    "ultrabrain": {
+      "model": "opencode/claude-opus-4-6",
+      "variant": "max",
+      "description": "Deep logical reasoning, complex architecture. EXPENSIVE."
+    },
+
+    // Autonomous problem-solving with thorough research
+    "deep": {
+      "model": "opencode-go/kimi-k2.5",
+      "temperature": 1,
+      "fallback_models": [{ "model": "opencode/claude-opus-4-6", "variant": "max" }],
+      "description": "Autonomous problem-solving, thorough research"
+    },
+
+    // Creative/unconventional approaches
+    "artistry": {
+      "model": "opencode-go/kimi-k2.5",
+      "temperature": 1,
+      "description": "Creative and unconventional approaches"
+    },
+
+    // Documentation and prose
+    "writing": {
+      "model": "opencode-go/minimax-m2.7",
+      "description": "Documentation, prose, technical writing"
+    },
+
+    // Git operations - cheap and reliable
+    "git": {
+      "model": "opencode-go/minimax-m2.5",
+      "description": "Git operations: commits, rebases, blame"
+    }
+  },
+
+  // ── BACKGROUND TASKS ──
+  // High concurrency for subscription, low for pay-per-use
+  "background_task": {
+    "defaultConcurrency": 5,
+    "providerConcurrency": {
+      "opencode-go": 10,
+      "opencode": 3,
+      "anthropic": 3,
+      "openai": 3,
+      "google": 5
+    },
+    "modelConcurrency": {
+      "opencode/claude-opus-4-6": 2,
+      "opencode/gpt-5.4": 3,
+      "opencode-go/kimi-k2.5": 8
+    }
+  },
+
+  // ── RUNTIME FALLBACK ──
+  // Auto-switches to backup models on API errors
+  "runtime_fallback": {
+    "enabled": true,
+    "retry_on_errors": [400, 429, 503, 529],
+    "max_fallback_attempts": 3,
+    "cooldown_seconds": 60,
+    "timeout_seconds": 30,
+    "notify_on_fallback": true
+  },
+
+  "experimental": { "task_system": true }
+}
