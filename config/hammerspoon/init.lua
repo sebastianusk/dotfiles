@@ -82,5 +82,102 @@ Swipe:start(3, function(direction, distance, id)
 		runCommand("/opt/homebrew/bin/aerospace workspace --wrap-around prev --no-stdin")
 	elseif direction == "right" then
 		runCommand("/opt/homebrew/bin/aerospace workspace --wrap-around next --no-stdin")
+	elseif direction == "down" then
+		hs.execute('open "raycast://extensions/raycast/navigation/switch-windows"')
 	end
+end)
+
+local function bindMouseDoublePress(buttonNumber, singleFn, doubleFn, timeout)
+	local state = { clickCount = 0, timer = nil, downData = nil, upData = nil }
+	local eventtap
+
+	eventtap = hs.eventtap.new({
+		hs.eventtap.event.types.otherMouseDown,
+		hs.eventtap.event.types.otherMouseUp,
+	}, function(event)
+		local pressedButton = event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
+		if pressedButton ~= buttonNumber then
+			return false
+		end
+
+		if event:getProperty(hs.eventtap.event.properties.eventSourceUnixProcessID) > 0 then
+			return false
+		end
+
+		local eventType = event:getType()
+
+		if eventType == hs.eventtap.event.types.otherMouseDown then
+			state.clickCount = state.clickCount + 1
+
+			if state.clickCount == 1 then
+				state.downData = event:asData()
+				state.timer = hs.timer.doAfter(timeout, function()
+					local downData = state.downData
+					local upData = state.upData
+					state.clickCount = 0
+					state.timer = nil
+					state.downData = nil
+					state.upData = nil
+
+					if downData then
+						hs.eventtap.event.newEventFromData(downData):post()
+					end
+					if upData then
+						hs.eventtap.event.newEventFromData(upData):post()
+					end
+
+					if singleFn then
+						singleFn()
+					end
+				end)
+				return true
+			elseif state.clickCount == 2 then
+				if state.timer then
+					state.timer:stop()
+					state.timer = nil
+				end
+				state.clickCount = 0
+				state.downData = nil
+				state.upData = nil
+				doubleFn()
+				return true
+			end
+		elseif eventType == hs.eventtap.event.types.otherMouseUp then
+			if state.clickCount == 1 and not state.upData then
+				state.upData = event:asData()
+			end
+			return true
+		end
+
+		return false
+	end)
+
+	eventtap:start()
+	return eventtap
+end
+
+bindMouseDoublePress(4, nil, function()
+	hs.execute('open "raycast://extensions/raycast/navigation/switch-windows"')
+end, 0.3)
+
+bindMouseDoublePress(3, nil, function()
+	hs.execute('open "raycast://extensions/limonkufu/aerospace/showShortcuts"')
+end, 0.3)
+
+hs.hotkey.bind({ "cmd", "alt" }, "t", function()
+	hs.execute('open "obsidian://adv-uri?vault=brain&commandid=tasknotes%3Acreate-new-task"')
+end)
+
+hs.hotkey.bind({ "cmd", "alt", "shift" }, "t", function()
+	hs.execute('open "obsidian://adv-uri?vault=brain&filepath=Tasks%2FTasks.base"')
+end)
+
+hs.hotkey.bind({ "cmd", "alt", "shift" }, "w", function()
+	hs.application.launchOrFocus("Alacritty")
+	hs.timer.doAfter(0.3, function()
+		hs.execute("/opt/homebrew/bin/tmux switch-client -t 0")
+		hs.timer.doAfter(0.1, function()
+			hs.execute("/opt/homebrew/bin/tmux send-keys -t 0 'pj' Enter")
+		end)
+	end)
 end)
