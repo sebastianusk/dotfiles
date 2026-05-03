@@ -1,6 +1,17 @@
+# OpenCode Memory plugin
+export OPENCODE_MEM_DEFAULT_SCOPE=user
+export OPENCODE_MEM_DB_PATH=~/.local/share/opencode/memory.db
+
 # Load environment variables
 source "$HOME/dotfiles/config/zsh/env.zsh"
 [[ -f "$HOME/dotfiles/config/zsh/secret.zsh" ]] && source "$HOME/dotfiles/config/zsh/secret.zsh"
+
+# asdf version manager
+if command -v brew >/dev/null 2>&1 && [[ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]]; then
+    . "$(brew --prefix asdf)/libexec/asdf.sh"
+elif [[ -f "$HOME/.local/share/asdf/asdf.sh" ]]; then
+    . "$HOME/.local/share/asdf/asdf.sh"
+fi
 
 # Zinit initialization (platform-agnostic)
 if command -v brew >/dev/null 2>&1 && [[ -f "$(brew --prefix zinit)/zinit.zsh" ]]; then
@@ -25,6 +36,9 @@ zinit light MichaelAquilina/zsh-you-should-use
 if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --zsh)"
 fi
+
+# Project manager
+[[ -f "$HOME/dotfiles/config/zsh/project/projects.zsh" ]] && source "$HOME/dotfiles/config/zsh/project/projects.zsh"
 
 # Starship prompt (conditional loading)
 if command -v starship >/dev/null 2>&1; then
@@ -83,3 +97,5 @@ source "$HOME/dotfiles/config/zsh/functions.zsh"
 
 # Emacs keybinding
 bindkey -e
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+export PATH="/opt/homebrew/opt/helm@3/bin:$PATH"
