@@ -34,7 +34,7 @@ Schema:
 
 ```yaml
 tmuxinator_profile: dev           # default tmuxinator profile name
-base_session: base                # default session name for pj close
+base_session: 0                  # default session name for pj close
 tmuxinator_config: ~/.tmuxinator/dev.yml  # path to the profile YAML
 
 gitlab_groups:                    # array — scan GitLab via glab
@@ -63,7 +63,7 @@ static_projects:                  # hand-picked directories
   discovery.  Layout: `{code_root}/{owner}/{repo}`.
 - `static_projects` entries are directories that always appear in the picker.
   Optional `label` overrides the display name shown in fzf.
-- `base_session` (optional, default `base`) — the tmux session that `pj close`
+- `base_session` (optional, default `0`) — the tmux session that `pj close`
   switches back to.
 - `tmuxinator_profile` (optional, default `dev`) — name of the tmuxinator
   project to start.
@@ -116,7 +116,7 @@ static_projects:                  # hand-picked directories
 - **Replace**: if a tmux session with that name exists, kill it first
   (`tmux kill-session -t <name>`), then start tmuxinator with `-n <name>`
   so the new session carries the exact name.
-- `pj close` switches the client to the `base_session` (default `base`) and
+- `pj close` switches the client to the `base_session` (default `0`) and
   kills the current session.
 - Inside tmux: `tmux switch-client` to the new session. Outside tmux:
   `tmux attach` to it.

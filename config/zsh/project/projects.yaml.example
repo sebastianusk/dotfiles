@@ -3,7 +3,7 @@
 # and edit to match your setup.
 
 tmuxinator_profile: dev
-base_session: base
+base_session: 0
 tmuxinator_config: ~/.tmuxinator/dev.yml
 
 gitlab_groups:

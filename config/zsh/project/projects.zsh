@@ -39,7 +39,7 @@ mkdir -p "$_PJ_CACHE_DIR" "$_PJ_HELPERS_DIR"
 # =============================================================================
 
 _PJ_TMUX_PROFILE=$(yq e '.tmuxinator_profile // "dev"' "$PROJECT_YAML")
-_PJ_BASE_SESSION=$(yq e '.base_session // "base"' "$PROJECT_YAML")
+_PJ_BASE_SESSION=$(yq e '.base_session // "0"' "$PROJECT_YAML")
 _PJ_TMUX_CONFIG=$(yq e '.tmuxinator_config // "$HOME/.tmuxinator/dev.yml"' "$PROJECT_YAML")
 _PJ_TMUX_CONFIG=${~_PJ_TMUX_CONFIG}
 _PJ_GITHUB_ROOT=$(yq e '.github.code_root // ""' "$PROJECT_YAML")
