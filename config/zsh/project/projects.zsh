@@ -103,9 +103,8 @@ for (( gi=0; gi<glab_count; gi++ )); do
         printf 'gitlab:%s\t%s/%s\n' "$pwp" "$code_root" "$rel"
         local current="$slug"
         printf '%s\n' "$current" >> "$dir_set"
-        local -a parts
-        IFS='/' parts=(${rel})
-        for (( i=0; i<${#parts[@]}-1; i++ )); do
+        local -a parts=("${(@s:/:)rel}")
+        for (( i=1; i<${#parts[@]}; i++ )); do
             current="${current}/${parts[i]}"
             printf '%s\n' "$current" >> "$dir_set"
         done
@@ -244,9 +243,8 @@ _pj_build_list() {
             printf 'gitlab:%s\t%s/%s\n' "$pwp" "$code_root" "$rel"
             local current="$slug"
             printf '%s\n' "$current" >> "$dir_set"
-            local -a parts
-            IFS='/' parts=(${rel})
-            for (( i=0; i<${#parts[@]}-1; i++ )); do
+            local -a parts=("${(@s:/:)rel}")
+            for (( i=1; i<${#parts[@]}; i++ )); do
                 current="${current}/${parts[i]}"
                 printf '%s\n' "$current" >> "$dir_set"
             done
