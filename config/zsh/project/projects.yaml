@@ -1,0 +1,19 @@
+# projects.yaml — Project Manager Configuration
+# Copy to $PROJECT_YAML (default: ~/dotfiles/config/zsh/project/projects.yaml)
+# and edit to match your setup.
+
+tmuxinator_profile: dev
+base_session: base
+tmuxinator_config: ~/.tmuxinator/dev.yml
+
+gitlab_groups:
+  - slug: dk-digital-bank
+    code_root: ~/Code/dk-digital-bank
+
+github:
+  code_root: ~/Code/github
+
+static_projects:
+  - path: ~/dotfiles
+    label: dotfiles
+  - path: ~/Documents/brain
