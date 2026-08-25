@@ -26,12 +26,18 @@ return {
       before_init = function(_, config)
         config.settings = config.settings or {}
         config.settings.yaml = config.settings.yaml or {}
-        config.settings.yaml.schemas = vim.tbl_deep_extend(
-          "force",
-          {},
-          require("schemastore").yaml.schemas(),
-          config.settings.yaml.schemas or {}
-        )
+        local schemas = config.settings.yaml.schemas or {}
+        local schemastore = require("schemastore").yaml.schemas()
+        if vim.islist(schemas) and vim.islist(schemastore) then
+          config.settings.yaml.schemas = vim.list_extend(vim.list_extend({}, schemas), schemastore)
+        else
+          config.settings.yaml.schemas = vim.deepcopy(schemas)
+          for schema, file_matches in pairs(schemastore) do
+            if config.settings.yaml.schemas[schema] == nil then
+              config.settings.yaml.schemas[schema] = file_matches
+            end
+          end
+        end
       end,
       settings = {
         redhat = { telemetry = { enabled = false } },
