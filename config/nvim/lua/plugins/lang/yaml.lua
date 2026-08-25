@@ -23,9 +23,15 @@ return {
         },
       },
       -- lazy-load schemastore when needed
-      on_new_config = function(new_config)
-        new_config.settings.yaml.schemas =
-          vim.tbl_deep_extend("force", new_config.settings.yaml.schemas or {}, require("schemastore").yaml.schemas())
+      before_init = function(_, config)
+        config.settings = config.settings or {}
+        config.settings.yaml = config.settings.yaml or {}
+        config.settings.yaml.schemas = vim.tbl_deep_extend(
+          "force",
+          {},
+          require("schemastore").yaml.schemas(),
+          config.settings.yaml.schemas or {}
+        )
       end,
       settings = {
         redhat = { telemetry = { enabled = false } },

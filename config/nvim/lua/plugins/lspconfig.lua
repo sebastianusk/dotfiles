@@ -47,7 +47,8 @@ return {
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
         }, servers[server] or {})
-        require("lspconfig")[server].setup(server_opts)
+        vim.lsp.config(server, server_opts)
+        vim.lsp.enable(server)
       end
 
       -- get all the servers that are available through mason-lspconfig
@@ -71,7 +72,10 @@ return {
       end
 
       if have_mason then
-        mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
+        mlsp.setup({ ensure_installed = ensure_installed })
+        for _, server in ipairs(ensure_installed) do
+          setup(server)
+        end
       end
 
       -- Use LspAttach autocommand to only map the following keys
