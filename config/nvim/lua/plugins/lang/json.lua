@@ -11,7 +11,7 @@ return {
     "jsonlint",
     "prettier",
   }),
-  install.ensure_installed_treesitter({ "json", "json5", "jsonc" }),
+  install.ensure_installed_treesitter({ "json", "json5" }),
   lsp.lsp_config_server({
     jsonls = {
       -- lazy-load schemastore when needed

@@ -8,29 +8,22 @@ return {
 
       npairs.setup({
         enable_check_bracket_line = false,
-        ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+        ignored_next_char = "[%w%.]",
         check_ts = true,
         fast_wrap = {},
         ts_config = {
-          lua = { "string" }, -- it will not add a pair on that treesitter node
+          lua = { "string" },
           javascript = { "template_string" },
-          java = false, -- don't check treesitter on java
+          java = false,
         },
       })
 
       local ts_conds = require("nvim-autopairs.ts-conds")
 
-      -- press % => %% only while inside a comment or string
       npairs.add_rules({
         Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node({ "string", "comment" })),
         Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node({ "function" })),
       })
-    end,
-  },
-  {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
     end,
   },
 }

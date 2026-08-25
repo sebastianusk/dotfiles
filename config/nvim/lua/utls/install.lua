@@ -1,4 +1,5 @@
 local M = {}
+local treesitter_parsers = {}
 
 function M.ensure_installed_mason(packages)
   return {
@@ -12,13 +13,18 @@ end
 
 -- see: https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
 function M.ensure_installed_treesitter(packages)
-  return {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, packages)
-      end
-    end,
-  }
+  for _, package in ipairs(packages) do
+    treesitter_parsers[package] = true
+  end
+  return {}
 end
+
+function M.get_treesitter_parsers()
+  local parsers = {}
+  for parser in pairs(treesitter_parsers) do
+    table.insert(parsers, parser)
+  end
+  return parsers
+end
+
 return M
