@@ -1,0 +1,1 @@
+../../../Documents/brain/agent/prompts/create-note.md

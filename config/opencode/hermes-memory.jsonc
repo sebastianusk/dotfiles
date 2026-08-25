@@ -1,0 +1,15 @@
+{
+  // All durable writes are staged for explicit approval.
+  "dataPath": "~/.local/share/opencode/hermes-memory",
+  "reviewEveryTurns": 10,
+  "idleDebounceMs": 10000,
+  "reviewMinIntervalMs": 1800000,
+  "ollamaUrl": "http://127.0.0.1:11434",
+  "ollamaModel": "qwen3:14b",
+  "minConfidence": 0.9,
+  "maxTranscriptChars": 12000,
+  "reviewRetryMs": 300000,
+  "userCharLimit": 1375,
+  "globalCharLimit": 2200,
+  "projectCharLimit": 3000
+}

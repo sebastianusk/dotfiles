@@ -1,30 +1,180 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
-    "opencode-gemini-auth",
-    "superpowers@git+https://github.com/obra/superpowers.git",
-    "oh-my-openagent",
-    "opencode-mem",
-    "@nick-vi/opencode-type-inject",
-    "opencode-vibeguard",
-    "@rama_nigg/open-cursor@latest"
+    "@mohak34/opencode-notifier@0.2.8",
+    "./extensions/hermes-memory/plugin.ts",
+    "opencode-vibeguard@0.1.0",
+    "superpowers@git+https://github.com/obra/superpowers.git#v6.3.0",
+    "context-mode@1.0.169"
   ],
-  "provider": {
-    "cursor-acp": {
-      "name": "Cursor ACP",
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "baseURL": "http://127.0.0.1:32124/v1"
-      },
-      "models": {
-        "cursor-acp/auto": { "name": "Auto" },
-        "cursor-acp/composer-1.5": { "name": "Composer 1.5" },
-        "cursor-acp/composer-1": { "name": "Composer 1" }
+  "model": "openai/gpt-5.6-sol",
+  "small_model": "openai/gpt-5.6-luna",
+  "subagent_depth": 1,
+  "instructions": ["AGENTS.md"],
+  "skills": {
+    "paths": [
+      "~/dotfiles/config/opencode/skills",
+      "~/dotfiles/config/skills",
+      "~/Documents/brain/agent/skills"
+    ]
+  },
+  "references": {
+    "brain": {
+      "path": "~/Documents/brain",
+      "description": "Obsidian brain vault for task notes, project context, and linked external resources"
+    }
+  },
+  "agent": {
+    "plan": {
+      "mode": "primary",
+      "model": "openai/gpt-5.6-sol",
+      "reasoningEffort": "high",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": {
+          "*": "deny",
+          "explore": "allow",
+          "general": "allow"
+        },
+        "read": "allow",
+        "list": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "webfetch": "allow",
+        "todoread": "allow",
+        "question": "allow",
+        "skill": "allow"
       }
+    },
+    "build": {
+      "mode": "primary",
+      "model": "openai/gpt-5.6-terra",
+      "reasoningEffort": "medium",
+      "permission": {
+        "edit": "allow",
+        "task": {
+          "*": "deny",
+          "explore": "allow",
+          "general": "allow"
+        },
+        "read": "allow",
+        "list": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "webfetch": "allow",
+        "todoread": "allow",
+        "todowrite": "allow",
+        "question": "allow",
+        "skill": "allow"
+      }
+    },
+    "explore": {
+      "model": "openai/gpt-5.6-luna",
+      "permission": {
+        "edit": "deny",
+        "write": "deny",
+        "task": "deny",
+        "todowrite": "deny",
+        "bash": {
+          "*": "deny",
+          "rg *": "allow",
+          "grep *": "allow",
+          "head *": "allow",
+          "tail *": "allow",
+          "wc *": "allow",
+          "cut *": "allow",
+          "tr *": "allow",
+          "nl *": "allow",
+          "jq *": "allow",
+          "git status *": "allow",
+          "git log *": "allow",
+          "git diff *": "allow",
+          "git show *": "allow",
+          "git rev-parse *": "allow",
+          "git branch --show-current": "allow",
+          "git branch --list *": "allow",
+          "git branch -a": "allow",
+          "git branch -r": "allow",
+          "git tag --list *": "allow",
+          "git ls-files *": "allow",
+          "git ls-tree *": "allow",
+          "git grep *": "allow",
+          "git remote -v": "allow",
+          "git remote get-url *": "allow",
+          "git describe *": "allow",
+          "git blame *": "allow",
+          "rg --pre *": "deny"
+        }
+      }
+    },
+    "general": {
+      "model": "openai/gpt-5.6-luna"
     }
   },
   "permission": {
-    "bash": "ask",
+    "bash": {
+      "*": "ask",
+      "node ~/Documents/brain/scripts/vault-tools.js *": "allow",
+      "node /Users/seb/Documents/brain/scripts/vault-tools.js *": "allow",
+      "node \"~/Documents/brain/scripts/vault-tools.js\" *": "allow",
+      "node \"/Users/seb/Documents/brain/scripts/vault-tools.js\" *": "allow",
+      "cat *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "grep *": "allow",
+      "ls *": "allow",
+      "wc *": "allow",
+      "sort *": "allow",
+      "uniq *": "allow",
+      "cut *": "allow",
+      "tr *": "allow",
+      "nl *": "allow",
+      "jq *": "allow",
+      "file *": "allow",
+      "which *": "allow",
+      "pwd": "allow",
+      "whoami": "allow",
+      "uname *": "allow",
+      "date": "allow",
+      "printenv PATH": "allow",
+      "printenv PWD": "allow",
+      "printenv SHELL": "allow",
+      "stat *": "allow",
+      "du *": "allow",
+      "df *": "allow",
+      "diff *": "allow",
+      "tree *": "allow",
+      "bat *": "allow",
+      "rg *": "allow",
+      "eza *": "allow",
+      "exa *": "allow",
+      "shasum *": "allow",
+      "bash -n *": "allow",
+      "opencode debug *": "allow",
+      "test *": "allow",
+      "printf *": "allow",
+      "true": "allow",
+      "git status *": "allow",
+      "git log *": "allow",
+      "git diff *": "allow",
+      "git show *": "allow",
+      "git rev-parse *": "allow",
+      "git branch --show-current": "allow",
+      "git branch --list *": "allow",
+      "git branch -a": "allow",
+      "git branch -r": "allow",
+      "git tag --list *": "allow",
+      "git ls-files *": "allow",
+      "git ls-tree *": "allow",
+      "git grep *": "allow",
+      "git remote -v": "allow",
+      "git remote get-url *": "allow",
+      "git describe *": "allow",
+      "git blame *": "allow",
+      "sort -o *": "deny",
+      "rg --pre *": "deny"
+    },
     "write": "ask",
     "edit": "ask",
     "task": "ask",
@@ -35,7 +185,11 @@
     "webfetch": "allow",
     "todoread": "allow",
     "todowrite": "allow",
-    "skill": "allow"
+    "skill": "allow",
+    "external_directory": {
+      "*": "ask",
+      "~/Documents/brain/**": "allow"
+    }
   },
   "mcp": {
     "context7": {
@@ -47,10 +201,6 @@
       "type": "local",
       "command": ["npx", "-y", "tavily-mcp"],
       "enabled": true
-    },
-    "glean": {
-      "type": "remote",
-      "url": "https://jago-be.glean.com/mcp/default"
     }
   }
 }
