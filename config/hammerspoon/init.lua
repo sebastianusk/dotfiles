@@ -164,10 +164,10 @@ bindMouseDoublePress(3, nil, function()
 	hs.execute('open "raycast://extensions/limonkufu/aerospace/showShortcuts"')
 end, 0.3)
 
-hs.hotkey.bind({ "cmd", "alt" }, "t", function()
+hs.hotkey.bind({ "cmd", "alt", "shift" }, "t", function()
 	hs.execute('open "obsidian://adv-uri?vault=brain&commandid=tasknotes%3Acreate-new-task"')
 end)
 
-hs.hotkey.bind({ "cmd", "alt", "shift" }, "t", function()
+hs.hotkey.bind({ "cmd", "alt" }, "t", function()
 	hs.execute('open "obsidian://adv-uri?vault=brain&filepath=Tasks%2FTasks.base"')
 end)
