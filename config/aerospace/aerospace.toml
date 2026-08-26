@@ -128,7 +128,7 @@ on-mode-changed = []
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     cmd-alt-m = 'layout tiles horizontal vertical'
-    cmd-alt-shift-m = 'layout accordion horizontal vertical'
+    cmd-alt-shift-m = 'layout accordion tiles'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     cmd-alt-j = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace dfs-next'
@@ -155,10 +155,13 @@ on-mode-changed = []
     cmd-alt-7 = 'workspace 7'
     cmd-alt-8 = 'workspace 8'
     cmd-alt-9 = 'workspace 9'
-    cmd-alt-o = 'exec-and-forget open -a Obsidian'
-    cmd-alt-i = 'exec-and-forget open -a Alacritty'
-    cmd-alt-u = 'exec-and-forget open -a "Google Chrome"'
-    cmd-alt-y = 'exec-and-forget open -a Slack'
+    cmd-alt-q = 'exec-and-forget open -a "Google Chrome"'
+    cmd-alt-w = 'exec-and-forget open -a Alacritty'
+    cmd-alt-e = 'exec-and-forget open -a Slack'
+    cmd-alt-r = 'exec-and-forget open -a Obsidian'
+    cmd-alt-a = 'exec-and-forget open -a MailMate'
+    cmd-alt-s = 'exec-and-forget open -a "Notion Calendar"'
+    cmd-alt-d = 'exec-and-forget open -a Ferdium'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     cmd-alt-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
