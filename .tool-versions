@@ -2,3 +2,5 @@ nodejs 20.14.0
 flutter 3.22.1-stable
 python 3.13.2
 terraform 1.11.1
+java openjdk-21.0.2
+terraform-docs 0.21.0
