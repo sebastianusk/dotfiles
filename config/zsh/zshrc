@@ -6,12 +6,9 @@ export OPENCODE_MEM_DB_PATH=~/.local/share/opencode/memory.db
 source "$HOME/dotfiles/config/zsh/env.zsh"
 [[ -f "$HOME/dotfiles/config/zsh/secret.zsh" ]] && source "$HOME/dotfiles/config/zsh/secret.zsh"
 
-# asdf version manager
-if command -v brew >/dev/null 2>&1 && [[ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]]; then
-    . "$(brew --prefix asdf)/libexec/asdf.sh"
-elif [[ -f "$HOME/.local/share/asdf/asdf.sh" ]]; then
-    . "$HOME/.local/share/asdf/asdf.sh"
-fi
+# asdf version manager (v0.16.0+ - Go binary, no asdf.sh needed)
+export ASDF_DATA_DIR="${ASDF_DATA_DIR:-$HOME/.asdf}"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 # Zinit initialization (platform-agnostic)
 if command -v brew >/dev/null 2>&1 && [[ -f "$(brew --prefix zinit)/zinit.zsh" ]]; then
@@ -92,5 +89,10 @@ source "$HOME/dotfiles/config/zsh/functions.zsh"
 
 # Emacs keybinding
 bindkey -e
+
+# Edit current command line in $VISUAL/$EDITOR (e.g. nvim) — bound to ^X^E
+autoload -Uz edit-command-line && zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 export PATH="/opt/homebrew/opt/helm@3/bin:$PATH"
