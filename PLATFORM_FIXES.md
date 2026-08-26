@@ -15,7 +15,6 @@ Analysis performed on 2025-11-18 to identify hardcoded platform-specific paths a
 - **Starship** - Clean, cross-platform configuration
 - **Tmux** - Already handles clipboard across all platforms (lines 41-49)
 - **Nvim** - Core config is platform-agnostic
-- **Fish** - Mostly cross-platform with proper checks
 
 ---
 
@@ -172,20 +171,6 @@ if -b '[ "$XDG_SESSION_TYPE" = "wayland" ] && command -v wl-copy > /dev/null 2>&
 if -b 'command -v pbcopy > /dev/null 2>&1' 'bind y run -b ...'
 ```
 
-### Fish ASDF Integration (config.fish:18-22)
-```fish
-if type -q brew
-    source $(brew --prefix asdf)/libexec/asdf.fish
-else
-    source /opt/asdf-vm/asdf.fish
-end
-```
-
-### Fish Google Cloud SDK (config.fish:51)
-```fish
-if [ -f '/opt/homebrew/share/google-cloud-sdk/path.fish.inc' ]; . '/opt/homebrew/share/google-cloud-sdk/path.fish.inc'; end
-```
-
 ### Zsh iTerm2 Integration (`.zshrc:44`)
 ```zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -220,9 +205,6 @@ zsh -l -c "echo 'zsh loaded'"
 # Test Tmux
 tmux new-session -d -s test && tmux kill-session -t test
 
-# Test Fish (if used)
-fish -c "echo 'fish loaded'"
-
 # Test Neovim
 nvim --headless +checkhealth +qa
 ```
@@ -241,7 +223,6 @@ nvim --headless +checkhealth +qa
 
 - `config/alacritty/alacritty.toml` - Terminal emulator
 - `.zshrc` - Zsh shell configuration
-- `config/fish/config.fish` - Fish shell configuration
 - `config/tmux/tmux.conf` - Tmux multiplexer
 - `config/nvim/` - Neovim editor
 - `config/starship/starship.toml` - Shell prompt

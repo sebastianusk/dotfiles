@@ -213,14 +213,7 @@ function tmpd() {
 
 # Start vsplit session with current multiplexer
 function vsplit() {
-    if [ "$MULTIPLEXER" = "tmux" ]; then
-        tmuxinator start vsplit
-    elif [ "$MULTIPLEXER" = "zellij" ]; then
-        zellij --layout vsplit
-    else
-        echo "No multiplexer configured"
-        return 1
-    fi
+    tmuxinator start vsplit
 }
 
 # Quick gcloud project switcher with instant cache & live refresh

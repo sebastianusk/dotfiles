@@ -5,10 +5,9 @@ This document lists all functionality that needs to be implemented in the new sh
 ## Core Shell Features
 
 ### Environment Management
-- **Centralized YAML Configuration**: Environment variables managed via `../env/base.yaml` and `../env/secret.yaml`
-- **Generated Environment Files**: Shell-specific environment files generated from YAML sources
+- **Shell Environment File**: Environment variables managed in `env.zsh`
 - **Dynamic Variables**: GPG_TTY set dynamically based on current terminal
-- **PATH Management**: PATH configuration from YAML with proper ordering
+- **PATH Management**: PATH configuration with proper ordering
 
 ### Shell Behavior
 - **Vi Key Bindings**: Vi-style command line editing
@@ -52,7 +51,6 @@ This document lists all functionality that needs to be implemented in the new sh
 ### Multiplexer Auto-Start
 - **Conditional Auto-Start**: Based on MULTIPLEXER environment variable
 - **Tmux Support**: Auto-start tmux session named "base"
-- **Zellij Support**: Auto-start with zellij setup
 - **Interactive Only**: Only start in interactive sessions
 
 ### Cloud Tools
@@ -127,9 +125,7 @@ This document lists all functionality that needs to be implemented in the new sh
 
 ### Multiplexer Management
 - **vsplit**: Start multiplexer with split layout
-  - Support tmux with tmuxinator
-  - Support zellij with layout
-  - Detect current multiplexer from environment
+- Support tmux with tmuxinator
 
 ## Plugin Ecosystem Requirements
 
@@ -168,13 +164,11 @@ This document lists all functionality that needs to be implemented in the new sh
 - Aliases configuration
 - Functions configuration  
 - Plugin management
-- Environment variables (generated)
+- Environment variables
 
-### Sync System
-- YAML-based environment configuration
-- Cross-shell compatibility (Fish, Zsh, Bash)
-- Automatic generation of shell-specific files
-- Secret management integration
+### Environment Configuration
+- Environment variables managed directly in `env.zsh`
+- Secrets managed separately in `secret.zsh`
 
 ## PATH Configuration
 

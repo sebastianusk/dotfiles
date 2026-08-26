@@ -3,7 +3,7 @@
     "amazonQChatDisclaimer": true
   },
   "editor.accessibilitySupport": "off",
-  "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.env.osx": {
     "Q_NEW_SESSION": "1"
   }

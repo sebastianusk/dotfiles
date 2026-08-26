@@ -1,5 +1,5 @@
 # Environment Variables Configuration
-# Generated from config/env/base.yaml
+# Shell environment variables
 
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME="$HOME/.config"

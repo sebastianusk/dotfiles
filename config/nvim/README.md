@@ -37,7 +37,7 @@ Shows usage information and available options.
 - Keymaps, options, and autocommands
 
 ### Plugins (via Lazy.nvim)
-- Smart-splits.nvim (Zellij/Tmux navigation)
+- nvim-tmux-navigation (Tmux navigation)
 - LSP configuration (Mason, nvim-lspconfig)
 - Treesitter and syntax highlighting
 - Git integration (Gitsigns, Neogit, Git-conflict)
@@ -49,7 +49,7 @@ Shows usage information and available options.
 
 ## Key Features
 
-- **Seamless Zellij Integration**: Ctrl+hjkl navigation between Neovim and Zellij panes
+- **Seamless Tmux Integration**: Ctrl+hjkl navigation between Neovim and Tmux panes
 - **Complete LSP Setup**: Language servers, formatting, linting
 - **Modern Plugin Ecosystem**: Latest Neovim plugins with Lazy.nvim
 - **Self-Contained**: Sync script handles everything automatically

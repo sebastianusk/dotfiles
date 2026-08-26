@@ -114,8 +114,6 @@ in
             TMUX="tmux new-session -d -s base"
             eval $TMUX
             tmux attach-session -d -t base
-          elif [[ "$MULTIPLEXER" == "zellij" ]] && [[ -z "$ZELLIJ" ]]; then
-            eval "$(zellij setup --generate-auto-start zsh)"
           fi
         fi
 

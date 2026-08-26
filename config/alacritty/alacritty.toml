@@ -5,7 +5,6 @@ import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 [terminal.shell]
 program = "/usr/bin/env"
 args = ["zsh"]
-# program = "/opt/homebrew/bin/zellij"
 
 [window]
 decorations = "None"

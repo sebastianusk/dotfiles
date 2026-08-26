@@ -75,15 +75,11 @@ The `nix/` directory implements a modular NixOS configuration:
 ### Key Configuration Files
 
 **Shell Configurations:**
-- `config/fish/config.fish`: Fish shell main config, sources generated env.fish
-- `config/fish/alias.fish`, `config/fish/funct.fish`: Fish aliases and functions
-- `config/fish/opts.fish`: Fish options
-- `config/fish/secret.fish`: Secrets (not tracked, copy from secret.fish.example)
-- `.zshrc`: zsh configuration (legacy, macOS primary)
+- `.zshrc`: zsh configuration for macOS/Linux
 
 **Editor Configurations:**
 - `config/nvim/`: Neovim configuration with Lazy.nvim plugin manager
-- Seamless Zellij/Tmux navigation with Ctrl+hjkl
+- Seamless Tmux navigation with Ctrl+hjkl
 - Complete LSP setup, Treesitter, Git integration
 
 **Keyboard Remapping:**
@@ -93,10 +89,8 @@ The `nix/` directory implements a modular NixOS configuration:
 - Homerow modifiers: Caps Lock (Esc/Cmd+Opt), ASDF/JKL; (Shift/Alt/Super/Ctrl)
 - Space hold for navigation layer (hjkl → arrows)
 
-**Terminal Multiplexers:**
-- `config/tmux/`: Tmux configuration with oh-my-tmux
-- `config/zellij/`: Zellij configuration
-- Both support seamless Neovim pane navigation
+**Terminal Multiplexer:**
+- `config/tmux/`: Tmux configuration with oh-my-tmux and seamless Neovim pane navigation
 
 ## Common Commands
 
@@ -182,10 +176,8 @@ in {
 5. Use `mkHost` helper: `mkHost "hostname" "system" "user" [extraModules]`
 
 ### Environment Variables
-- Generate static environment variables with `config/env/generator.sh`
-- Outputs to `config/fish/env.fish` and `config/zsh/env.sh`
-- Source secrets from `config/fish/secret.fish` (not tracked)
-- Fish config sources env.fish before loading interactive features
+- Configure environment variables in `config/zsh/env.zsh`
+- Source secrets from `config/zsh/secret.zsh`
 
 ### Symlink Management
 - All config symlinks created by `setup.sh`
@@ -203,7 +195,6 @@ in {
 
 - Steam Deck configuration uses Jovian-NixOS with Hyprland desktop
 - ASDF manages runtime versions (Node.js, Python, Flutter, Terraform)
-- Fisher manages Fish shell plugins
 - Brewfile.lock.json tracks exact Homebrew package versions
 - Kanata requires platform-specific setup (sudo access on macOS, udev rules on Linux)
 - LiteLLM proxy uses AWS profile "personal" and ap-southeast-1 region
