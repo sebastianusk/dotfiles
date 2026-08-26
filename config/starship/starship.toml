@@ -34,7 +34,7 @@ symbol = "☁️ "
 [kubernetes]
 disabled = false
 style = "bold teal"
-format = '[⎈ $context($namespace)]($style) '
+format = '[⎈ $context(/$namespace)]($style) '
 
 [git_branch]
 style = "bold mauve"

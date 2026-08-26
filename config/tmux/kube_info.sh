@@ -13,4 +13,4 @@ if current_context=$(kubectl config current-context 2>/dev/null); then
 	[[ -z "$kube_namespace" ]] && kube_namespace="default"
 fi
 
-chip "⎈" "${kube_context}:${kube_namespace}" "$CLR_TEAL"
+chip "⎈" "${kube_context}:${kube_namespace}" "$CLR_SKY"
