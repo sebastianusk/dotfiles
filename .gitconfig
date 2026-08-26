@@ -1,5 +1,5 @@
 [user]
-	email = sebastianus.kurniawan@dkatalis.com
+	email = sebastianus.kurniawan@gmail.com
 	name = Sebastianus Kurniawan
 	signingkey = 056FBA6D6D41731B
 [filter "lfs"]
@@ -31,3 +31,5 @@
 	gpgsign = true
 [gpg]
 	program = /opt/homebrew/bin/gpg
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
