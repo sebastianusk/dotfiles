@@ -13,7 +13,6 @@ export CHROME_EXECUTABLE="/Applications/Google Chrome.app/Contents/MacOS/Google 
 export DISPLAY=":0.0"
 export LC_CTYPE="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
-export DOCKER_DEFAULT_PLATFORM="linux/amd64"
 export PIP_REQUIRE_VIRTUALENV="true"
 
 # Tool configurations will be handled by individual tool initializations
