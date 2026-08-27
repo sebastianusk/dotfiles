@@ -16,7 +16,6 @@
   "skills": {
     "paths": [
       "~/dotfiles/config/opencode/skills",
-      "~/dotfiles/config/skills",
       "~/Documents/brain/agent/skills"
     ]
   },

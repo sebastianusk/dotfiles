@@ -47,9 +47,8 @@ skills, and a small set of pinned plugins.
 
 ## Skills and Brain Vault
 
-OpenCode loads its local `~/dotfiles/config/opencode/skills` directory,
-shared skills at `~/dotfiles/config/skills`, and brain-vault skills at
-`~/Documents/brain/agent/skills`.
+OpenCode loads skills from `~/dotfiles/config/opencode/skills` and
+brain-vault skills at `~/Documents/brain/agent/skills`.
 
 - `dk`, `jira`, and `confluence` retain their existing scripts and CLI/API
   dependencies.
