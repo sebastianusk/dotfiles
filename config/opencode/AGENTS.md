@@ -15,14 +15,18 @@
 
 ## Work style
 - Read relevant files before making changes
-- Verify after changing — run tests, build, or lint
+- Once you have enough context to safely make the change, stop exploring and implement
 - Prefer targeted edits over rewriting entire files
-- Break complex tasks into small, verifiable steps
-- When stuck, experiment (add logging, run code) rather than guess
-- Use TDD for application code features and bug fixes only. For configuration, skill, agent, prompt, and other workflow-only changes, implement directly, run targeted validation, and ask the user to test the changed behavior manually.
+- Keep scope tight; don't refactor or fix unrelated issues
+- Verify proportionally after changing — prefer targeted tests, builds, lint, validation, or smoke checks
+- Don't repeat equivalent verification unless relevant code changed
+- Break genuinely complex tasks into small, verifiable steps; don't add process to simple tasks
+- When stuck, experiment and gather evidence rather than guess
+- Use TDD for application code features and bug fixes only. For configuration, skill, agent, prompt, and other workflow-only changes, implement directly and run targeted validation
 
 ## OpenCode workflow
-- Use the native Plan agent for read-only analysis and planning
-- Use native Task/subagents for independent work that can be parallelized
-- Use native todos to track active session work
+- Use native Plan mode for design, architecture, investigation, and implementation planning when the task benefits from planning
+- Use native Task/subagents when independent work materially benefits from parallelism or an independent perspective
+- Use the Review subagent near the end of substantial or high-risk changes
+- Use native todos for tasks with multiple meaningful steps
 - Use `@brain` references for Obsidian tasks

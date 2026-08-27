@@ -3,12 +3,14 @@
   "plugin": [
     "@mohak34/opencode-notifier@0.2.8",
     "./extensions/hermes-memory/plugin.ts",
+    "./extensions/approval-review/plugin.ts",
     "opencode-vibeguard@0.1.0",
-    "superpowers@git+https://github.com/obra/superpowers.git#v6.3.0",
     "context-mode@1.0.169"
   ],
-  "model": "openai/gpt-5.6-sol",
-  "small_model": "openai/gpt-5.6-luna",
+  // "model": "openai/gpt-5.6-sol",
+  "model": "opencode-go/glm-5.3-flash",
+  // "small_model": "openai/gpt-5.6-luna",
+  "small_model": "opencode-go/gpt-5.6-luna",
   "subagent_depth": 1,
   "instructions": ["AGENTS.md"],
   "skills": {
@@ -24,94 +26,7 @@
       "description": "Obsidian brain vault for task notes, project context, and linked external resources"
     }
   },
-  "agent": {
-    "plan": {
-      "mode": "primary",
-      "model": "openai/gpt-5.6-sol",
-      "reasoningEffort": "high",
-      "permission": {
-        "edit": "deny",
-        "bash": "deny",
-        "task": {
-          "*": "deny",
-          "explore": "allow",
-          "general": "allow"
-        },
-        "read": "allow",
-        "list": "allow",
-        "glob": "allow",
-        "grep": "allow",
-        "webfetch": "allow",
-        "todoread": "allow",
-        "question": "allow",
-        "skill": "allow"
-      }
-    },
-    "build": {
-      "mode": "primary",
-      "model": "openai/gpt-5.6-terra",
-      "reasoningEffort": "medium",
-      "permission": {
-        "edit": "allow",
-        "task": {
-          "*": "deny",
-          "explore": "allow",
-          "general": "allow"
-        },
-        "read": "allow",
-        "list": "allow",
-        "glob": "allow",
-        "grep": "allow",
-        "webfetch": "allow",
-        "todoread": "allow",
-        "todowrite": "allow",
-        "question": "allow",
-        "skill": "allow"
-      }
-    },
-    "explore": {
-      "model": "openai/gpt-5.6-luna",
-      "permission": {
-        "edit": "deny",
-        "write": "deny",
-        "task": "deny",
-        "todowrite": "deny",
-        "bash": {
-          "*": "deny",
-          "rg *": "allow",
-          "grep *": "allow",
-          "head *": "allow",
-          "tail *": "allow",
-          "wc *": "allow",
-          "cut *": "allow",
-          "tr *": "allow",
-          "nl *": "allow",
-          "jq *": "allow",
-          "git status *": "allow",
-          "git log *": "allow",
-          "git diff *": "allow",
-          "git show *": "allow",
-          "git rev-parse *": "allow",
-          "git branch --show-current": "allow",
-          "git branch --list *": "allow",
-          "git branch -a": "allow",
-          "git branch -r": "allow",
-          "git tag --list *": "allow",
-          "git ls-files *": "allow",
-          "git ls-tree *": "allow",
-          "git grep *": "allow",
-          "git remote -v": "allow",
-          "git remote get-url *": "allow",
-          "git describe *": "allow",
-          "git blame *": "allow",
-          "rg --pre *": "deny"
-        }
-      }
-    },
-    "general": {
-      "model": "openai/gpt-5.6-luna"
-    }
-  },
+  "agent": {},
   "permission": {
     "bash": {
       "*": "ask",
