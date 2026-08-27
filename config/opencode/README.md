@@ -43,7 +43,7 @@ skills, and a small set of pinned plugins.
 - `* > *` / `* >> *` require approval globally: shell redirects would otherwise
   bypass write permissions through allowlisted read-only commands.
 - The `general` subagent intentionally has no permission block and inherits the
-  full global policy; `reviewer` denies bash outright.
+  full global policy; `review` denies bash outright.
 
 ## Skills and Brain Vault
 
