@@ -1,12 +1,13 @@
 {
   "enabled": true,
-  "redact": {
-    "patterns": [
-      "AKIA.*",
-      "sk-.*",
-      "xoxb-.*",
-      "ey[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*",
-      "(?i)password[:=].*"
-    ]
+  "patterns": {
+    "regex": [
+      { "pattern": "AKIA.*" },
+      { "pattern": "sk-.*" },
+      { "pattern": "xoxb-.*" },
+      { "pattern": "ey[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*" },
+      { "pattern": "password[:=].*", "flags": "i" }
+    ],
+    "keywords": []
   }
 }
