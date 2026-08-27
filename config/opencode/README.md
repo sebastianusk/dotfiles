@@ -35,6 +35,16 @@ skills, and a small set of pinned plugins.
 - **Explore**: fast read-only codebase investigation
 - **General**: multi-step research and independent work
 
+## Permission Notes
+
+- Agent bash blocks are merged with (appended after) the global rules, so agent
+  allows override global asks, but trailing global guards still apply to any
+  pattern the agent does not re-allow.
+- `* > *` / `* >> *` require approval globally: shell redirects would otherwise
+  bypass write permissions through allowlisted read-only commands.
+- The `general` subagent intentionally has no permission block and inherits the
+  full global policy; `reviewer` denies bash outright.
+
 ## Skills and Brain Vault
 
 OpenCode loads its local `~/dotfiles/config/opencode/skills` directory,

@@ -5,6 +5,7 @@ model: opencode-go/glm-5.3
 permission:
   edit: deny
   write: deny
+  bash: deny
   task: deny
   todowrite: deny
   read: allow
