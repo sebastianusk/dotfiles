@@ -1,0 +1,6 @@
+{
+  // Permission decisions remain local and are reviewed manually.
+  "dataPath": "~/.local/share/opencode/approval-review",
+  "retentionDays": 90,
+  "promotablePermissions": []
+}

@@ -60,6 +60,7 @@ shared skills at `~/dotfiles/config/skills`, and brain-vault skills at
 | `skills/docs-lookup/SKILL.md` | Context7-first current documentation workflow |
 | `../commands/` | Global slash commands; selected files link to brain-vault prompts |
 | `hermes-memory.jsonc` | Local, approval-gated persistent-memory configuration |
+| `approval-review.jsonc` | Local permission-decision recording and promotion configuration |
 | `vibeguard.config.json` | Sensitive-value redaction patterns |
 | `opencode-notifier.json` | macOS notification configuration |
 | `sync.sh` | Safely symlinks this configuration into `~/.config/opencode/` |
@@ -70,12 +71,32 @@ shared skills at `~/dotfiles/config/skills`, and brain-vault skills at
 | --- | --- |
 | `@mohak34/opencode-notifier` | macOS notifications and tmux focus restoration |
 | `extensions/hermes-memory` | Local, approval-gated memory proposals across sessions |
+| `extensions/approval-review` | Records permission decisions; `/approval-review` promotes confirmed allow/deny rules |
 | `opencode-vibeguard` | Configured sensitive-value redaction |
-| `superpowers` | Planning, implementation, and verification skills |
 | `context-mode` | Large-output offloading, FTS search, and compaction continuity |
 
 Plugins are version-pinned. `opencode-gemini-auth` is intentionally omitted:
 its third-party OAuth flow has an account-policy risk.
+
+## Approval Review
+
+`extensions/approval-review` records interactive permission decisions locally
+and provides a manual `/approval-review` command that turns reviewed evidence
+into global permission rules after explicit confirmation of the exact diff.
+
+- Storage: `~/.local/share/opencode/approval-review/records/`, mode `0700`
+  directories and `0600` files; session IDs are never persisted.
+- Retention: records are pruned after 90 days.
+- Redaction: values matching the effective Vibeguard config are redacted
+  before persistence; redacted evidence is audit-only and never promotes
+  rules. If Vibeguard config is missing or invalid, nothing is recorded.
+- Promotion: allow candidates for `bash` must be exact observed commands —
+  wildcards cannot safely cover shell chaining. Wildcard deny candidates and
+  non-bash wildcards are supported. Custom permission gates are audit-only
+  unless listed in `approval-review.jsonc`.
+- Application: policy changes write through the `~/.config/opencode/opencode.json`
+  symlink target atomically, preserving comments and rule order, and require
+  restarting OpenCode to take effect.
 
 ## MCP Servers
 
