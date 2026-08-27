@@ -25,15 +25,16 @@ skills, and a small set of pinned plugins.
 
 ### Build (`openai/gpt-5.6-terra`)
 
-- Read/edit access and the `@explore` / `@general` subagents
+- Owns requested changes end-to-end with read/edit access
+- Uses `@explore` / `@general` subagents; Review for substantial changes
 - Read-only shell commands auto-allowed; other commands require approval
-- Git commit and push always denied
-- Medium reasoning effort for implementation
 
-### Explore and General (`openai/gpt-5.6-luna`)
+### Explore, General, Review
 
-- **Explore**: fast read-only codebase investigation
-- **General**: multi-step research and independent work
+- **Explore** (`openai/gpt-5.6-luna`): fast focused investigation, subagent
+- **General** (`openai/gpt-5.6-luna`): bounded delegated tasks, subagent
+- **Review** (`openai/gpt-5.6-sol`): independent final review, subagent,
+  no bash/edit
 
 ## Permission Notes
 
@@ -83,9 +84,26 @@ brain-vault skills at `~/Documents/brain/agent/skills`.
 | `extensions/approval-review` | Records permission decisions; `/approval-review` promotes confirmed allow/deny rules |
 | `opencode-vibeguard` | Configured sensitive-value redaction |
 | `context-mode` | Large-output offloading, FTS search, and compaction continuity |
+| `opencode-runtime-fallback` | Per-agent model failover when the primary provider is rate/quota-limited |
 
 Plugins are version-pinned. `opencode-gemini-auth` is intentionally omitted:
 its third-party OAuth flow has an account-policy risk.
+
+## Model Failover
+
+Primary models are OpenAI subscription-backed; each agent falls back to the
+matching opencode-go model when OpenAI quota or rate limits are hit, and
+returns automatically after cooldown:
+
+| Agent | Primary | Fallback |
+| --- | --- | --- |
+| plan, review | `openai/gpt-5.6-sol` | `opencode-go/glm-5.3` |
+| build | `openai/gpt-5.6-terra` | `opencode-go/glm-5.3-flash` |
+| explore, general, small_model | `openai/gpt-5.6-luna` | `opencode-go/gpt-5.6-luna` |
+
+Agent models and `fallback_models` are configured in the `agent` block of
+`opencode.json`; prompts and permissions live in the markdown agent files
+and merge over it.
 
 ## Approval Review
 
